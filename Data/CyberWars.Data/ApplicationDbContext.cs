@@ -8,7 +8,15 @@
 
     using CyberWars.Data.Common.Models;
     using CyberWars.Data.Models;
-
+    using CyberWars.Data.Models.Ability;
+    using CyberWars.Data.Models.Badge;
+    using CyberWars.Data.Models.Battle;
+    using CyberWars.Data.Models.Course;
+    using CyberWars.Data.Models.Job;
+    using CyberWars.Data.Models.Pet_Food;
+    using CyberWars.Data.Models.Player;
+    using CyberWars.Data.Models.Skills;
+    using CyberWars.Data.Models.Team;
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
 
@@ -25,6 +33,74 @@
         }
 
         public DbSet<Setting> Settings { get; set; }
+
+
+        public DbSet<LoginHistory> LoginHistories { get; set; }
+
+        // Players
+        public DbSet<Player> Players { get; set; }
+
+        public DbSet<PlayerSkill> PlayerSkills { get; set; }
+
+        public DbSet<PlayerAbility> PlayerAbilities { get; set; }
+
+        public DbSet<PlayerPet> PlayerPets { get; set; }
+
+        public DbSet<PlayerBadge> PlayerBadges { get; set; }
+
+        public DbSet<PlayerJob> PlayerJobs { get; set; }
+
+        // Battles
+        public DbSet<BattleRecord> BattleRecords { get; set; }
+
+        public DbSet<Battle> Battles { get; set; }
+
+        public DbSet<PlayerBattle> PlayerBattles { get; set; }
+
+        // Jobs
+        public DbSet<JobType> JobTypes { get; set; }
+
+        public DbSet<Job> Jobs { get; set; }
+
+        public DbSet<JobRequirement> JobRequirements { get; set; }
+
+        // Skills
+        public DbSet<Skill> Skills { get; set; }
+
+        // Abilities
+        public DbSet<Ability> Abilities { get; set; }
+
+        // Foods
+        public DbSet<Food> Foods { get; set; }
+
+        // Levels
+        public DbSet<Level> Levels { get; set; }
+
+        // Pets
+        public DbSet<Pet> Pets { get; set; }
+
+        // Badges
+        public DbSet<Badge> Badges { get; set; }
+
+        public DbSet<BadgeType> BadgeTypes { get; set; }
+
+        public DbSet<Requirement> Requirements { get; set; }
+
+        public DbSet<BadgeRequirement> BadgeRequirements { get; set; }
+
+        // Course
+        public DbSet<CourseType> CourseTypes { get; set; }
+
+        public DbSet<Course> Courses { get; set; }
+
+        public DbSet<CompleteLecture> CompleteLectures { get; set; }
+
+        public DbSet<Lecture> Lectures { get; set; }
+
+        public DbSet<PlayerCourse> PlayerCourses { get; set; }
+
+        // Team
+        public DbSet<Team> Teams { get; set; }
 
         public override int SaveChanges() => this.SaveChanges(true);
 
@@ -72,6 +148,85 @@
             {
                 foreignKey.DeleteBehavior = DeleteBehavior.Restrict;
             }
+
+            builder.Entity<Team>(entity =>
+            {
+                entity.HasKey(x => x.TeamId);
+
+                entity.HasMany(x => x.TeamMembers)
+                .WithOne(x => x.Team)
+                .HasForeignKey(x => x.TeamId)
+                .OnDelete(DeleteBehavior.NoAction);
+
+
+            });
+
+            builder.Entity<PlayerBattle>(entity =>
+            {
+                entity.HasKey(x => new { x.PlayerId, x.BattleId });
+            });
+
+            builder.Entity<Battle>(entity =>
+            {
+                entity.HasOne(x => x.AttackPlayer)
+                 .WithMany(x => x.AttacksPlayer)
+                 .HasForeignKey(x => x.AttackPlayerId)
+                 .OnDelete(DeleteBehavior.NoAction);
+
+                entity.HasOne(x => x.DefencePlayer)
+              .WithMany(x => x.DefencesPlayer)
+              .HasForeignKey(x => x.DefencePlayerId)
+              .OnDelete(DeleteBehavior.NoAction);
+            });
+
+            builder.Entity<PlayerAbility>(entity =>
+            {
+                entity.HasKey(x => new { x.PlayerId, x.AbilityId });
+            });
+            builder.Entity<PlayerJob>(entity =>
+            {
+                entity.HasKey(x => new { x.JobId, x.PlayerId });
+            });
+
+            builder.Entity<JobRequirement>(entity =>
+            {
+                entity.HasKey(x => new { x.JobId, x.RequirementId });
+            });
+
+            builder.Entity<CompleteLecture>(entity =>
+            {
+                entity.HasKey(x => new { x.LectureId, x.PlayerId });
+            });
+
+            builder.Entity<PlayerCourse>(entity =>
+            {
+                entity.HasKey(x => new { x.PlayerId, x.CourseId });
+            });
+
+            builder.Entity<BadgeRequirement>(entity =>
+            {
+                entity.HasKey(x => new { x.BadgeId, x.RequirementId });
+            });
+
+            builder.Entity<PlayerBadge>(entity =>
+            {
+                entity.HasKey(x => new { x.PlayerId, x.BadgeId });
+            });
+
+            builder.Entity<PlayerSkill>(entity =>
+            {
+                entity.HasKey(x => new { x.PlayerId, x.SkillId });
+            });
+
+            builder.Entity<PlayerPet>(entity =>
+            {
+                entity.HasKey(x => new { x.PetId, x.PlayerId });
+            });
+
+            builder.Entity<Player>(entity =>
+            {
+                entity.HasKey(x => x.PlayerId);
+            });
         }
 
         private static void SetIsDeletedQueryFilter<T>(ModelBuilder builder)

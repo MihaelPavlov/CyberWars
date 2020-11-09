@@ -15,9 +15,62 @@ namespace CyberWars.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.0")
+                .HasAnnotation("ProductVersion", "3.1.9")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("CyberWars.Data.Models.Ability.Ability", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.ToTable("Abilities");
+                });
+
+            modelBuilder.Entity("CyberWars.Data.Models.Ability.PlayerAbility", b =>
+                {
+                    b.Property<string>("PlayerId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("AbilityId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Points")
+                        .HasColumnType("int");
+
+                    b.HasKey("PlayerId", "AbilityId");
+
+                    b.HasIndex("AbilityId");
+
+                    b.ToTable("PlayerAbilities");
+                });
 
             modelBuilder.Entity("CyberWars.Data.Models.ApplicationRole", b =>
                 {
@@ -114,6 +167,9 @@ namespace CyberWars.Data.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<string>("PlayerId")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
@@ -137,6 +193,518 @@ namespace CyberWars.Data.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
+                });
+
+            modelBuilder.Entity("CyberWars.Data.Models.Badge.Badge", b =>
+                {
+                    b.Property<int>("BadgeId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("BadgeTypeId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ImageName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("BadgeId");
+
+                    b.HasIndex("BadgeTypeId");
+
+                    b.ToTable("Badges");
+                });
+
+            modelBuilder.Entity("CyberWars.Data.Models.Badge.BadgeRequirement", b =>
+                {
+                    b.Property<int>("BadgeId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RequirementId")
+                        .HasColumnType("int");
+
+                    b.HasKey("BadgeId", "RequirementId");
+
+                    b.HasIndex("RequirementId");
+
+                    b.ToTable("BadgeRequirements");
+                });
+
+            modelBuilder.Entity("CyberWars.Data.Models.Badge.BadgeType", b =>
+                {
+                    b.Property<int>("BadgeTypeId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("BadgeTypeId");
+
+                    b.ToTable("BadgeTypes");
+                });
+
+            modelBuilder.Entity("CyberWars.Data.Models.Badge.PlayerBadge", b =>
+                {
+                    b.Property<string>("PlayerId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("BadgeId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("AchievementDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("PlayerId", "BadgeId");
+
+                    b.HasIndex("BadgeId");
+
+                    b.ToTable("PlayerBadges");
+                });
+
+            modelBuilder.Entity("CyberWars.Data.Models.Badge.Requirement", b =>
+                {
+                    b.Property<int>("RequirementId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("BadgeTypeId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Points")
+                        .HasColumnType("int");
+
+                    b.HasKey("RequirementId");
+
+                    b.HasIndex("BadgeTypeId");
+
+                    b.ToTable("Requirements");
+                });
+
+            modelBuilder.Entity("CyberWars.Data.Models.Battle.Battle", b =>
+                {
+                    b.Property<int>("BattleId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AttackPlayerId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("BattleDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DefencePlayerId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("BattleId");
+
+                    b.HasIndex("AttackPlayerId");
+
+                    b.HasIndex("DefencePlayerId");
+
+                    b.ToTable("Battles");
+                });
+
+            modelBuilder.Entity("CyberWars.Data.Models.Battle.BattleRecord", b =>
+                {
+                    b.Property<int>("BattleRecordId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Losses")
+                        .HasColumnType("int");
+
+                    b.Property<string>("PlayerId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("Wins")
+                        .HasColumnType("int");
+
+                    b.HasKey("BattleRecordId");
+
+                    b.HasIndex("PlayerId")
+                        .IsUnique()
+                        .HasFilter("[PlayerId] IS NOT NULL");
+
+                    b.ToTable("BattleRecords");
+                });
+
+            modelBuilder.Entity("CyberWars.Data.Models.Battle.PlayerBattle", b =>
+                {
+                    b.Property<string>("PlayerId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("BattleId")
+                        .HasColumnType("int");
+
+                    b.HasKey("PlayerId", "BattleId");
+
+                    b.HasIndex("BattleId");
+
+                    b.ToTable("PlayerBattles");
+                });
+
+            modelBuilder.Entity("CyberWars.Data.Models.Course.CompleteLecture", b =>
+                {
+                    b.Property<int>("LectureId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("PlayerId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<bool>("IsComplete")
+                        .HasColumnType("bit");
+
+                    b.HasKey("LectureId", "PlayerId");
+
+                    b.HasIndex("PlayerId");
+
+                    b.ToTable("CompleteLectures");
+                });
+
+            modelBuilder.Entity("CyberWars.Data.Models.Course.Course", b =>
+                {
+                    b.Property<int>("CourseId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CourseTypeId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("CourseId");
+
+                    b.HasIndex("CourseTypeId");
+
+                    b.ToTable("Courses");
+                });
+
+            modelBuilder.Entity("CyberWars.Data.Models.Course.CourseType", b =>
+                {
+                    b.Property<int>("CourseTypeId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("CourseTypeId");
+
+                    b.ToTable("CourseTypes");
+                });
+
+            modelBuilder.Entity("CyberWars.Data.Models.Course.Lecture", b =>
+                {
+                    b.Property<int>("LectureId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CourseId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("RewardAbilityPoints")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RewardMoney")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RewardSkill")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TimeMinutes")
+                        .HasColumnType("int");
+
+                    b.HasKey("LectureId");
+
+                    b.HasIndex("CourseId");
+
+                    b.ToTable("Lectures");
+                });
+
+            modelBuilder.Entity("CyberWars.Data.Models.Course.PlayerCourse", b =>
+                {
+                    b.Property<string>("PlayerId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("CourseId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CompleteDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsComplete")
+                        .HasColumnType("bit");
+
+                    b.HasKey("PlayerId", "CourseId");
+
+                    b.HasIndex("CourseId");
+
+                    b.ToTable("PlayerCourses");
+                });
+
+            modelBuilder.Entity("CyberWars.Data.Models.Job.Job", b =>
+                {
+                    b.Property<int>("JobId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("JobTypeId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("LevelRequirement")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("JobId");
+
+                    b.HasIndex("JobTypeId");
+
+                    b.ToTable("Jobs");
+                });
+
+            modelBuilder.Entity("CyberWars.Data.Models.Job.JobRequirement", b =>
+                {
+                    b.Property<int>("JobId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RequirementId")
+                        .HasColumnType("int");
+
+                    b.HasKey("JobId", "RequirementId");
+
+                    b.HasIndex("RequirementId");
+
+                    b.ToTable("JobRequirements");
+                });
+
+            modelBuilder.Entity("CyberWars.Data.Models.Job.JobType", b =>
+                {
+                    b.Property<int>("JobTypeId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("JobTypeId");
+
+                    b.ToTable("JobTypes");
+                });
+
+            modelBuilder.Entity("CyberWars.Data.Models.Job.PlayerJob", b =>
+                {
+                    b.Property<int>("JobId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("PlayerId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("DateOfComplete")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsComplete")
+                        .HasColumnType("bit");
+
+                    b.HasKey("JobId", "PlayerId");
+
+                    b.HasIndex("PlayerId");
+
+                    b.ToTable("PlayerJobs");
+                });
+
+            modelBuilder.Entity("CyberWars.Data.Models.Pet_Food.Food", b =>
+                {
+                    b.Property<int>("FoodId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("GainExp")
+                        .HasColumnType("int");
+
+                    b.Property<int>("GainHealth")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ImageName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("LevelRequirement")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("FoodId");
+
+                    b.ToTable("Foods");
+                });
+
+            modelBuilder.Entity("CyberWars.Data.Models.Pet_Food.Pet", b =>
+                {
+                    b.Property<int>("PetId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("LevelRequirement")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("PetId");
+
+                    b.ToTable("Pets");
+                });
+
+            modelBuilder.Entity("CyberWars.Data.Models.Pet_Food.PlayerPet", b =>
+                {
+                    b.Property<int>("PetId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("PlayerId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("Health")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Level")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Mood")
+                        .HasColumnType("int");
+
+                    b.Property<string>("NameIt")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("PetId", "PlayerId");
+
+                    b.HasIndex("PlayerId");
+
+                    b.ToTable("PlayerPets");
+                });
+
+            modelBuilder.Entity("CyberWars.Data.Models.Player.Level", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Exp")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ExpDifference")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Levels");
+                });
+
+            modelBuilder.Entity("CyberWars.Data.Models.Player.LoginHistory", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("LoginTime")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PlayerId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PlayerId");
+
+                    b.ToTable("LoginHistories");
+                });
+
+            modelBuilder.Entity("CyberWars.Data.Models.Player.Player", b =>
+                {
+                    b.Property<string>("PlayerId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Class")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EmailAddress")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Energy")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Experience")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Health")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ImageName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("LearnPoint")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Level")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Money")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TeamId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("PlayerId");
+
+                    b.HasIndex("TeamId");
+
+                    b.ToTable("Players");
                 });
 
             modelBuilder.Entity("CyberWars.Data.Models.Setting", b =>
@@ -169,6 +737,80 @@ namespace CyberWars.Data.Migrations
                     b.HasIndex("IsDeleted");
 
                     b.ToTable("Settings");
+                });
+
+            modelBuilder.Entity("CyberWars.Data.Models.Skills.PlayerSkill", b =>
+                {
+                    b.Property<string>("PlayerId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("SkillId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Points")
+                        .HasColumnType("int");
+
+                    b.HasKey("PlayerId", "SkillId");
+
+                    b.HasIndex("SkillId");
+
+                    b.ToTable("PlayerSkills");
+                });
+
+            modelBuilder.Entity("CyberWars.Data.Models.Skills.Skill", b =>
+                {
+                    b.Property<int>("SkillId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("SkillId");
+
+                    b.ToTable("Skills");
+                });
+
+            modelBuilder.Entity("CyberWars.Data.Models.Team.Team", b =>
+                {
+                    b.Property<string>("TeamId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("LeaderOfTeamId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("MotivationalMotto")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("TeamId");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.HasIndex("LeaderOfTeamId");
+
+                    b.ToTable("Teams");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -273,6 +915,243 @@ namespace CyberWars.Data.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("CyberWars.Data.Models.Ability.PlayerAbility", b =>
+                {
+                    b.HasOne("CyberWars.Data.Models.Ability.Ability", "Ability")
+                        .WithMany("PlayerAbilities")
+                        .HasForeignKey("AbilityId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("CyberWars.Data.Models.Player.Player", "Player")
+                        .WithMany("PlayerAbilities")
+                        .HasForeignKey("PlayerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("CyberWars.Data.Models.Badge.Badge", b =>
+                {
+                    b.HasOne("CyberWars.Data.Models.Badge.BadgeType", "BadgeType")
+                        .WithMany("Badges")
+                        .HasForeignKey("BadgeTypeId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("CyberWars.Data.Models.Badge.BadgeRequirement", b =>
+                {
+                    b.HasOne("CyberWars.Data.Models.Badge.Badge", "Badge")
+                        .WithMany("BadgeRequirements")
+                        .HasForeignKey("BadgeId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("CyberWars.Data.Models.Badge.Requirement", "Requirement")
+                        .WithMany("BadgeRequirements")
+                        .HasForeignKey("RequirementId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("CyberWars.Data.Models.Badge.PlayerBadge", b =>
+                {
+                    b.HasOne("CyberWars.Data.Models.Badge.Badge", "Badge")
+                        .WithMany("PlayersBadges")
+                        .HasForeignKey("BadgeId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("CyberWars.Data.Models.Player.Player", "Player")
+                        .WithMany("PlayerBadges")
+                        .HasForeignKey("PlayerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("CyberWars.Data.Models.Badge.Requirement", b =>
+                {
+                    b.HasOne("CyberWars.Data.Models.Badge.BadgeType", "BadgeType")
+                        .WithMany("Requirements")
+                        .HasForeignKey("BadgeTypeId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("CyberWars.Data.Models.Battle.Battle", b =>
+                {
+                    b.HasOne("CyberWars.Data.Models.Player.Player", "AttackPlayer")
+                        .WithMany("AttacksPlayer")
+                        .HasForeignKey("AttackPlayerId")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("CyberWars.Data.Models.Player.Player", "DefencePlayer")
+                        .WithMany("DefencesPlayer")
+                        .HasForeignKey("DefencePlayerId")
+                        .OnDelete(DeleteBehavior.NoAction);
+                });
+
+            modelBuilder.Entity("CyberWars.Data.Models.Battle.BattleRecord", b =>
+                {
+                    b.HasOne("CyberWars.Data.Models.Player.Player", "Player")
+                        .WithOne("BattleRecord")
+                        .HasForeignKey("CyberWars.Data.Models.Battle.BattleRecord", "PlayerId");
+                });
+
+            modelBuilder.Entity("CyberWars.Data.Models.Battle.PlayerBattle", b =>
+                {
+                    b.HasOne("CyberWars.Data.Models.Battle.Battle", "Battle")
+                        .WithMany("PlayerBattles")
+                        .HasForeignKey("BattleId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("CyberWars.Data.Models.Player.Player", "Player")
+                        .WithMany("PlayerBattles")
+                        .HasForeignKey("PlayerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("CyberWars.Data.Models.Course.CompleteLecture", b =>
+                {
+                    b.HasOne("CyberWars.Data.Models.Course.Lecture", "Lecture")
+                        .WithMany("CompleteLectures")
+                        .HasForeignKey("LectureId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("CyberWars.Data.Models.Player.Player", "Player")
+                        .WithMany("CompleteLectures")
+                        .HasForeignKey("PlayerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("CyberWars.Data.Models.Course.Course", b =>
+                {
+                    b.HasOne("CyberWars.Data.Models.Course.CourseType", "CourseType")
+                        .WithMany("Courses")
+                        .HasForeignKey("CourseTypeId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("CyberWars.Data.Models.Course.Lecture", b =>
+                {
+                    b.HasOne("CyberWars.Data.Models.Course.Course", "Course")
+                        .WithMany("Lectures")
+                        .HasForeignKey("CourseId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("CyberWars.Data.Models.Course.PlayerCourse", b =>
+                {
+                    b.HasOne("CyberWars.Data.Models.Course.Course", "Course")
+                        .WithMany("PlayerCourses")
+                        .HasForeignKey("CourseId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("CyberWars.Data.Models.Player.Player", "Player")
+                        .WithMany("PlayerCourses")
+                        .HasForeignKey("PlayerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("CyberWars.Data.Models.Job.Job", b =>
+                {
+                    b.HasOne("CyberWars.Data.Models.Job.JobType", "JobType")
+                        .WithMany("Jobs")
+                        .HasForeignKey("JobTypeId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("CyberWars.Data.Models.Job.JobRequirement", b =>
+                {
+                    b.HasOne("CyberWars.Data.Models.Job.Job", "Job")
+                        .WithMany("JobRequirements")
+                        .HasForeignKey("JobId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("CyberWars.Data.Models.Badge.Requirement", "Requirement")
+                        .WithMany("JobRequirements")
+                        .HasForeignKey("RequirementId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("CyberWars.Data.Models.Job.PlayerJob", b =>
+                {
+                    b.HasOne("CyberWars.Data.Models.Job.Job", "Job")
+                        .WithMany("PlayerJobs")
+                        .HasForeignKey("JobId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("CyberWars.Data.Models.Player.Player", "Player")
+                        .WithMany("PlayerJobs")
+                        .HasForeignKey("PlayerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("CyberWars.Data.Models.Pet_Food.PlayerPet", b =>
+                {
+                    b.HasOne("CyberWars.Data.Models.Pet_Food.Pet", "Pet")
+                        .WithMany("PlayerPets")
+                        .HasForeignKey("PetId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("CyberWars.Data.Models.Player.Player", "Player")
+                        .WithMany("PlayerPets")
+                        .HasForeignKey("PlayerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("CyberWars.Data.Models.Player.LoginHistory", b =>
+                {
+                    b.HasOne("CyberWars.Data.Models.Player.Player", "Player")
+                        .WithMany()
+                        .HasForeignKey("PlayerId");
+                });
+
+            modelBuilder.Entity("CyberWars.Data.Models.Player.Player", b =>
+                {
+                    b.HasOne("CyberWars.Data.Models.Team.Team", "Team")
+                        .WithMany("TeamMembers")
+                        .HasForeignKey("TeamId")
+                        .OnDelete(DeleteBehavior.NoAction);
+                });
+
+            modelBuilder.Entity("CyberWars.Data.Models.Skills.PlayerSkill", b =>
+                {
+                    b.HasOne("CyberWars.Data.Models.Player.Player", "Player")
+                        .WithMany("PlayerSkills")
+                        .HasForeignKey("PlayerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CyberWars.Data.Models.Skills.Skill", "Skill")
+                        .WithMany("PlayerSkills")
+                        .HasForeignKey("SkillId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("CyberWars.Data.Models.Team.Team", b =>
+                {
+                    b.HasOne("CyberWars.Data.Models.Player.Player", "LeaderOfTeam")
+                        .WithMany()
+                        .HasForeignKey("LeaderOfTeamId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

@@ -12,8 +12,8 @@ using System;
 using System.Reflection;
 
 [assembly: Microsoft.AspNetCore.Identity.UI.UIFrameworkAttribute("Bootstrap4")]
-[assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("CyberWars.Data", "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\Data\\CyberWars.Data", "CyberWars.Data.csproj", "0")]
-[assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("CyberWars.Web", "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\Web\\CyberWars.Web", "CyberWars.Web.csproj", "0")]
+[assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("CyberWars.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\Data\\CyberWars.Data", "CyberWars.Data.csproj", "0")]
+[assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("CyberWars.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\Web\\CyberWars.Web", "CyberWars.Web.csproj", "0")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("CyberWars.Web.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]

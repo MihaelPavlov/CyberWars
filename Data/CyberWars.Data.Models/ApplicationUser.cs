@@ -5,8 +5,9 @@ namespace CyberWars.Data.Models
     using System.Collections.Generic;
 
     using CyberWars.Data.Common.Models;
-
     using Microsoft.AspNetCore.Identity;
+
+    using CyberWars.Data.Models.Player;
 
     public class ApplicationUser : IdentityUser, IAuditInfo, IDeletableEntity
     {
@@ -18,7 +19,10 @@ namespace CyberWars.Data.Models
             this.Logins = new HashSet<IdentityUserLogin<string>>();
         }
 
+        public string PlayerId { get; set; }
+
         // Audit info
+
         public DateTime CreatedOn { get; set; }
 
         public DateTime? ModifiedOn { get; set; }
