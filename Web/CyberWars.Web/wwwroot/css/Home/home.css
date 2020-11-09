@@ -1,0 +1,47 @@
+.Profile {
+  display: inline-block;
+  box-sizing: border-box;
+  border-radius: 10px;
+  margin: 20px;
+  border: 3px solid #dcb97b;
+  width: 400px;
+  height: 500px;
+}
+
+.Profile img {
+  width: 100%;
+  height: 100%;
+}
+
+.homeTable {
+  display: inline-block;
+  position: relative;
+  border-spacing: 0;
+  bottom: 190px;
+  font-size: 1.7rem;
+  border: 3px solid #dcb97b;
+  border-radius: 10px;
+  width: 330px;
+}
+
+.homeTable td {
+  padding: 20px;
+}
+
+.homeTable tr {
+  width: auto;
+}
+
+.homeTable td:first-child {
+  border-right: 3px solid #dcb97b;
+}
+
+.homeTable td:nth-child(2) {
+  border-left: none;
+  width: 162px;
+}
+
+.homeTable .playerStats {
+  border-top: 3px solid #dcb97b;
+  border-bottom: 3px solid #dcb97b;
+}

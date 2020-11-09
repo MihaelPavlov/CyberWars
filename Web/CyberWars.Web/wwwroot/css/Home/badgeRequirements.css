@@ -1,0 +1,60 @@
+.containerBadgeRequirements {
+  display: flex;
+  justify-content: space-around;
+}
+
+/* table styles */
+.tableBadgeRequirements {
+  border-spacing: 1;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 6px;
+  overflow: hidden;
+  min-width: 300px;
+  min-height: 300px;
+  max-width: 200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.tableBadgeRequirements th,
+td {
+  width: 20px;
+  height: 50px;
+  text-align: center;
+}
+
+.tableBadgeRequirements thead tr {
+  height: 60px;
+  background: #ffed86;
+  font-size: 20px;
+}
+
+.tableBadgeRequirements tbody tr {
+  align-items: center;
+  border-bottom: 1px solid #e3f1d5;
+}
+
+blockquote {
+  color: white;
+  text-align: center;
+}
+
+/* card */
+
+.cardBadge {
+  max-width: 300px;
+  padding: 30px;
+  border-radius: 15px 50px;
+  border: 2px solid #dcb97b;
+  background-color: gray;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+.cardBadge h2 {
+  border-radius: 10px;
+  text-align: center;
+  padding-bottom: 20px;
+}

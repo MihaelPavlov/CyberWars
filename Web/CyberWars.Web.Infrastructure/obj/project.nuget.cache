@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "+kjir9ZOTDSXW6PSjfun5Ed4gITLcmXr256h47lnfrZW2uScELDV23QqgEYFS3CcIzq8TuO8QmjyizTKgoNniA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\Web\\CyberWars.Web.Infrastructure\\CyberWars.Web.Infrastructure.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Owner\\.nuget\\packages\\stylecop.analyzers\\1.2.0-beta.205\\stylecop.analyzers.1.2.0-beta.205.nupkg.sha512",
+    "C:\\Users\\Owner\\.nuget\\packages\\stylecop.analyzers.unstable\\1.2.0.205\\stylecop.analyzers.unstable.1.2.0.205.nupkg.sha512"
+  ],
+  "logs": []
+}

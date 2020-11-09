@@ -1,0 +1,16 @@
+C:\Users\Owner\Documents\GitHub\CyberWars\Services\CyberWars.Services.Data\bin\Debug\netstandard2.1\CyberWars.Services.Data.deps.json
+C:\Users\Owner\Documents\GitHub\CyberWars\Services\CyberWars.Services.Data\bin\Debug\netstandard2.1\CyberWars.Services.Data.dll
+C:\Users\Owner\Documents\GitHub\CyberWars\Services\CyberWars.Services.Data\bin\Debug\netstandard2.1\CyberWars.Services.Data.pdb
+C:\Users\Owner\Documents\GitHub\CyberWars\Services\CyberWars.Services.Data\bin\Debug\netstandard2.1\CyberWars.Data.Common.dll
+C:\Users\Owner\Documents\GitHub\CyberWars\Services\CyberWars.Services.Data\bin\Debug\netstandard2.1\CyberWars.Data.Models.dll
+C:\Users\Owner\Documents\GitHub\CyberWars\Services\CyberWars.Services.Data\bin\Debug\netstandard2.1\CyberWars.Services.Mapping.dll
+C:\Users\Owner\Documents\GitHub\CyberWars\Services\CyberWars.Services.Data\bin\Debug\netstandard2.1\CyberWars.Data.Common.pdb
+C:\Users\Owner\Documents\GitHub\CyberWars\Services\CyberWars.Services.Data\bin\Debug\netstandard2.1\CyberWars.Data.Models.pdb
+C:\Users\Owner\Documents\GitHub\CyberWars\Services\CyberWars.Services.Data\bin\Debug\netstandard2.1\CyberWars.Services.Mapping.pdb
+C:\Users\Owner\Documents\GitHub\CyberWars\Services\CyberWars.Services.Data\obj\Debug\netstandard2.1\CyberWars.Services.Data.csprojAssemblyReference.cache
+C:\Users\Owner\Documents\GitHub\CyberWars\Services\CyberWars.Services.Data\obj\Debug\netstandard2.1\CyberWars.Services.Data.AssemblyInfoInputs.cache
+C:\Users\Owner\Documents\GitHub\CyberWars\Services\CyberWars.Services.Data\obj\Debug\netstandard2.1\CyberWars.Services.Data.AssemblyInfo.cs
+C:\Users\Owner\Documents\GitHub\CyberWars\Services\CyberWars.Services.Data\obj\Debug\netstandard2.1\CyberWars.Services.Data.csproj.CoreCompileInputs.cache
+C:\Users\Owner\Documents\GitHub\CyberWars\Services\CyberWars.Services.Data\obj\Debug\netstandard2.1\CyberWars.Services.Data.csproj.CopyComplete
+C:\Users\Owner\Documents\GitHub\CyberWars\Services\CyberWars.Services.Data\obj\Debug\netstandard2.1\CyberWars.Services.Data.dll
+C:\Users\Owner\Documents\GitHub\CyberWars\Services\CyberWars.Services.Data\obj\Debug\netstandard2.1\CyberWars.Services.Data.pdb

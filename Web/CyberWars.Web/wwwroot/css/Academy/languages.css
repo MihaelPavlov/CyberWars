@@ -1,0 +1,103 @@
+#btn-disable {
+  cursor: not-allowed;
+  pointer-events: none;
+  color: gray;
+}
+.btn {
+  min-width: 150px;
+  max-width: 130px;
+  background: transparent;
+  border: 2px solid transparent;
+  box-sizing: border-box;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1;
+  margin: 10px;
+  padding: 15px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  outline: none;
+  -webkit-transition: all 0.2s ease-in-out 0s;
+  -moz-transition: all 0.2s ease-in-out 0s;
+  -ms-transition: all 0.2s ease-in-out 0s;
+  transition: all 0.2s ease-in-out 0s;
+}
+
+.rounded {
+  border-radius: 5px;
+}
+.full-rounded {
+  border-radius: 20em;
+}
+
+.yellow {
+  background: #fac75a;
+  color: black;
+  box-shadow: 0 3px 0 #f9b629;
+}
+.yellow:hover {
+  background: #fce17a;
+}
+.yellow:active,
+.yellow:focus {
+  background: #fac24b;
+}
+.dark-blue {
+  background: #34495e;
+  color: #fff;
+  box-shadow: 0 3px 0 #22303d;
+}
+.dark-blue:hover {
+  background: #425c77;
+}
+.dark-blue:active,
+.dark-blue:focus {
+  background: #2f4154;
+}
+/* table styles */
+
+.courseImg {
+  margin-top: 20px;
+}
+
+.languageTable {
+  margin: 20px;
+  border-spacing: 1;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 20px;
+  padding: 15px;
+  overflow: hidden;
+  min-width: 150px;
+  display: inline-table;
+}
+/* displa-table becouse of this this page work !!BE CARFUL! */
+
+.languageTable {
+  text-align: center;
+}
+.languageTable td,
+th {
+  padding: 20px;
+  max-width: 190px;
+}
+
+.languageTable thead tr {
+  height: 60px;
+  background: #ffed86;
+  font-size: 20px;
+}
+
+.languageTable tbody tr {
+  align-items: center;
+
+  height: 48px;
+  border-bottom: 1px solid #e3f1d5;
+}
+
+blockquote {
+  color: white;
+  text-align: center;
+}

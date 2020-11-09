@@ -1,0 +1,9 @@
+C:\Users\Owner\Documents\GitHub\CyberWars\Services\CyberWars.Services\bin\Debug\netstandard2.1\CyberWars.Services.deps.json
+C:\Users\Owner\Documents\GitHub\CyberWars\Services\CyberWars.Services\bin\Debug\netstandard2.1\CyberWars.Services.dll
+C:\Users\Owner\Documents\GitHub\CyberWars\Services\CyberWars.Services\bin\Debug\netstandard2.1\CyberWars.Services.pdb
+C:\Users\Owner\Documents\GitHub\CyberWars\Services\CyberWars.Services\obj\Debug\netstandard2.1\CyberWars.Services.csprojAssemblyReference.cache
+C:\Users\Owner\Documents\GitHub\CyberWars\Services\CyberWars.Services\obj\Debug\netstandard2.1\CyberWars.Services.AssemblyInfoInputs.cache
+C:\Users\Owner\Documents\GitHub\CyberWars\Services\CyberWars.Services\obj\Debug\netstandard2.1\CyberWars.Services.AssemblyInfo.cs
+C:\Users\Owner\Documents\GitHub\CyberWars\Services\CyberWars.Services\obj\Debug\netstandard2.1\CyberWars.Services.csproj.CoreCompileInputs.cache
+C:\Users\Owner\Documents\GitHub\CyberWars\Services\CyberWars.Services\obj\Debug\netstandard2.1\CyberWars.Services.dll
+C:\Users\Owner\Documents\GitHub\CyberWars\Services\CyberWars.Services\obj\Debug\netstandard2.1\CyberWars.Services.pdb

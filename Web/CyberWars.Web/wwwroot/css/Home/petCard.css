@@ -1,0 +1,142 @@
+.buttons {
+  margin: 10px;
+}
+.btn {
+  background: transparent;
+  border: 2px solid transparent;
+  box-sizing: border-box;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1;
+  margin: 20px;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  outline: none;
+  -webkit-transition: all 0.2s ease-in-out 0s;
+  -moz-transition: all 0.2s ease-in-out 0s;
+  -ms-transition: all 0.2s ease-in-out 0s;
+  transition: all 0.2s ease-in-out 0s;
+}
+.btn-pet {
+  background: transparent;
+  border: 2px solid transparent;
+  box-sizing: border-box;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  outline: none;
+  -webkit-transition: all 0.2s ease-in-out 0s;
+  -moz-transition: all 0.2s ease-in-out 0s;
+  -ms-transition: all 0.2s ease-in-out 0s;
+  transition: all 0.2s ease-in-out 0s;
+}
+.rounded {
+  border-radius: 5px;
+}
+.full-rounded {
+  border-radius: 20em;
+}
+
+.yellow {
+  background: #fac75a;
+  color: #744905;
+  box-shadow: 0 3px 0 #f9b629;
+}
+.yellow:hover {
+  background: #fce17a;
+}
+.yellow:active,
+.yellow:focus {
+  background: #fac24b;
+}
+.petHeader {
+  font-size: 1.9rem;
+  margin: 5px;
+}
+.petTable {
+  margin: 20px 220px;
+  border-spacing: 1;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 20px;
+  min-width: 460px;
+
+  overflow: hidden;
+  display: inline-block;
+  border: 2px solid #f38c23;
+  z-index: 1;
+  background-color: rgb(238, 224, 195);
+  text-align: center;
+}
+
+.petTable ul li {
+  color: #744905;
+}
+
+blockquote {
+  color: white;
+  text-align: center;
+}
+
+.petList {
+  display: inline-block;
+  margin: 10px;
+}
+.petBar {
+  display: inline-block;
+  border: 3px solid #dcb97b;
+  border-radius: 10px;
+  width: 200px;
+  padding: 1px;
+  text-align: center;
+}
+
+.petFoodTable {
+  margin-left: 30px;
+  margin-bottom: 20px;
+  border-spacing: 1;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  width: 400px;
+  height: 200px;
+  max-width: 400px;
+  max-height: 200px;
+  max-height: 200px;
+  overflow: auto;
+  border: 2px solid #f38c23;
+  z-index: 1;
+  background-color: #f6d990;
+  text-align: left;
+}
+
+.food {
+  margin: 10px;
+  border-spacing: 1;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 20px;
+  width: 100px;
+  height: 100px;
+  min-width: 100px;
+  max-height: 100px;
+  overflow: hidden;
+  display: inline-block;
+  border: 2px solid #f38c23;
+  z-index: 1;
+  background-color: #f6d990;
+  text-align: center;
+}
+
+.foodImg {
+  width: 40px;
+  height: 40px;
+}

@@ -1,0 +1,794 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\Web\\CyberWars.Web\\CyberWars.Web.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\CyberWars.Common\\CyberWars.Common.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\CyberWars.Common\\CyberWars.Common.csproj",
+        "projectName": "CyberWars.Common",
+        "projectPath": "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\CyberWars.Common\\CyberWars.Common.csproj",
+        "packagesPath": "C:\\Users\\Owner\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\CyberWars.Common\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Owner\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "dependencies": {
+            "StyleCop.Analyzers": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.2.0-beta.205, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\Data\\CyberWars.Data.Common\\CyberWars.Data.Common.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\Data\\CyberWars.Data.Common\\CyberWars.Data.Common.csproj",
+        "projectName": "CyberWars.Data.Common",
+        "projectPath": "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\Data\\CyberWars.Data.Common\\CyberWars.Data.Common.csproj",
+        "packagesPath": "C:\\Users\\Owner\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\Data\\CyberWars.Data.Common\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Owner\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "dependencies": {
+            "StyleCop.Analyzers": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.2.0-beta.205, )"
+            },
+            "System.ComponentModel.Annotations": {
+              "target": "Package",
+              "version": "[4.7.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\Data\\CyberWars.Data.Models\\CyberWars.Data.Models.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\Data\\CyberWars.Data.Models\\CyberWars.Data.Models.csproj",
+        "projectName": "CyberWars.Data.Models",
+        "projectPath": "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\Data\\CyberWars.Data.Models\\CyberWars.Data.Models.csproj",
+        "packagesPath": "C:\\Users\\Owner\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\Data\\CyberWars.Data.Models\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Owner\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "projectReferences": {
+              "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\Data\\CyberWars.Data.Common\\CyberWars.Data.Common.csproj": {
+                "projectPath": "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\Data\\CyberWars.Data.Common\\CyberWars.Data.Common.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.9, )"
+            },
+            "StyleCop.Analyzers": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.2.0-beta.205, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\Data\\CyberWars.Data\\CyberWars.Data.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\Data\\CyberWars.Data\\CyberWars.Data.csproj",
+        "projectName": "CyberWars.Data",
+        "projectPath": "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\Data\\CyberWars.Data\\CyberWars.Data.csproj",
+        "packagesPath": "C:\\Users\\Owner\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\Data\\CyberWars.Data\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Owner\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\CyberWars.Common\\CyberWars.Common.csproj": {
+                "projectPath": "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\CyberWars.Common\\CyberWars.Common.csproj"
+              },
+              "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\Data\\CyberWars.Data.Common\\CyberWars.Data.Common.csproj": {
+                "projectPath": "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\Data\\CyberWars.Data.Common\\CyberWars.Data.Common.csproj"
+              },
+              "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\Data\\CyberWars.Data.Models\\CyberWars.Data.Models.csproj": {
+                "projectPath": "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\Data\\CyberWars.Data.Models\\CyberWars.Data.Models.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.9, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.1.9, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.1.9, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.1.9, )"
+            },
+            "Microsoft.Extensions.Configuration.UserSecrets": {
+              "target": "Package",
+              "version": "[3.1.9, )"
+            },
+            "StyleCop.Analyzers": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.2.0-beta.205, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\Services\\CyberWars.Services.Data\\CyberWars.Services.Data.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\Services\\CyberWars.Services.Data\\CyberWars.Services.Data.csproj",
+        "projectName": "CyberWars.Services.Data",
+        "projectPath": "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\Services\\CyberWars.Services.Data\\CyberWars.Services.Data.csproj",
+        "packagesPath": "C:\\Users\\Owner\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\Services\\CyberWars.Services.Data\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Owner\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "projectReferences": {
+              "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\Data\\CyberWars.Data.Common\\CyberWars.Data.Common.csproj": {
+                "projectPath": "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\Data\\CyberWars.Data.Common\\CyberWars.Data.Common.csproj"
+              },
+              "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\Data\\CyberWars.Data.Models\\CyberWars.Data.Models.csproj": {
+                "projectPath": "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\Data\\CyberWars.Data.Models\\CyberWars.Data.Models.csproj"
+              },
+              "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\Services\\CyberWars.Services.Mapping\\CyberWars.Services.Mapping.csproj": {
+                "projectPath": "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\Services\\CyberWars.Services.Mapping\\CyberWars.Services.Mapping.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "dependencies": {
+            "StyleCop.Analyzers": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.2.0-beta.205, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\Services\\CyberWars.Services.Mapping\\CyberWars.Services.Mapping.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\Services\\CyberWars.Services.Mapping\\CyberWars.Services.Mapping.csproj",
+        "projectName": "CyberWars.Services.Mapping",
+        "projectPath": "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\Services\\CyberWars.Services.Mapping\\CyberWars.Services.Mapping.csproj",
+        "packagesPath": "C:\\Users\\Owner\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\Services\\CyberWars.Services.Mapping\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Owner\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[10.1.1, )"
+            },
+            "StyleCop.Analyzers": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.2.0-beta.205, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\Services\\CyberWars.Services.Messaging\\CyberWars.Services.Messaging.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\Services\\CyberWars.Services.Messaging\\CyberWars.Services.Messaging.csproj",
+        "projectName": "CyberWars.Services.Messaging",
+        "projectPath": "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\Services\\CyberWars.Services.Messaging\\CyberWars.Services.Messaging.csproj",
+        "packagesPath": "C:\\Users\\Owner\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\Services\\CyberWars.Services.Messaging\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Owner\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "dependencies": {
+            "Sendgrid": {
+              "target": "Package",
+              "version": "[9.21.0, )"
+            },
+            "StyleCop.Analyzers": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.2.0-beta.205, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\Services\\CyberWars.Services\\CyberWars.Services.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\Services\\CyberWars.Services\\CyberWars.Services.csproj",
+        "projectName": "CyberWars.Services",
+        "projectPath": "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\Services\\CyberWars.Services\\CyberWars.Services.csproj",
+        "packagesPath": "C:\\Users\\Owner\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\Services\\CyberWars.Services\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Owner\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "dependencies": {
+            "StyleCop.Analyzers": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.2.0-beta.205, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\Web\\CyberWars.Web.Infrastructure\\CyberWars.Web.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\Web\\CyberWars.Web.Infrastructure\\CyberWars.Web.Infrastructure.csproj",
+        "projectName": "CyberWars.Web.Infrastructure",
+        "projectPath": "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\Web\\CyberWars.Web.Infrastructure\\CyberWars.Web.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\Owner\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\Web\\CyberWars.Web.Infrastructure\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Owner\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "dependencies": {
+            "StyleCop.Analyzers": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.2.0-beta.205, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\Web\\CyberWars.Web.ViewModels\\CyberWars.Web.ViewModels.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\Web\\CyberWars.Web.ViewModels\\CyberWars.Web.ViewModels.csproj",
+        "projectName": "CyberWars.Web.ViewModels",
+        "projectPath": "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\Web\\CyberWars.Web.ViewModels\\CyberWars.Web.ViewModels.csproj",
+        "packagesPath": "C:\\Users\\Owner\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\Web\\CyberWars.Web.ViewModels\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Owner\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "projectReferences": {
+              "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\Data\\CyberWars.Data.Models\\CyberWars.Data.Models.csproj": {
+                "projectPath": "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\Data\\CyberWars.Data.Models\\CyberWars.Data.Models.csproj"
+              },
+              "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\Services\\CyberWars.Services.Mapping\\CyberWars.Services.Mapping.csproj": {
+                "projectPath": "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\Services\\CyberWars.Services.Mapping\\CyberWars.Services.Mapping.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "dependencies": {
+            "StyleCop.Analyzers": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.2.0-beta.205, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\Web\\CyberWars.Web\\CyberWars.Web.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\Web\\CyberWars.Web\\CyberWars.Web.csproj",
+        "projectName": "CyberWars.Web",
+        "projectPath": "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\Web\\CyberWars.Web\\CyberWars.Web.csproj",
+        "packagesPath": "C:\\Users\\Owner\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\Web\\CyberWars.Web\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Owner\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\CyberWars.Common\\CyberWars.Common.csproj": {
+                "projectPath": "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\CyberWars.Common\\CyberWars.Common.csproj"
+              },
+              "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\Data\\CyberWars.Data.Models\\CyberWars.Data.Models.csproj": {
+                "projectPath": "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\Data\\CyberWars.Data.Models\\CyberWars.Data.Models.csproj"
+              },
+              "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\Data\\CyberWars.Data\\CyberWars.Data.csproj": {
+                "projectPath": "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\Data\\CyberWars.Data\\CyberWars.Data.csproj"
+              },
+              "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\Services\\CyberWars.Services.Data\\CyberWars.Services.Data.csproj": {
+                "projectPath": "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\Services\\CyberWars.Services.Data\\CyberWars.Services.Data.csproj"
+              },
+              "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\Services\\CyberWars.Services.Mapping\\CyberWars.Services.Mapping.csproj": {
+                "projectPath": "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\Services\\CyberWars.Services.Mapping\\CyberWars.Services.Mapping.csproj"
+              },
+              "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\Services\\CyberWars.Services.Messaging\\CyberWars.Services.Messaging.csproj": {
+                "projectPath": "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\Services\\CyberWars.Services.Messaging\\CyberWars.Services.Messaging.csproj"
+              },
+              "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\Services\\CyberWars.Services\\CyberWars.Services.csproj": {
+                "projectPath": "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\Services\\CyberWars.Services\\CyberWars.Services.csproj"
+              },
+              "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\Web\\CyberWars.Web.Infrastructure\\CyberWars.Web.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\Web\\CyberWars.Web.Infrastructure\\CyberWars.Web.Infrastructure.csproj"
+              },
+              "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\Web\\CyberWars.Web.ViewModels\\CyberWars.Web.ViewModels.csproj": {
+                "projectPath": "C:\\Users\\Owner\\Documents\\GitHub\\CyberWars\\Web\\CyberWars.Web.ViewModels\\CyberWars.Web.ViewModels.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "BuildBundlerMinifier": {
+              "target": "Package",
+              "version": "[3.2.449, )"
+            },
+            "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.9, )"
+            },
+            "Microsoft.AspNetCore.Identity.UI": {
+              "target": "Package",
+              "version": "[3.1.9, )"
+            },
+            "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": {
+              "target": "Package",
+              "version": "[3.1.9, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[3.1.4, )"
+            },
+            "Microsoft.Web.LibraryManager.Build": {
+              "target": "Package",
+              "version": "[2.1.113, )"
+            },
+            "StyleCop.Analyzers": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.2.0-beta.205, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
