@@ -1,0 +1,33 @@
+﻿@page
+@{
+    Layout = null;
+}
+@model CyberWars.Web.Areas.Identity.Pages.Account.RegisterChooseModelModel
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/Base/RegisterChoose.css" />
+    <title>Choose Class</title>
+</head>
+<body>
+    <span class="choose">Choose Class</span>
+    <div class="chooseClass">
+        <div id="wrapper">
+            <h1>Programmer</h1>
+            <a href="/Identity/Account/Register?type=Programmer">
+                <img class="class" src="/images/Base/01.Programmer.png" alt="programmerImg" />
+            </a>
+        </div>
+        <div id="wrapper">
+            <h1>Hacker</h1>
+            <a href="/Identity/Account/Register?type=Hacker">
+                <img class="class" src="/images/Base/01.Hacker.png" alt="hackerImg" />
+            </a>
+        </div>
+    </div>
+</body>
+</html>

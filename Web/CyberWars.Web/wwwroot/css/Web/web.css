@@ -1,0 +1,83 @@
+.containerFlex {
+  display: flex;
+  max-width: 900px;
+  max-height: auto;
+  height: auto;
+  justify-content: space-around;
+  flex-flow: row wrap;
+}
+.containerBox {
+  max-width: 400px;
+  height: 220px;
+  max-height: auto;
+  border: 2px solid #dcb97b;
+  border-radius: 20px;
+  text-align: center;
+  margin: 30px;
+}
+.containerBox2 {
+  max-width: 300px;
+  max-height: auto;
+  height: auto;
+  border: 2px solid #dcb97b;
+  border-radius: 20px;
+  text-align: center;
+  margin-top: 30px;
+}
+.containerBox3 {
+  position: relative;
+  bottom: 100px;
+  max-width: 400px;
+  height: 220px;
+  max-height: auto;
+  border: 2px solid #dcb97b;
+  border-radius: 20px;
+  text-align: center;
+  margin-right: 370px;
+}
+.descriptionWeb {
+  padding: 20px 20px 0 20px;
+}
+
+.btn {
+  background: transparent;
+  border: 2px solid transparent;
+  box-sizing: border-box;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1;
+  margin: 18px;
+  padding: 15px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  outline: none;
+  -webkit-transition: all 0.2s ease-in-out 0s;
+  -moz-transition: all 0.2s ease-in-out 0s;
+  -ms-transition: all 0.2s ease-in-out 0s;
+  transition: all 0.2s ease-in-out 0s;
+  max-width: 150px;
+  max-height: 70px;
+  min-width: 120px;
+  min-width: 50px;
+}
+.rounded {
+  border-radius: 5px;
+}
+.full-rounded {
+  border-radius: 20em;
+}
+
+.yellow {
+  background: #fac75a;
+  color: black;
+  box-shadow: 0 3px 0 #f9b629;
+}
+.yellow:hover {
+  background: #fce17a;
+}
+.yellow:active,
+.yellow:focus {
+  background: #fac24b;
+}

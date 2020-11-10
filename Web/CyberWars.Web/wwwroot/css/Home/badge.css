@@ -1,0 +1,99 @@
+.containerBadges {
+  display: flex;
+  justify-content: space-around;
+  flex-flow: row wrap;
+}
+
+.btn {
+  background: transparent;
+  border: 2px solid transparent;
+  box-sizing: border-box;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1;
+  margin-top: 10px;
+  padding: 5px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  outline: none;
+  -webkit-transition: all 0.2s ease-in-out 0s;
+  -moz-transition: all 0.2s ease-in-out 0s;
+  -ms-transition: all 0.2s ease-in-out 0s;
+  transition: all 0.2s ease-in-out 0s;
+}
+.rounded {
+  border-radius: 5px;
+}
+.full-rounded {
+  border-radius: 20em;
+}
+
+.yellow {
+  background: #fac75a;
+  color: #744905;
+  box-shadow: 0 3px 0 #f9b629;
+}
+.yellow:hover {
+  background: #fce17a;
+}
+.yellow:active,
+.yellow:focus {
+  background: #fac24b;
+}
+
+.moneyImg {
+  position: relative;
+  top: 12px;
+}
+.jobTittle {
+  border-radius: 10px;
+  border: 2px solid black;
+  padding: 20px 20px 5px 20px;
+
+  /* position: relative;
+  bottom: 24px; */
+}
+
+.badgeTable {
+  margin: 14px;
+  border-spacing: 1;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 20px;
+  padding: 5px;
+  overflow: hidden;
+  min-width: 250px;
+  max-width: 250px;
+  max-height: 400px;
+  min-height: 400px;
+  display: inline-block;
+  border: 2px solid black;
+  z-index: 1;
+  background-color: whitesmoke;
+  text-align: center;
+}
+
+.badgeTable ul li {
+  color: #744905;
+}
+
+blockquote {
+  color: white;
+  text-align: center;
+}
+
+.badgeTable ul li {
+  padding-bottom: 10px;
+  text-align: center;
+}
+.achieved {
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0%, #eaeaea),
+    color-stop(100%, #a5a5a5)
+  );
+}

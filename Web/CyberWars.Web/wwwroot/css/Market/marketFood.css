@@ -1,0 +1,83 @@
+.btn {
+  background: transparent;
+  border: 2px solid transparent;
+  box-sizing: border-box;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1;
+  margin-top: 10px;
+  padding: 5px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  outline: none;
+  -webkit-transition: all 0.2s ease-in-out 0s;
+  -moz-transition: all 0.2s ease-in-out 0s;
+  -ms-transition: all 0.2s ease-in-out 0s;
+  transition: all 0.2s ease-in-out 0s;
+}
+.rounded {
+  border-radius: 5px;
+}
+.full-rounded {
+  border-radius: 20em;
+}
+
+.yellow {
+  background: #fac75a;
+  color: #744905;
+  box-shadow: 0 3px 0 #f9b629;
+}
+.yellow:hover {
+  background: #fce17a;
+}
+.yellow:active,
+.yellow:focus {
+  background: #fac24b;
+}
+.blog-card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  line-height: 1.4;
+  border-radius: 10px;
+  margin: 20px;
+  border: 4px solid #dcb97b;
+  text-align: center;
+}
+.moneyImg {
+  position: relative;
+  top: 12px;
+}
+
+.petTable {
+  margin: 18px;
+  border-spacing: 1;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  min-width: 180px;
+  max-width: 180px;
+  max-height: 340px;
+  display: inline-block;
+  border: 2px solid #f38c23;
+  z-index: 1;
+  background-color: #f6d990;
+  text-align: center;
+}
+
+.petTable ul li {
+  color: #744905;
+}
+
+blockquote {
+  color: white;
+  text-align: center;
+}
+
+.petTable ul li {
+  padding-bottom: 10px;
+  text-align: center;
+}

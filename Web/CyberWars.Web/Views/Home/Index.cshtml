@@ -1,0 +1,30 @@
+﻿@model CyberWars.Web.ViewModels.HomeViews.PlayerDataView
+
+@{
+    ViewData["Title"] = "Player";
+}
+<div class="Profile">
+    <img src="/images/Base/@Model.ImageName" alt="PlayerIcon">
+</div>
+<table class="homeTable">
+    <tr>
+        <td>Class:</td>
+        <td>@Model.Class</td>
+    </tr>
+    <tr>
+        <td class='playerStats'>Player ID:</td>
+        <td class='playerStats'>@Model.PlayerId</td>
+    </tr>
+    <tr>
+        <td>Player Name:</td>
+        <td>@Model.Name</td>
+    </tr>
+</table>
+
+@section CssFile {
+    <link rel="stylesheet" href="/css/Home/home.css">
+}
+
+@section PageHeader{
+    Home
+}

@@ -1,0 +1,48 @@
+﻿@model CyberWars.Web.ViewModels.HomeViews.PlayerDataView
+@{
+    var maxHealth = Model.Health;
+    var maxEnergy = Model.Energy;
+
+    var level = Model.Levels.FirstOrDefault(x => x.Exp > Model.Experience);
+}
+<div class="stats">
+    <div class="item item1">
+        <div class="tooltip">
+            <span class="tooltiptext">Money</span>
+            <img class="Cash" src="/images/MoneyIcon.png" alt=""> <span class="Money">@Model.Money</span>
+        </div>
+        <div class="tooltip">
+            <span class="tooltiptext">Points</span>
+            <img class="Expirience" src="/images/LampIcon.png" alt=""> <span class="Exp">@Model.LearnPoint</span>
+        </div>
+    </div>
+    <div class="item item2">
+        <div class="statsHealthEnergy">
+            <div class="Health tooltip">
+                <span class="tooltiptext">Heal</span>
+                <img src="/images/HeartIcon.png" alt="">
+                <img class="green" src="/images/GreenLine.png" alt="">
+                <span>@Model.Health / @maxHealth</span>
+            </div>
+            <div class="Energy tooltip">
+                <span class="tooltiptext">Energy</span>
+                <img src="/images/LightIcon.png" alt="">
+                <img class="green" src="/images/blueLine.png" alt="">
+                <span>@Model.Energy / @maxEnergy</span>
+            </div>
+        </div>
+    </div>
+    <div class="item item3 ">
+        <div class="Stars ">
+            <img class="star" src="/images/Star.png" alt="">
+            <span class="text">
+                @Model.Experience / @level.Exp
+            </span> <br>
+            <img class="star " src="/images/Star.png" alt=""> <span class="text">@(level.Id-1)</span>
+        </div>
+    </div>
+</div>
+    @section CssFile{
+        <link rel="stylesheet" href="/css/style.css">
+
+    }

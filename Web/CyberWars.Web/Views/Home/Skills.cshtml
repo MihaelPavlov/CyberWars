@@ -1,0 +1,33 @@
+﻿@using CyberWars.Web.ViewModels.HomeViews
+@model IEnumerable<PlayerSkillViewModel>
+
+<div class="description">
+    <h3>
+        Training is the most important thing . Thanks to training you can
+        improve your performance.
+    </h3>
+</div>
+
+@foreach (var skill in Model)
+{
+    <div class="container2">
+        <div class="item4">
+            <img class="healthIcon" src="/images/@(skill.SkillId).Skill.png" alt="" />
+            <span class="name">@skill.SkillName</span>
+            <div class="bar">Increase the /live points.</div>
+            <span class="circle">@skill.Points</span>
+            <a class="button" href="#">Train -</a>
+            <span class="money">999</span>
+            <img class="MoneyIcon" src="/images/MoneyIcon.png" alt="" />
+        </div>
+    </div>
+
+}
+
+@section CssFile {
+    <link rel="stylesheet" href="/css/Home/skills.css">
+}
+
+@section PageHeader{
+    Skills
+}

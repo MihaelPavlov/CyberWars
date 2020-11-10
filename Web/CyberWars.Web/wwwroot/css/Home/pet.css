@@ -1,0 +1,86 @@
+.headerPet {
+  text-align: center;
+  margin: 0;
+  padding: 20px;
+  background-color: white;
+}
+.btn {
+  background: transparent;
+  border: 2px solid transparent;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1;
+  margin: 30px;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  outline: none;
+  position: relative;
+  top: 0;
+  -webkit-transition: all 0.2s ease-in-out 0s;
+  -moz-transition: all 0.2s ease-in-out 0s;
+  -ms-transition: all 0.2s ease-in-out 0s;
+  transition: all 0.2s ease-in-out 0s;
+}
+.rounded {
+  border-radius: 5px;
+}
+.full-rounded {
+  border-radius: 20em;
+}
+
+.yellow {
+  background: #fac75a;
+  color: black;
+  box-shadow: 0 3px 0 #f9b629;
+}
+.yellow:hover {
+  background: #fce17a;
+}
+.yellow:active,
+.yellow:focus {
+  background: #fac24b;
+}
+/* table styles */
+.tablePet {
+  border-spacing: 1;
+  background: white;
+  border-collapse: collapse;
+  overflow: hidden;
+  max-width: 900px;
+  width: auto;
+  position: relative;
+  border-radius: 10px;
+  border: 4px solid black;
+  margin: 0 auto;
+}
+
+.tablePet td {
+  text-align: center;
+  min-width: 200px;
+}
+
+.tablePet thead tr {
+  height: 60px;
+  background: #ffed86;
+  font-size: 20px;
+}
+
+.tablePet tbody tr {
+  align-items: center;
+
+  height: 48px;
+  border-bottom: 1px solid #e3f1d5;
+}
+
+blockquote {
+  color: white;
+  text-align: center;
+}
+
+.tablePet ul {
+  list-style: none;
+  padding: 0;
+}

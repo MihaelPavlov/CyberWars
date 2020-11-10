@@ -1,0 +1,74 @@
+﻿namespace CyberWars.Services.Data
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using Microsoft.EntityFrameworkCore;
+
+    using CyberWars.Data.Common.Repositories;
+    using CyberWars.Data.Models;
+    using CyberWars.Data.Models.Player;
+    using CyberWars.Data.Models.Skills;
+
+    public class PlayerService : IPlayerService
+    {
+        private readonly IDeletableEntityRepository<ApplicationUser> userRepository;
+        private readonly IDeletableEntityRepository<Player> playerRepository;
+        private readonly IDeletableEntityRepository<Skill> skillsRepository;
+        private readonly IDeletableEntityRepository<PlayerSkill> playerSkillRepository;
+
+        public PlayerService(IDeletableEntityRepository<ApplicationUser> userRepository,
+            IDeletableEntityRepository<Player> playerRepository, IDeletableEntityRepository<Skill> skillsRepository
+            , IDeletableEntityRepository<PlayerSkill> playerSkillRepository)
+        {
+            this.playerRepository = playerRepository;
+            this.userRepository = userRepository;
+            this.skillsRepository = skillsRepository;
+            this.playerSkillRepository = playerSkillRepository;
+        }
+
+        public async Task CreatePlayer(string id, string typeClass, string imageName)
+        {
+            var user = await this.userRepository.All().FirstOrDefaultAsync(x => x.PlayerId == null);
+            var player = new Player()
+            {
+                UserId = user.Id,
+                Class = typeClass,
+                ImageName = imageName,
+                Name = user.UserName,
+            };
+            user.PlayerId = player.Id;
+            await this.playerRepository.AddAsync(player);
+            await this.userRepository.SaveChangesAsync();
+            await this.playerRepository.SaveChangesAsync();
+        }
+
+        public async Task CreateSkills(string id)
+        {
+            var user = await this.userRepository.All().FirstOrDefaultAsync(x => x.Id == id);
+
+            var skills = await this.skillsRepository.All().ToListAsync();
+
+            foreach (var skill in skills)
+            {
+                var playerSkill = new PlayerSkill()
+                {
+                    PlayerId = user.PlayerId,
+                    Points = 0,
+                    SkillId = skill.Id,
+                };
+
+                await this.playerSkillRepository.AddAsync(playerSkill);
+            }
+
+            await this.playerSkillRepository.SaveChangesAsync();
+        }
+
+        public async Task<string> GetUserId(string username, string password)
+        {
+            throw new NotImplementedException();
+        }
+    }
+}

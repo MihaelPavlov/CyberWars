@@ -1,0 +1,960 @@
+﻿@using CyberWars.Common
+@using System.Security.Claims;
+@using System.Linq;
+@using System.Diagnostics;
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Cyber Wars</title>
+    <link rel="stylesheet" href="/css/style.css">
+    @RenderSection("CssFile", required: false)
+    <!-- <link rel="stylesheet" href="home.css"> -->
+    <!-- <link rel="stylesheet" href="skills.css"> -->
+    <!-- <link rel="stylesheet" href="ability.css"> -->
+    <!-- <link rel="stylesheet" href="badge.css"> -->
+    <!-- <link rel="stylesheet" href="badgeRequirements.css"> -->
+    <!-- <link rel="stylesheet" href="pet.css"> -->
+    <!-- <link rel="stylesheet" href="web.css"> -->
+    <!-- <link rel="stylesheet" href="competitiveCoding.css"> -->
+    <!-- <link rel="stylesheet" href="ResultCompetitveCoding.css"> -->
+    <!-- <link rel="stylesheet" href="attack.css"> -->
+    <!-- <link rel="stylesheet" href="SearchAttack.css"> -->
+    <!-- <link rel="stylesheet" href="academy.css"> -->
+    <!-- <link rel="stylesheet" href="academyCourse.css"> -->
+    <!-- <link rel="stylesheet" href="languages.css"> -->
+    <!-- <link rel="stylesheet" href="frellancing.css"> -->
+    <!-- <link rel="stylesheet" href="team.css"> -->
+    <!-- <link rel="stylesheet" href="teamRegister.css"> -->
+    <!-- <link rel="stylesheet" href="teamRanking.css"> -->
+    <!-- <link rel="stylesheet" href="market.css"> -->
+    <!-- <link rel="stylesheet" href="marketPets.css"> -->
+    <!-- <link rel="stylesheet" href="marketFood.css"> -->
+    <!-- <link rel="stylesheet" href="petCard.css"> -->
+</head>
+
+<body>
+
+    <nav class="container">
+        <a class="logo" href="/Home/Index"><img src="/images/08.Logo.png" alt=""></a>
+        <a href="/Home/Index"><img src="/images/09.Home.png" alt=""></a>
+        <a href="/Web/Index"><img src="/images/10.Web.png" alt=""></a>
+        <a href="/Academy/Index"><img src="/images/11.Academy.png" alt=""></a>
+        <a href="/Team/Index"><img src="/images/12.Team.png" alt=""></a>
+    </nav>
+    <button class="navButton" type="button" name="button">@RenderSection("PageHeader", required: false)</button>
+    <vc:layout-navbar user-id="@(this.User.FindFirstValue(ClaimTypes.NameIdentifier))"></vc:layout-navbar>
+    @*<div class="stats">
+            <div class="item item1">
+                <div class="tooltip">
+                    <span class="tooltiptext">Money</span>
+                    <img class="Cash" src="/images/MoneyIcon.png" alt=""> <span class="Money">Money</span>
+                </div>
+                <div class="tooltip">
+                    <span class="tooltiptext">Points</span>
+                    <img class="Expirience" src="/images/LampIcon.png" alt=""> <span class="Exp">LearnPoint</span>
+                </div>
+            </div>
+            <div class="item item2">
+                <div class="statsHealthEnergy">
+                    <div class="Health tooltip">
+                        <span class="tooltiptext">Heal</span>
+                        <img src="/images/HeartIcon.png" alt="">
+                        <img class="green" src="/images/GreenLine.png" alt="">
+                        <span>1000/1000</span>
+                    </div>
+                    <div class="Energy tooltip">
+                        <span class="tooltiptext">Energy</span>
+                        <img src="/images/LightIcon.png" alt="">
+                        <img class="green" src="/images/blueLine.png" alt="">
+                        <span>100/100</span>
+                    </div>
+                </div>
+            </div>
+            <div class="item item3 ">
+                <div class="Stars ">
+                    <img class="star" src="/images/Star.png" alt="">
+                    <span class="text">
+                        .Experience / .Exp
+                    </span> <br>
+                    <img class="star " src="/images/Star.png" alt=""> <span class="text">Id</span>
+                </div>
+            </div>
+        </div>*@
+    <nav class="nav2">
+        <ul class="Hero nav2style">
+            <li>
+                <a href="/Home/Index">Hero</a>
+            </li>
+            <li> <a href="/Home/Skills">Skills</a></li>
+            <li>
+                <a href="/Home/Abilities">Abilites</a>
+            </li>
+            <li>
+                <a href="/Home/Badges">Badges</a>
+            </li>
+            <li>
+                <a href="/Home/Pets">Pets</a>
+            </li>
+        </ul>
+        <ul class="Web nav2style">
+            <li>
+                <a href="/Web/Index">Web</a>
+            </li>
+            <li> <a href="/DarkWeb/Attack">Hunt Programmer</a></li>
+            <li>
+                <a href="/CompetitiveCoding/Index">Competitive Coding</a>
+            </li>
+            <li> <a href="/Web/Job">Freelancing</a>
+        </ul>
+        <ul class="Market nav2style">
+            <li>
+                <a href="/Market/Index">Market</a>
+            </li>
+            <li>
+                <a href="/Market/Animals">Pets</a>
+            </li>
+            <li>
+                <a href="/Market/Food">Food</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="Box">
+        <partial name="_CookieConsentPartial" />
+        @RenderBody()
+        <!-- Home Page -->
+        <!-- <div class="Profile">
+          <img src="Images _Layout/playerIcon.jpg" alt="PlayerIcon">
+        </div>
+          <table class="homeTable">
+            <tr>
+              <td>Class:</td>
+              <td>Hacker</td>
+            </tr>
+            <tr>
+              <td class='playerStats'>Player ID:</td>
+              <td class='playerStats'>354</td>
+            </tr>
+            <tr>
+              <td>Player Name:</td>
+              <td>Snoop Dogg</td>
+            </tr>
+          </table> -->
+        <!-- Home page End -->
+        <!-- Skills page -->
+        <!-- <div class="description">
+          <h3>
+            Training is the most important thing . Thanks to training you can
+            improve your performance.
+          </h3>
+        </div>
+        <div class="container2">
+          <div class="item4">
+            <img class="healthIcon" src="Images _Layout/HealthIcon.png" alt="" />
+            <span class="name">Health</span>
+            <div class="bar">Increase the /live points.</div>
+            <span class="circle">191</span>
+            <a class="button" href="#">Train -</a>
+            <span class="money">999</span>
+            <img class="MoneyIcon" src="/Images _Layout/MoneyIcon.png" alt="" />
+          </div>
+          <div class="item4">
+            <img
+              class="healthIcon"
+              src="Images _Layout/StayingPowerIcon.png"
+              alt=""
+            />
+            <span class="name">Staying Power</span>
+            <div class="bar">Increase the hours you can stay at the computer</div>
+            <span class="circle">101</span>
+            <a class="button" href="#">Train -</a>
+            <span class="money">99999</span>
+            <img class="MoneyIcon" src="/Images _Layout/MoneyIcon.png" alt="" />
+          </div>
+          <div class="item4">
+            <img
+              class="healthIcon"
+              src="/Images _Layout/knowledgeIcon.png"
+              alt=""
+            />
+            <span class="name">Knowledge</span>
+            <div class="bar">Enchances thought and speed of thinking</div>
+            <span class="circle">101</span>
+            <a class="button" href="#">Train -</a>
+            <span class="money">99999</span>
+            <img class="MoneyIcon" src="/Images _Layout/MoneyIcon.png" alt="" />
+          </div>
+          <div class="item4">
+            <img class="healthIcon" src="/Images _Layout/motivation.png" alt="" />
+            <span class="name">Motivation</span>
+            <div class="bar">Motivation is the reason for people's action</div>
+            <span class="circle">101</span>
+            <a class="button" href="#">Train -</a>
+            <span class="money">99</span>
+            <img class="MoneyIcon" src="/Images _Layout/MoneyIcon.png" alt="" />
+          </div>
+          <div class="item4">
+            <img class="healthIcon" src="/Images _Layout/firewall.png" alt="" />
+            <span class="name">Firewall Defence</span>
+            <div class="bar">Increase the chanse to defence from hackers</div>
+            <span class="circle">101</span>
+            <a class="button" href="#">Train -</a>
+            <span class="money">99999</span>
+            <img class="MoneyIcon" src="/Images _Layout/MoneyIcon.png" alt="" />
+          </div>
+        </div> -->
+        <!-- Skills page End -->
+        <!-- Abilities Page -->
+        <!-- <div class="containerAbilities">
+            <a class="btn yellow rounded" href="#">Languages</a>
+            <a class="btn yellow rounded" href="#">Database</a>
+            <a class="btn yellow rounded" href="#">Frameworks</a>
+          </div>
+        <table class="tableAbilities">
+            <thead>
+              <tr>
+                <th scope="col">Points</th>
+                <th scope="col">Language</th>
+                <th scope="col">Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">20</th>
+                <td>C#</td>
+                <td>oop</td>
+              </tr>
+
+            </tbody>
+
+            </table> -->
+        <!-- Abilities End -->
+        <!-- Badge page -->
+        <!-- <div class="containerBadges">
+              <a class="btn yellow rounded" href="#">C#</a>
+              <a class="btn yellow rounded" href="#">JS</a>
+              <a class="btn yellow rounded" href="#">Java</a>
+              <a class="btn yellow rounded" href="#">Python</a>
+              <a class="btn yellow rounded" href="#">Ruby</a>
+              <a class="btn yellow rounded" href="#">C++</a>
+            </div>
+            <div class="badgeTable achieved">
+              <span class="jobTittle">Badge</span>
+              <h3 class="frellancingHeader">Student Badge</h3>
+              <img src="/Images _Layout/Player/Badges/01.Student_Developer.png" alt="petImg">
+              <ul>
+                <h4>Description</h4>
+                <li>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fuga, illum?</li>
+                 <a  class="btn yellow rounded btn-disable " href="">Requirements</a>
+              </ul>
+            </div>
+        <div class="badgeTable">
+          <span class="jobTittle">Badge</span>
+          <h3 class="frellancingHeader">Student Badge</h3>
+          <img src="/Images _Layout/Player/Badges/02.Junior_Developer.png" alt="petImg">
+          <ul>
+            <h4>Description</h4>
+            <li>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fuga, illum?</li>
+            <li> <a  class="btn yellow rounded " href="">Requirements</a></li>
+          </ul>
+        </div> -->
+        <!-- BadgePage end -->
+        <!-- Badge Requirements -->
+        <!-- <div class="containerBadgeRequirements">
+          <div class="cardBadge">
+            <h2>Requirements for C# Junior Devoloper</h2>
+            <table class="tableBadgeRequirements">
+              <thead>
+                <tr>
+                  <th scope="col">Name</th>
+                  <th scope="col">Points</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">C#</th>
+                  <td>16</td>
+                </tr>
+                <tr>
+                  <th scope="row">JS</th>
+                  <td>2</td>
+                </tr>
+                <tr>
+                  <th scope="row">HTML</th>
+                  <td>54</td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+        </div> -->
+        <!-- badge Requirements end -->
+        <!-- Pet Page -->
+        <!-- <h2 class="headerPet">
+          Here you will find al of your pets and if they are hungry you can feed
+          them.
+        </h2>
+          <table class="tablePet">
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Description</th>
+                <th scope="col">Favourite Food</th>
+                <th scope="col">Feed</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Pesho(Cat)<img src="/Images _Layout/HeartIcon.png" alt="" /></th>
+                <td>The best cat in the word.But she can destroy you.</td>
+                <td>
+                  <ul>
+                    <li><img src="/Images _Layout/pizza.png" alt="" /> Pizza</li>
+                    <li><img src="/Images _Layout/fish.png" alt="" /> Fish</li>
+                    <li><img src="/Images _Layout/meat.png" alt="" /> Meat</li>
+                  </ul>
+                </td>
+                <td>
+                  <a href="#"> <a class="btn yellow rounded" href="#">Feed</a></a>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">312</th>
+                <td>JS</td>
+                <td>the best Landasdsadsadsadsdsadsadguage every created</td>
+                <td>
+                  <a href="#"> <a class="btn yellow rounded" href="#">Feed</a></a>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">41</th>
+                <td>java</td>
+                <td>the Bird</td>
+                <td>
+                  <a href="#"> <a class="btn yellow rounded" href="#">Feed</a></a>
+                </td>
+              </tr>
+
+            </tbody>
+          </table> -->
+        <!-- Pet Page end -->
+        <!-- Pet  Card  -->
+        <!-- <div class="petTable">
+        <h3 class="petHeader">Pesho</h3>
+        <img src="/Images _Layout/Market/Pets/Fish_Dori.png" alt="">
+        <ul>
+          <li class="petList">Health 100/100 <img class="petBar" src="/Images _Layout/GreenLine.png" alt="">
+          </li>
+          <li>Mood 100/100 <img class="petBar" src="/Images _Layout/blueLine.png" alt=""></li>
+        </ul>
+        <div class="buttons">
+          <a  class="btn yellow rounded " href="">Change Name</a>
+          <a  class="btn yellow rounded " href="">Scratch Belly</a>
+          <a  class="btn yellow rounded " href="">Sell Pet</a>
+        </div>
+        <h2>Food</h2>
+        <div class="petFoodTable">
+
+          <div class="food">
+            <ul >
+              <li > <img class="foodImg" src="/Images _Layout/Market/Food/Food.png" alt=""></li>
+              <li ><a class="btn-pet yellow rounded" href="">Feed</a></li>
+            </ul>
+          </div>
+          <div class="food">
+            <ul >
+              <li > <img class="foodImg" src="/Images _Layout/Market/Food/Food2.png" alt=""></li>
+              <li ><a class="btn-pet yellow rounded" href="">Feed</a></li>
+            </ul>
+          </div>
+              <div class="food">
+            <ul >
+              <li > <img class="foodImg" src="/Images _Layout/Market/Food/milk.png" alt=""></li>
+              <li ><a class="btn-pet yellow rounded" href="">Feed</a></li>
+            </ul>
+          </div>
+          <div class="food">
+            <ul >
+              <li > <img class="foodImg" src="/Images _Layout/Market/Food/Food.png" alt=""></li>
+              <li ><a class="btn-pet yellow rounded" href="">Feed</a></li>
+            </ul>
+          </div>
+
+        </div>-->
+        <!-- Pet Card End -->
+        <!-- Web page -->
+        <!-- <div class="containerFlex">
+           <div class="containerBox">
+             <h2 >Hunt Programmer</h2>
+             <p class="descriptionWeb">The dark Web is a place where you can attack or expose other player For now :3 </p>
+        <div class="containerButton">
+          <img src="/Images _Layout/Web/darkwebIcon.png" alt="">
+           <a class="btn yellow rounded" href="#">Dark Web</a>
+           <img src="/Images _Layout/Web/darkwebIcon2.png" alt="">
+         </div>
+           </div>
+
+           <div class="containerBox2">
+             <h2 >Freelancing</h2>
+             <p class="descriptionWeb">Freelance job is where person works for themself rather than for a company</p>
+        <div class="containerButton">
+          <img  class="frellancImg" src="/Images _Layout/Web/jobIcon.png" alt="">
+          <a class="btn yellow rounded" href="#">Dark Web</a>
+          <img class="frellancImg" src="/Images _Layout/Web/jobIcon2.png" alt="">
+          <img src="/Images _Layout/Web/freelancingLogo.png" alt="">
+         </div>
+           </div>
+
+           <div class="containerBox3">
+             <h2 >Competitive Coding</h2>
+             <p class="descriptionWeb">You can use C,C++,Java, C# every programming language and join in the contest.</p>
+        <div class="containerButton">
+           <a class="btn yellow rounded" href="#">Dark Web</a>
+
+         </div>
+           </div>
+         </div> -->
+        <!-- Web page end -->
+        <!-- Competitive Coding page -->
+        <!-- <div class="containerCompetitiveCoding">
+        <img class="competitiveImg" src="/Images _Layout/Web/CompetitiveIcon.jpg" alt="">
+        <h3 class ="competitiveName">Internatonal programming contest</h3>
+        <h3>Chanse to Win:  65 %</h3>
+        <ul>
+          <li><img src="./Images _Layout/Web/CompetitiveCoinIcon.png" alt=""> <span class="points">50 +  </span>  <img src="/Images _Layout/Web/CompetitiveStarIcon.png" alt=""> <span class="points"> 4 </span> </li>
+        </ul>
+        <div>
+          <a class="btn yellow rounded" href="#">Participate ( 4 <img class="competitiveEnergy" src="/Images _Layout/Web/CompetitiveLightIcon.png" alt=""> )</a>
+        </div>
+        </div>
+
+        <div class="containerCompetitiveCoding">
+          <img class="competitiveImg" src="/Images _Layout/Web/CompetitiveIcon.jpg" alt="">
+          <h3 class ="competitiveName">Internatonal programming contest</h3>
+          <h3>Chanse to Win:  65 %</h3>
+          <ul>
+            <li><img src="./Images _Layout/Web/CompetitiveCoinIcon.png" alt=""> <span class="points">50 +  </span>  <img src="/Images _Layout/Web/CompetitiveStarIcon.png" alt=""> <span class="points"> 4 </span> </li>
+          </ul>
+          <div>
+            <a class="btn yellow rounded" href="#">Participate ( 4 <img class="competitiveEnergy" src="/Images _Layout/Web/CompetitiveLightIcon.png" alt=""> )</a>
+          </div>
+          </div> -->
+        <!-- competitive Coding page end -->
+        <!-- Result from competitive coding -->
+        <!--
+        <div class="blog-card">
+          <img src="/Images _Layout/Web/CompetitiveIcon.jpg" alt="">
+          <div class="description">
+            <h4 class= "ResultcompetitveHeader">International Programming Contest (14.05.2020 14:52)</h4>
+            <h2 class="ResultCompetitiveSecondHeader">Opening a door to the future</h2>
+            <p class="earn"> Reward  </p>
+
+             <p>PlayerName earn 50 money and 4 experience.</p>
+            <div class="read-more">
+              <a class="btn yellow rounded" href="#">Again ( 4 <img class="competitiveEnergy" src="/Images _Layout/Web/CompetitiveLightIcon.png" alt=""> )</a>
+            </div>
+          </div>
+        </div> -->
+        <!-- Result from competitive codig END -->
+        <!-- Attack Programmer -->
+        <!-- <div class="blog-card">
+          <img  src="/Images _Layout/Web/attackIcon.png" alt="">
+          <div class="description">
+            <h1 class= "ResultcompetitveHeader">Find and Hack a Programmer</h1>
+            <h2 class="ResultCompetitiveSecondHeader">Here you can find and hack or destroy network and get file and sell it from a programmer.Let's go hack </h2>
+            <div class="attackChoise">
+              <input type="radio" name="choise" value="Enemy">
+              <label for="findEnemy">Find Enemy</label>
+            </div>
+            <div   class="attackChoise">
+              <input type="radio" name="choise" value="Stronger">
+              <label for="StrongerEnemy">Find Stronger Enemy</label>
+            </div>
+            <div class="attackChoise">
+              <input type="radio" name="choise" value="ByName">
+              <label for="ByName">Find by name</label>
+              <input class="input" type="text" name="searchname" size="25" value="" maxlength="15">
+            </div>
+            <div class="read-more">
+              <a class="btn yellow rounded" type="submit" href="#">Search ( 3 <img class="competitiveEnergy" src="/Images _Layout/Web/CompetitiveLightIcon.png" alt=""> )</a>
+            </div>
+          </div>
+        </div> -->
+        <!-- attack Programmer End -->
+        <!-- Search Attack -->
+        <!-- <h2 class="descriptionCompetitiveSecondHeader">You find you oppenent .Let's Fight. </h2>
+        <div class="Profile">
+             <img src="Images _Layout//Web/Enemy Picture.jpg" alt="PlayerIcon">
+           </div>
+           <h1 class="descriptionHeader">Description of Player Name</h1>
+           <table class="DescriptionTable">
+             <tr>
+               <th>Charasteristic:</th>
+               <td>Player Name</td>
+             </tr>
+             <tr>
+               <th>Level:</th>
+               <td>3</td>
+             </tr>
+             <tr>
+               <th>Health:</th>
+               <td>1000</td>
+             </tr>
+             <tr>
+               <th>Staying Power:</th>
+               <td>55</td>
+             </tr>
+             <tr>
+               <th>Knowledge:</th>
+               <td>75</td>
+             </tr>
+             <tr>
+               <th>Motivation:</th>
+               <td>31</td>
+             </tr>
+             <tr>
+               <th>Firewall Defence:</th>
+               <td>41</td>
+             </tr>
+           </table>
+            <div class="buttons">
+             <a class="btn yellow rounded" type="submit" href="#">Fight ( 3 <img class="competitiveEnergy" src="/Images _Layout/Web/CompetitiveLightIcon.png" alt=""> )</a>
+             <a class="btn yellow rounded"  href="#">Search other</a>
+           </div> -->
+        <!-- Search Attack End -->
+        <!-- Result from Attack -->
+        <!-- <div class="blog-card">
+          <img src="/Images _Layout/Web/Result Attack.jpg" alt="">
+          <div class="description">
+            <h4 class= "ResultcompetitveHeader">PlayerName VS  DefencePlayer (14.05.2020 14:52)</h4>
+            <h2 class="ResultCompetitiveSecondHeader">The battle of the year</h2>
+            <p class="earn"> Reward  </p>
+
+             <p>PlayerName earn 50 money and 4 experience.</p>
+            <div class="read-more">
+              <a class="btn yellow rounded" href="#">Again ( 4 <img class="competitiveEnergy" src="/Images _Layout/Web/CompetitiveLightIcon.png" alt=""> )</a>
+            </div>
+          </div>
+        </div> -->
+        <!--Result from Attack End  -->
+        <!-- Academy  -->
+        <!--
+        <div class="academyButtons">
+          <a class="btn yellow rounded" href="#">Basic</a>
+          <a class="btn yellow rounded" href="#">Languages</a>
+        </div>
+
+        <div  class="coursesButtons">
+          <a class="btn dark-blue rounded" href="#">Programming Basic</a>
+          <a class="btn dark-blue rounded" href="#">Fundamentals</a>
+        </div> -->
+        <!-- Academy End -->
+        <!-- Academy Course -->
+        <!-- <h1 class="courseHader">Course Name</h1>
+        <table class="courseTable">
+          <thead>
+            <tr>
+              <th>Number</th>
+              <th>Lecture Name</th>
+              <th>Reward</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th class="circleNumber">1</th>
+              <td>Variables and Data Types Basics</td>
+              <td>
+                50 <img class="competitiveEnergy" src="/Images _Layout/MoneyIcon.png" alt="">
+                20 <img class="competitiveEnergy" src="/Images _Layout/LampIcon.png" alt="">
+                1 <img class="competitiveEnergy" src="/Images _Layout/Star.png" alt="">
+              </td>
+              <td>
+                <div >
+                <a class="btn yellow rounded "  href="#">start</a>
+              </div>
+            </td>
+            </tr>
+          <tr>
+            <th class="circleNumber">1</th>
+            <td>Variables and Data Types Basics</td>
+            <td>
+              50 <img class="competitiveEnergy" src="/Images _Layout/MoneyIcon.png" alt="">
+              20 <img class="competitiveEnergy" src="/Images _Layout/LampIcon.png" alt="">
+              1 <img class="competitiveEnergy" src="/Images _Layout/Star.png" alt="">
+            </td>
+            <td>
+              <div >
+              <a class="btn yellow rounded " id="btn-disable" href="#">start</a>
+            </div>
+          </td>
+          </tr>
+        </tbody>
+        </table> -->
+        <!-- Academy Course End -->
+        <!-- Languages  -->
+        <!-- <div class="languageTable">
+        <img class="courseImg" src="/Images _Layout//Academy/IconC.png" alt="">
+        <h3 class="languageHeader">C# Web Developer</h3>
+             <ul class="profession-sub-model">
+               <li class="sub-model">
+                 <a class="btn yellow rounded"  href="#">C#Advanced</a>
+               </li>
+               <li class="sub-model">
+                 <a class="btn yellow rounded"  href="#">c# OOP</a>
+               </li>
+               <li class="sub-model">
+                 <a  class="btn yellow rounded " href="">SQL</a>
+               </li>
+               <li class="sub-model">
+                 <a  class="btn yellow rounded " href="">Entity FrameworkCore</a>
+               </li>
+               <li class="sub-model">
+                 <a  class="btn yellow rounded " href="">C# Web Basics</a>
+               </li>
+               <li class="sub-model">
+                 <a  class="btn yellow rounded " href="">Asp.Net.core</a>
+               </li>
+             </ul>
+           </div>
+           <div class="languageTable">
+             <img class="courseImg" src="/Images _Layout//Academy/JavaIcon.png" alt="">
+             <h3 class="languageHeader">Java Web Developer</h3>
+                  <ul class="profession-sub-model">
+                    <li class="sub-model">
+                      <a class="btn yellow rounded"  href="#">Java Advanced</a>
+                    </li>
+                    <li class="sub-model">
+                      <a class="btn yellow rounded"  href="#">Java OOP</a>
+                    </li>
+                    <li class="sub-model">
+                      <a  class="btn yellow rounded " href="">MY SQL</a>
+                    </li>
+                    <li class="sub-model">
+                      <a  class="btn yellow rounded " href="">Spring Data</a>
+                    </li>
+                    <li class="sub-model">
+                     <a  class="btn yellow rounded " href="">Java Web Basics</a>
+                   </li>
+                   <li class="sub-model">
+                     <a  class="btn yellow rounded " href="">Spring MVC</a>
+                   </li>
+                  </ul>
+                </div>
+                  <div class="languageTable">
+                 <img class="courseImg" src="/Images _Layout//Academy/jsiCON.png" alt="">
+                 <h3 class="languageHeader">JS Web Developer</h3>
+                      <ul class="profession-sub-model">
+                        <li class="sub-model">
+                          <a class="btn yellow rounded"  href="#"> JS Advanced</a>
+                        </li>
+                        <li class="sub-model">
+                          <a class="btn yellow rounded"  href="#">JS Application</a>
+                        </li>
+                        <li class="sub-model">
+                          <a  class="btn yellow rounded " href="">JS Back-End</a>
+                        </li>
+                        <li class="sub-model">
+                          <a  class="btn yellow rounded " href="">React JS</a>
+                        </li>
+                        <li class="sub-model">
+                         <a  class="btn yellow rounded " href="">Html & Css</a>
+                       </li>
+                       <li class="sub-model">
+                         <a  class="btn yellow rounded " href="">Front-End Framework</a>
+                       </li>
+                      </ul>
+                    </div>
+                    <div class="languageTable">
+                     <img class="courseImg" src="/Images _Layout//Academy/python.png" alt="">
+                     <h3 class="languageHeader">Python Web Developer</h3>
+                          <ul class="profession-sub-model">
+                            <li class="sub-model">
+                              <a class="btn yellow rounded"  href="#">Python Advanced</a>
+                            </li>
+                            <li class="sub-model">
+                              <a class="btn yellow rounded"  href="#">Python OOP</a>
+                            </li>
+                            <li class="sub-model">
+                              <a  class="btn yellow rounded " href="">Python Web Basics</a>
+                            </li>
+                            <li class="sub-model">
+                              <a  class="btn yellow rounded " href="">Python Web Framework</a>
+                            </li>
+                          </ul>
+                        </div> -->
+        <!-- Languages End -->
+        <!-- Frellancing -->
+        <!-- <div class="frellacingTable">
+          <span class="jobTittle">Job</span>
+          <h3 class="frellancingHeader">Fitness Website</h3>
+          <h4>Requirements</h4>
+          <ul>
+            <li>C# - 20p</li>
+            <li id="btn-disable">HTML - 20p</li>
+            <li id="btn-disable">Python - 20p</li>
+            <li>Entity.F.C - 20p</li>
+          </ul>
+          <h3>Time: 1 hour</h3>
+          <a  class="btn yellow rounded " href="">Accept</a>
+        </div>
+
+        <div class="frellacingTable">
+          <span class="jobTittle">Job</span>
+          <h3 class="frellancingHeader">Administration Software</h3>
+          <h4>Requirements</h4>
+          <ul>
+            <li>c# - 20p</li>
+            <li>HTML - 20p</li>
+            <li>Python - 20p</li>
+            <li>Entity.F.C - 20p</li>
+          </ul>
+          <h3>Time: 1 hour</h3>
+          <a  class="btn yellow rounded " href="">Accept</a>
+        </div>  -->
+        <!-- Frellancing End -->
+        <!-- Team Page-->
+        <!-- <div class="blog-card">
+          <img   src="/Images _Layout/Team/TeamBacground2.png" alt="">
+          <div class= "teamHeader">
+          <h1">Make you own group,gank or company of programmer and hackers.</h1>
+          <h2> Dont't be ONE MAN ARMY!</h2>
+        </div>
+          <div class="teamButtons">
+            <a  class="btn yellow rounded " href="">Groups-Ranking</a>
+            <a  class="btn yellow rounded " href="">Create your own Group</a>
+          </div>
+        <h1 class= "teamHeaderBottom">Top 10 Group</h1>
+
+        <table class="teamTable">
+          <thead>
+            <tr>
+              <th scope="col"></th>
+              <th scope="col">Group</th>
+              <th scope="col">Motivation Motto</th>
+              <th scope= "col">Join </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th class="circleNumber">1</th>
+              <td>The killers</td>
+              <td>Be the best! Join US!</td>
+              <td>
+                  <a class="btn yellow rounded" href="#">Apply</a>
+              </td>
+            </tr>
+            <tr>
+              <th class="circleNumber">2</th>
+              <td>Bitches</td>
+              <td>Come and fuck them all!!</td>
+              <td>
+                  <a class="btn yellow rounded" href="#">Apply</a>
+              </td>
+            </tr>
+
+        </div> -->
+        <!-- Team Page End -->
+        <!-- Team  Register Form -->
+        <!-- <div class="blog-card">
+          <img   src="/Images _Layout/Team/TeamRegister.png" alt="">
+          <div class= "teamHeader">
+          <h1">Make you own group,gank or company of programmer and hackers.</h1>
+          <h2> Dont't be ONE MAN ARMY!</h2>
+        </div>
+
+        <div class="page-wrapper bg-yellow p-t-45 p-b-20">
+          <div class="wrapper wrapper--w780">
+          <div class="card card-6">
+          <div class="card-heading">
+          <h2 class="title">Register a Group</h2>
+          </div>
+          <div class="card-body">
+          <form method="POST">
+          <div class="form-row">
+          <div class="name">Group name</div>
+          <div class="value">
+          <input class="input--style-6" type="text" name="groupName">
+          </div>
+          </div>
+          <div class="form-row">
+          <div class="name">Motivational Motto</div>
+          <div class="value">
+          <div class="input-group">
+          <input class="input--style-6" type="motto" name="motto" >
+          </div>
+          </div>
+          </div>
+          <div class="form-row">
+          <div class="name">Description</div>
+          <div class="value">
+          <div class="input-group">
+          <textarea class="textarea--style-6" name="description" ></textarea>
+          </div>
+          </div>
+          </div>
+
+          </div>
+          <div class="card-footer">
+            <a class="btn yellow rounded" href="#">Apply - 9999 <img class="moneyImg" src="/Images _Layout/MoneyIcon.png" alt=""></a>
+
+          </div>
+
+          </div> -->
+        <!-- Team Register Form End -->
+        <!-- Team Ranking -->
+        <!-- <form class="example" >
+          <input type="text" placeholder="Search.." name="search">
+          <a class="btn yellow rounded" href="#">Search </a>
+        </form>
+
+        <table class="teamRankingTable">
+          <thead>
+            <tr>
+              <th scope="col">№</th>
+              <th scope="col">Group-Name</th>
+              <th scope="col">Motto</th>
+              <th scope="col">Rank</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th class="circleNumber">1</th>
+              <td>Bithes</td>
+              <td>Join Us .The Perfect group .Come here</td>
+              <td class="rank">999.99</td>
+            </tr>
+            <tr>
+              <th  class="circleNumber">2</th>
+              <td>The Quiters</td>
+              <td>Come and we will quit together </td>
+              <td class="rank">129.7</td>
+            </tr>
+            <tr>
+              <th  class="circleNumber">3</th>
+              <td>The Quiters</td>
+              <td>Come and we will quit together </td>
+              <td class="rank">129.7</td>
+            </tr>
+          </tbody>
+        </table> -->
+        <!-- Team Ranking End -->
+        <!-- Market -->
+        <!-- <div class="parent">
+
+          <img class="image1" src="/Images _Layout/Market/Market.png" alt="">
+          <a href="#"> <img class="image2" src="/Images _Layout/Market/food.png" alt=""></a>
+          <a href="#"> <img  class="image3"src="/Images _Layout/Market/pets.png" alt=""></a>
+        </div> -->
+        <!-- Market End -->
+        <!-- Market Pets -->
+        <!--
+        <div class="blog-card">
+          <img   src="/Images _Layout/Market/PetBackground.png" alt="">
+
+        </div>
+
+        <div class="petTable">
+          <span class="jobTittle">Pet</span>
+          <h3 class="frellancingHeader">Kitty</h3>
+          <img src="/Images _Layout/Market/Cat.png" alt="petImg">
+          <ul>
+            <li>Level Requirement - 3</li>
+            <li>Description : Rly Bad kitty</li>
+            <li>Price : 999 <img class="moneyImg" src="/Images _Layout/MoneyIcon.png" alt=""></li>
+            <li> <a  class="btn yellow rounded " href="">Buy</a></li>
+          </ul>
+        </div>
+
+        <div class="petTable">
+          <span class="jobTittle">Pet</span>
+          <h3 class="frellancingHeader">Parrot</h3>
+          <img src="/Images _Layout/Market/Parrot.png" alt="petImg">
+          <ul>
+            <li>Level Requirement - 8</li>
+            <li>Description:ScreamerQAAA</li>
+            <li>Price : 5999 <img class="moneyImg" src="/Images _Layout/MoneyIcon.png" alt=""></li>
+            <li> <a  class="btn yellow rounded " href="">Buy</a></li>
+          </ul>
+        </div>
+
+        <div class="petTable">
+          <span class="jobTittle">Pet</span>
+          <h3 class="frellancingHeader">Dog</h3>
+          <img src="/Images _Layout/Market/Dog.png" alt="petImg">
+          <ul>
+            <li>Level Requirement - 14</li>
+            <li>Description:Best Friend</li>
+            <li>Price : 15999 <img class="moneyImg" src="/Images _Layout/MoneyIcon.png" alt=""></li>
+            <li> <a  class="btn yellow rounded " href="">Buy</a></li>
+          </ul>
+        </div>
+
+        <div class="petTable">
+          <span class="jobTittle">Pet</span>
+          <h3 class="frellancingHeader">Dog</h3>
+          <img src="/Images _Layout/Market/Dog.png" alt="petImg">
+          <ul>
+            <li>Level Requirement - 14</li>
+            <li>Description:Best Friend</li>
+            <li>Price : 15999 <img class="moneyImg" src="/Images _Layout/MoneyIcon.png" alt=""></li>
+            <li> <a  class="btn yellow rounded " href="">Buy</a></li>
+          </ul>
+        </div>
+        <div class="petTable">
+          <span class="jobTittle">Pet</span>
+          <h3 class="frellancingHeader">Dog</h3>
+          <img src="/Images _Layout/Market/Dog.png" alt="petImg">
+          <ul>
+            <li>Level Requirement - 14</li>
+            <li>Description:Best Friend</li>
+            <li>Price : 15999 <img class="moneyImg" src="/Images _Layout/MoneyIcon.png" alt=""></li>
+            <li> <a  class="btn yellow rounded " href="">Buy</a></li>
+          </ul>
+        </div> -->
+        <!-- Market Pets End -->
+        <!-- Market Food -->
+        <!-- <div class="blog-card">
+          <img   src="/Images _<Layout/Market/PetFoodbackground.png" alt="">
+
+        </div>
+        <div class="petTable">
+          <h3 class="frellancingHeader">SimpleFood</h3>
+          <img src="/Images _Layout/Market/Food/Food2.png" alt="petImg">
+          <ul>
+            <li>Health: +10%</li>
+            <li>Price : 500 <img class="moneyImg" src="/Images _Layout/MoneyIcon.png" alt=""></li>
+            <li> <a  class="btn yellow rounded " href="">Buy</a></li>
+          </ul>
+        </div>
+        <div class="petTable">
+          <h3 class="frellancingHeader">SimpleFood</h3>
+          <img src="/Images _Layout/Market/Food/Food.png" alt="petImg">
+          <ul>
+            <li>Health: +15%</li>
+            <li>Price : 500 <img class="moneyImg" src="/Images _Layout/MoneyIcon.png" alt=""></li>
+            <li> <a  class="btn yellow rounded " href="">Buy</a></li>
+          </ul>
+        </div>
+        <div class="petTable">
+          <h3 class="frellancingHeader">Milk</h3>
+          <img src="/Images _Layout/Market/Food/milk.png" alt="petImg">
+          <ul>
+            <li>Health: +10%</li>
+            <li>Price : 50000 <img class="moneyImg" src="/Images _Layout/MoneyIcon.png" alt=""></li>
+            <li> <a  class="btn yellow rounded " href="">Buy</a></li>
+          </ul>
+        </div> -->
+        <!-- Market Food End -->
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.js" asp-append-version="true"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js" asp-append-version="true"></script>
+    <script src="~/js/site.min.js" asp-append-version="true"></script>
+    @await this.RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
