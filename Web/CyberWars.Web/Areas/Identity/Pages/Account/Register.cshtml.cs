@@ -98,8 +98,10 @@ namespace CyberWars.Web.Areas.Identity.Pages.Account
                     await this.playerService.CreatePlayer(user.Id, type[1], this.Input.Avatar);
 
                     // Create Player Skills
-
                     await this.playerService.CreateSkills(user.Id);
+
+                    // Add Abilities
+                    await this.playerService.CreatePlayerAbilities(user.Id);
 
                     this._logger.LogInformation("User created a new account with password.");
 

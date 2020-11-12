@@ -1,8 +1,10 @@
 ﻿namespace CyberWars.Data.Models.Course
 {
+    using CyberWars.Data.Common.Models;
     using CyberWars.Data.Models.Player;
+    using System;
 
-    public class CompleteLecture
+    public class CompleteLecture : IDeletableEntity
     {
         public string PlayerId { get; set; }
 
@@ -13,5 +15,9 @@
         public Lecture Lecture { get; set; }
 
         public bool IsComplete { get; set; }
+
+        public bool IsDeleted { get; set; }
+
+        public DateTime? DeletedOn { get; set; }
     }
 }

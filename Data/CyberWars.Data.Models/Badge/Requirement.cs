@@ -3,18 +3,16 @@
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
+    using CyberWars.Data.Common.Models;
     using CyberWars.Data.Models.Job;
 
-    public class Requirement
+    public class Requirement : BaseDeletableModel<int>
     {
         public Requirement()
         {
             this.BadgeRequirements = new HashSet<BadgeRequirement>();
             this.JobRequirements = new HashSet<JobRequirement>();
         }
-
-        [Key]
-        public int RequirementId { get; set; }
 
         public string Name { get; set; }
 

@@ -10,6 +10,7 @@
     using CyberWars.Data.Models.Player;
     using CyberWars.Data.Models.Skills;
     using CyberWars.Services.Mapping;
+    using CyberWars.Web.ViewModels.HomeViews.Pet;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -43,7 +44,6 @@
         public ICollection<Level> Levels { get; set; }
         public BattleRecord BattleRecord { get; set; }
 
-
         public virtual ICollection<PlayerAbility> PlayerAbilities { get; set; }
 
         public virtual ICollection<PlayerSkill> PlayerSkills { get; set; }
@@ -63,5 +63,6 @@
         public virtual ICollection<Battle> AttacksPlayer { get; set; }
 
         public virtual ICollection<Battle> DefencesPlayer { get; set; }
+        public virtual ICollection<Food> Foods { get; set; }
     }
 }

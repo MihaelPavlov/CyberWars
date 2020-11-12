@@ -2,11 +2,10 @@
 {
     using System.ComponentModel.DataAnnotations;
 
-    public class Food
-    {
-        [Key]
-        public int FoodId { get; set; }
+    using CyberWars.Data.Common.Models;
 
+    public class Food : BaseDeletableModel<int>
+    {
         public string Name { get; set; }
 
         public int GainHealth { get; set; }

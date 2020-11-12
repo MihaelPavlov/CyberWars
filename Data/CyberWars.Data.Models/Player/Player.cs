@@ -28,6 +28,7 @@
             this.PlayerBattles = new HashSet<PlayerBattle>();
             this.AttacksPlayer = new HashSet<Battle>();
             this.DefencesPlayer = new HashSet<Battle>();
+            this.Foods = new HashSet<Food>();
             this.Health = 1000;
             this.Energy = 100;
             this.Money = 1000;
@@ -80,5 +81,7 @@
         public virtual ICollection<Battle> AttacksPlayer { get; set; }
 
         public virtual ICollection<Battle> DefencesPlayer { get; set; }
+
+        public virtual ICollection<Food> Foods { get; set; }
     }
 }

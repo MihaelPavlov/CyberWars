@@ -18,6 +18,10 @@
 
         public string ImageName { get; set; }
 
+        public int AbilityTypeId { get; set; }
+
+        public AbilityType AbilityType { get; set; }
+
         public virtual ICollection<PlayerAbility> PlayerAbilities { get; set; }
     }
 }

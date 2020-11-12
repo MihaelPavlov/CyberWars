@@ -1,23 +1,30 @@
-﻿
+﻿@using CyberWars.Web.ViewModels.HomeViews
+@model IEnumerable<PlayerAbilitiesViewModel>
+
 <div class="containerAbilities">
-    <a class="btn yellow rounded" href="#">Languages</a>
-    <a class="btn yellow rounded" href="#">Database</a>
-    <a class="btn yellow rounded" href="#">Frameworks</a>
+    <a class="btn yellow rounded" href="/Home/Abilities?type=Languages">Languages</a>
+    <a class="btn yellow rounded" href="/Home/Abilities?type=Database">Database</a>
+    <a class="btn yellow rounded" href="/Home/Abilities?type=Frameworks">Frameworks</a>
 </div>
 <table class="tableAbilities">
+
     <thead>
         <tr>
-            <th scope="col">Points</th>
             <th scope="col">Language</th>
+            <th scope="col">Points</th>
             <th scope="col">Description</th>
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <th scope="row">20</th>
-            <td>C#</td>
-            <td>oop</td>
-        </tr>
+        @foreach (var ability in Model)
+        {
+
+            <tr>
+                <th scope="row">@ability.AbilityName</th>
+                <td>@ability.Points</td>
+                <td>@ability.AbilityDescription</td>
+            </tr>
+        }
 
     </tbody>
 </table>
@@ -27,5 +34,5 @@
 }
 
 @section PageHeader{
-   Abilities
+    Abilities
 }

@@ -2,15 +2,15 @@
 {
     using System.Collections.Generic;
 
-    public class Job
+    using CyberWars.Data.Common.Models;
+
+    public class Job : BaseDeletableModel<int>
     {
         public Job()
         {
             this.JobRequirements = new HashSet<JobRequirement>();
             this.PlayerJobs = new HashSet<PlayerJob>();
         }
-
-        public int JobId { get; set; }
 
         public string Name { get; set; }
 

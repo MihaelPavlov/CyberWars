@@ -3,16 +3,15 @@
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
-    public class Badge
+    using CyberWars.Data.Common.Models;
+
+    public class Badge : BaseDeletableModel<int>
     {
         public Badge()
         {
             this.BadgeRequirements = new HashSet<BadgeRequirement>();
             this.PlayersBadges = new HashSet<PlayerBadge>();
         }
-
-        [Key]
-        public int BadgeId { get; set; }
 
         public string Name { get; set; }
 
@@ -21,6 +20,9 @@
         public BadgeType BadgeType { get; set; }
 
         public string ImageName { get; set; }
+
+        [MaxLength(50)]
+        public string Description { get; set; }
 
         public virtual ICollection<BadgeRequirement> BadgeRequirements { get; set; }
 

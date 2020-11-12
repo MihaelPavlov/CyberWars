@@ -1,8 +1,11 @@
 ﻿namespace CyberWars.Data.Models.Battle
 {
+    using System;
+
+    using CyberWars.Data.Common.Models;
     using CyberWars.Data.Models.Player;
 
-    public class PlayerBattle
+    public class PlayerBattle : IDeletableEntity
     {
         public string PlayerId { get; set; }
 
@@ -11,5 +14,9 @@
         public int BattleId { get; set; }
 
         public Battle Battle { get; set; }
+
+        public bool IsDeleted { get; set; }
+
+        public DateTime? DeletedOn { get; set; }
     }
 }

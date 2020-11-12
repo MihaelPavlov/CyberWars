@@ -1,15 +1,14 @@
 ﻿namespace CyberWars.Data.Models.Course
 {
+    using CyberWars.Data.Common.Models;
     using System.Collections.Generic;
 
-    public class Lecture
+    public class Lecture : BaseDeletableModel<int>
     {
         public Lecture()
         {
             this.CompleteLectures = new HashSet<CompleteLecture>();
         }
-
-        public int LectureId { get; set; }
 
         public string Name { get; set; }
 

@@ -4,18 +4,16 @@
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-
+    using CyberWars.Data.Common.Models;
     using CyberWars.Data.Models.Player;
 
-    public class Battle
+    public class Battle : BaseDeletableModel<string>
     {
         public Battle()
         {
+            this.Id = Guid.NewGuid().ToString();
             this.PlayerBattles = new HashSet<PlayerBattle>();
         }
-
-        [Key]
-        public int BattleId { get; set; }
 
         [ForeignKey("AttackPlayer")]
         public string AttackPlayerId { get; set; }

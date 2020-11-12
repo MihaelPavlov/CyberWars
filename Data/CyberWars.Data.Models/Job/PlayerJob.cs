@@ -2,9 +2,10 @@
 {
     using System;
 
+    using CyberWars.Data.Common.Models;
     using CyberWars.Data.Models.Player;
 
-    public class PlayerJob
+    public class PlayerJob : IDeletableEntity
     {
         public string PlayerId { get; set; }
 
@@ -17,5 +18,9 @@
         public DateTime DateOfComplete { get; set; }
 
         public bool IsComplete { get; set; }
+
+        public bool IsDeleted { get; set; }
+
+        public DateTime? DeletedOn { get; set; }
     }
 }

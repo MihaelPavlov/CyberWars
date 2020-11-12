@@ -3,16 +3,14 @@
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
-    public class Pet
+    using CyberWars.Data.Common.Models;
+
+    public class Pet : BaseDeletableModel<int>
     {
         public Pet()
         {
             this.PlayerPets = new HashSet<PlayerPet>();
-
         }
-
-        [Key]
-        public int PetId { get; set; }
 
         public string Name { get; set; }
 

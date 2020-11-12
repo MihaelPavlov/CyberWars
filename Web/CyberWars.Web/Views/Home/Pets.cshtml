@@ -1,4 +1,7 @@
-﻿<h2 class="headerPet">
+﻿@using CyberWars.Web.ViewModels.HomeViews.Pet
+@model IEnumerable<PetViewModel>
+
+<h2 class="headerPet">
     Here you will find al of your pets and if they are hungry you can feed
     them.
 </h2>
@@ -12,36 +15,25 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <th scope="row">Pesho(Cat)<img src="/images/HeartIcon.png" alt="" /></th>
-            <td>The best cat in the word.But she can destroy you.</td>
-            <td>
-                <ul>
-                    <li><img src="/images/pizza.png" alt="" /> Pizza</li>
-                    <li><img src="/images/fish.png" alt="" /> Fish</li>
-                    <li><img src="/images/meat.png" alt="" /> Meat</li>
-                </ul>
-            </td>
-            <td>
-                 <a class="btn yellow rounded" href="/Home/PetCard">Feed</a>
-            </td>
-        </tr>
-        <tr>
-            <th scope="row">312</th>
-            <td>JS</td>
-            <td>the best Landasdsadsadsadsdsadsadguage every created</td>
-            <td>
-                 <a class="btn yellow rounded" href="/Home/PetCard">Feed</a>
-            </td>
-        </tr>
-        <tr>
-            <th scope="row">41</th>
-            <td>java</td>
-            <td>the Bird</td>
-            <td>
-            <a class="btn yellow rounded" href="/Home/PetCard?id=1">Feed</a>
-            </td>
-        </tr>
+        @foreach (var pet in Model)
+        {
+            <tr>
+                <th scope="row">@pet.NameIt (@pet.PetName) <br> <img src="/images/HeartIcon.png" alt="" /></th>
+                <td>@pet.PetDescription</td>
+                <td>
+
+                    <ul>
+                        @foreach (var food in pet.Foods)
+                        {
+                            <li><img src="/images/@(food.ImageName).png" alt="" /> @food.Name</li>
+                        }
+                    </ul>
+                </td>
+                <td>
+                    <a class="btn yellow rounded" href="/Home/PetCard?petId=@pet.PetId">Feed</a>
+                </td>
+            </tr>
+        }
 
     </tbody>
 </table>

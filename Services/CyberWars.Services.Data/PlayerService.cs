@@ -11,6 +11,8 @@
     using CyberWars.Data.Models;
     using CyberWars.Data.Models.Player;
     using CyberWars.Data.Models.Skills;
+    using CyberWars.Data.Models.Ability;
+    using CyberWars.Data.Models.Pet_Food;
 
     public class PlayerService : IPlayerService
     {
@@ -18,20 +20,30 @@
         private readonly IDeletableEntityRepository<Player> playerRepository;
         private readonly IDeletableEntityRepository<Skill> skillsRepository;
         private readonly IDeletableEntityRepository<PlayerSkill> playerSkillRepository;
+        private readonly IDeletableEntityRepository<Ability> abilityRepository;
+        private readonly IDeletableEntityRepository<PlayerAbility> playerAbilityRepository;
+        private readonly IDeletableEntityRepository<Food> foodRepository;
 
-        public PlayerService(IDeletableEntityRepository<ApplicationUser> userRepository,
-            IDeletableEntityRepository<Player> playerRepository, IDeletableEntityRepository<Skill> skillsRepository
-            , IDeletableEntityRepository<PlayerSkill> playerSkillRepository)
+        public PlayerService(IDeletableEntityRepository<ApplicationUser> userRepository
+            , IDeletableEntityRepository<Player> playerRepository
+            , IDeletableEntityRepository<Skill> skillsRepository
+            , IDeletableEntityRepository<PlayerSkill> playerSkillRepository
+            , IDeletableEntityRepository<Ability> abilityRepository
+            , IDeletableEntityRepository<PlayerAbility> playerAbilityRepository
+            , IDeletableEntityRepository<Food> foodRepository)
         {
             this.playerRepository = playerRepository;
             this.userRepository = userRepository;
             this.skillsRepository = skillsRepository;
             this.playerSkillRepository = playerSkillRepository;
+            this.abilityRepository = abilityRepository;
+            this.playerAbilityRepository = playerAbilityRepository;
+            this.foodRepository = foodRepository;
         }
 
         public async Task CreatePlayer(string id, string typeClass, string imageName)
         {
-            var user = await this.userRepository.All().FirstOrDefaultAsync(x => x.PlayerId == null);
+            var user = await this.userRepository.All().FirstOrDefaultAsync(x => x.Id == id);
             var player = new Player()
             {
                 UserId = user.Id,
@@ -65,6 +77,28 @@
 
             await this.playerSkillRepository.SaveChangesAsync();
         }
+
+        public async Task CreatePlayerAbilities(string id)
+        {
+            var user = await this.userRepository.All().FirstOrDefaultAsync(x => x.Id == id);
+
+            var abilities = await this.abilityRepository.All().ToListAsync();
+
+            foreach (var ability in abilities)
+            {
+                var playerAbility = new PlayerAbility
+                {
+                    PlayerId = user.PlayerId,
+                    Points = 0,
+                    AbilityId = ability.Id,
+                };
+                await this.playerAbilityRepository.AddAsync(playerAbility);
+            }
+
+            await this.playerAbilityRepository.SaveChangesAsync();
+        }
+
+      
 
         public async Task<string> GetUserId(string username, string password)
         {

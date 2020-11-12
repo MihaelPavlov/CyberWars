@@ -69,6 +69,8 @@
         // Abilities
         public DbSet<Ability> Abilities { get; set; }
 
+        public DbSet<AbilityType> AbilityTypes { get; set; }
+
         // Foods
         public DbSet<Food> Foods { get; set; }
 
@@ -210,7 +212,7 @@
 
             builder.Entity<BattleRecord>(entity =>
             {
-                entity.HasKey(x => new { x.PlayerId, x.BattleRecordId });
+                entity.HasKey(x => new { x.PlayerId, x.Id });
             });
         }
 

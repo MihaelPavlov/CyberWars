@@ -2,15 +2,15 @@
 {
     using System.Collections.Generic;
 
-    public class Course
+    using CyberWars.Data.Common.Models;
+
+    public class Course : BaseDeletableModel<int>
     {
         public Course()
         {
             this.Lectures = new HashSet<Lecture>();
             this.PlayerCourses = new HashSet<PlayerCourse>();
         }
-
-        public int CourseId { get; set; }
 
         public string Name { get; set; }
 

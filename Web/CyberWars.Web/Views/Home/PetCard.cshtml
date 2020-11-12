@@ -1,46 +1,34 @@
-﻿ <div class="petTable">
-     <h3 class="petHeader">Pesho</h3>
-     <img src="/images/Market/Pets/Fish_Dori.png" alt="">
-     <ul>
-       <li class="petList">Health 100/100 <img class="petBar" src="/images/GreenLine.png" alt="">
-       </li>
-       <li>Mood 100/100 <img class="petBar" src="/images/blueLine.png" alt=""></li>
-     </ul>
-     <div class="buttons">
-       <a  class="btn yellow rounded " href="">Change Name</a>
-       <a  class="btn yellow rounded " href="">Scratch Belly</a>
-       <a  class="btn yellow rounded " href="">Sell Pet</a>
-     </div>
-     <h2>Food</h2>
-     <div class="petFoodTable">
+﻿@using CyberWars.Web.ViewModels.HomeViews.Pet
+@using System.Security.Claims;
 
-       <div class="food">
-         <ul >
-           <li > <img class="foodImg" src="/images/Market/Food/Food.png" alt=""></li>
-           <li ><a class="btn-pet yellow rounded" href="">Feed</a></li>
-         </ul>
-       </div>
-       <div class="food">
-         <ul >
-           <li > <img class="foodImg" src="/images/Market/Food/Food2.png" alt=""></li>
-           <li ><a class="btn-pet yellow rounded" href="">Feed</a></li>
-         </ul>
-       </div>
-           <div class="food">
-         <ul >
-           <li > <img class="foodImg" src="/images/Market/Food/milk.png" alt=""></li>
-           <li ><a class="btn-pet yellow rounded" href="">Feed</a></li>
-         </ul>
-       </div>
-       <div class="food">
-         <ul >
-           <li > <img class="foodImg" src="/images/Market/Food/Food.png" alt=""></li>
-           <li ><a class="btn-pet yellow rounded" href="">Feed</a></li>
-         </ul>
-       </div>
+@model PetViewModel
 
-     </div>
+@{
+    var maxHealth = Model.Health;
+    var maxMood = Model.Mood;
+}
+<div class="petTable">
+    <h3 class="petHeader">@Model.NameIt</h3>
+    <img src="/images/Market/Pets/Fish_Dori.png" alt="">
+    <ul>
+        <li class="petList">
+            Health @Model.Health / @maxHealth <img class="petBar" src="/images/GreenLine.png" alt="">
+        </li>
+        <li>Mood @Model.Mood / @maxMood <img class="petBar" src="/images/blueLine.png" alt=""></li>
+    </ul>
+    <div class="buttons">
+        <a class="btn yellow rounded " href="">Change Name</a>
+        <a class="btn yellow rounded " href="">Scratch Belly</a>
+        <a class="btn yellow rounded " href="">Sell Pet</a>
+    </div>
+    <h2>Food</h2>
+    @*Here need to make it with viewComponent and get ALL FOOD that player buy it *@
+    <div class="petFoodTable">
 
+        <vc:pet-card-food user-id="@(this.User.FindFirstValue(ClaimTypes.NameIdentifier))"></vc:pet-card-food>
+
+    </div>
+</div>
 @section CssFile {
     <link rel="stylesheet" href="/css/Home/petCard.css">
 }

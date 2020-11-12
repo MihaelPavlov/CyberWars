@@ -14,10 +14,10 @@
         <div class="item4">
             <img class="healthIcon" src="/images/@(skill.SkillId).Skill.png" alt="" />
             <span class="name">@skill.SkillName</span>
-            <div class="bar">Increase the /live points.</div>
+            <div class="bar">@skill.SkillDescription</div>
             <span class="circle">@skill.Points</span>
             <a class="button" href="#">Train -</a>
-            <span class="money">999</span>
+            <span class="money">@skill.SkillStartMoney</span>
             <img class="MoneyIcon" src="/images/MoneyIcon.png" alt="" />
         </div>
     </div>

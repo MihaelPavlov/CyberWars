@@ -1,10 +1,15 @@
 ﻿namespace CyberWars.Data.Models.Battle
 {
+    using CyberWars.Data.Common.Models;
     using CyberWars.Data.Models.Player;
+    using System;
 
-    public class BattleRecord
+    public class BattleRecord : BaseDeletableModel<string>
     {
-        public int BattleRecordId { get; set; }
+        public BattleRecord()
+        {
+            this.Id = Guid.NewGuid().ToString();
+        }
 
         public int Wins { get; set; }
 

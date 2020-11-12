@@ -12,6 +12,8 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using CyberWars.Services.Data;
+using System.Security.Claims;
 
 namespace CyberWars.Web.Areas.Identity.Pages.Account
 {
@@ -21,14 +23,16 @@ namespace CyberWars.Web.Areas.Identity.Pages.Account
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly ILogger<LoginModel> _logger;
+        private readonly IPlayerService playerService;
 
         public LoginModel(SignInManager<ApplicationUser> signInManager,
             ILogger<LoginModel> logger,
-            UserManager<ApplicationUser> userManager)
+            UserManager<ApplicationUser> userManager, IPlayerService playerService)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
+            this.playerService = playerService;
         }
 
         [BindProperty]
@@ -62,7 +66,6 @@ namespace CyberWars.Web.Areas.Identity.Pages.Account
             }
 
             returnUrl = returnUrl ?? Url.Content("~/");
-
             // Clear the existing external cookie to ensure a clean login process
             await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
 
@@ -82,6 +85,7 @@ namespace CyberWars.Web.Areas.Identity.Pages.Account
                 var result = await _signInManager.PasswordSignInAsync(Input.Username, Input.Password, Input.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
+
                     _logger.LogInformation("User logged in.");
                     return LocalRedirect(returnUrl);
                 }

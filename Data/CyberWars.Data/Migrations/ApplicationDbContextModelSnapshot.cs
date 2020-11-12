@@ -26,6 +26,9 @@ namespace CyberWars.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("AbilityTypeId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
 
@@ -49,9 +52,40 @@ namespace CyberWars.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("AbilityTypeId");
+
                     b.HasIndex("IsDeleted");
 
                     b.ToTable("Abilities");
+                });
+
+            modelBuilder.Entity("CyberWars.Data.Models.Ability.AbilityType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Type")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.ToTable("AbilityTypes");
                 });
 
             modelBuilder.Entity("CyberWars.Data.Models.Ability.PlayerAbility", b =>
@@ -62,12 +96,20 @@ namespace CyberWars.Data.Migrations
                     b.Property<int>("AbilityId")
                         .HasColumnType("int");
 
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<int>("Points")
                         .HasColumnType("int");
 
                     b.HasKey("PlayerId", "AbilityId");
 
                     b.HasIndex("AbilityId");
+
+                    b.HasIndex("IsDeleted");
 
                     b.ToTable("PlayerAbilities");
                 });
@@ -197,7 +239,7 @@ namespace CyberWars.Data.Migrations
 
             modelBuilder.Entity("CyberWars.Data.Models.Badge.Badge", b =>
                 {
-                    b.Property<int>("BadgeId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -205,15 +247,33 @@ namespace CyberWars.Data.Migrations
                     b.Property<int>("BadgeTypeId")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
+
                     b.Property<string>("ImageName")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("BadgeId");
+                    b.HasKey("Id");
 
                     b.HasIndex("BadgeTypeId");
+
+                    b.HasIndex("IsDeleted");
 
                     b.ToTable("Badges");
                 });
@@ -226,7 +286,15 @@ namespace CyberWars.Data.Migrations
                     b.Property<int>("RequirementId")
                         .HasColumnType("int");
 
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.HasKey("BadgeId", "RequirementId");
+
+                    b.HasIndex("IsDeleted");
 
                     b.HasIndex("RequirementId");
 
@@ -235,15 +303,29 @@ namespace CyberWars.Data.Migrations
 
             modelBuilder.Entity("CyberWars.Data.Models.Badge.BadgeType", b =>
                 {
-                    b.Property<int>("BadgeTypeId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("BadgeTypeId");
+                    b.HasKey("Id");
+
+                    b.HasIndex("IsDeleted");
 
                     b.ToTable("BadgeTypes");
                 });
@@ -259,16 +341,24 @@ namespace CyberWars.Data.Migrations
                     b.Property<DateTime>("AchievementDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.HasKey("PlayerId", "BadgeId");
 
                     b.HasIndex("BadgeId");
+
+                    b.HasIndex("IsDeleted");
 
                     b.ToTable("PlayerBadges");
                 });
 
             modelBuilder.Entity("CyberWars.Data.Models.Badge.Requirement", b =>
                 {
-                    b.Property<int>("RequirementId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -276,25 +366,37 @@ namespace CyberWars.Data.Migrations
                     b.Property<int>("BadgeTypeId")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Points")
                         .HasColumnType("int");
 
-                    b.HasKey("RequirementId");
+                    b.HasKey("Id");
 
                     b.HasIndex("BadgeTypeId");
+
+                    b.HasIndex("IsDeleted");
 
                     b.ToTable("Requirements");
                 });
 
             modelBuilder.Entity("CyberWars.Data.Models.Battle.Battle", b =>
                 {
-                    b.Property<int>("BattleId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("AttackPlayerId")
                         .HasColumnType("nvarchar(450)");
@@ -302,14 +404,28 @@ namespace CyberWars.Data.Migrations
                     b.Property<DateTime>("BattleDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("DefencePlayerId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.HasKey("BattleId");
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
 
                     b.HasIndex("AttackPlayerId");
 
                     b.HasIndex("DefencePlayerId");
+
+                    b.HasIndex("IsDeleted");
 
                     b.ToTable("Battles");
                 });
@@ -319,16 +435,30 @@ namespace CyberWars.Data.Migrations
                     b.Property<string>("PlayerId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("BattleRecordId")
-                        .HasColumnType("int");
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.Property<int>("Losses")
                         .HasColumnType("int");
 
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("Wins")
                         .HasColumnType("int");
 
-                    b.HasKey("PlayerId", "BattleRecordId");
+                    b.HasKey("PlayerId", "Id");
+
+                    b.HasIndex("IsDeleted");
 
                     b.HasIndex("PlayerId")
                         .IsUnique();
@@ -344,9 +474,20 @@ namespace CyberWars.Data.Migrations
                     b.Property<int>("BattleId")
                         .HasColumnType("int");
 
+                    b.Property<string>("BattleId1")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.HasKey("PlayerId", "BattleId");
 
-                    b.HasIndex("BattleId");
+                    b.HasIndex("BattleId1");
+
+                    b.HasIndex("IsDeleted");
 
                     b.ToTable("PlayerBattles");
                 });
@@ -359,10 +500,18 @@ namespace CyberWars.Data.Migrations
                     b.Property<string>("PlayerId")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
                     b.Property<bool>("IsComplete")
                         .HasColumnType("bit");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.HasKey("LectureId", "PlayerId");
+
+                    b.HasIndex("IsDeleted");
 
                     b.HasIndex("PlayerId");
 
@@ -371,7 +520,7 @@ namespace CyberWars.Data.Migrations
 
             modelBuilder.Entity("CyberWars.Data.Models.Course.Course", b =>
                 {
-                    b.Property<int>("CourseId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -379,40 +528,80 @@ namespace CyberWars.Data.Migrations
                     b.Property<int>("CourseTypeId")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("CourseId");
+                    b.HasKey("Id");
 
                     b.HasIndex("CourseTypeId");
+
+                    b.HasIndex("IsDeleted");
 
                     b.ToTable("Courses");
                 });
 
             modelBuilder.Entity("CyberWars.Data.Models.Course.CourseType", b =>
                 {
-                    b.Property<int>("CourseTypeId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("CourseTypeId");
+                    b.HasKey("Id");
+
+                    b.HasIndex("IsDeleted");
 
                     b.ToTable("CourseTypes");
                 });
 
             modelBuilder.Entity("CyberWars.Data.Models.Course.Lecture", b =>
                 {
-                    b.Property<int>("LectureId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("CourseId")
                         .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
@@ -429,9 +618,11 @@ namespace CyberWars.Data.Migrations
                     b.Property<int>("TimeMinutes")
                         .HasColumnType("int");
 
-                    b.HasKey("LectureId");
+                    b.HasKey("Id");
 
                     b.HasIndex("CourseId");
+
+                    b.HasIndex("IsDeleted");
 
                     b.ToTable("Lectures");
                 });
@@ -447,22 +638,39 @@ namespace CyberWars.Data.Migrations
                     b.Property<DateTime>("CompleteDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
                     b.Property<bool>("IsComplete")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
                     b.HasKey("PlayerId", "CourseId");
 
                     b.HasIndex("CourseId");
 
+                    b.HasIndex("IsDeleted");
+
                     b.ToTable("PlayerCourses");
                 });
 
             modelBuilder.Entity("CyberWars.Data.Models.Job.Job", b =>
                 {
-                    b.Property<int>("JobId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.Property<int>("JobTypeId")
                         .HasColumnType("int");
@@ -470,10 +678,15 @@ namespace CyberWars.Data.Migrations
                     b.Property<int>("LevelRequirement")
                         .HasColumnType("int");
 
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("JobId");
+                    b.HasKey("Id");
+
+                    b.HasIndex("IsDeleted");
 
                     b.HasIndex("JobTypeId");
 
@@ -488,7 +701,15 @@ namespace CyberWars.Data.Migrations
                     b.Property<int>("RequirementId")
                         .HasColumnType("int");
 
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.HasKey("JobId", "RequirementId");
+
+                    b.HasIndex("IsDeleted");
 
                     b.HasIndex("RequirementId");
 
@@ -497,15 +718,29 @@ namespace CyberWars.Data.Migrations
 
             modelBuilder.Entity("CyberWars.Data.Models.Job.JobType", b =>
                 {
-                    b.Property<int>("JobTypeId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("JobTypeId");
+                    b.HasKey("Id");
+
+                    b.HasIndex("IsDeleted");
 
                     b.ToTable("JobTypes");
                 });
@@ -521,10 +756,18 @@ namespace CyberWars.Data.Migrations
                     b.Property<DateTime>("DateOfComplete")
                         .HasColumnType("datetime2");
 
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
                     b.Property<bool>("IsComplete")
                         .HasColumnType("bit");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.HasKey("JobId", "PlayerId");
+
+                    b.HasIndex("IsDeleted");
 
                     b.HasIndex("PlayerId");
 
@@ -533,10 +776,16 @@ namespace CyberWars.Data.Migrations
 
             modelBuilder.Entity("CyberWars.Data.Models.Pet_Food.Food", b =>
                 {
-                    b.Property<int>("FoodId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
@@ -550,26 +799,45 @@ namespace CyberWars.Data.Migrations
                     b.Property<string>("ImageName")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<int>("LevelRequirement")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("PlayerId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
-                    b.HasKey("FoodId");
+                    b.HasKey("Id");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.HasIndex("PlayerId");
 
                     b.ToTable("Foods");
                 });
 
             modelBuilder.Entity("CyberWars.Data.Models.Pet_Food.Pet", b =>
                 {
-                    b.Property<int>("PetId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
@@ -577,8 +845,14 @@ namespace CyberWars.Data.Migrations
                     b.Property<string>("ImageName")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<int>("LevelRequirement")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
@@ -586,7 +860,9 @@ namespace CyberWars.Data.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
-                    b.HasKey("PetId");
+                    b.HasKey("Id");
+
+                    b.HasIndex("IsDeleted");
 
                     b.ToTable("Pets");
                 });
@@ -599,8 +875,14 @@ namespace CyberWars.Data.Migrations
                     b.Property<string>("PlayerId")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("Health")
                         .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.Property<int>("Level")
                         .HasColumnType("int");
@@ -612,6 +894,8 @@ namespace CyberWars.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("PetId", "PlayerId");
+
+                    b.HasIndex("IsDeleted");
 
                     b.HasIndex("PlayerId");
 
@@ -803,6 +1087,10 @@ namespace CyberWars.Data.Migrations
                     b.Property<DateTime?>("DeletedOn")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
@@ -811,6 +1099,9 @@ namespace CyberWars.Data.Migrations
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("StartMoney")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -923,6 +1214,15 @@ namespace CyberWars.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("CyberWars.Data.Models.Ability.Ability", b =>
+                {
+                    b.HasOne("CyberWars.Data.Models.Ability.AbilityType", "AbilityType")
+                        .WithMany("Abilities")
+                        .HasForeignKey("AbilityTypeId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("CyberWars.Data.Models.Ability.PlayerAbility", b =>
                 {
                     b.HasOne("CyberWars.Data.Models.Ability.Ability", "Ability")
@@ -1012,9 +1312,7 @@ namespace CyberWars.Data.Migrations
                 {
                     b.HasOne("CyberWars.Data.Models.Battle.Battle", "Battle")
                         .WithMany("PlayerBattles")
-                        .HasForeignKey("BattleId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .HasForeignKey("BattleId1");
 
                     b.HasOne("CyberWars.Data.Models.Player.Player", "Player")
                         .WithMany("PlayerBattles")
@@ -1108,6 +1406,13 @@ namespace CyberWars.Data.Migrations
                         .HasForeignKey("PlayerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("CyberWars.Data.Models.Pet_Food.Food", b =>
+                {
+                    b.HasOne("CyberWars.Data.Models.Player.Player", null)
+                        .WithMany("Foods")
+                        .HasForeignKey("PlayerId");
                 });
 
             modelBuilder.Entity("CyberWars.Data.Models.Pet_Food.PlayerPet", b =>

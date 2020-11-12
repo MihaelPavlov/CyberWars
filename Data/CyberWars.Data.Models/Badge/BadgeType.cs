@@ -3,16 +3,15 @@
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
-    public class BadgeType
+    using CyberWars.Data.Common.Models;
+
+    public class BadgeType : BaseDeletableModel<int>
     {
         public BadgeType()
         {
             this.Badges = new HashSet<Badge>();
             this.Requirements = new HashSet<Requirement>();
         }
-
-        [Key]
-        public int BadgeTypeId { get; set; }
 
         public string Name { get; set; }
 

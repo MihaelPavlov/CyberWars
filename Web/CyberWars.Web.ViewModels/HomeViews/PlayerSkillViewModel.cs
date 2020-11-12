@@ -18,5 +18,9 @@ namespace CyberWars.Web.ViewModels.HomeViews
         public string SkillName { get; set; }
 
         public int Points { get; set; }
+
+        public string SkillDescription { get; set; }
+
+        public int SkillStartMoney { get; set; }
     }
 }

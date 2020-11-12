@@ -1,8 +1,9 @@
 ﻿namespace CyberWars.Data.Models.Skills
 {
-    using CyberWars.Data.Common.Models;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+
+    using CyberWars.Data.Common.Models;
 
     public class Skill : BaseDeletableModel<int>
     {
@@ -12,6 +13,11 @@
         }
 
         public string Name { get; set; }
+
+        [MaxLength(50)]
+        public string Description { get; set; }
+
+        public int StartMoney { get; set; }
 
         public virtual ICollection<PlayerSkill> PlayerSkills { get; set; }
     }
