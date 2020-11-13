@@ -18,7 +18,7 @@
         @foreach (var pet in Model)
         {
             <tr>
-                <th scope="row">@pet.NameIt (@pet.PetName) <br> <img src="/images/HeartIcon.png" alt="" /></th>
+                <th scope="row">@pet.NameIt (@pet.PetName) <br> <img src="/images/Market/Pets/@(pet.PetImageName + ".png")" alt="" /></th>
                 <td>@pet.PetDescription</td>
                 <td>
 

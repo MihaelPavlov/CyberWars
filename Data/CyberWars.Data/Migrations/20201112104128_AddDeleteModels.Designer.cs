@@ -4,14 +4,16 @@ using CyberWars.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CyberWars.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201112104128_AddDeleteModels")]
+    partial class AddDeleteModels
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -26,7 +28,7 @@ namespace CyberWars.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("AbilityTypeId")
+                    b.Property<int?>("AbilityTypeId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedOn")
@@ -252,10 +254,6 @@ namespace CyberWars.Data.Migrations
 
                     b.Property<DateTime?>("DeletedOn")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
 
                     b.Property<string>("ImageName")
                         .HasColumnType("nvarchar(max)");
@@ -811,17 +809,12 @@ namespace CyberWars.Data.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PlayerId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("IsDeleted");
-
-                    b.HasIndex("PlayerId");
 
                     b.ToTable("Foods");
                 });
@@ -995,8 +988,8 @@ namespace CyberWars.Data.Migrations
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<decimal>("Money")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<int>("Money")
+                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
@@ -1216,11 +1209,9 @@ namespace CyberWars.Data.Migrations
 
             modelBuilder.Entity("CyberWars.Data.Models.Ability.Ability", b =>
                 {
-                    b.HasOne("CyberWars.Data.Models.Ability.AbilityType", "AbilityType")
+                    b.HasOne("CyberWars.Data.Models.Ability.AbilityType", null)
                         .WithMany("Abilities")
-                        .HasForeignKey("AbilityTypeId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .HasForeignKey("AbilityTypeId");
                 });
 
             modelBuilder.Entity("CyberWars.Data.Models.Ability.PlayerAbility", b =>
@@ -1406,13 +1397,6 @@ namespace CyberWars.Data.Migrations
                         .HasForeignKey("PlayerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("CyberWars.Data.Models.Pet_Food.Food", b =>
-                {
-                    b.HasOne("CyberWars.Data.Models.Player.Player", null)
-                        .WithMany("Foods")
-                        .HasForeignKey("PlayerId");
                 });
 
             modelBuilder.Entity("CyberWars.Data.Models.Pet_Food.PlayerPet", b =>

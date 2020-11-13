@@ -1,0 +1,27 @@
+﻿@using CyberWars.Web.ViewModels.Market
+@model IEnumerable<MarketFoodViewModel>
+
+<div class="blog-card">
+    <img src="/images/Market/PetFoodbackground.png" alt="">
+
+</div>
+@foreach (var food in Model)
+{
+    <div class="petTable">
+        <h3 class="frellancingHeader">@food.Name</h3>
+        <img src="/images/Market/Food/@(food.ImageName + ".png")" alt="petImg">
+        <ul>
+            <li>Health: @(food.GainHealth + "%")</li>
+            <li>Price : @food.Price <img class="moneyImg" src="/images/MoneyIcon.png" alt=""></li>
+            <li> <a class="btn yellow rounded " href="/Market/Food?foodId=@food.Id">Buy</a></li>
+        </ul>
+    </div>
+
+}
+
+@section CssFile {
+    <link rel="stylesheet" href="/css/Market/marketFood.css">
+}
+@section PageHeader{
+    Food
+}

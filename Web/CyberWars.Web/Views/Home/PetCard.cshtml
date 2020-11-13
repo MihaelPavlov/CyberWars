@@ -9,7 +9,7 @@
 }
 <div class="petTable">
     <h3 class="petHeader">@Model.NameIt</h3>
-    <img src="/images/Market/Pets/Fish_Dori.png" alt="">
+    <img src="/images/Market/Pets/@(Model.PetImageName + ".png")" alt="">
     <ul>
         <li class="petList">
             Health @Model.Health / @maxHealth <img class="petBar" src="/images/GreenLine.png" alt="">

@@ -51,7 +51,7 @@
 
         public int Energy { get; set; }
 
-        public int Money { get; set; }
+        public decimal Money { get; set; }
 
         public int LearnPoint { get; set; }
 

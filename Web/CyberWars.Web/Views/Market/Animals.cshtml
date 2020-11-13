@@ -1,0 +1,37 @@
+﻿@using CyberWars.Web.ViewModels.Market
+@model IEnumerable<MarketPetViewModel>
+
+<div class="blog-card">
+    <img src="/images/Market/PetBackground.png" alt="">
+
+</div>
+@foreach (var pet in Model)
+{
+    <form method="post" class="petForm">
+        <div class="petTable">
+            <span class="jobTittle">Pet</span>
+            <h3 class="frellancingHeader">@pet.Name</h3>
+            <img src="/images/Market/Pets/@(pet.ImageName + ".png")" alt="petImg">
+            <ul>
+                <li>Level Requirement - @pet.LevelRequirement</li>
+                <li>Description :@pet.Description</li>
+                <li>Price : @pet.Price <img class="moneyImg" src="/images/MoneyIcon.png" alt=""></li>
+
+                <input class="nameIt" type="text" name="nameIt" placeholder="Name your Pet">
+                <label for="petId"></label>
+                <button class="btn yellow rounded" name="petId" value="@pet.Id">Buy</button>
+
+                @*<a class="btn yellow rounded " href="/Market/Buy?petId=@pet.Id" value="@pet.Id">Buy</a>*@
+            </ul>
+        </div>
+    </form>
+}
+
+
+
+@section CssFile {
+    <link rel="stylesheet" href="/css/Market/marketPets.css">
+}
+@section PageHeader{
+    Animals
+}

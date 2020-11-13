@@ -1,22 +1,47 @@
 ﻿namespace CyberWars.Web.Controllers
 {
+    using System.Security.Claims;
+    using System.Threading.Tasks;
+
+    using CyberWars.Services.Data.Market;
+    using CyberWars.Web.ViewModels.HomeViews.Pet;
+    using CyberWars.Web.ViewModels.Market;
     using Microsoft.AspNetCore.Mvc;
 
     public class MarketController : Controller
     {
+        private readonly IMarketService marketService;
+
+        public MarketController(IMarketService marketService)
+        {
+            this.marketService = marketService;
+        }
+
         public IActionResult Index()
         {
             return this.View();
         }
 
-        public IActionResult Animals()
+        public async Task<IActionResult> Animals()
         {
-            return this.View();
+            var viewModel = await this.marketService.GetAllPets<MarketPetViewModel>();
+            return this.View(viewModel);
         }
 
-        public IActionResult Food()
+        [HttpPost]
+        public async Task<IActionResult> Animals(int petId,string nameIt)
         {
-            return this.View();
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            await this.marketService.BuyPet(petId, userId,nameIt);
+
+            return this.Redirect("/Home/Pets");
+        }
+
+        public async Task<IActionResult> Food()
+        {
+            var viewModel = await this.marketService.GetAllFood<MarketFoodViewModel>();
+            return this.View(viewModel);
         }
     }
 }

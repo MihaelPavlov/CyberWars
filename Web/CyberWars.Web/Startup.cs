@@ -10,6 +10,7 @@
     using CyberWars.Data.Seeding;
     using CyberWars.Services.Data;
     using CyberWars.Services.Data.Home;
+    using CyberWars.Services.Data.Market;
     using CyberWars.Services.Mapping;
     using CyberWars.Services.Messaging;
     using CyberWars.Web.ViewModels;
@@ -63,6 +64,7 @@
             services.AddScoped<IDbQueryRunner, DbQueryRunner>();
             services.AddScoped<IPlayerService, PlayerService>();
             services.AddScoped<IHomeService, HomeService>();
+            services.AddScoped<IMarketService, MarketService>();
 
             // Application services
             services.AddTransient<IEmailSender, NullMessageSender>();

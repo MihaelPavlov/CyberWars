@@ -1,0 +1,16 @@
+﻿@model CyberWars.Web.ViewModels.HomeViews.PlayerDataView
+
+
+@foreach (var food in Model.Foods)
+{
+    <div class="food">
+        <ul>
+            <li> <img class="foodImg" src="/images/@(food.ImageName+".png")" alt=""></li>
+            <li><a class="btn-pet yellow rounded" href="#">Feed</a></li>
+        </ul>
+    </div>
+}
+@section CssFile{
+    <link rel="stylesheet" href="/css/Home/petCard.css">
+
+}
