@@ -48,9 +48,9 @@
             return this.View(viewModel);
         }
 
-        public async Task<IActionResult> Badges(string badgeType)
+        public async Task<IActionResult> Badges()
         {
-            var viewModel = await this.homeService.GetAllBadges<BadgesViewModel>(badgeType);
+            var viewModel = await this.homeService.GetAllBadges<BadgesViewModel>();
             return this.View(viewModel);
         }
 

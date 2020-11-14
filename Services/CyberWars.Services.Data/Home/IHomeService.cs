@@ -20,7 +20,7 @@
 
         public Task<IEnumerable<T>> GetPlayerAbilitiesByType<T>(string playerId, string type);
 
-        public Task<IEnumerable<T>> GetAllBadges<T>(string badgeType);
+        public Task<IEnumerable<T>> GetAllBadges<T>();
 
         public Task<T> GetAllRequirementForBadgeById<T>(int badgeId);
 

@@ -4,6 +4,8 @@
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
+    using CyberWars.Data.Seeding.Home;
+    using CyberWars.Data.Seeding.Pets_Food;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Logging;
 
@@ -27,6 +29,15 @@
                           {
                               new RolesSeeder(),
                               new SettingsSeeder(),
+                              new LevelSeeder(),
+                              new AbilityTypeSeeder(),
+                              new AbilitiesSeeder(),
+                              new RequirementsSeeder(),
+                              new BadgeSeeder(),
+                              new SkillSeeder(),
+                              new BadgeRequirementSeeder(),
+                              new PetSeeder(),
+                              new FoodSeeder(),
                           };
 
             foreach (var seeder in seeders)

@@ -83,7 +83,7 @@ namespace CyberWars.Web.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
         }
 
-        public async Task<IActionResult> OnPostAsync(string returnUrl = null)
+        public async Task<IActionResult> OnPostAsync(string returnUrl = null, string type = null)
         {
             returnUrl = returnUrl ?? Url.Content("~/");
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
@@ -94,8 +94,8 @@ namespace CyberWars.Web.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     // Create Player
-                    var type = this.Input.Avatar.Split(".");
-                    await this.playerService.CreatePlayer(user.Id, type[1], this.Input.Avatar);
+                    var playerAvatar = this.Input.Avatar.Split(".");
+                    await this.playerService.CreatePlayer(user.Id, playerAvatar[1], this.Input.Avatar);
 
                     // Create Player Skills
                     await this.playerService.CreateSkills(user.Id);
@@ -131,7 +131,7 @@ namespace CyberWars.Web.Areas.Identity.Pages.Account
                     this.ModelState.AddModelError(string.Empty, error.Description);
                 }
             }
-
+            this.Type = type;
             // If we got this far, something failed, redisplay form
             return Page();
         }

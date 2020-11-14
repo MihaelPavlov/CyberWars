@@ -31,5 +31,10 @@
                 }
             }
         }
+
+        public void Seed(ApplicationDbContext dbContext, IServiceProvider serviceProvider)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

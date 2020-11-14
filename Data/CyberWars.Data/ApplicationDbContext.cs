@@ -83,8 +83,6 @@
         // Badges
         public DbSet<Badge> Badges { get; set; }
 
-        public DbSet<BadgeType> BadgeTypes { get; set; }
-
         public DbSet<Requirement> Requirements { get; set; }
 
         public DbSet<BadgeRequirement> BadgeRequirements { get; set; }

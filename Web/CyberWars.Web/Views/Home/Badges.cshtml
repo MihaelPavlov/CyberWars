@@ -1,21 +1,20 @@
 ﻿@using CyberWars.Web.ViewModels.HomeViews
 @model IEnumerable<BadgesViewModel>
-
-<div class="containerBadges">
-    <a class="btn yellow rounded" href="/Home/Badges?badgeType=C%23">C#</a>
-    <a class="btn yellow rounded" href="/Home/Badges?badgeType=JS">JS</a>
-    <a class="btn yellow rounded" href="/Home/Badges?badgeType=Java">Java</a>
-    <a class="btn yellow rounded" href="/Home/Badges?badgeType=Python">Python</a>
-    <a class="btn yellow rounded" href="/Home/Badges?badgeType=Ruby">Ruby</a>
-    <a class="btn yellow rounded" href="/Home/Badges?badgeType=C++">C++</a>
-</div>
+@*<div class="containerBadges">
+        <a class="btn yellow rounded" href="/Home/Badges">C#</a>
+        <a class="btn yellow rounded" href="/Home/Badges?badgeType=JS">JS</a>
+        <a class="btn yellow rounded" href="/Home/Badges?badgeType=Java">Java</a>
+        <a class="btn yellow rounded" href="/Home/Badges?badgeType=Python">Python</a>
+        <a class="btn yellow rounded" href="/Home/Badges?badgeType=Ruby">Ruby</a>
+        <a class="btn yellow rounded" href="/Home/Badges?badgeType=C++">C++</a>
+    </div>*@
 @foreach (var badge in Model)
 {
-   //If all badge.badgeRequiremnt is complete should Achivied or the other
+    //If all badge.badgeRequiremnt is complete should Achivied or the other
     <div class="badgeTable achieved">
         <span class="jobTittle">Badge</span>
         <h3 class="frellancingHeader">@badge.Name</h3>
-        <img src="/images/Player/Badges/01.Student_Developer.png" alt="petImg">
+        <img src="/images/Player/Badges/@(badge.ImageName + ".png")" alt="petImg">
         <ul>
             <li>Description</li>
             <li>@badge.Description</li>
@@ -27,15 +26,15 @@
     </div>
 }
 @*<div class="badgeTable">
-    <span class="jobTittle">Badge</span>
-    <h3 class="frellancingHeader">Student Badge</h3>
-    <img src="/images/Player/Badges/02.Junior_Developer.png" alt="petImg">
-    <ul>
-        <li>Description</li>
-        <li>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fuga, illum?</li>
-        <li> <a class="btn yellow rounded " href="/Home/BadgeRequirements?id=1">Requirements</a></li>
-    </ul>
-</div>*@
+        <span class="jobTittle">Badge</span>
+        <h3 class="frellancingHeader">Student Badge</h3>
+        <img src="/images/Player/Badges/02.Junior_Developer.png" alt="petImg">
+        <ul>
+            <li>Description</li>
+            <li>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fuga, illum?</li>
+            <li> <a class="btn yellow rounded " href="/Home/BadgeRequirements?id=1">Requirements</a></li>
+        </ul>
+    </div>*@
 
 @section CssFile {
     <link rel="stylesheet" href="/css/Home/badge.css">

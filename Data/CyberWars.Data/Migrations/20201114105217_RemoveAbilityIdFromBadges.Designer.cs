@@ -4,14 +4,16 @@ using CyberWars.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CyberWars.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201114105217_RemoveAbilityIdFromBadges")]
+    partial class RemoveAbilityIdFromBadges
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -244,6 +246,9 @@ namespace CyberWars.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("AbilityId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
 
@@ -251,8 +256,8 @@ namespace CyberWars.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
-                        .HasColumnType("nvarchar(150)")
-                        .HasMaxLength(150);
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
 
                     b.Property<string>("ImageName")
                         .HasColumnType("nvarchar(max)");
@@ -267,6 +272,8 @@ namespace CyberWars.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AbilityId");
 
                     b.HasIndex("IsDeleted");
 
@@ -890,9 +897,6 @@ namespace CyberWars.Data.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<int>("LevelName")
-                        .HasColumnType("int");
-
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
 
@@ -1207,6 +1211,13 @@ namespace CyberWars.Data.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("CyberWars.Data.Models.Badge.Badge", b =>
+                {
+                    b.HasOne("CyberWars.Data.Models.Ability.Ability", null)
+                        .WithMany("Badges")
+                        .HasForeignKey("AbilityId");
+                });
+
             modelBuilder.Entity("CyberWars.Data.Models.Badge.BadgeRequirement", b =>
                 {
                     b.HasOne("CyberWars.Data.Models.Badge.Badge", "Badge")
@@ -1239,7 +1250,7 @@ namespace CyberWars.Data.Migrations
 
             modelBuilder.Entity("CyberWars.Data.Models.Badge.Requirement", b =>
                 {
-                    b.HasOne("CyberWars.Data.Models.Ability.Ability", "Ability")
+                    b.HasOne("CyberWars.Data.Models.Ability.Ability", "BadgeType")
                         .WithMany("Requirements")
                         .HasForeignKey("AbilityId")
                         .OnDelete(DeleteBehavior.Restrict)

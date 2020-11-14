@@ -1,9 +1,15 @@
 ﻿@model CyberWars.Web.ViewModels.HomeViews.PlayerDataView
+@using System.Linq;
+@using CyberWars.Data.Models.Player;
+@using CyberWars.Data.Common.Repositories;
+@inject IDeletableEntityRepository<Player> playerRepository;
 @{
     var maxHealth = Model.Health;
     var maxEnergy = Model.Energy;
 
-    var level = Model.Levels.FirstOrDefault(x => x.Exp > Model.Experience);
+    var player = this.playerRepository.All().FirstOrDefault(x => x.Id == Model.PlayerId);
+
+    var level = Model.Levels.OrderBy(x => x.Exp).FirstOrDefault(x => x.Exp > Model.Experience);
 }
 <div class="stats">
     <div class="item item1">
@@ -38,11 +44,19 @@
             <span class="text">
                 @Model.Experience / @level.Exp
             </span> <br>
-            <img class="star " src="/images/Star.png" alt=""> <span class="text">@(level.Id-1)</span>
+            @{
+                if (level.LevelName - 1 != Model.Level)
+                {
+                    player.Level = level.LevelName - 1;
+                    playerRepository.Update(player);
+                    await playerRepository.SaveChangesAsync();
+                }
+            }
+            <img class="star " src="/images/Star.png" alt=""> <span class="text">@(level.LevelName -1)</span>
         </div>
     </div>
 </div>
-    @section CssFile{
-        <link rel="stylesheet" href="/css/style.css">
+@section CssFile{
+    <link rel="stylesheet" href="/css/style.css">
 
-    }
+}

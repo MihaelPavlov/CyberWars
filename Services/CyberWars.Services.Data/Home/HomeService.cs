@@ -79,9 +79,9 @@
             return await this.playerAbilityRepository.All().Where(x => x.PlayerId == playerId && x.Ability.AbilityType.Type == type).OrderByDescending(x => x.Points).To<T>().ToListAsync();
         }
 
-        public async Task<IEnumerable<T>> GetAllBadges<T>(string badgeType)
+        public async Task<IEnumerable<T>> GetAllBadges<T>()
         {
-            return await this.badgeRepository.All().Where(x => x.BadgeType.Name == badgeType).To<T>().ToListAsync();
+            return await this.badgeRepository.All().To<T>().ToListAsync();
         }
 
         public async Task<T> GetAllRequirementForBadgeById<T>(int badgeId)

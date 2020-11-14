@@ -7,16 +7,18 @@
 </div>
 @foreach (var food in Model)
 {
-    <div class="petTable">
-        <h3 class="frellancingHeader">@food.Name</h3>
-        <img src="/images/Market/Food/@(food.ImageName + ".png")" alt="petImg">
-        <ul>
-            <li>Health: @(food.GainHealth + "%")</li>
-            <li>Price : @food.Price <img class="moneyImg" src="/images/MoneyIcon.png" alt=""></li>
-            <li> <a class="btn yellow rounded " href="/Market/Food?foodId=@food.Id">Buy</a></li>
-        </ul>
-    </div>
-
+    <form method="post" class="foodForm">
+        <div class="petTable">
+            <h3 class="frellancingHeader">@food.Name</h3>
+            <img src="/images/Market/Food/@(food.ImageName + ".png")" alt="petImg">
+            <ul>
+                <li>Health: @(food.GainHealth + "%")</li>
+                <li>Price : @food.Price <img class="moneyImg" src="/images/MoneyIcon.png" alt=""></li>
+                <label for="foodId"></label>
+                <button class="btn yellow rounded" name="foodId" value="@food.Id">Buy</button>
+            </ul>
+        </div>
+    </form>
 }
 
 @section CssFile {

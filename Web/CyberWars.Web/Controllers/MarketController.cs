@@ -43,5 +43,15 @@
             var viewModel = await this.marketService.GetAllFood<MarketFoodViewModel>();
             return this.View(viewModel);
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Food(int foodId)
+        {
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            await this.marketService.BuyFood(foodId, userId);
+
+            return this.Redirect("/Home/Pets");
+        }
     }
 }

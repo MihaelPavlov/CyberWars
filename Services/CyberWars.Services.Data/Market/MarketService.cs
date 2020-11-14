@@ -75,5 +75,27 @@
             await this.playerRepository.SaveChangesAsync();
 
         }
+
+        public async Task BuyFood(int foodId, string userId)
+        {
+            var food = await this.foodRepository.All().FirstOrDefaultAsync(x => x.Id == foodId);
+
+            var player = await this.playerRepository.All().FirstOrDefaultAsync(x => x.UserId == userId);
+
+            var foodPrice = food.Price;
+            var playerMoney = player.Money;
+
+            if (playerMoney < foodPrice)
+            {
+                return;
+            }
+
+            player.Money -= food.Price;
+
+            player.Foods.Add(food);
+
+            this.playerRepository.Update(player);
+            await this.playerRepository.SaveChangesAsync();
+        }
     }
 }

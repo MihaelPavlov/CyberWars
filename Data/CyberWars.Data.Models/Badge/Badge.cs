@@ -4,6 +4,7 @@
     using System.ComponentModel.DataAnnotations;
 
     using CyberWars.Data.Common.Models;
+    using CyberWars.Data.Models.Ability;
 
     public class Badge : BaseDeletableModel<int>
     {
@@ -15,13 +16,9 @@
 
         public string Name { get; set; }
 
-        public int BadgeTypeId { get; set; }
-
-        public BadgeType BadgeType { get; set; }
-
         public string ImageName { get; set; }
 
-        [MaxLength(50)]
+        [MaxLength(150)]
         public string Description { get; set; }
 
         public virtual ICollection<BadgeRequirement> BadgeRequirements { get; set; }

@@ -5,6 +5,7 @@
 
     using CyberWars.Data.Common.Models;
     using CyberWars.Data.Models.Job;
+    using CyberWars.Data.Models.Ability;
 
     public class Requirement : BaseDeletableModel<int>
     {
@@ -16,9 +17,9 @@
 
         public string Name { get; set; }
 
-        public int BadgeTypeId { get; set; }
+        public int AbilityId { get; set; }
 
-        public BadgeType BadgeType { get; set; }
+        public Ability Ability { get; set; }
 
         public int Points { get; set; }
 

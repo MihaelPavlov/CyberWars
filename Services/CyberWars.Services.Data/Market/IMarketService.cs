@@ -12,5 +12,7 @@
         public Task<IEnumerable<T>> GetAllFood<T>();
 
         public Task BuyPet(int petId, string userId,string nameIt);
+
+        public Task BuyFood(int foodId, string userId);
     }
 }
