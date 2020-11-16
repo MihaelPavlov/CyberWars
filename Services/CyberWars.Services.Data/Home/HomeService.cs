@@ -32,6 +32,8 @@
         private readonly IDeletableEntityRepository<BadgeRequirement> badgeRequirementRepository;
         private readonly IDeletableEntityRepository<PlayerPet> playerPetRepository;
         private readonly IDeletableEntityRepository<Food> foodRepository;
+        private readonly IDeletableEntityRepository<Pet> petRepository;
+        private readonly IDeletableEntityRepository<PlayerFood> playerFoodRepository;
 
         public HomeService(IDeletableEntityRepository<Player> playerRepository
             , IDeletableEntityRepository<PlayerSkill> playerSkillRepository
@@ -40,7 +42,9 @@
             , IDeletableEntityRepository<Badge> badgeRepository
             , IDeletableEntityRepository<BadgeRequirement> badgeRequirementRepository
             , IDeletableEntityRepository<PlayerPet> playerPetRepository
-            , IDeletableEntityRepository<Food> foodRepository)
+            , IDeletableEntityRepository<Food> foodRepository
+            , IDeletableEntityRepository<Pet> petRepository
+            , IDeletableEntityRepository<PlayerFood> playerFoodRepository)
         {
             this.playerRepository = playerRepository;
             this.playerSkillRepository = playerSkillRepository;
@@ -50,6 +54,8 @@
             this.badgeRequirementRepository = badgeRequirementRepository;
             this.playerPetRepository = playerPetRepository;
             this.foodRepository = foodRepository;
+            this.petRepository = petRepository;
+            this.playerFoodRepository = playerFoodRepository;
         }
 
         public async Task<T> GetPlayerData<T>(string userId)
@@ -111,6 +117,27 @@
         public async Task<T> GetPetById<T>(string userId, int petId)
         {
             return await this.playerPetRepository.All().Where(x => x.Player.UserId == userId && x.PetId == petId).To<T>().FirstOrDefaultAsync();
+        }
+
+        public async Task FeedPetById(int foodId, int petId, string userId)
+        {
+            var food = await this.foodRepository.All().FirstOrDefaultAsync(x => x.Id == foodId);
+            var player = await this.playerRepository.All().FirstOrDefaultAsync(x => x.UserId == userId);
+
+            var playerPet = await this.playerPetRepository.All().FirstOrDefaultAsync(x => x.PetId == petId && x.PlayerId == player.Id);
+            var playerFood = await this.playerFoodRepository.All().FirstOrDefaultAsync(x => x.PlayerId == player.Id && x.FoodId == foodId);
+
+            // Update Health
+            playerPet.Health += playerFood.Food.GainHealth;
+
+            this.playerPetRepository.Update(playerPet);
+
+            // Delete PlayerFood and Save
+
+            playerFood.Quantity--;
+            this.playerFoodRepository.Update(playerFood);
+
+            await this.playerFoodRepository.SaveChangesAsync();
         }
     }
 }

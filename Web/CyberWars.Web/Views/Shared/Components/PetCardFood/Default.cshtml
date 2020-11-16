@@ -1,14 +1,20 @@
 ﻿@model CyberWars.Web.ViewModels.HomeViews.PlayerDataView
 
 
-@foreach (var food in Model.Foods)
+@foreach (var food in Model.PlayerFoods)
 {
-    <div class="food">
-        <ul>
-            <li> <img class="foodImg" src="/images/@(food.ImageName+".png")" alt=""></li>
-            <li><a class="btn-pet yellow rounded" href="#">Feed</a></li>
-        </ul>
-    </div>
+    @for (int i = 0; i < food.Quantity; i++)
+    {
+        <form method="post" class="foodForm">
+            <div class="food">
+                <ul>
+                    <li> <img class="foodImg" src="/images/Market//Food/@(food.Food.ImageName + ".png")" alt=""></li>
+                    <label for="foodId"></label>
+                    <button class="btn-pet yellow rounded" name="foodId" value="@food.FoodId">Feed</button>
+                </ul>
+            </div>
+        </form>
+    }
 }
 @section CssFile{
     <link rel="stylesheet" href="/css/Home/petCard.css">

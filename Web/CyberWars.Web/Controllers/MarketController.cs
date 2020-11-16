@@ -29,11 +29,11 @@
         }
 
         [HttpPost]
-        public async Task<IActionResult> Animals(int petId,string nameIt)
+        public async Task<IActionResult> Animals(int petId, string nameIt)
         {
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            await this.marketService.BuyPet(petId, userId,nameIt);
+            await this.marketService.BuyPet(petId, userId, nameIt);
 
             return this.Redirect("/Home/Pets");
         }
@@ -51,7 +51,7 @@
 
             await this.marketService.BuyFood(foodId, userId);
 
-            return this.Redirect("/Home/Pets");
+            return this.Redirect("/Market/Food");
         }
     }
 }

@@ -4,14 +4,16 @@ using CyberWars.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CyberWars.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201116124540_RemovePlayerFood")]
+    partial class RemovePlayerFood
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -777,12 +779,17 @@ namespace CyberWars.Data.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("PlayerId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("IsDeleted");
+
+                    b.HasIndex("PlayerId");
 
                     b.ToTable("Foods");
                 });
@@ -826,32 +833,6 @@ namespace CyberWars.Data.Migrations
                     b.HasIndex("IsDeleted");
 
                     b.ToTable("Pets");
-                });
-
-            modelBuilder.Entity("CyberWars.Data.Models.Pet_Food.PlayerFood", b =>
-                {
-                    b.Property<string>("PlayerId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("FoodId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int");
-
-                    b.HasKey("PlayerId", "FoodId");
-
-                    b.HasIndex("FoodId");
-
-                    b.HasIndex("IsDeleted");
-
-                    b.ToTable("PlayerFoods");
                 });
 
             modelBuilder.Entity("CyberWars.Data.Models.Pet_Food.PlayerPet", b =>
@@ -1389,19 +1370,11 @@ namespace CyberWars.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("CyberWars.Data.Models.Pet_Food.PlayerFood", b =>
+            modelBuilder.Entity("CyberWars.Data.Models.Pet_Food.Food", b =>
                 {
-                    b.HasOne("CyberWars.Data.Models.Pet_Food.Food", "Food")
-                        .WithMany("PlayerFoods")
-                        .HasForeignKey("FoodId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("CyberWars.Data.Models.Player.Player", "Player")
-                        .WithMany("PlayerFoods")
-                        .HasForeignKey("PlayerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.HasOne("CyberWars.Data.Models.Player.Player", null)
+                        .WithMany("Foods")
+                        .HasForeignKey("PlayerId");
                 });
 
             modelBuilder.Entity("CyberWars.Data.Models.Pet_Food.PlayerPet", b =>

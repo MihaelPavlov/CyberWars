@@ -11,6 +11,7 @@
     using CyberWars.Services.Data;
     using CyberWars.Services.Data.Home;
     using CyberWars.Services.Data.Market;
+    using CyberWars.Services.Data.Web;
     using CyberWars.Services.Mapping;
     using CyberWars.Services.Messaging;
     using CyberWars.Web.ViewModels;
@@ -69,6 +70,7 @@
             services.AddTransient<IPlayerService, PlayerService>();
             services.AddTransient<IHomeService, HomeService>();
             services.AddTransient<IMarketService, MarketService>();
+            services.AddTransient<IWebService, WebService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -5,6 +5,7 @@
     using System.Threading.Tasks;
     using CyberWars.Data.Common.Repositories;
     using CyberWars.Data.Models;
+    using CyberWars.Data.Models.Pet_Food;
     using CyberWars.Data.Models.Player;
     using CyberWars.Data.Models.Skills;
     using CyberWars.Services.Data.Home;
@@ -82,6 +83,15 @@
             var viewModel = await this.homeService.GetPetById<PetViewModel>(userId, petId);
 
             return this.View(viewModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> PetCard(int foodId, int petId)
+        {
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            await this.homeService.FeedPetById(foodId, petId, userId);
+            return this.Redirect($"/Home/PetCard?petId={petId}");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

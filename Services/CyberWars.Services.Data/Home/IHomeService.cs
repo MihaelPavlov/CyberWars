@@ -29,5 +29,7 @@
         public Task<IEnumerable<T>> GetPetRandomFood<T>();
 
         public Task<T> GetPetById<T>(string userId, int petId);
+
+        public Task FeedPetById(int foodId, int petId, string userId);
     }
 }

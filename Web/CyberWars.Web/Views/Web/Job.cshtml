@@ -1,0 +1,41 @@
+﻿@using CyberWars.Web.ViewModels.WebViews.Job;
+@using CyberWars.Data.Models.Player;
+@using CyberWars.Data.Common.Repositories;
+@using System.Security.Claims;
+
+@model IEnumerable<JobViewModel>
+
+@inject IDeletableEntityRepository<Player> playerRepository;
+
+@{
+    var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+    var player = this.playerRepository.All().FirstOrDefault(x => x.UserId == userId);
+}
+
+@foreach (var job in Model)
+{
+    <div class="frellacingTable">
+        <span class="jobTittle">Job</span>
+        <h3 class="frellancingHeader">@job.Name</h3>
+        <h4>Requirements</h4>
+        <ul>
+            @foreach (var requirement in job.JobRequirements)
+            {
+                
+                <li>@requirement.Requirement.Name - @requirement.Requirement.Points</li>
+                @*<li id="btn-disable">HTML - 20p</li>
+                    <li id="btn-disable">Python - 20p</li>
+                    <li>Entity.F.C - 20p</li>*@
+            }
+        </ul>
+        <h3>Time: 1 hour</h3>
+        <a class="btn yellow rounded " href="">Accept</a>
+    </div>
+}
+
+@section CssFile {
+    <link rel="stylesheet" href="/css/Web/frellancing.css">
+}
+@section PageHeader{
+    Jobs
+}

@@ -1,5 +1,11 @@
 ﻿namespace CyberWars.Web.ViewModels.HomeViews
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Security.Cryptography.X509Certificates;
+    using System.Text;
+
     using AutoMapper;
     using CyberWars.Data.Models.Ability;
     using CyberWars.Data.Models.Badge;
@@ -11,14 +17,14 @@
     using CyberWars.Data.Models.Skills;
     using CyberWars.Services.Mapping;
     using CyberWars.Web.ViewModels.HomeViews.Pet;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Security.Cryptography.X509Certificates;
-    using System.Text;
 
     public class PlayerDataView : IMapFrom<Player>
     {
+        public PlayerDataView()
+        {
+            this.PlayerFoods = new HashSet<PlayerFoodViewModel>();
+        }
+
         public string UserId { get; set; }
 
         public string PlayerId { get; set; }
@@ -42,6 +48,7 @@
         public int Level { get; set; }
 
         public ICollection<Level> Levels { get; set; }
+
         public BattleRecord BattleRecord { get; set; }
 
         public virtual ICollection<PlayerAbility> PlayerAbilities { get; set; }
@@ -63,6 +70,7 @@
         public virtual ICollection<Battle> AttacksPlayer { get; set; }
 
         public virtual ICollection<Battle> DefencesPlayer { get; set; }
-        public virtual ICollection<Food> Foods { get; set; }
+
+        public virtual IEnumerable<PlayerFoodViewModel> PlayerFoods { get; set; }
     }
 }

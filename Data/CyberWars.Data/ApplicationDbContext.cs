@@ -74,6 +74,8 @@
         // Foods
         public DbSet<Food> Foods { get; set; }
 
+        public DbSet<PlayerFood> PlayerFoods { get; set; }
+
         // Levels
         public DbSet<Level> Levels { get; set; }
 
@@ -212,6 +214,12 @@
             {
                 entity.HasKey(x => new { x.PlayerId, x.Id });
             });
+
+            builder.Entity<PlayerFood>(entity =>
+            {
+                entity.HasKey(x => new { x.PlayerId, x.FoodId });
+            });
+
         }
 
         private static void SetIsDeletedQueryFilter<T>(ModelBuilder builder)

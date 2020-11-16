@@ -52,20 +52,21 @@
 }
 
 .petTable {
-  margin: 18px;
-  border-spacing: 1;
-  border-collapse: collapse;
-  background: white;
-  border-radius: 20px;
-  overflow: hidden;
-  min-width: 180px;
-  max-width: 180px;
-  max-height: 340px;
-  display: inline-block;
-  border: 2px solid #f38c23;
-  z-index: 1;
-  background-color: #f6d990;
-  text-align: center;
+    margin: 18px;
+    border-spacing: 1;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    min-width: 180px;
+    max-width: 180px;
+    min-height: 300px;
+    max-height: 300px;
+    display: inline-block;
+    border: 2px solid #f38c23;
+    z-index: 1;
+    background-color: #f6d990;
+    text-align: center;
 }
 
 .petTable ul li {

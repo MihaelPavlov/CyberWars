@@ -1,14 +1,15 @@
 ﻿namespace CyberWars.Services.Data.Market
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+
+    using Microsoft.EntityFrameworkCore;
     using CyberWars.Data.Common.Repositories;
     using CyberWars.Data.Models.Pet_Food;
     using CyberWars.Services.Mapping;
-    using Microsoft.EntityFrameworkCore;
-    using System.Linq;
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
-    using System.Threading.Tasks;
     using CyberWars.Data.Models.Player;
 
     public class MarketService : IMarketService
@@ -17,12 +18,16 @@
 
         private readonly IDeletableEntityRepository<Food> foodRepository;
         private readonly IDeletableEntityRepository<Player> playerRepository;
+        private readonly IDeletableEntityRepository<PlayerFood> playerFoodRepository;
 
-        public MarketService(IDeletableEntityRepository<Pet> petRepository, IDeletableEntityRepository<Food> foodRepository, IDeletableEntityRepository<Player> playerRepository)
+        public MarketService(IDeletableEntityRepository<Pet> petRepository, IDeletableEntityRepository<Food> foodRepository
+            , IDeletableEntityRepository<Player> playerRepository
+           , IDeletableEntityRepository<PlayerFood> playerFoodRepository)
         {
             this.petRepository = petRepository;
             this.foodRepository = foodRepository;
             this.playerRepository = playerRepository;
+            this.playerFoodRepository = playerFoodRepository;
         }
 
         public async Task<IEnumerable<T>> GetAllFood<T>()
@@ -92,9 +97,28 @@
 
             player.Money -= food.Price;
 
-            player.Foods.Add(food);
+            if (this.playerFoodRepository.All().Any(x => x.PlayerId == player.Id && x.FoodId == food.Id))
+            {
+                var getPlayerFood = await this.playerFoodRepository.All().FirstOrDefaultAsync(x => x.PlayerId == player.Id && x.FoodId == food.Id);
 
-            this.playerRepository.Update(player);
+                getPlayerFood.Quantity++;
+                this.playerFoodRepository.Update(getPlayerFood);
+            }
+            else
+            {
+                var playerFood = new PlayerFood
+                {
+                    Player = player,
+                    Food = food,
+                    PlayerId = player.Id,
+                    FoodId = food.Id,
+                    Quantity = 1,
+                };
+                await this.playerFoodRepository.AddAsync(playerFood);
+            }
+
+            await this.playerFoodRepository.SaveChangesAsync();
+
             await this.playerRepository.SaveChangesAsync();
         }
     }

@@ -22,5 +22,7 @@
         public decimal Price { get; set; }
 
         public string NameIt { get; set; }
+
+        public IEnumerable<PlayerPet> PlayerPets { get; set; }
     }
 }

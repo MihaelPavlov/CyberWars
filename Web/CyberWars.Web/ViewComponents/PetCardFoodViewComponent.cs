@@ -18,18 +18,22 @@
     {
         private readonly IDeletableEntityRepository<Food> foodRepository;
         private readonly IDeletableEntityRepository<Player> playerRepository;
+        private readonly IDeletableEntityRepository<PlayerFood> playerFoodRepository;
 
-        public PetCardFoodViewComponent(IDeletableEntityRepository<Food> foodRepository, IDeletableEntityRepository<Player> playerRepository)
+        public PetCardFoodViewComponent(IDeletableEntityRepository<Food> foodRepository, IDeletableEntityRepository<Player> playerRepository,
+            IDeletableEntityRepository<PlayerFood> playerFoodRepository)
         {
             this.foodRepository = foodRepository;
             this.playerRepository = playerRepository;
+            this.playerFoodRepository = playerFoodRepository;
         }
 
         public IViewComponentResult Invoke(string userId)
         {
             var player = this.playerRepository.All().FirstOrDefault(x => x.UserId == userId);
-            var foods = this.foodRepository.All().ToList();
-            
+
+            var playerFood = this.playerFoodRepository.All().ToList();
+
             var viewModel = new PlayerDataView
             {
                 UserId = player.UserId,
@@ -42,13 +46,24 @@
                 LearnPoint = player.LearnPoint,
                 Level = player.Level,
                 Money = player.Money,
-                Foods = player.Foods.Select(x=> new Food 
+                PlayerFoods = playerFood.Where(x => x.PlayerId == player.Id).Select(x => new PlayerFoodViewModel
                 {
-                   ImageName=x.ImageName
-                }).ToList()
+                    Food = new FoodViewModel
+                    {
+                        Description = this.foodRepository.All().FirstOrDefault(fr => fr.Id == x.FoodId).Description,
+                        GainExp = this.foodRepository.All().FirstOrDefault(fr => fr.Id == x.FoodId).GainExp,
+                        GainHealth = this.foodRepository.All().FirstOrDefault(fr => fr.Id == x.FoodId).GainHealth,
+                        Id = this.foodRepository.All().FirstOrDefault(fr => fr.Id == x.FoodId).Id,
+                        Name = this.foodRepository.All().FirstOrDefault(fr => fr.Id == x.FoodId).Name,
+                        Price = this.foodRepository.All().FirstOrDefault(fr => fr.Id == x.FoodId).Price,
+                        ImageName = this.foodRepository.All().FirstOrDefault(fr => fr.Id == x.FoodId).ImageName,
+                    },
+                    PlayerId = player.Id,
+                    FoodId = x.FoodId,
+                    Quantity = x.Quantity,
+                }).ToList(),
             };
             return this.View(viewModel);
         }
-
     }
 }

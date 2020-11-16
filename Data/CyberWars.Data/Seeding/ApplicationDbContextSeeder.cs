@@ -6,6 +6,7 @@
 
     using CyberWars.Data.Seeding.Home;
     using CyberWars.Data.Seeding.Pets_Food;
+    using CyberWars.Data.Seeding.Web;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Logging;
 
@@ -38,6 +39,9 @@
                               new BadgeRequirementSeeder(),
                               new PetSeeder(),
                               new FoodSeeder(),
+                              new JobTypeSeeder(),
+                              new JobSeeder(),
+                              new JobRequirementSeeder(),
                           };
 
             foreach (var seeder in seeders)
