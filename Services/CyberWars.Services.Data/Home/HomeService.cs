@@ -139,5 +139,38 @@
 
             await this.playerFoodRepository.SaveChangesAsync();
         }
+
+        public async Task ChangePetName(string newName, int petId, string userId)
+        {
+            var playerPet = await this.playerPetRepository.All().FirstOrDefaultAsync(x => x.Player.UserId == userId && x.PetId == petId);
+
+            playerPet.NameIt = newName;
+
+            this.playerPetRepository.Update(playerPet);
+            await this.playerPetRepository.SaveChangesAsync();
+        }
+
+        public async Task ScratchPetBelly(int petId, string userId)
+        {
+            var playerPet = await this.playerPetRepository.All().FirstOrDefaultAsync(x => x.Player.UserId == userId && x.PetId == petId);
+
+            playerPet.Mood += 40;
+
+            this.playerPetRepository.Update(playerPet);
+            await this.playerPetRepository.SaveChangesAsync();
+        }
+
+        public async Task SellPetById(int petId, string userId)
+        {
+            var playerPet = await this.playerPetRepository.All().FirstOrDefaultAsync(x => x.Player.UserId == userId && x.PetId == petId);
+
+            var player = await this.playerRepository.All().FirstOrDefaultAsync(x => x.UserId == userId);
+            var pet = await this.petRepository.All().FirstOrDefaultAsync(x => x.Id == petId);
+
+            player.Money += pet.Price;
+            this.playerPetRepository.HardDelete(playerPet);
+
+            await this.playerPetRepository.SaveChangesAsync();
+        }
     }
 }

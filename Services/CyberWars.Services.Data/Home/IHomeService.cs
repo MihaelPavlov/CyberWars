@@ -31,5 +31,11 @@
         public Task<T> GetPetById<T>(string userId, int petId);
 
         public Task FeedPetById(int foodId, int petId, string userId);
+
+        public Task ChangePetName(string newName, int petId, string userId);
+
+        public Task ScratchPetBelly(int petId, string userId);
+
+        public Task SellPetById(int petId, string userId);
     }
 }

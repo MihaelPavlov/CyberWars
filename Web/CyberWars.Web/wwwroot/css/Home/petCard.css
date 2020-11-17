@@ -1,145 +1,314 @@
 .buttons {
-  margin: 10px;
+    margin: 10px;
 }
+
 .btn {
-  background: transparent;
-  border: 2px solid transparent;
-  box-sizing: border-box;
-  cursor: pointer;
-  font-size: 1rem;
-  font-weight: 700;
-  line-height: 1;
-  margin: 20px;
-  padding: 5px 10px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  outline: none;
-  -webkit-transition: all 0.2s ease-in-out 0s;
-  -moz-transition: all 0.2s ease-in-out 0s;
-  -ms-transition: all 0.2s ease-in-out 0s;
-  transition: all 0.2s ease-in-out 0s;
+    background: transparent;
+    border: 2px solid transparent;
+    box-sizing: border-box;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1;
+    margin: 10px;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    outline: none;
+    -webkit-transition: all 0.2s ease-in-out 0s;
+    -moz-transition: all 0.2s ease-in-out 0s;
+    -ms-transition: all 0.2s ease-in-out 0s;
+    transition: all 0.2s ease-in-out 0s;
 }
+
+.btn-small {
+    margin-left: 10px;
+    background: transparent;
+    border: 2px solid transparent;
+    box-sizing: border-box;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    outline: none;
+    -webkit-transition: all 0.2s ease-in-out 0s;
+    -moz-transition: all 0.2s ease-in-out 0s;
+    -ms-transition: all 0.2s ease-in-out 0s;
+    transition: all 0.2s ease-in-out 0s;
+}
+
 .btn-pet {
-  background: transparent;
-  border: 2px solid transparent;
-  box-sizing: border-box;
-  cursor: pointer;
-  font-size: 1rem;
-  font-weight: 700;
-  line-height: 1;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  outline: none;
-  -webkit-transition: all 0.2s ease-in-out 0s;
-  -moz-transition: all 0.2s ease-in-out 0s;
-  -ms-transition: all 0.2s ease-in-out 0s;
-  transition: all 0.2s ease-in-out 0s;
+    background: transparent;
+    border: 2px solid transparent;
+    box-sizing: border-box;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    outline: none;
+    -webkit-transition: all 0.2s ease-in-out 0s;
+    -moz-transition: all 0.2s ease-in-out 0s;
+    -ms-transition: all 0.2s ease-in-out 0s;
+    transition: all 0.2s ease-in-out 0s;
 }
+
 .rounded {
-  border-radius: 5px;
+    border-radius: 5px;
 }
+
 .full-rounded {
-  border-radius: 20em;
+    border-radius: 20em;
 }
 
 .yellow {
-  background: #fac75a;
-  color: #744905;
-  box-shadow: 0 3px 0 #f9b629;
+    background: #fac75a;
+    color: #744905;
+    box-shadow: 0 3px 0 #f9b629;
 }
-.yellow:hover {
-  background: #fce17a;
-}
-.yellow:active,
-.yellow:focus {
-  background: #fac24b;
-}
+
+    .yellow:hover {
+        background: #fce17a;
+    }
+
+    .yellow:active,
+    .yellow:focus {
+        background: #fac24b;
+    }
+
 .petHeader {
-  font-size: 1.9rem;
-  margin: 5px;
+    font-size: 1.9rem;
+    margin: 5px;
 }
+
 .petTable {
-  margin: 20px 220px;
-  border-spacing: 1;
-  border-collapse: collapse;
-  background: white;
-  border-radius: 20px;
-  min-width: 460px;
-
-  overflow: hidden;
-  display: inline-block;
-  border: 2px solid #f38c23;
-  z-index: 1;
-  background-color: rgb(238, 224, 195);
-  text-align: center;
+    margin: 20px 220px;
+    border-spacing: 1px;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 20px;
+    min-width: 460px;
+    overflow: hidden;
+    display: inline-block;
+    border: 2px solid #f38c23;
+    z-index: 1;
+    background-color: rgb(238, 224, 195);
+    text-align: center;
 }
 
-.petTable ul li {
-  color: #744905;
-}
+    .petTable ul li {
+        color: #744905;
+    }
 
 blockquote {
-  color: white;
-  text-align: center;
+    color: white;
+    text-align: center;
 }
 
 .petList {
-  display: inline-block;
-  margin: 10px;
+    display: inline-block;
+    margin: 10px;
 }
+
 .petBar {
-  display: inline-block;
-  border: 3px solid #dcb97b;
-  border-radius: 10px;
-  width: 200px;
-  padding: 1px;
-  text-align: center;
+    display: inline-block;
+    border: 3px solid #dcb97b;
+    border-radius: 10px;
+    width: 200px;
+    padding: 1px;
+    text-align: center;
 }
 
 .petFoodTable {
-  margin-left: 30px;
-  margin-bottom: 20px;
-  border-spacing: 1;
-  border-collapse: collapse;
-  background: white;
-  border-radius: 20px;
-  overflow: hidden;
-  width: 400px;
-  height: 200px;
-  max-width: 400px;
-  max-height: 200px;
-  max-height: 200px;
-  overflow: auto;
-  border: 2px solid #f38c23;
-  z-index: 1;
-  background-color: #f6d990;
-  text-align: left;
+    margin-left: 30px;
+    margin-bottom: 20px;
+    border-spacing: 1px;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    width: 400px;
+    height: 200px;
+    max-width: 400px;
+    max-height: 200px;
+    max-height: 200px;
+    overflow: auto;
+    border: 2px solid #f38c23;
+    z-index: 1;
+    background-color: #f6d990;
+    text-align: left;
 }
 
 .food {
-  margin: 10px;
-  border-spacing: 1;
-  border-collapse: collapse;
-  background: white;
-  border-radius: 20px;
-  width: 100px;
-  height: 100px;
-  min-width: 100px;
-  max-height: 100px;
-  overflow: hidden;
-  display: inline-block;
-  border: 2px solid #f38c23;
-  z-index: 1;
-  background-color: #f6d990;
-  text-align: center;
+    margin: 10px;
+    border-spacing: 1px;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 20px;
+    width: 100px;
+    height: 100px;
+    min-width: 100px;
+    max-height: 100px;
+    overflow: hidden;
+    display: inline-block;
+    border: 2px solid #f38c23;
+    z-index: 1;
+    background-color: #f6d990;
+    text-align: center;
 }
 
 .foodImg {
-  width: 40px;
-  height: 40px;
+    width: 40px;
+    height: 40px;
 }
+
 .foodForm {
-    display: inline;
+    display: inline-block;
+}
+
+.togglesearch {
+    background: #e8e8e4;
+    position: absolute;
+    top: 710px;
+    width: 300px;
+    height: 60px;
+    line-height: 60px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border-top: 4px solid #f38c23;
+    display: none;
+}
+
+    .togglesearch:before {
+        content: "";
+        position: absolute;
+        top: -30px;
+        border-left: 12px solid transparent;
+        border-right: 12px solid transparent;
+        border-top: 14px solid transparent;
+        border-bottom: 14px solid #f38c23;
+    }
+
+    .togglesearch input[type="text"] {
+        width: 100px;
+        padding: 5px 10px;
+        border: 1px solid #f38c23;
+        outline: none;
+        border-radius: 10px;
+    }
+
+    .togglesearch input[type="button"] {
+        width: 80px;
+        padding: 5px 0;
+        background: #f38c23;
+        color: #fff;
+        margin-left: -6px;
+        border: 1px solid #f38c23;
+        outline: none;
+        cursor: pointer;
+    }
+
+.petForm {
+    display: inline-block;
+}
+
+@media only screen and (min-width: 240px) and (max-width: 768px) {
+    .navbar ul li {
+        float: none;
+        display: block;
+        text-align: center;
+        margin: 0 auto;
+    }
+}
+
+h1 {
+    text-align: center;
+    font-family: Tahoma, Arial, sans-serif;
+    color: #06d85f;
+    margin: 80px 0;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+}
+
+    .overlay:target {
+        visibility: visible;
+        opacity: 1;
+    }
+
+.popup {
+    margin: 70px auto;
+    padding: 20px;
+    top: 200px;
+    background: #fff;
+    border-radius: 5px;
+    width: 30%;
+    position: relative;
+    transition: all 5s ease-in-out;
+}
+
+    .popup h2 {
+        margin-top: 0;
+        color: #333;
+        font-family: Tahoma, Arial, sans-serif;
+    }
+
+    .popup .close {
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        transition: all 200ms;
+        font-size: 30px;
+        font-weight: bold;
+        text-decoration: none;
+        color: #333;
+    }
+
+        .popup .close:hover {
+            color: #06d85f;
+        }
+
+    .popup .content {
+        max-height: 30%;
+        overflow: auto;
+    }
+
+@media screen and (max-width: 700px) {
+    .box {
+        width: 70%;
+    }
+
+    .popup {
+        width: 70%;
+    }
+}
+
+#popUpBox {
+    width: 500px;
+    overflow: hidden;
+    background-color: #f38c23;
+    box-shadow: 0 0 10px black;
+    border-radius: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    padding: 10px;
+    text-align: center;
+    display: none;
 }

@@ -94,6 +94,36 @@
             return this.Redirect($"/Home/PetCard?petId={petId}");
         }
 
+        [HttpPost]
+        public async Task<IActionResult> ChangeName(string newName, int petId)
+        {
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            await this.homeService.ChangePetName(newName, petId, userId);
+
+            return this.Redirect($"/Home/PetCard?petId={petId}");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ScratchPetBelly(int petId)
+        {
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            await this.homeService.ScratchPetBelly(petId, userId);
+            System.Threading.Thread.Sleep(2000);
+
+            return this.Redirect($"/Home/PetCard?petId={petId}");
+        }
+
+        public async Task<IActionResult> SellPet(int petId)
+        {
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            await this.homeService.SellPetById(petId, userId);
+
+            return this.Redirect("/Home/Pets");
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
