@@ -7,7 +7,7 @@
     var maxHealth = Model.Health;
     var maxEnergy = Model.Energy;
 
-    var player = this.playerRepository.All().FirstOrDefault(x => x.Id == Model.PlayerId);
+    var player = this.playerRepository.All().FirstOrDefault(x => x.Id == Model.Id);
 
     var level = Model.Levels.OrderBy(x => x.Exp).FirstOrDefault(x => x.Exp > Model.Experience);
 }

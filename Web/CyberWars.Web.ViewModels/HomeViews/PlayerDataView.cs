@@ -23,11 +23,13 @@
         public PlayerDataView()
         {
             this.PlayerFoods = new HashSet<PlayerFoodViewModel>();
+            this.PlayerAbilities = new HashSet<PlayerAbilitiesViewModel>();
+            this.PlayerSkills = new HashSet<PlayerSkillViewModel>();
         }
 
         public string UserId { get; set; }
 
-        public string PlayerId { get; set; }
+        public string Id { get; set; }
 
         public int Experience { get; set; }
 
@@ -51,9 +53,9 @@
 
         public BattleRecord BattleRecord { get; set; }
 
-        public virtual ICollection<PlayerAbility> PlayerAbilities { get; set; }
+        public virtual ICollection<PlayerAbilitiesViewModel> PlayerAbilities { get; set; }
 
-        public virtual ICollection<PlayerSkill> PlayerSkills { get; set; }
+        public virtual ICollection<PlayerSkillViewModel> PlayerSkills { get; set; }
 
         public virtual ICollection<PlayerPet> PlayerPets { get; set; }
 

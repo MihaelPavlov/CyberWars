@@ -1,37 +1,30 @@
-﻿<h2 class="descriptionCompetitiveSecondHeader">You find you oppenent .Let's Fight. </h2>
+﻿@using CyberWars.Web.ViewModels.HomeViews
+@model PlayerDataView 
+<h2 class="descriptionCompetitiveSecondHeader">You find you oppenent .Let's Fight. </h2>
 <div class="Profile">
-    <img src="/images//Web/Enemy Picture.jpg" alt="PlayerIcon">
+    <img src="/images/Base/@(Model.ImageName)" alt="PlayerIcon">
 </div>
-<h1 class="descriptionHeader">Description of Player Name</h1>
+<h1 class="descriptionHeader">Description of @Model.Name</h1>
 <table class="DescriptionTable">
     <tr>
         <th>Charasteristic:</th>
-        <td>Player Name</td>
+        <td>@Model.Name</td>
     </tr>
     <tr>
         <th>Level:</th>
-        <td>3</td>
+        <td>@Model.Level</td>
     </tr>
     <tr>
         <th>Health:</th>
-        <td>1000</td>
+        <td>@Model.Health</td>
     </tr>
+    @foreach (var skill in Model.PlayerSkills.Skip(1))
+    {
     <tr>
-        <th>Staying Power:</th>
-        <td>55</td>
+        <th>@skill.SkillName</th>
+        <td>@skill.Points</td>
     </tr>
-    <tr>
-        <th>Knowledge:</th>
-        <td>75</td>
-    </tr>
-    <tr>
-        <th>Motivation:</th>
-        <td>31</td>
-    </tr>
-    <tr>
-        <th>Firewall Defence:</th>
-        <td>41</td>
-    </tr>
+    }
 </table>
 <div class="buttons">
     <a class="btn yellow rounded" type="submit" href="/DarkWeb/Result">Fight ( 3 <img class="competitiveEnergy" src="/images/Web/CompetitiveLightIcon.png" alt=""> )</a>

@@ -1,24 +1,26 @@
-﻿<div class="blog-card">
+﻿@using CyberWars.Web.ViewModels.DarkWeb;
+@model TypeOfAttackInputModel;
+<div class="blog-card">
     <img src="/images/Web/attackIcon.png" alt="">
     <div class="description">
         <h1 class="ResultcompetitveHeader">Find and Hack a Programmer</h1>
         <h2 class="ResultCompetitiveSecondHeader">Here you can find and hack or destroy network and get file and sell it from a programmer.Let's go hack </h2>
+     <form method="get" asp-controller="DarkWeb" asp-action="Search">
         <div class="attackChoise">
-            <input type="radio" name="choise" value="Enemy">
-            <label for="findEnemy">Find Enemy</label>
+            <input type="radio" name="type" value="Normal" asp-for="Type">
+           <span>Find Enemy</span>
+
+            <input type="radio" name="type" value="Stronger"asp-for="Type" >
+            <span>Find Stronger Enemy</span>
+
+            <input type="radio" name="type" value="Search" asp-for="Type">
+            <span>Find By Name</span>
+
+            <input class="input" type="text" name="searchName" size="25" maxlength="15"asp-for="SearchName">
+            <button class="btn yellow rounded" name="choise"  onclick="/DarkWeb/Search">Search ( 3 <img class="competitiveEnergy" src="/images/Web/CompetitiveLightIcon.png" alt=""> )</button>
         </div>
-        <div class="attackChoise">
-            <input type="radio" name="choise" value="Stronger">
-            <label for="StrongerEnemy">Find Stronger Enemy</label>
-        </div>
-        <div class="attackChoise">
-            <input type="radio" name="choise" value="ByName">
-            <label for="ByName">Find by name</label>
-            <input class="input" type="text" name="searchname" size="25" value="" maxlength="15">
-        </div>
-        <div class="read-more">
-            <a class="btn yellow rounded" type="submit" href="/DarkWeb/Search">Search ( 3 <img class="competitiveEnergy" src="/images/Web/CompetitiveLightIcon.png" alt=""> )</a>
-        </div>
+    
+         </form>
     </div>
 </div>
 @section CssFile {

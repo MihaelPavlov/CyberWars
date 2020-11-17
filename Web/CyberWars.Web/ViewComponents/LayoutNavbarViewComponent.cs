@@ -28,7 +28,7 @@ namespace CyberWars.Web.ViewComponents
             var viewModel = new PlayerDataView
             {
                 UserId = player.UserId,
-                PlayerId = player.Id,
+                Id = player.Id,
                 Experience = player.Experience,
                 Class = player.Class,
                 ImageName = player.ImageName,
