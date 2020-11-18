@@ -11,7 +11,7 @@
 
         public Player Player { get; set; }
 
-        public int BattleId { get; set; }
+        public string BattleId { get; set; }
 
         public Battle Battle { get; set; }
 

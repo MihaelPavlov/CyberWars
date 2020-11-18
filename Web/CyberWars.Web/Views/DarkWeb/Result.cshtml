@@ -1,16 +1,29 @@
-﻿<div class="blog-card">
-         <img src="/images/Web/Result Attack.jpg" alt="">
-         <div class="description">
-           <h4 class= "ResultcompetitveHeader">PlayerName VS  DefencePlayer (14.05.2020 14:52)</h4>
-           <h2 class="ResultCompetitiveSecondHeader">The battle of the year</h2>
-           <p class="earn"> Reward  </p>
+﻿@using CyberWars.Web.ViewModels.Battle;
+@using CyberWars.Data.Common.Repositories
+@using CyberWars.Data.Models.Player
+@using System.Security.Claims;
 
-            <p>PlayerName earn 50 money and 4 experience.</p>
-           <div class="read-more">
-             <a class="btn yellow rounded" href="/DarkWeb/Search">Again ( 4 <img class="competitiveEnergy" src="/images/Web/CompetitiveLightIcon.png" alt=""> )</a>
-           </div>
-         </div>
-       </div> 
+@model BattleRewardViewModel
+
+@inject IDeletableEntityRepository<Player> playerRepository
+@{
+    var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+    var player = this.playerRepository.All().FirstOrDefault(x => x.Id == userId);
+}
+<div class="blog-card">
+    <img src="/images/Web/Result Attack.jpg" alt="">
+    <div class="description">
+        <h4 class="ResultcompetitveHeader">@Model.AttackPlayerName VS  @Model.DefencePlayerName (@Model.BattleDate)</h4>
+        <h2 class="ResultCompetitiveSecondHeader">The battle of the year</h2>
+        <p class="earn"> Reward for Winner -> @Model.WinnerPlayerName </p>
+
+        <p>@Model.WinnerPlayerName earn @Model.RewardMoney money and @Model.RewardExp experience.</p>
+        <div class="read-more">
+            <a class="btn yellow rounded" href="/DarkWeb/Search?type=Normal">Again ( 4 <img class="competitiveEnergy" src="/images/Web/CompetitiveLightIcon.png" alt=""> )</a>
+        </div>
+    </div>
+</div>
 @section CssFile {
     <link rel="stylesheet" href="/css/Web/ResultCompetitveCoding.css">
 }

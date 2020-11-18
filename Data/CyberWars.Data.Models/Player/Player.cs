@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
     using CyberWars.Data.Common.Models;
     using CyberWars.Data.Models.Ability;
     using CyberWars.Data.Models.Badge;
@@ -31,6 +32,8 @@
             this.PlayerFoods = new HashSet<PlayerFood>();
             this.Health = 1000;
             this.Energy = 100;
+            this.MaxEnergy = 100;
+            this.MaxHealth = 1000;
             this.Money = 1000;
             this.Level = 1;
             this.Experience = 0;
@@ -49,7 +52,11 @@
 
         public int Health { get; set; }
 
+        public int MaxHealth { get; set; }
+
         public int Energy { get; set; }
+
+        public int MaxEnergy { get; set; }
 
         public decimal Money { get; set; }
 
@@ -60,7 +67,6 @@
         public int Level { get; set; }
 
         public BattleRecord BattleRecord { get; set; }
-
 
         public virtual ICollection<PlayerAbility> PlayerAbilities { get; set; }
 

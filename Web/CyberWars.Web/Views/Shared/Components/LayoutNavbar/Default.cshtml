@@ -4,9 +4,6 @@
 @using CyberWars.Data.Common.Repositories;
 @inject IDeletableEntityRepository<Player> playerRepository;
 @{
-    var maxHealth = Model.Health;
-    var maxEnergy = Model.Energy;
-
     var player = this.playerRepository.All().FirstOrDefault(x => x.Id == Model.Id);
 
     var level = Model.Levels.OrderBy(x => x.Exp).FirstOrDefault(x => x.Exp > Model.Experience);
@@ -28,13 +25,13 @@
                 <span class="tooltiptext">Heal</span>
                 <img src="/images/HeartIcon.png" alt="">
                 <img class="green" src="/images/GreenLine.png" alt="">
-                <span>@Model.Health / @maxHealth</span>
+                <span>@Model.Health / @Model.MaxHealth</span>
             </div>
             <div class="Energy tooltip">
                 <span class="tooltiptext">Energy</span>
                 <img src="/images/LightIcon.png" alt="">
                 <img class="green" src="/images/blueLine.png" alt="">
-                <span>@Model.Energy / @maxEnergy</span>
+                <span>@Model.Energy / @Model.MaxEnergy</span>
             </div>
         </div>
     </div>

@@ -15,15 +15,15 @@
             this.PlayerBattles = new HashSet<PlayerBattle>();
         }
 
-        [ForeignKey("AttackPlayer")]
+        [ForeignKey("AttackPlayerId")]
         public string AttackPlayerId { get; set; }
 
-        public Player AttackPlayer { get; set; }
-
-        [ForeignKey("DefencePlayer")]
+        [ForeignKey("DefencePlayerId")]
         public string DefencePlayerId { get; set; }
 
-        public Player DefencePlayer { get; set; }
+        public virtual Player AttackPlayer { get; set; }
+
+        public virtual Player DefencePlayer { get; set; }
 
         public DateTime BattleDate { get; set; }
 

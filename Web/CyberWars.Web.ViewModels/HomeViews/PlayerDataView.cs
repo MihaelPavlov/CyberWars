@@ -41,7 +41,11 @@
 
         public int Health { get; set; }
 
+        public int MaxHealth { get; set; }
+
         public int Energy { get; set; }
+
+        public int MaxEnergy { get; set; }
 
         public decimal Money { get; set; }
 

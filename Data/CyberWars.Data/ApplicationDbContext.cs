@@ -160,6 +160,7 @@
                  .HasForeignKey(x => x.AttackPlayerId)
                  .OnDelete(DeleteBehavior.NoAction);
 
+
                 entity.HasOne(x => x.DefencePlayer)
               .WithMany(x => x.DefencesPlayer)
               .HasForeignKey(x => x.DefencePlayerId)

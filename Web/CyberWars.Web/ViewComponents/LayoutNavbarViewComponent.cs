@@ -33,10 +33,12 @@ namespace CyberWars.Web.ViewComponents
                 Class = player.Class,
                 ImageName = player.ImageName,
                 Health = player.Health,
+                MaxHealth = player.MaxHealth,
+                MaxEnergy = player.MaxEnergy,
                 Energy = player.Energy,
                 LearnPoint = player.LearnPoint,
                 Level = player.Level,
-                Money=player.Money,
+                Money = player.Money,
                 Levels = this.dbContext.Levels.ToList()
             };
             return this.View(viewModel);

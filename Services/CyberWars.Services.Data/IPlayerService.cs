@@ -13,6 +13,8 @@ namespace CyberWars.Services.Data
 
         public Task CreatePlayerAbilities(string id);
 
-        public Task<string> GetUserId(string username, string password);
+        public Task CreateBattleRecord(string id);
+
+        //public Task<string> GetUserId(string username, string password);
     }
 }

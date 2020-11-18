@@ -13,6 +13,14 @@
   <ItemGroup>
     <Compile Remove="Migrations\20201109210217_FixPlayer.cs" />
     <Compile Remove="Migrations\20201109210217_FixPlayer.Designer.cs" />
+    <Compile Remove="Migrations\20201118101215_FixPlayerBattle.cs" />
+    <Compile Remove="Migrations\20201118101215_FixPlayerBattle.Designer.cs" />
+    <Compile Remove="Migrations\20201118101818_FixPlayerBattle.cs" />
+    <Compile Remove="Migrations\20201118101818_FixPlayerBattle.Designer.cs" />
+    <Compile Remove="Migrations\20201118131331_PlayerMaxHealthAndEnergy.cs" />
+    <Compile Remove="Migrations\20201118131331_PlayerMaxHealthAndEnergy.Designer.cs" />
+    <Compile Remove="Migrations\20201118133215_AddPlayerMaxHealthAndEnergy.cs" />
+    <Compile Remove="Migrations\20201118133215_AddPlayerMaxHealthAndEnergy.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

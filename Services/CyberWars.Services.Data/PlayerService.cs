@@ -13,6 +13,8 @@
     using CyberWars.Data.Models.Skills;
     using CyberWars.Data.Models.Ability;
     using CyberWars.Data.Models.Pet_Food;
+    using CyberWars.Data.Models.Battle;
+    using System.Security.Claims;
 
     public class PlayerService : IPlayerService
     {
@@ -23,6 +25,7 @@
         private readonly IDeletableEntityRepository<Ability> abilityRepository;
         private readonly IDeletableEntityRepository<PlayerAbility> playerAbilityRepository;
         private readonly IDeletableEntityRepository<Food> foodRepository;
+        private readonly IDeletableEntityRepository<BattleRecord> battleRecordRepository;
 
         public PlayerService(IDeletableEntityRepository<ApplicationUser> userRepository
             , IDeletableEntityRepository<Player> playerRepository
@@ -30,7 +33,8 @@
             , IDeletableEntityRepository<PlayerSkill> playerSkillRepository
             , IDeletableEntityRepository<Ability> abilityRepository
             , IDeletableEntityRepository<PlayerAbility> playerAbilityRepository
-            , IDeletableEntityRepository<Food> foodRepository)
+            , IDeletableEntityRepository<Food> foodRepository
+            , IDeletableEntityRepository<BattleRecord> battleRecordRepository)
         {
             this.playerRepository = playerRepository;
             this.userRepository = userRepository;
@@ -39,6 +43,7 @@
             this.abilityRepository = abilityRepository;
             this.playerAbilityRepository = playerAbilityRepository;
             this.foodRepository = foodRepository;
+            this.battleRecordRepository = battleRecordRepository;
         }
 
         public async Task CreatePlayer(string id, string typeClass, string imageName)
@@ -98,11 +103,21 @@
             await this.playerAbilityRepository.SaveChangesAsync();
         }
 
-      
-
-        public async Task<string> GetUserId(string username, string password)
+        public async Task CreateBattleRecord(string id)
         {
-            throw new NotImplementedException();
+            var user = await this.userRepository.All().FirstOrDefaultAsync(x => x.Id == id);
+
+            var battleRecords = await this.battleRecordRepository.All().ToListAsync();
+            var battleRecord = new BattleRecord
+            {
+                PlayerId = user.PlayerId,
+                Wins = 0,
+                Losses = 0,
+            };
+
+            await this.battleRecordRepository.AddAsync(battleRecord);
+
+            await this.battleRecordRepository.SaveChangesAsync();
         }
     }
 }

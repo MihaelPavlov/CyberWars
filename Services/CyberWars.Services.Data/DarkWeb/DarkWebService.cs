@@ -8,9 +8,11 @@
 
     using CyberWars.Data.Common.Repositories;
     using CyberWars.Data.Models.Ability;
+    using CyberWars.Data.Models.Battle;
     using CyberWars.Data.Models.Player;
     using CyberWars.Data.Models.Skills;
     using CyberWars.Services.Mapping;
+    using CyberWars.Web.ViewModels.Battle;
     using CyberWars.Web.ViewModels.HomeViews;
     using Microsoft.EntityFrameworkCore;
 
@@ -19,15 +21,24 @@
         private readonly IDeletableEntityRepository<Player> playerRepository;
         private readonly IDeletableEntityRepository<PlayerAbility> playerAbilityRepository;
         private readonly IDeletableEntityRepository<PlayerSkill> playerSkillRepository;
+        private readonly IDeletableEntityRepository<Battle> battleRepository;
+        private readonly IDeletableEntityRepository<PlayerBattle> playerBattleRepository;
+        private readonly IDeletableEntityRepository<BattleRecord> battleRecordRepository;
 
 
         public DarkWebService(IDeletableEntityRepository<Player> playerRepository
             , IDeletableEntityRepository<PlayerAbility> playerAbilityRepository
-            , IDeletableEntityRepository<PlayerSkill> playerSkillRepository)
+            , IDeletableEntityRepository<PlayerSkill> playerSkillRepository
+            , IDeletableEntityRepository<Battle> battleRepository
+            , IDeletableEntityRepository<PlayerBattle> playerBattleRepository
+            , IDeletableEntityRepository<BattleRecord> battleRecordRepository)
         {
             this.playerRepository = playerRepository;
             this.playerAbilityRepository = playerAbilityRepository;
             this.playerSkillRepository = playerSkillRepository;
+            this.battleRepository = battleRepository;
+            this.playerBattleRepository = playerBattleRepository;
+            this.battleRecordRepository = battleRecordRepository;
         }
 
         public async Task<PlayerDataView> FindNormalEnemy(string type, string userId)
@@ -43,38 +54,144 @@
                 int statsSum = await this.SumStats(player);
                 playerWithStats.Add(player.Id, statsSum);
             }
+
             var attackPlayerStats = await this.SumStats(attackPlayer);
             playerWithStats.Where(x => x.Value < attackPlayerStats);
             var random = new Random().Next(0, playerWithStats.Count);
 
+            var defencePlayer = await this.playerRepository.All().To<PlayerDataView>().FirstAsync(x => x.Id == playerWithStats.ElementAt(random).Key);
+            return defencePlayer;
+        }
 
+        public async Task<PlayerDataView> FindStrongerEnemy(string type, string userId)
+        {
 
+            var attackPlayer = await this.playerRepository.All().Where(x => x.UserId == userId).To<PlayerDataView>().FirstAsync();
+            var players = await this.playerRepository.All().Where(x => x.UserId != userId).To<PlayerDataView>().ToListAsync();
+
+            Dictionary<string, int> playerWithStats = new Dictionary<string, int>();
+
+            foreach (var player in players)
+            {
+                int statsSum = await this.SumStats(player);
+                playerWithStats.Add(player.Id, statsSum);
+            }
+
+            var attackPlayerStats = await this.SumStats(attackPlayer);
+            playerWithStats.Where(x => x.Value > attackPlayerStats);
+            var random = new Random().Next(0, playerWithStats.Count);
 
             var defencePlayer = await this.playerRepository.All().To<PlayerDataView>().FirstAsync(x => x.Id == playerWithStats.ElementAt(random).Key);
             return defencePlayer;
-            //var attackPlayer = await this.playerRepository.All().Where(x => x.UserId == userId).To<PlayerDataView>().FirstAsync();
+        }
 
-            //var allPlayers = await this.playerRepository.All().To<PlayerDataView>().ToListAsync();
-            //var random = new Random().Next(allPlayers.Count);
-            //var defencePlayer = await this.playerRepository.All().Take(1).To<PlayerDataView>().FirstAsync();
+        public async Task<PlayerDataView> FindEnemyByName(string type, string userId, string searchName)
+        {
+            var attackPlayer = await this.playerRepository.All().Where(x => x.UserId == userId).To<PlayerDataView>().FirstAsync();
+            var defencePlayer = await this.playerRepository.All().To<PlayerDataView>().FirstOrDefaultAsync(x => x.Name == searchName);
 
-            //for (int i = 0; i < allPlayers.Count; i++)
-            //{
-            //    if (i == random)
-            //    {
-            //        defencePlayer = allPlayers[i];
+            return defencePlayer;
+        }
 
-            //        if (defencePlayer.Id != attackPlayer.Id)
-            //        {
-            //            break;
-            //        }
-            //    }
-            //}
+        public async Task<BattleRewardViewModel> ResultFromBattle(string userId, string defencePlayerId)
+        {
+            var attackPlayer = await this.playerRepository.All().Where(x => x.UserId == userId).To<PlayerDataView>().FirstAsync();
+            var defencePlayer = await this.playerRepository.All().To<PlayerDataView>().FirstOrDefaultAsync(x => x.Id == defencePlayerId);
 
-            //var attackPlayerStats = this.SumStats(attackPlayer);
-            //var defencePlayerStats = this.SumStats(defencePlayer);
+            var attackPlayerStats = await this.SumStats(attackPlayer);
+            var defencePlayerStats = await this.SumStats(defencePlayer);
 
-            //return defencePlayer;
+            var winner = new PlayerDataView();
+
+            var battle = new Battle
+            {
+                AttackPlayerId = attackPlayer.Id,
+                DefencePlayerId = defencePlayer.Id,
+                BattleDate = DateTime.UtcNow,
+            };
+
+
+            if (attackPlayerStats > defencePlayerStats)
+            {
+                var battleRecordAttackPlayer = await this.battleRecordRepository.All().FirstOrDefaultAsync(x => x.PlayerId == attackPlayer.Id);
+                var battleRecordDefencePlayer = await this.battleRecordRepository.All().FirstOrDefaultAsync(x => x.PlayerId == defencePlayer.Id);
+
+                //var attackP = await this.playerRepository.All().FirstOrDefaultAsync(x => x.UserId == userId);
+                //var defenceP = await this.playerRepository.All().FirstOrDefaultAsync(x => x.Id == defencePlayerId);
+
+                var playerBattle = new PlayerBattle
+                {
+                    PlayerId = attackPlayer.Id,
+                    BattleId = battle.Id,
+                };
+
+                battleRecordAttackPlayer.Wins++;
+                battleRecordDefencePlayer.Losses++;
+                winner = attackPlayer;
+                this.battleRecordRepository.Update(battleRecordAttackPlayer);
+                this.battleRecordRepository.Update(battleRecordDefencePlayer);
+                await this.playerBattleRepository.AddAsync(playerBattle);
+            }
+            else
+            {
+                var battleRecordAttackPlayer = await this.battleRecordRepository.All().FirstOrDefaultAsync(x => x.PlayerId == attackPlayer.Id);
+
+                var battleRecordDefencePlayer = await this.battleRecordRepository.All().FirstOrDefaultAsync(x => x.PlayerId == defencePlayer.Id);
+
+                var playerBattle = new PlayerBattle
+                {
+                    PlayerId = defencePlayer.Id,
+                    BattleId = battle.Id,
+                };
+
+                battleRecordDefencePlayer.Wins++;
+                battleRecordAttackPlayer.Losses++;
+                winner = defencePlayer;
+                this.battleRecordRepository.Update(battleRecordDefencePlayer);
+                this.battleRecordRepository.Update(battleRecordAttackPlayer);
+                await this.playerBattleRepository.AddAsync(playerBattle);
+            }
+
+            var battleReward = new BattleRewardViewModel
+            {
+                AttackPlayerName = attackPlayer.Name,
+                DefencePlayerName = defencePlayer.Name,
+                RewardMoney = 50,
+                RewardExp = 4,
+                WinnerPlayerName = winner.Name,
+                BattleDate = battle.BattleDate,
+            };
+
+            // Winner Update
+            var winnerPlayer = await this.playerRepository.All().FirstOrDefaultAsync(x => x.Id == winner.Id);
+            winnerPlayer.Money += battleReward.RewardMoney;
+            winnerPlayer.Experience += battleReward.RewardExp;
+
+            this.playerRepository.Update(winnerPlayer);
+
+            // Get Energy From AttackPlayer
+            var attackPlayerGetEnergy = await this.playerRepository.All().FirstOrDefaultAsync(x => x.UserId == userId);
+
+            attackPlayerGetEnergy.Energy -= 4;
+            attackPlayerGetEnergy.Health -= defencePlayerStats;
+
+            this.playerRepository.Update(attackPlayerGetEnergy);
+
+            // Save Repositories
+
+            // Save BattleRepo.
+            await this.battleRepository.AddAsync(battle);
+            await this.battleRepository.SaveChangesAsync();
+
+            // Save PlayerBattleRepo
+            await this.playerBattleRepository.SaveChangesAsync();
+
+            // Save BattleRecordRepo.
+            await this.battleRecordRepository.SaveChangesAsync();
+
+            // Sava PlayerRepo.
+            await this.playerRepository.SaveChangesAsync();
+            return battleReward;
         }
 
         public async Task<int> SumStats(PlayerDataView player)
@@ -96,5 +213,7 @@
 
             return sumAbilities + sumSkills;
         }
+
+
     }
 }
