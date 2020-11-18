@@ -11,6 +11,7 @@
     using CyberWars.Data.Models.Ability;
     using CyberWars.Data.Models.Badge;
     using CyberWars.Data.Models.Battle;
+    using CyberWars.Data.Models.CompetitiveCoding;
     using CyberWars.Data.Models.Course;
     using CyberWars.Data.Models.Job;
     using CyberWars.Data.Models.Pet_Food;
@@ -48,6 +49,10 @@
         public DbSet<PlayerBadge> PlayerBadges { get; set; }
 
         public DbSet<PlayerJob> PlayerJobs { get; set; }
+
+        public DbSet<PlayerContest> PlayerContests { get; set; }
+
+        public DbSet<Contest> Contests { get; set; }
 
         // Battles
         public DbSet<BattleRecord> BattleRecords { get; set; }
@@ -219,6 +224,11 @@
             builder.Entity<PlayerFood>(entity =>
             {
                 entity.HasKey(x => new { x.PlayerId, x.FoodId });
+            });
+
+            builder.Entity<PlayerContest>(entity =>
+            {
+                entity.HasKey(x => new { x.PlayerId, x.ContestId });
             });
 
         }

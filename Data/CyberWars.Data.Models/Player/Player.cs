@@ -8,6 +8,7 @@
     using CyberWars.Data.Models.Ability;
     using CyberWars.Data.Models.Badge;
     using CyberWars.Data.Models.Battle;
+    using CyberWars.Data.Models.CompetitiveCoding;
     using CyberWars.Data.Models.Course;
     using CyberWars.Data.Models.Job;
     using CyberWars.Data.Models.Pet_Food;
@@ -30,6 +31,7 @@
             this.AttacksPlayer = new HashSet<Battle>();
             this.DefencesPlayer = new HashSet<Battle>();
             this.PlayerFoods = new HashSet<PlayerFood>();
+            this.PlayerContests = new HashSet<PlayerContest>();
             this.Health = 1000;
             this.Energy = 100;
             this.MaxEnergy = 100;
@@ -89,5 +91,7 @@
         public virtual ICollection<Battle> AttacksPlayer { get; set; }
 
         public virtual ICollection<Battle> DefencesPlayer { get; set; }
+
+        public virtual ICollection<PlayerContest> PlayerContests { get; set; }
     }
 }
