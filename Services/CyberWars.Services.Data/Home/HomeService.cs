@@ -66,8 +66,6 @@
                 .Where(x => x.UserId == userId)
                 .To<T>()
                 .FirstAsync();
-
-            // return await this.playerRepository.All().FirstOrDefault(x => x.UserId == userId);
         }
 
         public async Task<ApplicationUser> GetUserById(string userId)

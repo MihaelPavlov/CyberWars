@@ -9,6 +9,7 @@
     using CyberWars.Data.Repositories;
     using CyberWars.Data.Seeding;
     using CyberWars.Services.Data;
+    using CyberWars.Services.Data.CompetitiveCoding;
     using CyberWars.Services.Data.DarkWeb;
     using CyberWars.Services.Data.Home;
     using CyberWars.Services.Data.Market;
@@ -73,6 +74,7 @@
             services.AddTransient<IMarketService, MarketService>();
             services.AddTransient<IWebService, WebService>();
             services.AddTransient<IDarkWebService, DarkWebService>();
+            services.AddTransient<IContestService, ContestService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,14 +1,29 @@
-﻿<div class="blog-card">
+﻿@using CyberWars.Web.ViewModels.WebViews.CompetitiveCoding
+@model ResultContestViewModel
+<div class="blog-card">
     <img src="/images/Web/CompetitiveIcon.jpg" alt="">
     <div class="description">
-        <h4 class="ResultcompetitveHeader">International Programming Contest (14.05.2020 14:52)</h4>
-        <h2 class="ResultCompetitiveSecondHeader">Opening a door to the future</h2>
-        <p class="earn"> Reward  </p>
+        <h4 class="ResultcompetitveHeader">@Model.ContestName (@Model.DateCompleteContext)</h4>
+        <h2 class="ResultCompetitiveSecondHeader">@Model.ContestDescription</h2>
+        @if (Model.IsWin)
+        {
+            <p class="earn"> Reward  </p>
 
-        <p>PlayerName earn 50 money and 4 experience.</p>
-        <div class="read-more">
-            <a class="btn yellow rounded" href="#">Again ( 4 <img class="competitiveEnergy" src="/images/Web/CompetitiveLightIcon.png" alt=""> )</a>
-        </div>
+            <p>@Model.PlayerName earn @Model.ContestRewardMoney money and @Model.ContestRewardExp experience.</p>
+            <div class="read-more">
+                <a class="btn yellow rounded" href="/CompetitiveCoding/Result?contestId= @Model.ContestId">Again ( @Model.ContestConsumeEnergy <img class="competitiveEnergy" src="/images/Web/CompetitiveLightIcon.png" alt=""> )</a>
+            </div>
+
+        }
+        else
+        {
+            <p class="earn"> You lose .Never Give Up</p>
+
+            <p>Try Again Next Time Maybe You Will</p>
+            <div class="read-more">
+                <a class="btn yellow rounded" href="/CompetitiveCoding/Result?contestId= @Model.ContestId">Again ( @Model.ContestConsumeEnergy <img class="competitiveEnergy" src="/images/Web/CompetitiveLightIcon.png" alt=""> )</a>
+            </div>
+        }
     </div>
 </div>
 

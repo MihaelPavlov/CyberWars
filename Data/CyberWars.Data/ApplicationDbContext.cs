@@ -230,7 +230,6 @@
             {
                 entity.HasKey(x => new { x.PlayerId, x.ContestId });
             });
-
         }
 
         private static void SetIsDeletedQueryFilter<T>(ModelBuilder builder)

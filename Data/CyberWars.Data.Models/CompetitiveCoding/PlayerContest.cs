@@ -17,6 +17,12 @@
 
         public Contest Contest { get; set; }
 
+        public DateTime DateCompleteContext { get; set; }
+
+        public bool IsWin { get; set; }
+
+        public int TimePlayed { get; set; }
+
         public bool IsDeleted { get; set; }
 
         public DateTime? DeletedOn { get; set; }

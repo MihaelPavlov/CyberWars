@@ -42,6 +42,7 @@
                               new JobTypeSeeder(),
                               new JobSeeder(),
                               new JobRequirementSeeder(),
+                              new ContestSeeder(),
                           };
 
             foreach (var seeder in seeders)

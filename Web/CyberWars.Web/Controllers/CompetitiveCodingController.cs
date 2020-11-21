@@ -1,16 +1,35 @@
 ﻿namespace CyberWars.Web.Controllers
 {
+    using System.Security.Claims;
+    using System.Threading.Tasks;
+
+    using CyberWars.Services.Data.CompetitiveCoding;
+    using CyberWars.Web.ViewModels.WebViews.CompetitiveCoding;
     using Microsoft.AspNetCore.Mvc;
 
     public class CompetitiveCodingController : Controller
     {
-        public IActionResult Index()
+        private readonly IContestService contestService;
+
+        public CompetitiveCodingController(IContestService contestService)
         {
-            return this.View();
+            this.contestService = contestService;
         }
-        public IActionResult Result()
+
+        public async Task<IActionResult> Index()
         {
-            return this.View();
+            var viewModel = await this.contestService.GetContests<ContestViewModel>();
+
+            return this.View(viewModel);
+        }
+
+        public async Task<IActionResult> Result(int contestId)
+        {
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            var viewModel = await this.contestService.ResultFromContestById<ResultContestViewModel>(contestId, userId);
+
+            return this.View(viewModel);
         }
     }
 }
