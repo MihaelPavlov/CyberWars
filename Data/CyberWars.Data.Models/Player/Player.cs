@@ -13,6 +13,7 @@
     using CyberWars.Data.Models.Job;
     using CyberWars.Data.Models.Pet_Food;
     using CyberWars.Data.Models.Skills;
+    using CyberWars.Data.Models.Team;
     using Microsoft.AspNetCore.Identity;
 
     public class Player : BaseDeletableModel<string>
@@ -32,6 +33,7 @@
             this.DefencesPlayer = new HashSet<Battle>();
             this.PlayerFoods = new HashSet<PlayerFood>();
             this.PlayerContests = new HashSet<PlayerContest>();
+            this.TeamPlayers = new HashSet<TeamPlayer>();
             this.Health = 1000;
             this.Energy = 100;
             this.MaxEnergy = 100;
@@ -93,5 +95,7 @@
         public virtual ICollection<Battle> DefencesPlayer { get; set; }
 
         public virtual ICollection<PlayerContest> PlayerContests { get; set; }
+
+        public virtual ICollection<TeamPlayer> TeamPlayers { get; set; }
     }
 }

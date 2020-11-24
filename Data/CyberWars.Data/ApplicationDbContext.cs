@@ -17,6 +17,7 @@
     using CyberWars.Data.Models.Pet_Food;
     using CyberWars.Data.Models.Player;
     using CyberWars.Data.Models.Skills;
+    using CyberWars.Data.Models.Team;
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
 
@@ -106,6 +107,11 @@
         public DbSet<PlayerCourse> PlayerCourses { get; set; }
 
         // Team
+
+        public DbSet<Team> TeamsT { get; set; }
+
+        public DbSet<TeamPlayer> TeamPlayers { get; set; }
+
         public override int SaveChanges() => this.SaveChanges(true);
 
         public override int SaveChanges(bool acceptAllChangesOnSuccess)
@@ -229,6 +235,11 @@
             builder.Entity<PlayerContest>(entity =>
             {
                 entity.HasKey(x => new { x.PlayerId, x.ContestId });
+            });
+
+            builder.Entity<TeamPlayer>(entity =>
+            {
+                entity.HasKey(x => new { x.PlayerId, x.TeamId });
             });
         }
 

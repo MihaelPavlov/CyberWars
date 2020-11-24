@@ -4,11 +4,11 @@ namespace CyberWars.Data.Models
     using System;
     using System.Collections.Generic;
 
-    using CyberWars.Data.Common.Models;
     using Microsoft.AspNetCore.Identity;
 
+    using CyberWars.Data.Models.Team;
     using CyberWars.Data.Models.Player;
-
+    using CyberWars.Data.Common.Models;
     public class ApplicationUser : IdentityUser, IAuditInfo, IDeletableEntity
     {
         public ApplicationUser()
@@ -20,6 +20,8 @@ namespace CyberWars.Data.Models
         }
 
         public string PlayerId { get; set; }
+
+        public int TeamId { get; set; }
 
         // Audit info
 

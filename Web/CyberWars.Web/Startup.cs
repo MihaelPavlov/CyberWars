@@ -14,6 +14,7 @@
     using CyberWars.Services.Data.DarkWeb;
     using CyberWars.Services.Data.Home;
     using CyberWars.Services.Data.Market;
+    using CyberWars.Services.Data.Team;
     using CyberWars.Services.Data.Web;
     using CyberWars.Services.Mapping;
     using CyberWars.Services.Messaging;
@@ -77,6 +78,7 @@
             services.AddTransient<IDarkWebService, DarkWebService>();
             services.AddTransient<IContestService, ContestService>();
             services.AddTransient<IAcademyService, AcademyService>();
+            services.AddTransient<ITeamService, TeamService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

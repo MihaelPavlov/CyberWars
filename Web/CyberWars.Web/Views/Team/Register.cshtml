@@ -1,9 +1,12 @@
+@using CyberWars.Web.ViewModels.Team;
+@model RegisterTeamInputModel;
 <div class="blog-card">
     <img src="/images/Team/TeamRegister.png" alt="">
     <div class="teamHeader">
-        <h1">
-            Make you own group,gank or company of programmer and hackers.</h1>
-            <h2> Dont't be ONE MAN ARMY!</h2>
+        <h1>
+            Make you own group,gank or company of programmer and hackers.
+        </h1>
+        <h2> Dont't be ONE MAN ARMY!</h2>
     </div>
 
     <div class="page-wrapper bg-yellow p-t-45 p-b-20">
@@ -13,18 +16,18 @@
                     <h2 class="title">Register a Group</h2>
                 </div>
                 <div class="card-body">
-                    <form method="POST">
+                    <form method="post" asp-controller="Team" asp-action="Register">
                         <div class="form-row">
                             <div class="name">Group name</div>
                             <div class="value">
-                                <input class="input--style-6" type="text" name="groupName">
+                                <input class="input--style-6" type="text" name="name" asp-for="Name">
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="name">Motivational Motto</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-6" type="motto" name="motto">
+                                    <input class="input--style-6" type="text" name="motivationalMotto" asp-for="MotivationalMotto">
                                 </div>
                             </div>
                         </div>
@@ -32,15 +35,15 @@
                             <div class="name">Description</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <textarea class="textarea--style-6" name="description"></textarea>
+                                    <textarea class="textarea--style-6" name="description" asp-for="Description"></textarea>
                                 </div>
                             </div>
                         </div>
-                    </form>
-                </div>
-                <div class="card-footer">
-                    <a class="btn yellow rounded" href="#">Apply - 9999 <img class="moneyImg" src="/images/MoneyIcon.png" alt=""></a>
+                        <div class="card-footer">
+                            <button class="btn yellow rounded" type="submit" >Apply - 9999 <img class="moneyImg" src="/images/MoneyIcon.png" alt=""></button>
 
+                        </div>
+                    </form>
                 </div>
 
             </div>

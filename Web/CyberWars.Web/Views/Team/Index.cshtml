@@ -1,9 +1,16 @@
+@using CyberWars.Web.ViewModels.Team
+@model IEnumerable<TeamViewModel>
+
+@{
+    var counter = 1;
+}
 <div class="blog-card">
     <img src="/images/Team/TeamBacground2.png" alt="">
     <div class="teamHeader">
         <h1>
-            Make you own group,gank or company of programmer and hackers.</h1>
-            <h2> Dont't be ONE MAN ARMY!</h2>
+            Make you own group,gank or company of programmer and hackers.
+        </h1>
+        <h2> Dont't be ONE MAN ARMY!</h2>
     </div>
     <div class="teamButtons">
         <a class="btn yellow rounded " href="/Team/Ranking">Groups-Ranking</a>
@@ -21,22 +28,17 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <th class="circleNumber">1</th>
-                <td>The killers</td>
-                <td>Be the best! Join US!</td>
-                <td>
-                    <a class="btn yellow rounded" href="#">Apply</a>
-                </td>
-            </tr>
-            <tr>
-                <th class="circleNumber">2</th>
-                <td>Bitches</td>
-                <td>Come and fuck them all!!</td>
-                <td>
-                    <a class="btn yellow rounded" href="#">Apply</a>
-                </td>
-            </tr>
+            @foreach (var team in Model)
+            {
+                <tr>
+                    <th class="circleNumber">@(counter++)</th>
+                    <td>@team.Name</td>
+                    <td>@team.MotivationalMotto</td>
+                    <td>
+                        <a class="btn yellow rounded" href="/Team/ApplyToTeam?teamId=@team.Id">Apply</a>
+                    </td>
+                </tr>
+            }
         </tbody>
     </table>
 </div>
