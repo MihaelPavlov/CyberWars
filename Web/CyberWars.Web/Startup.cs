@@ -9,6 +9,7 @@
     using CyberWars.Data.Repositories;
     using CyberWars.Data.Seeding;
     using CyberWars.Services.Data;
+    using CyberWars.Services.Data.Academy;
     using CyberWars.Services.Data.CompetitiveCoding;
     using CyberWars.Services.Data.DarkWeb;
     using CyberWars.Services.Data.Home;
@@ -40,7 +41,7 @@
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(
-                options => options.UseSqlServer(this.configuration.GetConnectionString("DefaultConnection")));
+                options => options.UseSqlServer(this.configuration.GetConnectionString("DefaultConnection"), options => options.CommandTimeout(180)));
 
             services.AddDefaultIdentity<ApplicationUser>(IdentityOptionsProvider.GetIdentityOptions)
                 .AddRoles<ApplicationRole>().AddEntityFrameworkStores<ApplicationDbContext>();
@@ -75,6 +76,7 @@
             services.AddTransient<IWebService, WebService>();
             services.AddTransient<IDarkWebService, DarkWebService>();
             services.AddTransient<IContestService, ContestService>();
+            services.AddTransient<IAcademyService, AcademyService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

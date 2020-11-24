@@ -1,0 +1,44 @@
+@using CyberWars.Web.ViewModels.Academy
+@model IEnumerable<LectureViewModel>
+@{
+    int counter = 1;
+}
+@{
+    var courseName = Model.Take(1).First();
+}
+<h1 class="courseHader">@courseName.CourseName</h1>
+<table class="courseTable">
+    <thead>
+        <tr>
+            <th>Number</th>
+            <th>Lecture Name</th>
+            <th>Reward</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var lecture in Model)
+        {
+            <tr>
+                <th class="circleNumber">@(counter++)</th>
+                <td>@lecture.Name</td>
+                <td>
+                    @lecture.RewardMoney <img class="competitiveEnergy" src="/images/MoneyIcon.png" alt="">
+                    @lecture.RewardSkill <img class="competitiveEnergy" src="/images/LampIcon.png" alt="">
+                    @lecture.RewardAbilityPoints <img class="competitiveEnergy" src="/images/Star.png" alt="">
+                </td>
+                <td>
+                    <div>
+                        <a class="btn yellow rounded " href="#">start</a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@section CssFile {
+    <link rel="stylesheet" href="/css/Academy/academyCourse.css">
+}
+@section PageHeader{
+    Lectures
+}

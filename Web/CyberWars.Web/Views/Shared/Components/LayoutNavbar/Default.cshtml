@@ -1,12 +1,19 @@
 ﻿@model CyberWars.Web.ViewModels.HomeViews.PlayerDataView
 @using System.Linq;
 @using CyberWars.Data.Models.Player;
+@using CyberWars.Data.Models.Ability;
+@using Microsoft.AspNetCore.Mvc;
 @using CyberWars.Data.Common.Repositories;
+@using System.Threading.Tasks;
+@using Microsoft.EntityFrameworkCore
 @inject IDeletableEntityRepository<Player> playerRepository;
+@inject IDeletableEntityRepository<PlayerAbility> playerAbilityRepository;
 @{
-    var player = this.playerRepository.All().FirstOrDefault(x => x.Id == Model.Id);
+    var player =  await this.playerRepository.All().FirstOrDefaultAsync(x => x.Id == Model.Id);
+    var playerAbilities = await this.playerAbilityRepository.All().Where(x => x.PlayerId == player.Id).ToListAsync();
 
-    var level = Model.Levels.OrderBy(x => x.Exp).FirstOrDefault(x => x.Exp > Model.Experience);
+    var level =  Model.Levels.OrderBy(x => x.Exp).FirstOrDefault(x => x.Exp > Model.Experience);
+
 }
 <div class="stats">
     <div class="item item1">
@@ -16,7 +23,7 @@
         </div>
         <div class="tooltip">
             <span class="tooltiptext">Points</span>
-            <img class="Expirience" src="/images/LampIcon.png" alt=""> <span class="Exp">@Model.LearnPoint</span>
+            <img class="Expirience" src="/images/LampIcon.png" alt=""> <span class="Exp">@playerAbilities.Sum(x=>x.Points)</span>
         </div>
     </div>
     <div class="item item2">

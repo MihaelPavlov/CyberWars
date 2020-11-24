@@ -39,7 +39,7 @@ namespace CyberWars.Web.ViewComponents
                 LearnPoint = player.LearnPoint,
                 Level = player.Level,
                 Money = player.Money,
-                Levels = this.dbContext.Levels.ToList()
+                Levels = this.dbContext.Levels.ToList(),
             };
             return this.View(viewModel);
         }
