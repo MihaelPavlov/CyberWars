@@ -19,7 +19,11 @@
 
         public int Health { get; set; }
 
+        public int MaxHealth { get; set; }
+
         public int Mood { get; set; }
+
+        public int MaxMood { get; set; }
 
         public string NameIt { get; set; }
 

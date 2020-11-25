@@ -1,8 +1,9 @@
 ﻿namespace CyberWars.Data.Models.Battle
 {
+    using System;
+
     using CyberWars.Data.Common.Models;
     using CyberWars.Data.Models.Player;
-    using System;
 
     public class BattleRecord : BaseDeletableModel<string>
     {

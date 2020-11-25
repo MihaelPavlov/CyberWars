@@ -5,17 +5,28 @@
 @model PetViewModel
 
 @{
-    var maxHealth = Model.Health;
-    var maxMood = Model.Mood;
+
+
+    var healthWidth = (decimal)Model.Health / (decimal)Model.MaxHealth * 100;
+
+    var moodWidth = (decimal)Model.Mood / (decimal)Model.MaxMood * 100;
 }
 <div class="petTable">
     <h3 class="petHeader">@Model.NameIt</h3>
     <img src="/images/Market/Pets/@(Model.PetImageName + ".png")" alt="">
     <ul>
         <li class="petList">
-            Health @Model.Health / @maxHealth <img class="petBar" src="/images/GreenLine.png" alt="">
+            <span class="petPoints">Health @Model.Health / @Model.MaxHealth</span>
+            <div class="meterPet">
+                <span class="linePet" style="width: @(healthWidth + "%")"></span>
+            </div>
         </li>
-        <li>Mood @Model.Mood / @maxMood <img class="petBar" src="/images/blueLine.png" alt=""></li>
+        <li class="petList">
+            <span class="petPoints">Mood @Model.Mood / @Model.MaxMood </span>
+            <div class="meterPet blue">
+                <span class="linePet" style="width: @(moodWidth + "%")"></span>
+            </div>
+        </li>
     </ul>
     <div class="buttons">
         <form method="post" class="petForm" asp-controller="Home" asp-action="ChangeName">

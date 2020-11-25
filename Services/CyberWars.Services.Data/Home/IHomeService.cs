@@ -14,7 +14,7 @@
     {
         public Task<ApplicationUser> GetUserById(string userId);
 
-        public Task<T> GetPlayerData<T>(string userId);
+        public Task<PlayerDataView> GetPlayerData(string userId);
 
         public Task<IEnumerable<T>> GetPlayerSkills<T>(string userId);
 
@@ -37,5 +37,7 @@
         public Task ScratchPetBelly(int petId, string userId);
 
         public Task SellPetById(int petId, string userId);
+
+        public Task<PlayerDataView> GetPlayerViewData(string playerName);
     }
 }

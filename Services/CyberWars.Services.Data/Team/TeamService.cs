@@ -10,6 +10,7 @@
     using CyberWars.Data.Models;
     using CyberWars.Data.Models.Player;
     using CyberWars.Data.Models.Team;
+    using CyberWars.Web.ViewModels.Team;
     using CyberWars.Services.Mapping;
     using Microsoft.EntityFrameworkCore;
 
@@ -17,11 +18,13 @@
     {
         private readonly IDeletableEntityRepository<Team> teamRepository;
         private readonly IDeletableEntityRepository<Player> playerRepository;
+        private readonly IDeletableEntityRepository<TeamPlayer> teamPlayerRepository;
 
-        public TeamService(IDeletableEntityRepository<Team> teamRepository, IDeletableEntityRepository<Player> playerRepository)
+        public TeamService(IDeletableEntityRepository<Team> teamRepository, IDeletableEntityRepository<Player> playerRepository, IDeletableEntityRepository<TeamPlayer> teamPlayerRepository)
         {
             this.teamRepository = teamRepository;
             this.playerRepository = playerRepository;
+            this.teamPlayerRepository = teamPlayerRepository;
         }
 
         public async Task ApplyToTeam(string userId, int teamId)
@@ -61,6 +64,38 @@
             return await this.teamRepository.All().Take(10).To<T>().ToListAsync();
         }
 
+        public async Task<TeamPageViewModel> GetTeamByName(string teamName)
+        {
+            var team = await this.teamRepository.All().FirstOrDefaultAsync(x => x.Name == teamName);
 
+            var teamPlayers = await this.teamPlayerRepository.All().Where(x => x.TeamId == team.Id).ToListAsync();
+
+            var viewTeamPlayer = new List<TeamPlayersViewModel>();
+
+            foreach (var teamPlayer in teamPlayers)
+            {
+                viewTeamPlayer.Add(new TeamPlayersViewModel
+                {
+                    PlayerName =this.playerRepository.All().FirstOrDefault(x=>x.Id==teamPlayer.PlayerId).Name,
+                    PlayerId = teamPlayer.PlayerId,
+                    TeamName = teamPlayer.Team.Name,
+                    TeamId = teamPlayer.TeamId,
+                });
+            }
+
+            var viewTeamPage = new TeamPageViewModel
+            {
+                LeaderName = this.playerRepository.All().FirstOrDefault(x => x.UserId == team.UserId).Name,
+                Name = team.Name,
+                Description = team.Description,
+                Id = team.Id,
+                MotivationalMotto = team.MotivationalMotto,
+                UserId = team.UserId,
+                TeamPlayers = viewTeamPlayer,
+                Rank = team.Rank,
+            };
+
+            return viewTeamPage;
+        }
     }
 }

@@ -8,12 +8,16 @@
 @using Microsoft.EntityFrameworkCore
 @inject IDeletableEntityRepository<Player> playerRepository;
 @inject IDeletableEntityRepository<PlayerAbility> playerAbilityRepository;
+
 @{
-    var player =  await this.playerRepository.All().FirstOrDefaultAsync(x => x.Id == Model.Id);
+    var player = await this.playerRepository.All().FirstOrDefaultAsync(x => x.Id == Model.Id);
     var playerAbilities = await this.playerAbilityRepository.All().Where(x => x.PlayerId == player.Id).ToListAsync();
 
-    var level =  Model.Levels.OrderBy(x => x.Exp).FirstOrDefault(x => x.Exp > Model.Experience);
+    var level = Model.Levels.OrderBy(x => x.Exp).FirstOrDefault(x => x.Exp > Model.Experience);
 
+    var healthWidth = (decimal)Model.Health / (decimal)Model.MaxHealth * 100;
+
+    var energyWidth = (decimal)Model.Energy / (decimal)Model.MaxEnergy * 100;
 }
 <div class="stats">
     <div class="item item1">
@@ -23,22 +27,27 @@
         </div>
         <div class="tooltip">
             <span class="tooltiptext">Points</span>
-            <img class="Expirience" src="/images/LampIcon.png" alt=""> <span class="Exp">@playerAbilities.Sum(x=>x.Points)</span>
+            <img class="Expirience" src="/images/LampIcon.png" alt=""> <span class="Exp">@playerAbilities.Sum(x => x.Points)</span>
         </div>
     </div>
     <div class="item item2">
         <div class="statsHealthEnergy">
             <div class="Health tooltip">
                 <span class="tooltiptext">Heal</span>
-                <img src="/images/HeartIcon.png" alt="">
-                <img class="green" src="/images/GreenLine.png" alt="">
-                <span>@Model.Health / @Model.MaxHealth</span>
+                <img  src="/images//HeartIcon.png" alt="">
+                <div class="meter">
+                    <span class="line" style="width: @(healthWidth + "%")"></span>
+                </div>
+                <!-- <img  class="green" src="/Images _Layout/GreenLine.png" alt=""> -->
+                <span class="points"> @Model.Health / @Model.MaxHealth</span>
             </div>
             <div class="Energy tooltip">
                 <span class="tooltiptext">Energy</span>
-                <img src="/images/LightIcon.png" alt="">
-                <img class="green" src="/images/blueLine.png" alt="">
-                <span>@Model.Energy / @Model.MaxEnergy</span>
+                <img  src="/images/LightIcon.png" alt="">
+                <div class="meter blue">
+                    <span class="line" style="width: @(energyWidth + "%")"></span>
+                </div>
+                <span class="points"> @Model.Energy / @Model.MaxEnergy &nbsp;</span>
             </div>
         </div>
     </div>
@@ -62,5 +71,9 @@
 </div>
 @section CssFile{
     <link rel="stylesheet" href="/css/style.css">
-
+}
+@section MyScript{
+    <script src="/js/AnimationStatsLine.js" asp-append-version="true"></script>
+    <script type="text/javascript"
+            src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
 }

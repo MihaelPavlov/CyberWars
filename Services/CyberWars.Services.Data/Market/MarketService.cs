@@ -53,7 +53,9 @@
                 PetId = pet.Id,
                 PlayerId = player.Id,
                 Health = 100,
+                MaxHealth=100,
                 Mood = 100,
+                MaxMood=100,
                 Level = 1,
                 NameIt = nameIt,
             };

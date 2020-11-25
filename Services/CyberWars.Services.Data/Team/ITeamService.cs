@@ -1,5 +1,6 @@
 ﻿namespace CyberWars.Services.Data.Team
 {
+    using CyberWars.Web.ViewModels.Team;
     using System;
     using System.Collections.Generic;
     using System.Text;
@@ -12,5 +13,7 @@
         public Task ApplyToTeam(string userId, int teamId);
 
         public Task<IEnumerable<T>> Get10RandomTeam<T>();
+
+        public Task<TeamPageViewModel> GetTeamByName(string teamName);
     }
 }

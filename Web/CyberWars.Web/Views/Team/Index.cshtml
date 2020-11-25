@@ -32,7 +32,7 @@
             {
                 <tr>
                     <th class="circleNumber">@(counter++)</th>
-                    <td>@team.Name</td>
+                    <td><a href="/Team/TeamPage?teamName=@team.Name">@team.Name</a></td>
                     <td>@team.MotivationalMotto</td>
                     <td>
                         <a class="btn yellow rounded" href="/Team/ApplyToTeam?teamId=@team.Id">Apply</a>

@@ -16,6 +16,7 @@
     using CyberWars.Data.Models.Player;
     using CyberWars.Data.Models.Skills;
     using CyberWars.Services.Mapping;
+    using CyberWars.Web.ViewModels.Battle;
     using CyberWars.Web.ViewModels.HomeViews.Pet;
 
     public class PlayerDataView : IMapFrom<Player>
@@ -55,7 +56,7 @@
 
         public ICollection<Level> Levels { get; set; }
 
-        public BattleRecord BattleRecord { get; set; }
+        public BattleRecordViewModel BattleRecord { get; set; }
 
         public virtual ICollection<PlayerAbilitiesViewModel> PlayerAbilities { get; set; }
 

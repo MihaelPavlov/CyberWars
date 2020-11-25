@@ -41,62 +41,59 @@
             this.battleRecordRepository = battleRecordRepository;
         }
 
-        public async Task<PlayerDataView> FindNormalEnemy(string type, string userId)
+        // Logic Methods
+        public async Task<PlayerDataView> FindNormalEnemy(string userId)
         {
-
-            var attackPlayer = await this.playerRepository.All().Where(x => x.UserId == userId).To<PlayerDataView>().FirstAsync();
-            var players = await this.playerRepository.All().Where(x => x.UserId != userId).To<PlayerDataView>().ToListAsync();
+            var dataViewAttackPlayer = await this.GetAttackPlayerDataView(userId);
+            var dataViewPlayers = await this.GetAllPlayersWithoutTheAttackPlayer(userId);
 
             Dictionary<string, int> playerWithStats = new Dictionary<string, int>();
 
-            foreach (var player in players)
+            foreach (var player in dataViewPlayers)
             {
                 int statsSum = await this.SumStats(player);
                 playerWithStats.Add(player.Id, statsSum);
             }
 
-            var attackPlayerStats = await this.SumStats(attackPlayer);
-            playerWithStats.Where(x => x.Value < attackPlayerStats);
-            var random = new Random().Next(0, playerWithStats.Count);
+            var attackPlayerStats = await this.SumStats(dataViewAttackPlayer);
+            var playerWithSmallerStats = playerWithStats.Where(x => x.Value < attackPlayerStats);
+            var random = new Random().Next(0, playerWithSmallerStats.Count());
 
-            var defencePlayer = await this.playerRepository.All().To<PlayerDataView>().FirstAsync(x => x.Id == playerWithStats.ElementAt(random).Key);
-            return defencePlayer;
+            return await this.GetDefencePlayerWithSkillsDataView(playerWithSmallerStats.ElementAt(random).Key);
         }
 
-        public async Task<PlayerDataView> FindStrongerEnemy(string type, string userId)
+        public async Task<PlayerDataView> FindStrongerEnemy(string userId)
         {
 
-            var attackPlayer = await this.playerRepository.All().Where(x => x.UserId == userId).To<PlayerDataView>().FirstAsync();
-            var players = await this.playerRepository.All().Where(x => x.UserId != userId).To<PlayerDataView>().ToListAsync();
+            var dataViewAttackPlayer = await this.GetAttackPlayerDataView(userId);
+            var dataViewPlayers = await this.GetAllPlayersWithoutTheAttackPlayer(userId);
 
             Dictionary<string, int> playerWithStats = new Dictionary<string, int>();
 
-            foreach (var player in players)
+            foreach (var player in dataViewPlayers)
             {
                 int statsSum = await this.SumStats(player);
                 playerWithStats.Add(player.Id, statsSum);
             }
 
-            var attackPlayerStats = await this.SumStats(attackPlayer);
-            playerWithStats.Where(x => x.Value > attackPlayerStats);
+            var attackPlayerStats = await this.SumStats(dataViewAttackPlayer);
+            var playerWithStrongerStats = playerWithStats.Where(x => x.Value > attackPlayerStats);
             var random = new Random().Next(0, playerWithStats.Count);
 
-            var defencePlayer = await this.playerRepository.All().To<PlayerDataView>().FirstAsync(x => x.Id == playerWithStats.ElementAt(random).Key);
-            return defencePlayer;
+            return await this.GetDefencePlayerWithSkillsDataView(playerWithStrongerStats.ElementAt(random).Key);
         }
 
-        public async Task<PlayerDataView> FindEnemyByName(string type, string userId, string searchName)
+        public async Task<PlayerDataView> FindEnemyByName(string userId, string searchName)
         {
-            var attackPlayer = await this.playerRepository.All().Where(x => x.UserId == userId).To<PlayerDataView>().FirstAsync();
-            var defencePlayer = await this.playerRepository.All().To<PlayerDataView>().FirstOrDefaultAsync(x => x.Name == searchName);
+            var defencePlayer = await this.GetDefencePlayerWithSkillsDataView_ByName(searchName);
 
             return defencePlayer;
         }
 
         public async Task<BattleRewardViewModel> ResultFromBattle(string userId, string defencePlayerId)
         {
-            var attackPlayer = await this.playerRepository.All().Where(x => x.UserId == userId).To<PlayerDataView>().FirstAsync();
-            var defencePlayer = await this.playerRepository.All().To<PlayerDataView>().FirstOrDefaultAsync(x => x.Id == defencePlayerId);
+            var attackPlayer = await this.GetAttackPlayerDataView(userId);
+            var defencePlayer = await this.GetDefencePlayerWithSkillsDataView(defencePlayerId);
 
             var attackPlayerStats = await this.SumStats(attackPlayer);
             var defencePlayerStats = await this.SumStats(defencePlayer);
@@ -194,6 +191,110 @@
             return battleReward;
         }
 
+        // Helpful Methods
+        public async Task<PlayerDataView> GetAttackPlayerDataView(string userId)
+        {
+            var attackPlayer = await this.playerRepository.All().FirstOrDefaultAsync(x => x.UserId == userId);
+            var dataViewAttackPlayer = new PlayerDataView
+            {
+                Id = attackPlayer.Id,
+                Name = attackPlayer.Name,
+                UserId = attackPlayer.UserId,
+                Experience = attackPlayer.Experience,
+                Class = attackPlayer.Class,
+                ImageName = attackPlayer.ImageName,
+                Health = attackPlayer.Health,
+                MaxHealth = attackPlayer.MaxHealth,
+                Energy = attackPlayer.Energy,
+                MaxEnergy = attackPlayer.MaxEnergy,
+                Money = attackPlayer.Money,
+                LearnPoint = attackPlayer.LearnPoint,
+                Level = attackPlayer.Level,
+            };
+
+            return dataViewAttackPlayer;
+        }
+
+        public async Task<IEnumerable<PlayerDataView>> GetAllPlayersWithoutTheAttackPlayer(string userId)
+        {
+            var players = await this.playerRepository.All().Where(x => x.UserId != userId).ToListAsync();
+            var dataViewPlayers = new List<PlayerDataView>();
+
+            foreach (var player in players)
+            {
+                dataViewPlayers.Add(new PlayerDataView
+                {
+                    Id = player.Id,
+                    Name = player.Name,
+                    UserId = player.UserId,
+                    Experience = player.Experience,
+                    Class = player.Class,
+                    ImageName = player.ImageName,
+                    Health = player.Health,
+                    MaxHealth = player.MaxHealth,
+                    Energy = player.Energy,
+                    MaxEnergy = player.MaxEnergy,
+                    Money = player.Money,
+                    LearnPoint = player.LearnPoint,
+                    Level = player.Level,
+                });
+            }
+
+            return dataViewPlayers;
+        }
+
+        public async Task<PlayerDataView> GetDefencePlayerWithSkillsDataView(string playerId)
+        {
+            var defencePlayer = await this.playerRepository.All().FirstOrDefaultAsync(x => x.Id == playerId);
+
+            var playerSkills = await this.playerSkillRepository.All().Where(x => x.PlayerId == defencePlayer.Id).To<PlayerSkillViewModel>().ToListAsync();
+
+            var dataViewDefencePlayer = new PlayerDataView
+            {
+                Id = defencePlayer.Id,
+                Name = defencePlayer.Name,
+                UserId = defencePlayer.UserId,
+                Experience = defencePlayer.Experience,
+                Class = defencePlayer.Class,
+                ImageName = defencePlayer.ImageName,
+                Health = defencePlayer.Health,
+                MaxHealth = defencePlayer.MaxHealth,
+                Energy = defencePlayer.Energy,
+                MaxEnergy = defencePlayer.MaxEnergy,
+                Money = defencePlayer.Money,
+                LearnPoint = defencePlayer.LearnPoint,
+                Level = defencePlayer.Level,
+                PlayerSkills = playerSkills,
+            };
+            return dataViewDefencePlayer;
+        }
+
+        public async Task<PlayerDataView> GetDefencePlayerWithSkillsDataView_ByName(string searchName)
+        {
+            var defencePlayer = await this.playerRepository.All().FirstOrDefaultAsync(x => x.Name == searchName);
+
+            var playerSkills = await this.playerSkillRepository.All().Where(x => x.PlayerId == defencePlayer.Id).To<PlayerSkillViewModel>().ToListAsync();
+
+            var dataViewDefencePlayer = new PlayerDataView
+            {
+                Id = defencePlayer.Id,
+                Name = defencePlayer.Name,
+                UserId = defencePlayer.UserId,
+                Experience = defencePlayer.Experience,
+                Class = defencePlayer.Class,
+                ImageName = defencePlayer.ImageName,
+                Health = defencePlayer.Health,
+                MaxHealth = defencePlayer.MaxHealth,
+                Energy = defencePlayer.Energy,
+                MaxEnergy = defencePlayer.MaxEnergy,
+                Money = defencePlayer.Money,
+                LearnPoint = defencePlayer.LearnPoint,
+                Level = defencePlayer.Level,
+                PlayerSkills = playerSkills,
+            };
+            return dataViewDefencePlayer;
+        }
+
         public async Task<int> SumStats(PlayerDataView player)
         {
             var playerSkills = await this.playerSkillRepository.All().Where(x => x.PlayerId == player.Id).ToListAsync();
@@ -213,7 +314,5 @@
 
             return sumAbilities + sumSkills;
         }
-
-
     }
 }

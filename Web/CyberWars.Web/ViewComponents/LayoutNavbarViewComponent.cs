@@ -7,6 +7,7 @@ namespace CyberWars.Web.ViewComponents
     using System.Linq;
     using System.Security.Claims;
     using System.Threading.Tasks;
+
     using CyberWars.Data;
     using CyberWars.Data.Models.Player;
     using CyberWars.Services.Data.Home;

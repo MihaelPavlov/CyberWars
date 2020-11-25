@@ -107,8 +107,7 @@
         public DbSet<PlayerCourse> PlayerCourses { get; set; }
 
         // Team
-
-        public DbSet<Team> TeamsT { get; set; }
+        public DbSet<Team> Teams { get; set; }
 
         public DbSet<TeamPlayer> TeamPlayers { get; set; }
 

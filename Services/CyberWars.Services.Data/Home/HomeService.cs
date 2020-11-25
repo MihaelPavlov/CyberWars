@@ -13,10 +13,12 @@
     using CyberWars.Data.Models;
     using CyberWars.Data.Models.Ability;
     using CyberWars.Data.Models.Badge;
+    using CyberWars.Data.Models.Battle;
     using CyberWars.Data.Models.Pet_Food;
     using CyberWars.Data.Models.Player;
     using CyberWars.Data.Models.Skills;
     using CyberWars.Services.Mapping;
+    using CyberWars.Web.ViewModels.Battle;
     using CyberWars.Web.ViewModels.HomeViews;
     using CyberWars.Web.ViewModels.HomeViews.Pet;
     using Microsoft.AspNetCore.Identity;
@@ -27,6 +29,7 @@
         private readonly IDeletableEntityRepository<ApplicationUser> userRepository;
         private readonly IDeletableEntityRepository<Player> playerRepository;
         private readonly IDeletableEntityRepository<PlayerSkill> playerSkillRepository;
+        private readonly IDeletableEntityRepository<Skill> skillRepository;
         private readonly IDeletableEntityRepository<PlayerAbility> playerAbilityRepository;
         private readonly IDeletableEntityRepository<Badge> badgeRepository;
         private readonly IDeletableEntityRepository<BadgeRequirement> badgeRequirementRepository;
@@ -34,6 +37,7 @@
         private readonly IDeletableEntityRepository<Food> foodRepository;
         private readonly IDeletableEntityRepository<Pet> petRepository;
         private readonly IDeletableEntityRepository<PlayerFood> playerFoodRepository;
+        private readonly IDeletableEntityRepository<BattleRecord> battleRecordRepository;
 
         public HomeService(IDeletableEntityRepository<Player> playerRepository
             , IDeletableEntityRepository<PlayerSkill> playerSkillRepository
@@ -44,7 +48,9 @@
             , IDeletableEntityRepository<PlayerPet> playerPetRepository
             , IDeletableEntityRepository<Food> foodRepository
             , IDeletableEntityRepository<Pet> petRepository
-            , IDeletableEntityRepository<PlayerFood> playerFoodRepository)
+            , IDeletableEntityRepository<PlayerFood> playerFoodRepository
+            , IDeletableEntityRepository<BattleRecord> battleRecordRepository
+            , IDeletableEntityRepository<Skill> skillRepository)
         {
             this.playerRepository = playerRepository;
             this.playerSkillRepository = playerSkillRepository;
@@ -56,16 +62,34 @@
             this.foodRepository = foodRepository;
             this.petRepository = petRepository;
             this.playerFoodRepository = playerFoodRepository;
+            this.battleRecordRepository = battleRecordRepository;
+            this.skillRepository = skillRepository;
         }
 
-        public async Task<T> GetPlayerData<T>(string userId)
+        public async Task<PlayerDataView> GetPlayerData(string userId)
         {
             // Get The Player with userId 
-            return await this.playerRepository
+            var player = await this.playerRepository
                 .All()
-                .Where(x => x.UserId == userId)
-                .To<T>()
-                .FirstAsync();
+                .FirstOrDefaultAsync(x => x.UserId == userId);
+
+            var playerData = new PlayerDataView
+            {
+                Id = player.Id,
+                Name = player.Name,
+                UserId = player.UserId,
+                Experience = player.Experience,
+                Class = player.Class,
+                ImageName = player.ImageName,
+                Health = player.Health,
+                MaxHealth = player.MaxHealth,
+                Energy = player.Energy,
+                MaxEnergy = player.MaxEnergy,
+                Money = player.Money,
+                LearnPoint = player.LearnPoint,
+                Level = player.Level,
+            };
+            return playerData;
         }
 
         public async Task<ApplicationUser> GetUserById(string userId)
@@ -127,6 +151,10 @@
 
             // Update Health
             playerPet.Health += playerFood.Food.GainHealth;
+            if (playerPet.Health > playerPet.MaxHealth)
+            {
+                playerPet.Health = playerPet.MaxHealth;
+            }
 
             this.playerPetRepository.Update(playerPet);
 
@@ -152,7 +180,13 @@
         {
             var playerPet = await this.playerPetRepository.All().FirstOrDefaultAsync(x => x.Player.UserId == userId && x.PetId == petId);
 
+
             playerPet.Mood += 40;
+
+            if (playerPet.Mood > playerPet.MaxMood)
+            {
+                playerPet.Mood = playerPet.MaxMood;
+            }
 
             this.playerPetRepository.Update(playerPet);
             await this.playerPetRepository.SaveChangesAsync();
@@ -169,6 +203,60 @@
             this.playerPetRepository.HardDelete(playerPet);
 
             await this.playerPetRepository.SaveChangesAsync();
+        }
+
+        public async Task<PlayerDataView> GetPlayerViewData(string playerName)
+        {
+            var player = await this.playerRepository.All().FirstOrDefaultAsync(x => x.Name == playerName);
+
+            // PlayerSkills
+            var playerSkills = await this.playerSkillRepository.All().Where(x => x.PlayerId == player.Id).To<PlayerSkillViewModel>().ToListAsync();
+
+            //var viewPlayerSkills = new List<PlayerSkillViewModel>();
+
+            //foreach (var ps in playerSkills)
+            //{
+            //    viewPlayerSkills.Add(new PlayerSkillViewModel
+            //    {
+            //        Player = ps.Player,
+            //        PlayerId = ps.PlayerId,
+            //        Points = ps.Points,
+            //        SkillDescription = this.skillRepository.All().FirstOrDefault(x => x.Id == ps.SkillId).Description,
+            //        SkillId = ps.SkillId,
+            //        SkillName = this.skillRepository.All().FirstOrDefault(x => x.Id == ps.SkillId).Name,
+            //        SkillStartMoney = this.skillRepository.All().FirstOrDefault(x => x.Id == ps.SkillId).StartMoney,
+            //    });
+            //}
+
+            // PlayerBattleRecord
+            var playerBattleRecord = await this.battleRecordRepository.All().FirstOrDefaultAsync(x => x.PlayerId == player.Id);
+
+            var viewPlayerBattleRecord = new BattleRecordViewModel
+            {
+                Wins = playerBattleRecord.Wins,
+                Losses = playerBattleRecord.Losses,
+            };
+
+            var playerData = new PlayerDataView
+            {
+                Id = player.Id,
+                Name = player.Name,
+                UserId = player.UserId,
+                Experience = player.Experience,
+                Class = player.Class,
+                ImageName = player.ImageName,
+                Health = player.Health,
+                MaxHealth = player.MaxHealth,
+                Energy = player.Energy,
+                MaxEnergy = player.MaxEnergy,
+                Money = player.Money,
+                LearnPoint = player.LearnPoint,
+                Level = player.Level,
+                PlayerSkills = playerSkills,
+                BattleRecord = viewPlayerBattleRecord,
+            };
+
+            return playerData;
         }
     }
 }

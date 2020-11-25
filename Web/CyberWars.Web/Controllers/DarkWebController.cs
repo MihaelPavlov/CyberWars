@@ -30,17 +30,17 @@
 
             if (input.Type == "Normal")
             {
-                viewModel = await this.darkWebService.FindNormalEnemy(input.Type, userId);
+                viewModel = await this.darkWebService.FindNormalEnemy(userId);
             }
 
             if (input.Type == "Stronger")
             {
-                viewModel = await this.darkWebService.FindStrongerEnemy(input.Type, userId);
+                viewModel = await this.darkWebService.FindStrongerEnemy(userId);
             }
 
             if (input.Type == "Search")
             {
-                viewModel = await this.darkWebService.FindEnemyByName(input.Type, userId, input.SearchName);
+                viewModel = await this.darkWebService.FindEnemyByName(userId, input.SearchName);
             }
 
             return this.View(viewModel);

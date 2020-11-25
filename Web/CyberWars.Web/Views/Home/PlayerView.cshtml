@@ -1,0 +1,43 @@
+@using CyberWars.Web.ViewModels.HomeViews
+@model PlayerDataView
+<table class="playerView">
+    <a class="playerNameHeader yellow full-rounded" href="/Home/PlayerView?playerName=@Model.Name">@Model.Name</a>
+    <tbody>
+        <tr>
+            <td class="playerSkills ">
+                <ul class="playerViewUl">
+                    @foreach (var skill in Model.PlayerSkills)
+                    {
+                    <li class="li">
+                        <img class="img" src="/images/@(skill.SkillId).Skill.png" alt="">
+                        <span class="lable"> @skill.SkillName - @skill.Points</span>
+                    </li>
+
+                    }
+                </ul>
+            </td>
+            <td class="playerIcon ">
+                <div>
+                    <img class="playerImg" src="/images/Base/@(Model.ImageName)" alt="">
+                </div>
+            </td>
+            <td class="playerStats">
+                <div>
+                    <ul>
+                        <h2 class="lableStats ">Statistics</h2>
+                        <li class="lableStats ">Wins - @Model.BattleRecord.Wins</li>
+                        <li class="lableStats ">Losses - @Model.BattleRecord.Losses</li>
+                        <li class="lableStats ">Collected Money - 321312321</li>
+                    </ul>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+@section CssFile {
+    <link rel="stylesheet" href="/css/Home/playerView.css">
+}
+@section PageHeader{
+    @Model.Name
+}

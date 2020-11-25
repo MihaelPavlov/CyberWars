@@ -28,7 +28,7 @@
         {
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            var viewModelPlayer = await this.homeService.GetPlayerData<PlayerDataView>(userId);
+            var viewModelPlayer = await this.homeService.GetPlayerData(userId);
             return this.View(viewModelPlayer);
         }
 
@@ -122,6 +122,12 @@
             await this.homeService.SellPetById(petId, userId);
 
             return this.Redirect("/Home/Pets");
+        }
+
+        public async Task<IActionResult> PlayerView(string playerName)
+        {
+            var viewModel = await this.homeService.GetPlayerViewData(playerName);
+            return this.View(viewModel);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

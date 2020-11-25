@@ -23,6 +23,8 @@
 
         public string Description { get; set; }
 
+        public int Rank { get; set; }
+
         public ICollection<TeamPlayer> TeamPlayers { get; set; }
     }
 }

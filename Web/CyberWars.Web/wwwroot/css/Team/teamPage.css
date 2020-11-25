@@ -1,0 +1,43 @@
+.tableTeam {
+  border: 3px solid #dcb97b;
+  padding: 20px;
+  border-radius: 20px;
+  display: flex;
+  margin: 20px;
+  background-color: #fbe6af;
+}
+.teamIcon {
+  border: 2px solid black;
+  border-radius: 10px;
+  width: 250px;
+  height: 250px;
+}
+.teamBadges {
+  border-radius: 10px;
+  width: 100px;
+  height: 100px;
+  margin-left: 70px;
+}
+.teamName {
+  text-align: center;
+}
+.teamStats {
+  margin: 50px;
+}
+
+.teamValue {
+  padding: 20px;
+}
+.stat {
+}
+.label {
+  font-weight: 700;
+  color: black;
+  text-align: right;
+  padding: 20px;
+  vertical-align: top;
+}
+
+.input {
+  padding-left: 3 0px;
+}

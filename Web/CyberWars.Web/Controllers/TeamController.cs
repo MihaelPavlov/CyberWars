@@ -52,5 +52,11 @@
             await this.teamService.ApplyToTeam(userId, teamId);
             return this.Redirect("/Home/Index");
         }
+
+        public async Task<IActionResult> TeamPage(string teamName)
+        {
+            var viewModel = await this.teamService.GetTeamByName(teamName);
+            return this.View(viewModel);
+        }
     }
 }

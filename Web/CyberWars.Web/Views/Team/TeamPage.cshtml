@@ -1,0 +1,45 @@
+
+@using CyberWars.Web.ViewModels.Team;
+@model TeamPageViewModel
+<div class="tableTeam">
+    <div>
+        <img class="teamIcon" src="/images/Base/01.Programmer.png" alt="">
+        <p class="teamName">@Model.Name [@Model.TeamPlayers.Count()]</p>
+        <img class="teamBadges" src="/images/3.Skill.png" alt="">
+    </div>
+    <table class="teamStats">
+        <tr class="stat">
+            <td class="label">LeaderName:</td>
+            <td class="input">@Model.LeaderName</td>
+        </tr>
+        <tr class="stat">
+            <td class="label">Motivational Motto:</td>
+            <td class="input">@Model.MotivationalMotto</td>
+        </tr>
+        <tr class="stat">
+            <td class="label">Rank:</td>
+            <td class="input">@Model.Rank</td>
+        </tr>
+        <tr class="stat">
+            <td class="label">Members:</td>
+            <td class="input">
+                <div>
+                    <br>
+                    @foreach (var teamPlayer in Model.TeamPlayers)
+                    {
+                        <a href="/Home/PlayerView?playerName=@teamPlayer.PlayerName">@teamPlayer.PlayerName</a>
+                        <br>
+                    }
+                </div>
+            </td>
+
+        </tr>
+    </table>
+</div>
+
+@section CssFile {
+    <link rel="stylesheet" href="/css/Team/teamPage.css">
+}
+@section PageHeader{
+    Team
+}
