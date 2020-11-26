@@ -18,6 +18,8 @@
 
         public int Points { get; set; }
 
+        public int Money { get; set; }
+
         public bool IsDeleted { get; set; }
 
         public DateTime? DeletedOn { get; set; }

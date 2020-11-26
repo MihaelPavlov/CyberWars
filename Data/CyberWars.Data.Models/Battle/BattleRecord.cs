@@ -16,6 +16,10 @@
 
         public int Losses { get; set; }
 
+        public int StolenMoney { get; set; }
+
+        public int StealPerBattle { get; set; }
+
         public string PlayerId { get; set; }
 
         public Player Player { get; set; }

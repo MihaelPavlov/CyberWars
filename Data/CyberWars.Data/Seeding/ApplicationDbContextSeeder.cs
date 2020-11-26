@@ -3,7 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
-
+    using CyberWars.Data.Seeding.Academy;
     using CyberWars.Data.Seeding.Home;
     using CyberWars.Data.Seeding.Pets_Food;
     using CyberWars.Data.Seeding.Web;
@@ -43,6 +43,9 @@
                               new JobSeeder(),
                               new JobRequirementSeeder(),
                               new ContestSeeder(),
+                              new CourseTypeSeeder(),
+                              new CourseSeeder(),
+                              new LectureSeeder(),
                           };
 
             foreach (var seeder in seeders)

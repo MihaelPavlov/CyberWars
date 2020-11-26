@@ -40,6 +40,15 @@
             return this.View(viewModel);
         }
 
+        public async Task<IActionResult> TrainSkill(string skillName)
+        {
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            await this.homeService.TrainSkillByName(userId, skillName);
+
+            return this.Redirect("/Home/Skills");
+        }
+
         public async Task<IActionResult> Abilities(string type)
         {
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);

@@ -60,7 +60,7 @@
             dbContext.BadgeRequirements.Add(new BadgeRequirement
             {
                 BadgeId = badges.FirstOrDefault(x => x.Name == "Junior Developer").Id,
-                RequirementId = requirements.FirstOrDefault(x => x.Name == "MSSQL" && x.Points == 25).Id,
+                RequirementId = requirements.FirstOrDefault(x => x.Name == "MS SQL" && x.Points == 25).Id,
             });
 
             dbContext.BadgeRequirements.Add(new BadgeRequirement
@@ -110,7 +110,7 @@
             dbContext.BadgeRequirements.Add(new BadgeRequirement
             {
                 BadgeId = badges.FirstOrDefault(x => x.Name == "BackEnd Developer").Id,
-                RequirementId = requirements.FirstOrDefault(x => x.Name == "MSSQL" && x.Points == 60).Id,
+                RequirementId = requirements.FirstOrDefault(x => x.Name == "MS SQL" && x.Points == 60).Id,
             });
 
             dbContext.BadgeRequirements.Add(new BadgeRequirement

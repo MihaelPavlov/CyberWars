@@ -12,13 +12,13 @@
 
         public string Name { get; set; }
 
+        public int Number { get; set; }
+
         public int TimeMinutes { get; set; }
 
-        public int RewardAbilityPoints { get; set; }
+        public string RewardAbilityName { get; set; }
 
         public int RewardMoney { get; set; }
-
-        public int RewardSkill { get; set; }
 
         public int CourseId { get; set; }
 

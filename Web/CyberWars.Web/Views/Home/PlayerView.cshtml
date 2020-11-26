@@ -8,10 +8,10 @@
                 <ul class="playerViewUl">
                     @foreach (var skill in Model.PlayerSkills)
                     {
-                    <li class="li">
-                        <img class="img" src="/images/@(skill.SkillId).Skill.png" alt="">
-                        <span class="lable"> @skill.SkillName - @skill.Points</span>
-                    </li>
+                        <li class="li">
+                            <img class="img" src="/images/@(skill.SkillId).Skill.png" alt="">
+                            <span class="lable"> @skill.SkillName - @skill.Points</span>
+                        </li>
 
                     }
                 </ul>
@@ -27,7 +27,8 @@
                         <h2 class="lableStats ">Statistics</h2>
                         <li class="lableStats ">Wins - @Model.BattleRecord.Wins</li>
                         <li class="lableStats ">Losses - @Model.BattleRecord.Losses</li>
-                        <li class="lableStats ">Collected Money - 321312321</li>
+                        <li class="lableStats ">Stolen Money Per Battle - @Model.BattleRecord.StealPerBattle</li>
+                        <li class="lableStats ">Collected Money - @Model.BattleRecord.StolenMoney</li>
                     </ul>
                 </div>
             </td>

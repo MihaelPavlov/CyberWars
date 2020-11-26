@@ -102,6 +102,55 @@
             return await this.playerSkillRepository.All().Where(x => x.Player.UserId == userId).To<T>().ToListAsync();
         }
 
+        public async Task TrainSkillByName(string userId, string skillName)
+        {
+            var playerSkill = await this.playerSkillRepository.All().FirstOrDefaultAsync(x => x.Player.UserId == userId && x.Skill.Name == skillName);
+            var player = await this.playerRepository.All().FirstOrDefaultAsync(x => x.UserId == userId);
+            var playerBattleRecord = await this.battleRecordRepository.All().FirstOrDefaultAsync(x => x.PlayerId == player.Id);
+
+            var multipleNumber = 0.20M;
+
+            var newAddMoneyToPlayerSkill = (decimal)playerSkill.Money * multipleNumber;
+            if (player.Money < playerSkill.Money)
+            {
+                return;
+            }
+
+            player.Money -= playerSkill.Money;
+
+            playerSkill.Money += (int)newAddMoneyToPlayerSkill;
+            playerSkill.Points++;
+
+            // Add Stats To player
+
+            // Health
+            if (skillName == "Health")
+            {
+                var addHealth = 10;
+
+                player.MaxHealth += addHealth;
+            }
+            else if (skillName == "Staying Power")
+            {
+                var addEnergy = 5;
+
+                player.MaxEnergy += addEnergy;
+            }
+            else if (skillName == "Knowledge")
+            {
+                var addStealPetBattleMoney = 5;
+                playerBattleRecord.StealPerBattle += addStealPetBattleMoney;
+            }
+
+            this.playerSkillRepository.Update(playerSkill);
+            this.playerRepository.Update(player);
+            this.battleRecordRepository.Update(playerBattleRecord);
+
+            await this.battleRecordRepository.SaveChangesAsync();
+            await this.playerSkillRepository.SaveChangesAsync();
+            await this.playerRepository.SaveChangesAsync();
+        }
+
         public async Task<IEnumerable<T>> GetPlayerAbilitiesByType<T>(string playerId, string type)
         {
             return await this.playerAbilityRepository.All().Where(x => x.PlayerId == playerId && x.Ability.AbilityType.Type == type).OrderByDescending(x => x.Points).To<T>().ToListAsync();
@@ -235,6 +284,9 @@
             {
                 Wins = playerBattleRecord.Wins,
                 Losses = playerBattleRecord.Losses,
+                StolenMoney = playerBattleRecord.StolenMoney,
+                PlayerId = playerBattleRecord.PlayerId,
+                StealPerBattle = playerBattleRecord.StealPerBattle,
             };
 
             var playerData = new PlayerDataView

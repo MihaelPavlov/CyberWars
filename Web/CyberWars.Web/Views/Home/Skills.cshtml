@@ -16,8 +16,8 @@
             <span class="name">@skill.SkillName</span>
             <div class="bar">@skill.SkillDescription</div>
             <span class="circle">@skill.Points</span>
-            <a class="button" href="#">Train -</a>
-            <span class="money">@skill.SkillStartMoney</span>
+            <a class="button" href="/Home/TrainSkill?skillName=@skill.SkillName">Train -</a>
+            <span class="money">@skill.Money</span>
             <img class="MoneyIcon" src="/images/MoneyIcon.png" alt="" />
         </div>
     </div>

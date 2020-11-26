@@ -63,7 +63,7 @@
             // AbilityT Type -> Database
             dbContext.Abilities.Add(new Ability
             {
-                Name = "MySQL",
+                Name = "My SQL",
                 Description = "Developed by Oracle, MySQL Database Software is a client/server system",
                 AbilityTypeId = 2,
             });
@@ -77,7 +77,7 @@
 
             dbContext.Abilities.Add(new Ability
             {
-                Name = "MSSQL",
+                Name = "MS SQL",
                 Description = "SQL Server is a relational database management system developed by Microsoft",
                 AbilityTypeId = 2,
             });

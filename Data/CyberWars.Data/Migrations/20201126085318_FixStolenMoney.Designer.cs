@@ -4,14 +4,16 @@ using CyberWars.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CyberWars.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201126085318_FixStolenMoney")]
+    partial class FixStolenMoney
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -657,13 +659,13 @@ namespace CyberWars.Data.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Number")
+                    b.Property<int>("RewardAbilityPoints")
                         .HasColumnType("int");
 
-                    b.Property<string>("RewardAbilityName")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("RewardMoney")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RewardSkill")
                         .HasColumnType("int");
 
                     b.Property<int>("TimeMinutes")

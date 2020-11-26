@@ -18,6 +18,8 @@
 
         public Task<IEnumerable<T>> GetPlayerSkills<T>(string userId);
 
+        public Task TrainSkillByName(string userId, string skillName);
+
         public Task<IEnumerable<T>> GetPlayerAbilitiesByType<T>(string playerId, string type);
 
         public Task<IEnumerable<T>> GetAllBadges<T>();

@@ -75,6 +75,7 @@
                     PlayerId = user.PlayerId,
                     Points = 0,
                     SkillId = skill.Id,
+                    Money = skill.StartMoney,
                 };
 
                 await this.playerSkillRepository.AddAsync(playerSkill);
@@ -113,6 +114,7 @@
                 PlayerId = user.PlayerId,
                 Wins = 0,
                 Losses = 0,
+                StealPerBattle = 50,
             };
 
             await this.battleRecordRepository.AddAsync(battleRecord);

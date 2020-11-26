@@ -107,9 +107,8 @@
                 BattleDate = DateTime.UtcNow,
             };
 
-
             if (attackPlayerStats > defencePlayerStats)
-            {
+            {// Winner Attack Player
                 var battleRecordAttackPlayer = await this.battleRecordRepository.All().FirstOrDefaultAsync(x => x.PlayerId == attackPlayer.Id);
                 var battleRecordDefencePlayer = await this.battleRecordRepository.All().FirstOrDefaultAsync(x => x.PlayerId == defencePlayer.Id);
 
@@ -122,6 +121,21 @@
                     BattleId = battle.Id,
                 };
 
+                // Get Money from Defence player
+                var playerDefenceUpdateMoney = await this.playerRepository.All().FirstOrDefaultAsync(x => x.Id == defencePlayer.Id);
+                if (playerDefenceUpdateMoney.Money < battleRecordAttackPlayer.StealPerBattle)
+                {
+                    playerDefenceUpdateMoney.Money = 0;
+                }
+                else
+                {
+
+                    playerDefenceUpdateMoney.Money -= battleRecordAttackPlayer.StealPerBattle;
+                }
+
+                this.playerRepository.Update(playerDefenceUpdateMoney);
+
+                // Battle Record update
                 battleRecordAttackPlayer.Wins++;
                 battleRecordDefencePlayer.Losses++;
                 winner = attackPlayer;
@@ -130,7 +144,7 @@
                 await this.playerBattleRepository.AddAsync(playerBattle);
             }
             else
-            {
+            {// Winner Defence Player
                 var battleRecordAttackPlayer = await this.battleRecordRepository.All().FirstOrDefaultAsync(x => x.PlayerId == attackPlayer.Id);
 
                 var battleRecordDefencePlayer = await this.battleRecordRepository.All().FirstOrDefaultAsync(x => x.PlayerId == defencePlayer.Id);
@@ -141,6 +155,20 @@
                     BattleId = battle.Id,
                 };
 
+                // Get Money From Attack Player
+                var playerAttackUpdateMoney = await this.playerRepository.All().FirstOrDefaultAsync(x => x.Id == attackPlayer.Id);
+                if (playerAttackUpdateMoney.Money < battleRecordDefencePlayer.StealPerBattle)
+                {
+                    playerAttackUpdateMoney.Money = 0;
+                }
+                else
+                {
+
+                    playerAttackUpdateMoney.Money -= battleRecordDefencePlayer.StealPerBattle;
+                }
+                this.playerRepository.Update(playerAttackUpdateMoney);
+
+                // Battle Record update
                 battleRecordDefencePlayer.Wins++;
                 battleRecordAttackPlayer.Losses++;
                 winner = defencePlayer;
@@ -149,15 +177,21 @@
                 await this.playerBattleRepository.AddAsync(playerBattle);
             }
 
+            var winnerBattleRecord = await this.battleRecordRepository.All().FirstOrDefaultAsync(x => x.PlayerId == winner.Id);
+
             var battleReward = new BattleRewardViewModel
             {
                 AttackPlayerName = attackPlayer.Name,
                 DefencePlayerName = defencePlayer.Name,
-                RewardMoney = 50,
+                RewardMoney = winnerBattleRecord.StealPerBattle,
                 RewardExp = 4,
                 WinnerPlayerName = winner.Name,
                 BattleDate = battle.BattleDate,
             };
+
+            // Update Winner BattleRecord
+            winnerBattleRecord.StolenMoney += winnerBattleRecord.StealPerBattle;
+            this.battleRecordRepository.Update(winnerBattleRecord);
 
             // Winner Update
             var winnerPlayer = await this.playerRepository.All().FirstOrDefaultAsync(x => x.Id == winner.Id);
@@ -169,7 +203,7 @@
             // Get Energy From AttackPlayer
             var attackPlayerGetEnergy = await this.playerRepository.All().FirstOrDefaultAsync(x => x.UserId == userId);
 
-            attackPlayerGetEnergy.Energy -= 4;
+            attackPlayerGetEnergy.Energy -= 3;
             attackPlayerGetEnergy.Health -= defencePlayerStats;
 
             this.playerRepository.Update(attackPlayerGetEnergy);
