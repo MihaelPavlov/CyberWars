@@ -113,6 +113,18 @@
 
             dbContext.Abilities.Add(new Ability
             {
+                Name = "Spring Framework",
+                Description = "The Spring Framework provides a comprehensive programming and configuration model for modern Java-based enterprise applications",
+                AbilityTypeId = 3,
+            });
+            dbContext.Abilities.Add(new Ability
+            {
+                Name = "Django",
+                Description = "Django is a high-level Python Web framework that encourages rapid development and clean, pragmatic design.",
+                AbilityTypeId = 3,
+            });
+            dbContext.Abilities.Add(new Ability
+            {
                 Name = "Vue.JS",
                 Description = "Vue.js is a popular JavaScript framework which achieved the 7th position at the Stack Overflow Developer Survey 2020 as the most used web framework",
                 AbilityTypeId = 3,

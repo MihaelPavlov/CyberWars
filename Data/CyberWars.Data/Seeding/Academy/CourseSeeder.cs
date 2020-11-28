@@ -55,12 +55,12 @@
             // Java Courses
             dbContext.Courses.Add(new Course
             {
-                Name = "Java Spring.MVC",
+                Name = "Spring Advanced",
                 CourseTypeId = javaId,
             });
             dbContext.Courses.Add(new Course
             {
-                Name = "Java Web Basics",
+                Name = "Spring Fundamentals",
                 CourseTypeId = javaId,
             });
             dbContext.Courses.Add(new Course

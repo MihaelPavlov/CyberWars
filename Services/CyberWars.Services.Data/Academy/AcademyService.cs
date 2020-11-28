@@ -41,6 +41,10 @@
             {
                 // point +3;
             }
+            else if (rewardAbilityName.Contains("End"))
+            {
+                // point +10;
+            }
             else
             {
                 // point +1;

@@ -16,10 +16,10 @@
 {
     <div class="frellacingTable">
         <span class="jobTittle">Job</span>
-        <h3 class="frellancingHeader">@job.Name</h3>
+        <h3 class="frellancingHeader">@job.JobName</h3>
         <h4>Requirements</h4>
         <ul>
-            @foreach (var requirement in job.JobRequirements)
+            @foreach (var requirement in job.JobJobRequirements)
             {
                 
                 <li>@requirement.Requirement.Name - @requirement.Requirement.Points</li>

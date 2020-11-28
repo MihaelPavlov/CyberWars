@@ -7,21 +7,21 @@
     using CyberWars.Data.Models.Job;
     using CyberWars.Services.Mapping;
 
-    public class JobViewModel : IMapFrom<Job>
+    public class JobViewModel : IMapFrom<RandomHangfireJob>
     {
         public JobViewModel()
         {
-            this.JobRequirements = new HashSet<JobRequirementViewModel>();
+            this.JobJobRequirements = new HashSet<JobRequirementViewModel>();
         }
 
-        public string Name { get; set; }
+        public string JobName { get; set; }
 
-        public int JobTypeId { get; set; }
+        public int JobJobTypeId { get; set; }
 
-        public JobType JobType { get; set; }
+        public JobType JobJobType { get; set; }
 
-        public int LevelRequirement { get; set; }
+        public int JobLevelRequirement { get; set; }
 
-        public virtual ICollection<JobRequirementViewModel> JobRequirements { get; set; }
+        public virtual ICollection<JobRequirementViewModel> JobJobRequirements { get; set; }
     }
 }

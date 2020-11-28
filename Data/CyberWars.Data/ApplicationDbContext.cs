@@ -111,6 +111,9 @@
 
         public DbSet<TeamPlayer> TeamPlayers { get; set; }
 
+        // HangFireJob
+        public DbSet<RandomHangfireJob> RandomHangfireJobs { get; set; }
+
         public override int SaveChanges() => this.SaveChanges(true);
 
         public override int SaveChanges(bool acceptAllChangesOnSuccess)
