@@ -25,5 +25,11 @@
             var viewModel = await this.webService.GetRandomJobs<JobViewModel>();
             return this.View(viewModel);
         }
+
+        [HttpPost]
+        public async Task<IActionResult> GetRewardFromJob(string value)
+        {
+            return this.Redirect("/Web/Job");
+        }
     }
 }

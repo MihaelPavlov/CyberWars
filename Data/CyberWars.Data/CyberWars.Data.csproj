@@ -21,6 +21,8 @@
     <Compile Remove="Migrations\20201118131331_PlayerMaxHealthAndEnergy.Designer.cs" />
     <Compile Remove="Migrations\20201118133215_AddPlayerMaxHealthAndEnergy.cs" />
     <Compile Remove="Migrations\20201118133215_AddPlayerMaxHealthAndEnergy.Designer.cs" />
+    <Compile Remove="Migrations\20201129093216_AddHangfireTables.cs" />
+    <Compile Remove="Migrations\20201129093216_AddHangfireTables.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

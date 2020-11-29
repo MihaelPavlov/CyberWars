@@ -13,7 +13,7 @@
 
         public int AbilityId { get; set; }
 
-        public Ability Ability { get; set; }
+        public virtual Ability Ability { get; set; }
 
         public int Points { get; set; }
 

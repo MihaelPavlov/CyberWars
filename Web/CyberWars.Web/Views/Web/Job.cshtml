@@ -1,19 +1,27 @@
 ﻿@using CyberWars.Web.ViewModels.WebViews.Job;
+@using CyberWars.Data.Models.Ability;
 @using CyberWars.Data.Models.Player;
 @using CyberWars.Data.Common.Repositories;
 @using System.Security.Claims;
+@using CyberWars.Services.Mapping;
+@using CyberWars.Web.ViewModels.HomeViews;
 
 @model IEnumerable<JobViewModel>
 
+@inject IDeletableEntityRepository<PlayerAbility> playerAbilityRepository;
 @inject IDeletableEntityRepository<Player> playerRepository;
 
 @{
     var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+    var playerAbilities = this.playerAbilityRepository.All().Where(x => x.Player.UserId == userId).To<PlayerAbilitiesViewModel>().ToList();
     var player = this.playerRepository.All().FirstOrDefault(x => x.UserId == userId);
 }
 
 @foreach (var job in Model)
 {
+
+    var canAcceptTheJob = true;
+
     <div class="frellacingTable">
         <span class="jobTittle">Job</span>
         <h3 class="frellancingHeader">@job.JobName</h3>
@@ -21,18 +29,44 @@
         <ul>
             @foreach (var requirement in job.JobJobRequirements)
             {
-                
-                <li>@requirement.Requirement.Name - @requirement.Requirement.Points</li>
-                @*<li id="btn-disable">HTML - 20p</li>
-                    <li id="btn-disable">Python - 20p</li>
-                    <li>Entity.F.C - 20p</li>*@
+
+                var playerAbility = playerAbilities.FirstOrDefault(x => x.AbilityName == requirement.Requirement.Name);
+
+                if (playerAbility.Points >= requirement.Requirement.Points)
+                {
+                    <li>@requirement.Requirement.Name - @requirement.Requirement.Points</li>
+                }
+                else
+                {
+                    canAcceptTheJob = false;
+                    <li id="btn-disable">@requirement.Requirement.Name - @requirement.Requirement.Points</li>
+                }
+
             }
         </ul>
         <h3>Time: 1 hour</h3>
-        <a class="btn yellow rounded " href="">Accept</a>
+        @if (!canAcceptTheJob)
+        {
+            <a class="btn yellow rounded " id="btn-disable" href="">Accept</a>
+        }
+        else if (player.Level >= job.JobLevelRequirement)
+        {
+            <form method="post" asp-controller="Web" asp-action="GetRewardFromJob">
+                <button type="submit" id="button" onclick="timer(70)" class="btn yellow rounded" value="@job.JobId">Accept <span id="demo"></span></button>
+            </form>
+        }
+        else
+        {
+            <a class="btn yellow rounded " id="btn-disable" href="">For Level (@job.JobLevelRequirement)</a>
+        }
     </div>
+
+
 }
 
+@section MyScript{
+    <script src="~/js/Timer.js" asp-append-version="true"></script>
+}
 @section CssFile {
     <link rel="stylesheet" href="/css/Web/frellancing.css">
 }

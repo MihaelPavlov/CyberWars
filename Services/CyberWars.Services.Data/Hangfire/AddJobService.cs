@@ -1,4 +1,4 @@
-﻿namespace CyberWars.Services.Data.Web
+﻿namespace CyberWars.Services.Data.Hangfire
 {
     using System;
     using System.Collections.Generic;
@@ -6,32 +6,26 @@
     using System.Text;
     using System.Threading.Tasks;
 
+    using CyberWars.Data;
     using CyberWars.Data.Common.Repositories;
     using CyberWars.Data.Models.Job;
-    using CyberWars.Data.Models.Player;
-    using CyberWars.Services.Mapping;
     using Microsoft.EntityFrameworkCore;
 
-    public class WebService : IWebService
+    public class AddJobService : IAddJobService
     {
         private readonly IDeletableEntityRepository<Job> jobsReposiotry;
         private readonly IDeletableEntityRepository<RandomHangfireJob> hangfireJobsReposiotry;
 
-        public WebService(IDeletableEntityRepository<Job> jobsReposiotry, IDeletableEntityRepository<RandomHangfireJob> hangfireJobsReposiotry)
+        public AddJobService(IDeletableEntityRepository<Job> jobsReposiotry, IDeletableEntityRepository<RandomHangfireJob> hangfireJobsReposiotry)
         {
             this.jobsReposiotry = jobsReposiotry;
             this.hangfireJobsReposiotry = hangfireJobsReposiotry;
         }
 
-        public async Task<IEnumerable<T>> GetRandomJobs<T>()
-        {
-            return await this.hangfireJobsReposiotry.All().Take(5).To<T>().ToListAsync();
-        }
-
-        public void UpdateRandomJobs()
+        public async Task UpdateRandomJobs()
         {
 
-            var randomJobs = this.jobsReposiotry.All().ToList();
+            var randomJobs = await this.jobsReposiotry.All().ToListAsync();
 
             while (randomJobs.Count() != 5)
             {
@@ -40,7 +34,7 @@
             }
 
             // Remove Jobs from HangireJobsTable
-            var hangfireJobs = this.hangfireJobsReposiotry.All().ToList();
+            var hangfireJobs = await this.hangfireJobsReposiotry.All().ToListAsync();
 
             foreach (var job in hangfireJobs)
             {
@@ -49,14 +43,14 @@
 
             foreach (var job in randomJobs)
             {
-                this.hangfireJobsReposiotry.AddAsync(new RandomHangfireJob
+                await this.hangfireJobsReposiotry.AddAsync(new RandomHangfireJob
                 {
                     Job = job,
                     JobId = job.Id,
                 });
             }
 
-            this.hangfireJobsReposiotry.SaveChangesAsync();
+            await this.hangfireJobsReposiotry.SaveChangesAsync();
         }
     }
 }

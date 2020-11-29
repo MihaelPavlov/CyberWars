@@ -1,6 +1,18 @@
 ﻿@using CyberWars.Web.ViewModels.HomeViews
+@using CyberWars.Data.Common.Repositories;
+@using CyberWars.Data.Models.Ability;
+@using System.Security.Claims;
+@using CyberWars.Services.Mapping;
+
+@inject IDeletableEntityRepository<PlayerAbility> playerAbilityRepository;
+
 @model BadgesViewModel
 
+@{
+    var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+    var playerAbilities = this.playerAbilityRepository.All().Where(x => x.Player.UserId == userId).To<PlayerAbilitiesViewModel>().ToList();
+
+}
 <div class="containerBadgeRequirements">
     <div class="cardBadge">
         <h2>Requirements for @Model.Name</h2>
@@ -14,12 +26,23 @@
             <tbody>
                 @foreach (var badgeRequirement in Model.BadgeRequirements)
                 {
-                    <tr>
-                        <th scope="row">@badgeRequirement.Requirement.Name</th>
-                        <td>@badgeRequirement.Requirement.Points</td>
-                    </tr>
-                }
+                    var playerAbility = playerAbilities.FirstOrDefault(x => x.AbilityName == badgeRequirement.Requirement.Name);
 
+                    if (playerAbility.Points >= badgeRequirement.Requirement.Points)
+                    {
+                        <tr>
+                            <th scope="row">@badgeRequirement.Requirement.Name</th>
+                            <td>@badgeRequirement.Requirement.Points</td>
+                        </tr>
+                    }
+                    else
+                    {
+                        <tr id="btn-disable">
+                            <th scope="row">@badgeRequirement.Requirement.Name</th>
+                            <td>@badgeRequirement.Requirement.Points</td>
+                        </tr>
+                    }
+                }
             </tbody>
         </table>
     </div>

@@ -179,7 +179,6 @@
               .HasForeignKey(x => x.DefencePlayerId)
               .OnDelete(DeleteBehavior.NoAction);
             });
-
             builder.Entity<PlayerAbility>(entity =>
             {
                 entity.HasKey(x => new { x.PlayerId, x.AbilityId });

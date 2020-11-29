@@ -32,6 +32,10 @@
     using Hangfire.SqlServer;
     using System;
     using CyberWars.Web.ViewModels.WebViews.Job;
+    using System.Threading.Tasks;
+    using Hangfire.Dashboard;
+    using CyberWars.Common;
+    using CyberWars.Services.Data.Hangfire;
 
     public class Startup
     {
@@ -46,10 +50,26 @@
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(
-                options => options.UseSqlServer(this.configuration.GetConnectionString("DefaultConnection"), options => options.CommandTimeout(180)));
+                options => options.UseSqlServer(this.configuration.GetConnectionString("DefaultConnection")));
 
             services.AddDefaultIdentity<ApplicationUser>(IdentityOptionsProvider.GetIdentityOptions)
                 .AddRoles<ApplicationRole>().AddEntityFrameworkStores<ApplicationDbContext>();
+
+            services.AddHangfire(config =>
+            {
+                config.SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
+                .UseSqlServerStorage(
+                this.configuration.GetConnectionString("DefaultConnection"),
+                new SqlServerStorageOptions
+                {
+                    PrepareSchemaIfNecessary = true,
+                    QueuePollInterval = TimeSpan.Zero,
+                    UseRecommendedIsolationLevel = true,
+                    UsePageLocksOnDequeue = true,
+                    DisableGlobalLocks = true,
+                });
+            });
+            services.AddHangfireServer();
 
             services.Configure<CookiePolicyOptions>(
                 options =>
@@ -64,27 +84,6 @@
                         options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
                     }).AddRazorRuntimeCompilation();
             services.AddRazorPages();
-
-            // Hangfire
-
-            services.AddHangfire(
-                config => config
-                    .SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
-                    .UseSimpleAssemblyNameTypeSerializer()
-                    .UseRecommendedSerializerSettings()
-                    .UseSqlServerStorage(
-                        this.configuration.GetConnectionString("DefaultConnection"),
-                        new SqlServerStorageOptions
-                        {
-                            CommandBatchMaxTimeout = TimeSpan.FromMinutes(5),
-                            SlidingInvisibilityTimeout = TimeSpan.FromMinutes(5),
-                            QueuePollInterval = TimeSpan.Zero,
-                            UseRecommendedIsolationLevel = true,
-                            UsePageLocksOnDequeue = true,
-                            DisableGlobalLocks = true,
-                        }));
-
-            services.AddHangfireServer();
 
             services.AddSingleton(this.configuration);
 
@@ -109,6 +108,7 @@
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IRecurringJobManager recurringJobManager)
         {
+
             AutoMapperConfig.RegisterMappings(typeof(ErrorViewModel).GetTypeInfo().Assembly);
 
             // Seed data on application startup
@@ -117,8 +117,9 @@
                 var dbContext = serviceScope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
                 dbContext.Database.Migrate();
 
-                this.FireHangfireJobs(recurringJobManager);
                 new ApplicationDbContextSeeder().SeedAsync(dbContext, serviceScope.ServiceProvider).GetAwaiter().GetResult();
+
+                this.SeedHangfireJobs(recurringJobManager);
             }
 
             if (env.IsDevelopment())
@@ -133,9 +134,10 @@
             }
 
             app.UseHttpsRedirection();
-            app.UseHangfireDashboard();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+
+            app.UseHangfireDashboard();
 
             app.UseRouting();
 
@@ -151,10 +153,9 @@
                     });
         }
 
-        private void FireHangfireJobs(IRecurringJobManager recurringJobManager)
+        private async Task SeedHangfireJobs(IRecurringJobManager recurringJobManager)
         {
-            recurringJobManager.AddOrUpdate<IWebService>("UpdateRandomJobs", x => x.UpdateRandomJobs(), Cron.Daily);
+            recurringJobManager.AddOrUpdate<AddJobService>("AddJobService", x => x.UpdateRandomJobs(), Cron.Minutely);
         }
-
     }
 }

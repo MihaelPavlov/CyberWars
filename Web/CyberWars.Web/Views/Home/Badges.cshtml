@@ -1,40 +1,65 @@
 ﻿@using CyberWars.Web.ViewModels.HomeViews
+@using CyberWars.Data.Common.Repositories;
+@using CyberWars.Data.Models.Ability;
+@using System.Security.Claims;
+@using CyberWars.Services.Mapping;
+
 @model IEnumerable<BadgesViewModel>
-@*<div class="containerBadges">
-        <a class="btn yellow rounded" href="/Home/Badges">C#</a>
-        <a class="btn yellow rounded" href="/Home/Badges?badgeType=JS">JS</a>
-        <a class="btn yellow rounded" href="/Home/Badges?badgeType=Java">Java</a>
-        <a class="btn yellow rounded" href="/Home/Badges?badgeType=Python">Python</a>
-        <a class="btn yellow rounded" href="/Home/Badges?badgeType=Ruby">Ruby</a>
-        <a class="btn yellow rounded" href="/Home/Badges?badgeType=C++">C++</a>
-    </div>*@
+
+@inject IDeletableEntityRepository<PlayerAbility> playerAbilityRepository;
+
+@{
+    var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+    var playerAbilities = this.playerAbilityRepository.All().Where(x => x.Player.UserId == userId).To<PlayerAbilitiesViewModel>().ToList();
+}
+
 @foreach (var badge in Model)
 {
-    //If all badge.badgeRequiremnt is complete should Achivied or the other
-    <div class="badgeTable achieved">
-        <span class="jobTittle">Badge</span>
-        <h3 class="frellancingHeader">@badge.Name</h3>
-        <img src="/images/Player/Badges/@(badge.ImageName + ".png")" alt="petImg">
-        <ul>
-            <li>Description</li>
-            <li>@badge.Description</li>
-            <li>
-                <a class="btn yellow rounded btn-disable " href="/Home/BadgeRequirements?badgeId=@badge.Id">Requirements</a>
-            </li>
+    var isCompleteBadge = true;
+    foreach (var badgeRequirement in badge.BadgeRequirements)
+    {
+        var playerAbility = playerAbilities.FirstOrDefault(x => x.AbilityName == badgeRequirement.Requirement.Name);
 
-        </ul>
-    </div>
+        if (playerAbility.Points < badgeRequirement.Requirement.Points)
+        {
+            isCompleteBadge = false;
+        }
+    }
+    //If all badge.badgeRequiremnt is complete should Achivied or the other
+    if (isCompleteBadge)
+    {
+
+        <div class="badgeTable achieved">
+            <span class="jobTittle">Badge</span>
+            <h3 class="frellancingHeader">@badge.Name</h3>
+            <img src="/images/Player/Badges/@(badge.ImageName + ".png")" alt="petImg">
+            <ul>
+                <li>Description</li>
+                <li>@badge.Description</li>
+                @*<li>
+                        <a class="btn yellow rounded btn-disable " href="/Home/BadgeRequirements?badgeId=@badge.Id">Requirements</a>
+                    </li>*@
+
+            </ul>
+        </div>
+    }
+    else
+    {
+        <div class="badgeTable">
+            <span class="jobTittle">Badge</span>
+            <h3 class="frellancingHeader">@badge.Name</h3>
+            <img src="/images/Player/Badges/@(badge.ImageName + ".png")" alt="petImg">
+            <ul>
+                <li>Description</li>
+                <li>@badge.Description</li>
+                <li>
+                    <a class="btn yellow rounded btn-disable " href="/Home/BadgeRequirements?badgeId=@badge.Id">Requirements</a>
+                </li>
+            </ul>
+        </div>
+
+    }
 }
-@*<div class="badgeTable">
-        <span class="jobTittle">Badge</span>
-        <h3 class="frellancingHeader">Student Badge</h3>
-        <img src="/images/Player/Badges/02.Junior_Developer.png" alt="petImg">
-        <ul>
-            <li>Description</li>
-            <li>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fuga, illum?</li>
-            <li> <a class="btn yellow rounded " href="/Home/BadgeRequirements?id=1">Requirements</a></li>
-        </ul>
-    </div>*@
 
 @section CssFile {
     <link rel="stylesheet" href="/css/Home/badge.css">

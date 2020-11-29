@@ -14,6 +14,8 @@
             this.JobJobRequirements = new HashSet<JobRequirementViewModel>();
         }
 
+        public int JobId { get; set; }
+
         public string JobName { get; set; }
 
         public int JobJobTypeId { get; set; }

@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Text;
 
     using CyberWars.Data.Models.Badge;
@@ -29,6 +30,10 @@
 
         public ICollection<BadgeRequirementsViewModel> BadgeRequirements { get; set; }
 
+        public bool IsAllBadgeRequirementsComplete { get; set; }
+
         // TODO: Property bool IsAllBadgeRequirement are complete  
+
     }
+
 }
