@@ -20,6 +20,12 @@
 
         public int LevelRequirement { get; set; }
 
+        public int RewardMoney { get; set; }
+
+        public int RewardExp { get; set; }
+
+        public string RewardAbilityNames { get; set; }
+
         public virtual ICollection<JobRequirement> JobRequirements { get; set; }
 
         public virtual ICollection<PlayerJob> PlayerJobs { get; set; }

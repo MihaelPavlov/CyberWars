@@ -27,6 +27,10 @@
                 Name = "Software",
             });
 
+            dbContext.JobTypes.Add(new JobType
+            {
+                Name = "Console",
+            });
             dbContext.SaveChanges();
         }
     }

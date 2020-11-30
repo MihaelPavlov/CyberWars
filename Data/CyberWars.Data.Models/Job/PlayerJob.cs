@@ -15,9 +15,9 @@
 
         public Job Job { get; set; }
 
-        public DateTime DateOfComplete { get; set; }
+        public DateTime LastDatePlayed { get; set; }
 
-        public bool IsComplete { get; set; }
+        public int TimesComplete { get; set; }
 
         public bool IsDeleted { get; set; }
 

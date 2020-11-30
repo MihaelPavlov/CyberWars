@@ -4,14 +4,16 @@ using CyberWars.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CyberWars.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201130075704_AddPlayerIdToRandomHangfireJob")]
+    partial class AddPlayerIdToRandomHangfireJob
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -735,15 +737,6 @@ namespace CyberWars.Data.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("RewardAbilityNames")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("RewardExp")
-                        .HasColumnType("int");
-
-                    b.Property<int>("RewardMoney")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("IsDeleted");
@@ -813,17 +806,17 @@ namespace CyberWars.Data.Migrations
                     b.Property<string>("PlayerId")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<DateTime>("DateOfComplete")
+                        .HasColumnType("datetime2");
+
                     b.Property<DateTime?>("DeletedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<bool>("IsDeleted")
+                    b.Property<bool>("IsComplete")
                         .HasColumnType("bit");
 
-                    b.Property<DateTime>("LastDatePlayed")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("TimesComplete")
-                        .HasColumnType("int");
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.HasKey("JobId", "PlayerId");
 

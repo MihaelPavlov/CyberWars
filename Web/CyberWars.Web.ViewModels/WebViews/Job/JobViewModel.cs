@@ -24,6 +24,12 @@
 
         public int JobLevelRequirement { get; set; }
 
+        public int JobRewardExp { get; set; }
+
+        public int JobRewardMoney { get; set; }
+
+        public string JobRewardAbilityNames { get; set; }
+
         public virtual ICollection<JobRequirementViewModel> JobJobRequirements { get; set; }
     }
 }

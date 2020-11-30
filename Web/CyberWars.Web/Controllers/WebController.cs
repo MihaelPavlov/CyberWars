@@ -1,9 +1,14 @@
 ﻿namespace CyberWars.Web.Controllers
 {
-    using CyberWars.Services.Data.Web;
-    using Microsoft.AspNetCore.Mvc;
-    using CyberWars.Web.ViewModels.WebViews.Job;
+    using System;
+    using System.Security.Claims;
     using System.Threading.Tasks;
+
+    using Hangfire;
+    using Microsoft.AspNetCore.Mvc;
+    using CyberWars.Services.Data.Hangfire;
+    using CyberWars.Services.Data.Web;
+    using CyberWars.Web.ViewModels.WebViews.Job;
 
     public class WebController : Controller
     {
@@ -27,8 +32,12 @@
         }
 
         [HttpPost]
-        public async Task<IActionResult> GetRewardFromJob(string value)
+        public async Task<IActionResult> GetRewardFromJob(int jobId)
         {
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            await this.webService.CompleteJob(jobId, userId);
+
             return this.Redirect("/Web/Job");
         }
     }

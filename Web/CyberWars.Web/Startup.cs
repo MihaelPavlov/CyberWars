@@ -119,7 +119,7 @@
 
                 new ApplicationDbContextSeeder().SeedAsync(dbContext, serviceScope.ServiceProvider).GetAwaiter().GetResult();
 
-                this.SeedHangfireJobs(recurringJobManager);
+                 this.SeedHangfireJobs(recurringJobManager);
             }
 
             if (env.IsDevelopment())
@@ -155,7 +155,7 @@
 
         private async Task SeedHangfireJobs(IRecurringJobManager recurringJobManager)
         {
-            recurringJobManager.AddOrUpdate<AddJobService>("AddJobService", x => x.UpdateRandomJobs(), Cron.Minutely);
+            recurringJobManager.AddOrUpdate<AddJobService>("AddJobService", x => x.UpdateRandomJobs(), Cron.Hourly);
         }
     }
 }

@@ -7,7 +7,7 @@
 
     public interface IWebService
     {
-        public void UpdateRandomJobs();
+        public Task CompleteJob(int jobId, string userId);
 
         public Task<IEnumerable<T>> GetRandomJobs<T>();
     }

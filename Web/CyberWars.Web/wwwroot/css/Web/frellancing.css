@@ -4,6 +4,9 @@
   color: grey;
 }
 .btn {
+  position: absolute;
+  top: 350px;
+  right: 1.9em;
   min-width: 150px;
   max-width: 130px;
   background: transparent;
@@ -13,7 +16,6 @@
   font-size: 1rem;
   font-weight: 700;
   line-height: 1;
-  margin: 10px;
   padding: 15px 15px;
   text-align: center;
   text-decoration: none;
@@ -24,7 +26,26 @@
   -ms-transition: all 0.2s ease-in-out 0s;
   transition: all 0.2s ease-in-out 0s;
 }
+.rewardHeading {
+  margin: 0px;
+  font-weight: 700;
+}
+.frellancingHeader {
+    margin: 7px;
+    font-weight: 700;
+}
+.rewardDiv {
+  position: absolute;
+  top: 17em;
+  left: 1.6em;
+}
 
+.jobMoneyIcon {
+  position: relative;
+  top: 4px;
+  width: 20px;
+  height: 20px;
+}
 .rounded {
   border-radius: 5px;
 }
@@ -67,6 +88,7 @@
 }
 
 .frellacingTable {
+  position: relative;
   margin: 40px;
   border-spacing: 1;
   border-collapse: collapse;
