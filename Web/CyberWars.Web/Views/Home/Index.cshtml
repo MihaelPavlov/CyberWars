@@ -18,14 +18,30 @@
     <tr>
         <td>Player Name:</td>
         <td><a href="/Home/PlayerView?playerName=@Model.Name">@Model.Name</a></td>
-       
+
     </tr>
 </table>
+<div class="options">
+    <div class="optionsItem">
+        <form asp-area="Identity" asp-page="/Account/Manage/ChangePassword">
+            <button type="submit" class="btn yellow rounded">Change Password</button>
+        </form>
+    </div>
+    <div class="optionsItem">
+        <form asp-area="Identity" asp-page="/Account/Manage/Email">
+            <button type="submit" class="btn yellow rounded">Change Email</button>
+        </form>
+    </div>
+    <div class="optionsItem">
+        <form asp-area="Identity" asp-page="/Account/Logout">
+            <button type="submit" class="btn yellow rounded">Logout</button>
+        </form>
+    </div>
+    </div>
+    @section CssFile {
+        <link rel="stylesheet" href="/css/Home/home.css">
+    }
 
-@section CssFile {
-    <link rel="stylesheet" href="/css/Home/home.css">
-}
-
-@section PageHeader{
-    Home
-}
+    @section PageHeader{
+        Home
+    }

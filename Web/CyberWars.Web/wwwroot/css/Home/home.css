@@ -14,34 +14,82 @@
 }
 
 .homeTable {
-  display: inline-block;
-  position: relative;
   border-spacing: 0;
   bottom: 190px;
   font-size: 1.7rem;
-  border: 3px solid #dcb97b;
-  border-radius: 10px;
-  width: 330px;
+  float: right;
+  margin-right: 70px;
+  margin-top: 120px;
 }
 
 .homeTable td {
   padding: 20px;
+  border-bottom: 2px solid #dcb97b;
+  border-radius: 20px;
+  border-left: 2px solid #dcb97b;
 }
 
 .homeTable tr {
   width: auto;
 }
 
-.homeTable td:first-child {
-  border-right: 3px solid #dcb97b;
+.options {
+  display: flex;
+  justify-content: space-around;
+}
+.optionsItem {
+  margin: 50px;
+}
+.btn {
+  right: 1.9em;
+  min-width: 150px;
+  max-width: 200px;
+  background: transparent;
+  border: 2px solid transparent;
+  box-sizing: border-box;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1;
+  padding: 15px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  outline: none;
+  -webkit-transition: all 0.2s ease-in-out 0s;
+  -moz-transition: all 0.2s ease-in-out 0s;
+  -ms-transition: all 0.2s ease-in-out 0s;
+  transition: all 0.2s ease-in-out 0s;
 }
 
-.homeTable td:nth-child(2) {
-  border-left: none;
-  width: 162px;
+.rounded {
+  border-radius: 5px;
+}
+.full-rounded {
+  border-radius: 20em;
 }
 
-.homeTable .playerStats {
-  border-top: 3px solid #dcb97b;
-  border-bottom: 3px solid #dcb97b;
+.yellow {
+  background: #fac75a;
+  color: black;
+  box-shadow: 0 3px 0 #f9b629;
+}
+.yellow:hover {
+  background: #fce17a;
+}
+.yellow:active,
+.yellow:focus {
+  background: #fac24b;
+}
+.dark-blue {
+  background: #34495e;
+  color: #fff;
+  box-shadow: 0 3px 0 #22303d;
+}
+.dark-blue:hover {
+  background: #425c77;
+}
+.dark-blue:active,
+.dark-blue:focus {
+  background: #2f4154;
 }

@@ -49,6 +49,7 @@
             {
                 var playerJob = playerJobs.FirstOrDefault(x => x.JobId == jobId);
                 playerJob.TimesComplete++;
+                playerJob.LastDatePlayed = DateTime.Today;
                 this.playerJobReposiotry.Update(playerJob);
             }
             else

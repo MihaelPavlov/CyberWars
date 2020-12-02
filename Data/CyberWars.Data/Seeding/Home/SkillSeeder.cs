@@ -34,21 +34,21 @@
             dbContext.Skills.Add(new Skill
             {
                 Name = "Knowledge",
-                Description = "Enchances thought and speed of thinking",
+                Description = "Enhances the money of perBattle + 5",
                 StartMoney = 120,
             });
 
             dbContext.Skills.Add(new Skill
             {
                 Name = "Staying Power",
-                Description = "Increase the hours you can stay at the computer",
+                Description = "Increase the energy + 5",
                 StartMoney = 120,
             });
 
             dbContext.Skills.Add(new Skill
             {
                 Name = "Health",
-                Description = "Increase the health/live points",
+                Description = "Affects the amount of life + 10",
                 StartMoney = 120,
             });
 
