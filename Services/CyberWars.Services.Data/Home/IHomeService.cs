@@ -28,7 +28,7 @@
 
         public Task<IEnumerable<T>> GetPlayerPets<T>(string userId);
 
-        public Task<IEnumerable<T>> GetPetRandomFood<T>();
+        public Task<IEnumerable<T>> GetPetRandomFood<T>(int petId);
 
         public Task<T> GetPetById<T>(string userId, int petId);
 
@@ -41,5 +41,7 @@
         public Task SellPetById(int petId, string userId);
 
         public Task<PlayerDataView> GetPlayerViewData(string playerName);
+
+        public Task CompleteBadge(int badgeId, string userId);
     }
 }

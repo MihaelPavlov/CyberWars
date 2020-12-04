@@ -3,10 +3,13 @@
 @using CyberWars.Data.Models.Ability;
 @using System.Security.Claims;
 @using CyberWars.Services.Mapping;
+@using CyberWars.Services.Data.Home;
 
 @model IEnumerable<BadgesViewModel>
 
 @inject IDeletableEntityRepository<PlayerAbility> playerAbilityRepository;
+
+@inject IHomeService homeService;
 
 @{
     var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -28,6 +31,8 @@
     //If all badge.badgeRequiremnt is complete should Achivied or the other
     if (isCompleteBadge)
     {
+        // Save in the Database the completed badge
+        await this.homeService.CompleteBadge(badge.Id, userId);
 
         <div class="badgeTable achieved">
             <span class="jobTittle">Badge</span>

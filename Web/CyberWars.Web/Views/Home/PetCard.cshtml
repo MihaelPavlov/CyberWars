@@ -56,11 +56,18 @@
                     <h1>+40 to your pet mood</h1>
                 </div>
             </div>
-            <button onclick="Alert.render()" class="btn yellow rounded" name="petId" value="@Model.PetId">ScratchBelly</button>
+            @if (Model.Mood == Model.MaxMood)
+            {
+                <button class="btn gray rounded btn-disable" name="petId" value="@Model.PetId">ScratchBelly</button>
+            }
+            else
+            {
+                <button onclick="Alert.render()" class="btn yellow rounded" name="petId" value="@Model.PetId">ScratchBelly</button>
+            }
         </form>
-        <form method="post" class="petForm" asp-controller="Home" asp-action="SellPet">
-            <button class="btn yellow rounded " name="petId" value="@Model.PetId">Sell Pet</button>
+        <form method="post" class="petForm" asp-controller="Home" id="deleteForm" asp-action="SellPet" asp-route-petId="@Model.PetId">
         </form>
+        <button onclick="document.getElementById('deleteModal').style.display='block'" class="btn yellow rounded " data-toggle="modal" data-target="#deleteModal">Sell Pet</button>
     </div>
     <h2>Food</h2>
     @*Here need to make it with viewComponent and get ALL FOOD that player buy it *@
@@ -70,11 +77,28 @@
 
     </div>
 </div>
+
+<div id="deleteModal" class="modal">
+    <span onclick="document.getElementById('deleteModal').style.display='none'" class="close" title="Close Modal">&times;</span>
+    <form class="modal-content">
+        <div class="containerModal">
+            <h1>Sell Pet</h1>
+            <p class="modalText">Are you sure you want to sell your pet?</p>
+
+            <div class="clearfix">
+                <button type="button" class="deletebtn buttonModal" onclick="deleteForm.submit()">Sell</button>
+                <button type="button" class="cancelbtn buttonModal" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </form>
+</div>
+
 @section CssFile {
     <link rel="stylesheet" href="/css/Home/petCard.css">
 }
 @section MyScript{
     <script src="/js/ChangeName.js" asp-append-version="true"></script>
+    <script src="~/js/Modal.js" asp-append-version="true"></script>
     <script src="/js/ScratchBelly.js" asp-append-version="true"></script>
 }
 @section PageHeader{

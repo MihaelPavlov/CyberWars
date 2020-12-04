@@ -79,7 +79,7 @@
             // Give pet Random food Every day
             foreach (var pet in viewModel)
             {
-                pet.Foods = await this.homeService.GetPetRandomFood<FoodViewModel>();
+                pet.Foods = await this.homeService.GetPetRandomFood<FoodViewModel>(pet.PetId);
             }
 
             return this.View(viewModel);
@@ -124,6 +124,7 @@
             return this.Redirect($"/Home/PetCard?petId={petId}");
         }
 
+        [HttpPost]
         public async Task<IActionResult> SellPet(int petId)
         {
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);

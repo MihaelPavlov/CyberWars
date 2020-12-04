@@ -19,46 +19,76 @@
 
             dbContext.Foods.Add(new Food
             {
-                Name = "Other Food",
+                Name = "Food +100",
                 GainHealth = 100,
+                GainExp = 100,
+                LevelRequirement = 14,
+                Price = 250.00M,
+                ImageName = "Food7",
+                Description = "No",
+            });
+            dbContext.Foods.Add(new Food
+            {
+                Name = "Food +80",
+                GainHealth = 80,
+                GainExp = 100,
+                LevelRequirement = 11,
+                Price = 400.00M,
+                ImageName = "Food6",
+                Description = "No",
+            });
+            dbContext.Foods.Add(new Food
+            {
+                Name = "Food +65",
+                GainHealth = 65,
+                GainExp = 100,
+                LevelRequirement = 9,
+                Price = 340.00M,
+                ImageName = "Food5",
+                Description = "No",
+            });
+            dbContext.Foods.Add(new Food
+            {
+                Name = "Food +50",
+                GainHealth = 50,
                 GainExp = 100,
                 LevelRequirement = 7,
                 Price = 250.00M,
-                ImageName = "Food2",
-                Description = "For all Animals",
+                ImageName = "Food4",
+                Description = "No",
             });
 
             dbContext.Foods.Add(new Food
             {
-                Name = "Dog,Cat Food",
-                GainHealth = 100,
+                Name = "Food +40",
+                GainHealth = 40,
                 GainExp = 100,
                 LevelRequirement = 5,
                 Price = 200.00M,
-                ImageName = "Food",
-                Description = "Animals for Cats and Dogs! Yummy !",
+                ImageName = "Food3",
+                Description = "No",
             });
 
             dbContext.Foods.Add(new Food
             {
-                Name = "Fish",
-                GainHealth = 55,
-                GainExp = 44,
+                Name = "Food +20",
+                GainHealth = 20,
+                GainExp = 40,
                 LevelRequirement = 3,
-                Price = 100.00M,
-                ImageName = "fish",
-                Description = "Smelly !!",
+                Price = 70.00M,
+                ImageName = "Food2",
+                Description = "No",
             });
 
             dbContext.Foods.Add(new Food
             {
-                Name = "Pizza",
-                GainHealth = 80,
+                Name = "Food +15",
+                GainHealth = 15,
                 GainExp = 20,
                 LevelRequirement = 2,
-                Price = 70.00M,
-                ImageName = "pizza",
-                Description = "That tasy pizza !",
+                Price = 50.00M,
+                ImageName = "Food1",
+                Description = "No",
             });
 
             dbContext.SaveChanges();

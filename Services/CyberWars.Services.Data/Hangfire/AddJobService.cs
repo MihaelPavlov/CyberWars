@@ -9,6 +9,7 @@
     using CyberWars.Data;
     using CyberWars.Data.Common.Repositories;
     using CyberWars.Data.Models.Job;
+    using CyberWars.Data.Models.Pet_Food;
     using Microsoft.EntityFrameworkCore;
 
     public class AddJobService : IAddJobService

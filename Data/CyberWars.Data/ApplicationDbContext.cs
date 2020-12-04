@@ -82,6 +82,8 @@
 
         public DbSet<PlayerFood> PlayerFoods { get; set; }
 
+        public DbSet<RandomHangfireFood> RandomHangfireFoods { get; set; }
+
         // Levels
         public DbSet<Level> Levels { get; set; }
 

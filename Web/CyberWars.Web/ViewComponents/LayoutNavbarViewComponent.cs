@@ -12,6 +12,7 @@ namespace CyberWars.Web.ViewComponents
     using CyberWars.Data.Models.Player;
     using CyberWars.Services.Data.Home;
     using CyberWars.Web.ViewModels.HomeViews;
+    using Hangfire;
     using Microsoft.AspNetCore.Mvc;
 
     public class LayoutNavbarViewComponent : ViewComponent
@@ -23,9 +24,15 @@ namespace CyberWars.Web.ViewComponents
             this.dbContext = dbContext;
         }
 
-        public IViewComponentResult Invoke(string userId)
+        public async Task<IViewComponentResult> InvokeAsync(string userId)
         {
-            var player = this.dbContext.Players.FirstOrDefault(x => x.UserId == userId);
+            var player = await this.dbContext.Players.FirstOrDefaultAsync(x => x.UserId == userId);
+            if ((player.Health < player.MaxHealth || player.Energy < player.MaxEnergy) && !player.IsStatsResetStart)
+            {
+                BackgroundJob.Schedule(() => this.ResetStats(player), TimeSpan.FromMinutes(59));
+                player.IsStatsResetStart = true;
+            }
+
             var viewModel = new PlayerDataView
             {
                 UserId = player.UserId,
@@ -42,7 +49,25 @@ namespace CyberWars.Web.ViewComponents
                 Money = player.Money,
                 Levels = this.dbContext.Levels.ToList(),
             };
+
+            this.dbContext.Players.Update(player);
+
+            await this.dbContext.SaveChangesAsync();
+
             return this.View(viewModel);
         }
+
+        public async Task ResetStats(Player player)
+        {
+            /* Here we need get the player again from the database or we get the player that wi give to the hangifre.Scedule
+              function and all changes when we do in that time will return .*/
+            var nowPlayer = await this.dbContext.Players.FirstOrDefaultAsync(x => x.Id == player.Id);
+            nowPlayer.Health = player.MaxHealth;
+            nowPlayer.Energy = player.MaxEnergy;
+            nowPlayer.IsStatsResetStart = false;
+            this.dbContext.Players.Update(nowPlayer);
+            await this.dbContext.SaveChangesAsync();
+        }
+
     }
 }

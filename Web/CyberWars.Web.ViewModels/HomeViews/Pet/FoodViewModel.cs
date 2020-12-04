@@ -7,20 +7,20 @@
     using CyberWars.Data.Models.Pet_Food;
     using CyberWars.Services.Mapping;
 
-    public class FoodViewModel : IMapFrom<Food>
+    public class FoodViewModel : IMapFrom<RandomHangfireFood>
     {
-        public int Id { get; set; }
+        public int FoodId { get; set; }
 
-        public string Name { get; set; }
+        public string FoodName { get; set; }
 
-        public int GainHealth { get; set; }
+        public int FoodGainHealth { get; set; }
 
-        public int GainExp { get; set; }
+        public int FoodGainExp { get; set; }
 
-        public decimal Price { get; set; }
+        public decimal FoodPrice { get; set; }
 
-        public string ImageName { get; set; }
+        public string FoodImageName { get; set; }
 
-        public string Description { get; set; }
+        public string FoodDescription { get; set; }
     }
 }

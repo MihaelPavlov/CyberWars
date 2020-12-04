@@ -48,6 +48,8 @@
 
         public int MaxEnergy { get; set; }
 
+        public bool IsStatsResetStart { get; set; }
+
         public decimal Money { get; set; }
 
         public int LearnPoint { get; set; }

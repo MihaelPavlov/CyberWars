@@ -25,7 +25,7 @@
                     <ul>
                         @foreach (var food in pet.Foods)
                         {
-                            <li><img src="/images/@(food.ImageName).png" alt="" /> @food.Name</li>
+                            <li><img src="/images/PetFood/@(food.FoodImageName +".png")" alt="" /> @food.FoodName</li>
                         }
                     </ul>
                 </td>

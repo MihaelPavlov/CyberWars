@@ -58,6 +58,8 @@
 
         public int MaxHealth { get; set; }
 
+        public bool IsStatsResetStart { get; set; }
+
         public int Energy { get; set; }
 
         public int MaxEnergy { get; set; }

@@ -36,6 +36,7 @@
     using Hangfire.Dashboard;
     using CyberWars.Common;
     using CyberWars.Services.Data.Hangfire;
+    using Newtonsoft.Json;
 
     public class Startup
     {
@@ -57,6 +58,8 @@
 
             services.AddHangfire(config =>
             {
+                // ReferenceLoop Fixing json error for resetStats on the player
+                config.UseSerializerSettings(new JsonSerializerSettings() { ReferenceLoopHandling = ReferenceLoopHandling.Ignore });
                 config.SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
                 .UseSqlServerStorage(
                 this.configuration.GetConnectionString("DefaultConnection"),
@@ -83,6 +86,7 @@
                     {
                         options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
                     }).AddRazorRuntimeCompilation();
+
             services.AddRazorPages();
 
             services.AddSingleton(this.configuration);
@@ -155,7 +159,9 @@
 
         private async Task SeedHangfireJobs(IRecurringJobManager recurringJobManager)
         {
-            recurringJobManager.AddOrUpdate<AddJobService>("AddJobService", x => x.UpdateRandomJobs(), Cron.Hourly);
+            recurringJobManager.AddOrUpdate<PetStatsService>("PetStatsService", x => x.PetStatsDownEveryHour(), Cron.Hourly);
+            recurringJobManager.AddOrUpdate<UpdatePetFavouriteFoodService>("UpdatePetFavouriteFoodService", x => x.ChangePetFavouriteFoodEveryDay(), Cron.Daily);
+            recurringJobManager.AddOrUpdate<AddJobService>("AddJobService", x => x.UpdateRandomJobs(), Cron.Daily);
         }
     }
 }

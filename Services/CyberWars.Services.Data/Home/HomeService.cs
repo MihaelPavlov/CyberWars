@@ -38,6 +38,8 @@
         private readonly IDeletableEntityRepository<Pet> petRepository;
         private readonly IDeletableEntityRepository<PlayerFood> playerFoodRepository;
         private readonly IDeletableEntityRepository<BattleRecord> battleRecordRepository;
+        private readonly IDeletableEntityRepository<RandomHangfireFood> randomHangfireFoodRepository;
+        private readonly IDeletableEntityRepository<PlayerBadge> playerBadgeRepository;
 
         public HomeService(IDeletableEntityRepository<Player> playerRepository
             , IDeletableEntityRepository<PlayerSkill> playerSkillRepository
@@ -50,7 +52,9 @@
             , IDeletableEntityRepository<Pet> petRepository
             , IDeletableEntityRepository<PlayerFood> playerFoodRepository
             , IDeletableEntityRepository<BattleRecord> battleRecordRepository
-            , IDeletableEntityRepository<Skill> skillRepository)
+            , IDeletableEntityRepository<Skill> skillRepository
+            , IDeletableEntityRepository<RandomHangfireFood> randomHangfireFoodRepository
+            , IDeletableEntityRepository<PlayerBadge> playerBadgeRepository)
         {
             this.playerRepository = playerRepository;
             this.playerSkillRepository = playerSkillRepository;
@@ -64,6 +68,8 @@
             this.playerFoodRepository = playerFoodRepository;
             this.battleRecordRepository = battleRecordRepository;
             this.skillRepository = skillRepository;
+            this.randomHangfireFoodRepository = randomHangfireFoodRepository;
+            this.playerBadgeRepository = playerBadgeRepository;
         }
 
         public async Task<PlayerDataView> GetPlayerData(string userId)
@@ -88,6 +94,7 @@
                 Money = player.Money,
                 LearnPoint = player.LearnPoint,
                 Level = player.Level,
+                IsStatsResetStart = player.IsStatsResetStart,
             };
             return playerData;
         }
@@ -171,18 +178,9 @@
             return await this.playerPetRepository.All().Where(x => x.Player.UserId == userId).To<T>().ToListAsync();
         }
 
-        public async Task<IEnumerable<T>> GetPetRandomFood<T>()
+        public async Task<IEnumerable<T>> GetPetRandomFood<T>(int petId)
         {
-            var allFood = await this.foodRepository.All().To<T>().ToListAsync();
-            int foodCountPetDay = 3;
-            var randomFood = new List<T>();
-            for (int i = 1; i <= foodCountPetDay; i++)
-            {
-                int index = new Random().Next(allFood.Count());
-                randomFood.Add(allFood[index]);
-            }
-
-            return randomFood;
+            return await this.randomHangfireFoodRepository.All().Where(x => x.PetId == petId).To<T>().ToListAsync();
         }
 
         public async Task<T> GetPetById<T>(string userId, int petId)
@@ -198,8 +196,23 @@
             var playerPet = await this.playerPetRepository.All().FirstOrDefaultAsync(x => x.PetId == petId && x.PlayerId == player.Id);
             var playerFood = await this.playerFoodRepository.All().FirstOrDefaultAsync(x => x.PlayerId == player.Id && x.FoodId == foodId);
 
-            // Update Health
+            var petFavouriteFood = await this.randomHangfireFoodRepository.All().Where(x => x.PetId == playerPet.PetId).ToListAsync();
+
+            // If you feed your pet with his favourite food you will give him +10 mood
+            if (petFavouriteFood.Any(x => x.FoodId == food.Id))
+            {
+                var bonusMood = 10;
+                playerPet.Mood += bonusMood;
+
+                if (playerPet.Mood > playerPet.MaxMood)
+                {
+                    playerPet.Mood = playerPet.MaxMood;
+                }
+            }
+
             playerPet.Health += playerFood.Food.GainHealth;
+
+
             if (playerPet.Health > playerPet.MaxHealth)
             {
                 playerPet.Health = playerPet.MaxHealth;
@@ -213,6 +226,7 @@
             this.playerFoodRepository.Update(playerFood);
 
             await this.playerFoodRepository.SaveChangesAsync();
+            await this.playerPetRepository.SaveChangesAsync();
         }
 
         public async Task ChangePetName(string newName, int petId, string userId)
@@ -228,7 +242,6 @@
         public async Task ScratchPetBelly(int petId, string userId)
         {
             var playerPet = await this.playerPetRepository.All().FirstOrDefaultAsync(x => x.Player.UserId == userId && x.PetId == petId);
-
 
             playerPet.Mood += 40;
 
@@ -306,9 +319,38 @@
                 Level = player.Level,
                 PlayerSkills = playerSkills,
                 BattleRecord = viewPlayerBattleRecord,
+                IsStatsResetStart = player.IsStatsResetStart,
             };
 
             return playerData;
+        }
+
+        public async Task CompleteBadge(int badgeId, string userId)
+        {
+            var badge = await this.badgeRepository.All().FirstOrDefaultAsync(x => x.Id == badgeId);
+
+            var player = await this.playerRepository.All().FirstOrDefaultAsync(x => x.UserId == userId);
+
+            var playerBadges = await this.playerBadgeRepository.All().Where(x => x.Player.UserId == userId).ToListAsync();
+
+            if (playerBadges.Any(x => x.BadgeId == badgeId))
+            {
+                return;
+            }
+            else
+            {
+                var playerBadge = new PlayerBadge
+                {
+                    Player = player,
+                    PlayerId = player.Id,
+                    Badge = badge,
+                    BadgeId = badge.Id,
+                    AchievementDate = DateTime.UtcNow,
+                };
+
+                await this.playerBadgeRepository.AddAsync(playerBadge);
+                await this.playerBadgeRepository.SaveChangesAsync();
+            }
         }
     }
 }

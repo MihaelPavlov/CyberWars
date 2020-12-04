@@ -23,6 +23,8 @@
     <Compile Remove="Migrations\20201118133215_AddPlayerMaxHealthAndEnergy.Designer.cs" />
     <Compile Remove="Migrations\20201129093216_AddHangfireTables.cs" />
     <Compile Remove="Migrations\20201129093216_AddHangfireTables.Designer.cs" />
+    <Compile Remove="Migrations\20201203081905_AddIsHealthResetStartToPlayer.cs" />
+    <Compile Remove="Migrations\20201203081905_AddIsHealthResetStartToPlayer.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

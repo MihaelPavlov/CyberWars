@@ -4,14 +4,16 @@ using CyberWars.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CyberWars.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201203161732_FixResetPlayerStats")]
+    partial class FixResetPlayerStats
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1025,42 +1027,6 @@ namespace CyberWars.Data.Migrations
                     b.ToTable("PlayerPets");
                 });
 
-            modelBuilder.Entity("CyberWars.Data.Models.Pet_Food.RandomHangfireFood", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("FoodId")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("ModifiedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("PetId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("FoodId");
-
-                    b.HasIndex("IsDeleted");
-
-                    b.HasIndex("PetId");
-
-                    b.ToTable("RandomHangfireFoods");
-                });
-
             modelBuilder.Entity("CyberWars.Data.Models.Player.Level", b =>
                 {
                     b.Property<int>("Id")
@@ -1699,21 +1665,6 @@ namespace CyberWars.Data.Migrations
                         .WithMany("PlayerPets")
                         .HasForeignKey("PlayerId")
                         .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("CyberWars.Data.Models.Pet_Food.RandomHangfireFood", b =>
-                {
-                    b.HasOne("CyberWars.Data.Models.Pet_Food.Food", "Food")
-                        .WithMany()
-                        .HasForeignKey("FoodId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("CyberWars.Data.Models.Pet_Food.Pet", "Pet")
-                        .WithMany()
-                        .HasForeignKey("PetId")
-                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 

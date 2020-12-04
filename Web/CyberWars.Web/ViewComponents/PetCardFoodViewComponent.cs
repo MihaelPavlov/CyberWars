@@ -50,13 +50,13 @@
                 {
                     Food = new FoodViewModel
                     {
-                        Description = this.foodRepository.All().FirstOrDefault(fr => fr.Id == x.FoodId).Description,
-                        GainExp = this.foodRepository.All().FirstOrDefault(fr => fr.Id == x.FoodId).GainExp,
-                        GainHealth = this.foodRepository.All().FirstOrDefault(fr => fr.Id == x.FoodId).GainHealth,
-                        Id = this.foodRepository.All().FirstOrDefault(fr => fr.Id == x.FoodId).Id,
-                        Name = this.foodRepository.All().FirstOrDefault(fr => fr.Id == x.FoodId).Name,
-                        Price = this.foodRepository.All().FirstOrDefault(fr => fr.Id == x.FoodId).Price,
-                        ImageName = this.foodRepository.All().FirstOrDefault(fr => fr.Id == x.FoodId).ImageName,
+                        FoodDescription = this.foodRepository.All().FirstOrDefault(fr => fr.Id == x.FoodId).Description,
+                        FoodGainExp = this.foodRepository.All().FirstOrDefault(fr => fr.Id == x.FoodId).GainExp,
+                        FoodGainHealth = this.foodRepository.All().FirstOrDefault(fr => fr.Id == x.FoodId).GainHealth,
+                        FoodId = this.foodRepository.All().FirstOrDefault(fr => fr.Id == x.FoodId).Id,
+                        FoodName = this.foodRepository.All().FirstOrDefault(fr => fr.Id == x.FoodId).Name,
+                        FoodPrice = this.foodRepository.All().FirstOrDefault(fr => fr.Id == x.FoodId).Price,
+                        FoodImageName = this.foodRepository.All().FirstOrDefault(fr => fr.Id == x.FoodId).ImageName,
                     },
                     PlayerId = player.Id,
                     FoodId = x.FoodId,
