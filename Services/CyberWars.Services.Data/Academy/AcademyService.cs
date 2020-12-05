@@ -12,6 +12,7 @@
     using CyberWars.Data.Models.Course;
     using CyberWars.Data.Models.Player;
     using CyberWars.Services.Mapping;
+    using CyberWars.Web.ViewModels.Academy;
     using Microsoft.EntityFrameworkCore;
 
     public class AcademyService : IAcademyService
@@ -19,18 +20,32 @@
         private readonly IDeletableEntityRepository<Course> courseRepository;
         private readonly IDeletableEntityRepository<Lecture> lectureRepository;
         private readonly IDeletableEntityRepository<PlayerAbility> playerAbilityRepository;
+        private readonly IDeletableEntityRepository<Player> playerRepository;
 
         public AcademyService(IDeletableEntityRepository<Course> courseRepository
-            , IDeletableEntityRepository<Lecture> lectureRepository, IDeletableEntityRepository<PlayerAbility> playerAbilityRepository)
+            , IDeletableEntityRepository<Lecture> lectureRepository, IDeletableEntityRepository<PlayerAbility> playerAbilityRepository
+            , IDeletableEntityRepository<Player> playerRepository)
         {
             this.courseRepository = courseRepository;
             this.lectureRepository = lectureRepository;
             this.playerAbilityRepository = playerAbilityRepository;
+            this.playerRepository = playerRepository;
         }
 
-        public async Task<IEnumerable<T>> GetLecturesByName<T>(string courseName)
+        public async Task<IEnumerable<LectureViewModel>> GetLecturesByName(string courseName, string userId)
         {
-            return await this.lectureRepository.All().Where(x => x.Course.Name == courseName).OrderBy(x => x.Number).To<T>().ToListAsync();
+            var player = await this.playerRepository.All().FirstOrDefaultAsync(x => x.UserId == userId);
+
+            return await this.lectureRepository.All().Where(x => x.Course.Name == courseName).OrderBy(x => x.Number).Select(x => new LectureViewModel
+            {
+                CourseId = x.CourseId,
+                CourseName = x.Course.Name,
+                ExperienceToComplete = x.ExperienceToComplete,
+                Name = x.Name,
+                RewardAbilityName = x.RewardAbilityName,
+                RewardMoney = x.RewardMoney,
+                PlayerExperience = player.Experience,
+            }).ToListAsync();
         }
 
         public async Task GivePointToAbilityByName(string userId, string rewardAbilityName)
@@ -50,5 +65,7 @@
                 // point +1;
             }
         }
+
+
     }
 }

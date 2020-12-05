@@ -28,7 +28,14 @@
                 </td>
                 <td>
                     <div>
-                        <a class="btn yellow rounded " href="#">start</a>
+                        @if (lecture.PlayerExperience >= lecture.ExperienceToComplete)
+                        {
+                            <a class="btn yellow rounded " href="#">start</a>
+                        }
+                        else
+                        {
+                            <a id="btn-disable" class="btn yellow rounded " href="#">Need Exp: @lecture.ExperienceToComplete</a>
+                        }
                     </div>
                 </td>
             </tr>

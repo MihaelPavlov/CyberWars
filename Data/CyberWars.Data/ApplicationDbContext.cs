@@ -55,6 +55,8 @@
 
         public DbSet<Contest> Contests { get; set; }
 
+        public DbSet<RandomHangfireContest> RandomHangfireContests { get; set; }
+
         // Battles
         public DbSet<BattleRecord> BattleRecords { get; set; }
 

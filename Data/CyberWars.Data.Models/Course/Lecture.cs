@@ -1,7 +1,8 @@
 ﻿namespace CyberWars.Data.Models.Course
 {
-    using CyberWars.Data.Common.Models;
     using System.Collections.Generic;
+
+    using CyberWars.Data.Common.Models;
 
     public class Lecture : BaseDeletableModel<int>
     {
@@ -14,7 +15,7 @@
 
         public int Number { get; set; }
 
-        public int TimeMinutes { get; set; }
+        public int ExperienceToComplete { get; set; }
 
         public string RewardAbilityName { get; set; }
 

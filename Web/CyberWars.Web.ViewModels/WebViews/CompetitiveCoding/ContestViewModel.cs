@@ -8,23 +8,24 @@
     using CyberWars.Data.Models.CompetitiveCoding;
     using CyberWars.Services.Mapping;
 
-    public class ContestViewModel : IMapFrom<Contest>
+    public class ContestViewModel : IMapFrom<RandomHangfireContest>
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
+        public int ContestId { get; set; }
 
-        public string Description { get; set; }
+        public string ContestName { get; set; }
 
-        public string ImageName { get; set; }
+        public string ContestDescription { get; set; }
+
+        public string ContestImageName { get; set; }
 
         [Range(1, 100)]
-        public int Percentage { get; set; }
+        public int ContestPercentage { get; set; }
 
-        public int RewardMoney { get; set; }
+        public int ContestRewardMoney { get; set; }
 
-        public int RewardExp { get; set; }
+        public int ContestRewardExp { get; set; }
 
-        public int ConsumeEnergy { get; set; }
+        public int ContestConsumeEnergy { get; set; }
 
     }
 }

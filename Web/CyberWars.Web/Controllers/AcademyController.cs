@@ -1,9 +1,12 @@
 ﻿namespace CyberWars.Web.Controllers
 {
+    using System.Security.Claims;
+    using System.Threading.Tasks;
+
+    using Microsoft.AspNetCore.Mvc;
+
     using CyberWars.Services.Data.Academy;
     using CyberWars.Web.ViewModels.Academy;
-    using Microsoft.AspNetCore.Mvc;
-    using System.Threading.Tasks;
 
     public class AcademyController : Controller
     {
@@ -21,7 +24,9 @@
 
         public async Task<IActionResult> Lectures(string courseName)
         {
-            var viewModel = await this.academyService.GetLecturesByName<LectureViewModel>(courseName);
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            var viewModel = await this.academyService.GetLecturesByName(courseName, userId);
             return this.View(viewModel);
         }
 

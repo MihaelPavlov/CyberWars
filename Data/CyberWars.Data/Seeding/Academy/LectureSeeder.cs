@@ -56,7 +56,7 @@
             {
                 Number = 9,
                 Name = "Exam",
-                TimeMinutes = 240,
+                ExperienceToComplete = 240,
                 RewardAbilityName = "Django End",
                 RewardMoney = 10000,
                 CourseId = pythonFrameworkId,
@@ -65,7 +65,7 @@
             {
                 Number = 8,
                 Name = "Deployment",
-                TimeMinutes = 120,
+                ExperienceToComplete = 120,
                 RewardAbilityName = "Django",
                 RewardMoney = 5000,
                 CourseId = pythonFrameworkId,
@@ -74,7 +74,7 @@
             {
                 Number = 7,
                 Name = "Django Rest Framework",
-                TimeMinutes = 120,
+                ExperienceToComplete = 120,
                 RewardAbilityName = "Django",
                 RewardMoney = 5000,
                 CourseId = pythonFrameworkId,
@@ -83,7 +83,7 @@
             {
                 Number = 6,
                 Name = "CBV'S",
-                TimeMinutes = 120,
+                ExperienceToComplete = 120,
                 RewardAbilityName = "Django",
                 RewardMoney = 5000,
                 CourseId = pythonFrameworkId,
@@ -92,7 +92,7 @@
             {
                 Number = 5,
                 Name = "User Form Registration and Login",
-                TimeMinutes = 120,
+                ExperienceToComplete = 120,
                 RewardAbilityName = "Django",
                 RewardMoney = 5000,
                 CourseId = pythonFrameworkId,
@@ -101,7 +101,7 @@
             {
                 Number = 4,
                 Name = "Authentication",
-                TimeMinutes = 120,
+                ExperienceToComplete = 120,
                 RewardAbilityName = "Django",
                 RewardMoney = 5000,
                 CourseId = pythonFrameworkId,
@@ -110,7 +110,7 @@
             {
                 Number = 3,
                 Name = "Media Files",
-                TimeMinutes = 120,
+                ExperienceToComplete = 120,
                 RewardAbilityName = "Django",
                 RewardMoney = 5000,
                 CourseId = pythonFrameworkId,
@@ -119,7 +119,7 @@
             {
                 Number = 2,
                 Name = "Templates Advanced",
-                TimeMinutes = 120,
+                ExperienceToComplete = 120,
                 RewardAbilityName = "Django",
                 RewardMoney = 5000,
                 CourseId = pythonFrameworkId,
@@ -128,7 +128,7 @@
             {
                 Number = 1,
                 Name = "PostgreSQL",
-                TimeMinutes = 120,
+                ExperienceToComplete = 120,
                 RewardAbilityName = "PostgreSQL End",
                 RewardMoney = 5000,
                 CourseId = pythonFrameworkId,
@@ -140,7 +140,7 @@
             {
                 Number = 9,
                 Name = "Exam",
-                TimeMinutes = 200,
+                ExperienceToComplete = 200,
                 RewardAbilityName = "Django Exam",
                 RewardMoney = 5000,
                 CourseId = pythonWebBasicsId,
@@ -149,7 +149,7 @@
             {
                 Number = 8,
                 Name = "Unit and Integration Testing",
-                TimeMinutes = 100,
+                ExperienceToComplete = 100,
                 RewardAbilityName = "Django",
                 RewardMoney = 3000,
                 CourseId = pythonWebBasicsId,
@@ -158,7 +158,7 @@
             {
                 Number = 7,
                 Name = "Model Forms",
-                TimeMinutes = 100,
+                ExperienceToComplete = 100,
                 RewardAbilityName = "Django",
                 RewardMoney = 3000,
                 CourseId = pythonWebBasicsId,
@@ -167,7 +167,7 @@
             {
                 Number = 6,
                 Name = "Forms",
-                TimeMinutes = 100,
+                ExperienceToComplete = 100,
                 RewardAbilityName = "Django",
                 RewardMoney = 3000,
                 CourseId = pythonWebBasicsId,
@@ -176,7 +176,7 @@
             {
                 Number = 5,
                 Name = "Models and MTV Pattern",
-                TimeMinutes = 100,
+                ExperienceToComplete = 100,
                 RewardAbilityName = "Django",
                 RewardMoney = 3000,
                 CourseId = pythonWebBasicsId,
@@ -185,7 +185,7 @@
             {
                 Number = 4,
                 Name = "Database Basics",
-                TimeMinutes = 100,
+                ExperienceToComplete = 100,
                 RewardAbilityName = "Django",
                 RewardMoney = 3000,
                 CourseId = pythonWebBasicsId,
@@ -194,7 +194,7 @@
             {
                 Number = 3,
                 Name = "HTTP Protocol",
-                TimeMinutes = 100,
+                ExperienceToComplete = 100,
                 RewardAbilityName = "Django",
                 RewardMoney = 3000,
                 CourseId = pythonWebBasicsId,
@@ -203,7 +203,7 @@
             {
                 Number = 2,
                 Name = "URL'S and Templates",
-                TimeMinutes = 100,
+                ExperienceToComplete = 100,
                 RewardAbilityName = "Django",
                 RewardMoney = 3000,
                 CourseId = pythonWebBasicsId,
@@ -212,7 +212,7 @@
             {
                 Number = 1,
                 Name = "Introduction to Django",
-                TimeMinutes = 100,
+                ExperienceToComplete = 100,
                 RewardAbilityName = "Django",
                 RewardMoney = 3000,
                 CourseId = pythonWebBasicsId,
@@ -223,7 +223,7 @@
             {
                 Number = 12,
                 Name = "Exam",
-                TimeMinutes = 160,
+                ExperienceToComplete = 160,
                 RewardAbilityName = "Python Exam",
                 RewardMoney = 4000,
                 CourseId = pythonOOPId,
@@ -232,7 +232,7 @@
             {
                 Number = 11,
                 Name = "Design Patterns",
-                TimeMinutes = 80,
+                ExperienceToComplete = 80,
                 RewardAbilityName = "Python",
                 RewardMoney = 2000,
                 CourseId = pythonOOPId,
@@ -241,7 +241,7 @@
             {
                 Number = 10,
                 Name = "Testing",
-                TimeMinutes = 80,
+                ExperienceToComplete = 80,
                 RewardAbilityName = "Python",
                 RewardMoney = 2000,
                 CourseId = pythonOOPId,
@@ -250,7 +250,7 @@
             {
                 Number = 9,
                 Name = "Decorators",
-                TimeMinutes = 80,
+                ExperienceToComplete = 80,
                 RewardAbilityName = "Python",
                 RewardMoney = 2000,
                 CourseId = pythonOOPId,
@@ -259,7 +259,7 @@
             {
                 Number = 8,
                 Name = "Iterators and Generators",
-                TimeMinutes = 80,
+                ExperienceToComplete = 80,
                 RewardAbilityName = "Python",
                 RewardMoney = 2000,
                 CourseId = pythonOOPId,
@@ -268,7 +268,7 @@
             {
                 Number = 7,
                 Name = "SOLID",
-                TimeMinutes = 80,
+                ExperienceToComplete = 80,
                 RewardAbilityName = "Python",
                 RewardMoney = 2000,
                 CourseId = pythonOOPId,
@@ -277,7 +277,7 @@
             {
                 Number = 6,
                 Name = "Polymorphism and Magic Methods",
-                TimeMinutes = 80,
+                ExperienceToComplete = 80,
                 RewardAbilityName = "Python",
                 RewardMoney = 2000,
                 CourseId = pythonOOPId,
@@ -286,7 +286,7 @@
             {
                 Number = 5,
                 Name = "Inheritance",
-                TimeMinutes = 80,
+                ExperienceToComplete = 80,
                 RewardAbilityName = "Python",
                 RewardMoney = 2000,
                 CourseId = pythonOOPId,
@@ -295,7 +295,7 @@
             {
                 Number = 4,
                 Name = "Encapsulation",
-                TimeMinutes = 80,
+                ExperienceToComplete = 80,
                 RewardAbilityName = "Python",
                 RewardMoney = 2000,
                 CourseId = pythonOOPId,
@@ -304,7 +304,7 @@
             {
                 Number = 3,
                 Name = "Attributes and Methods",
-                TimeMinutes = 80,
+                ExperienceToComplete = 80,
                 RewardAbilityName = "Python",
                 RewardMoney = 2000,
                 CourseId = pythonOOPId,
@@ -313,7 +313,7 @@
             {
                 Number = 2,
                 Name = "Classes and Instances",
-                TimeMinutes = 80,
+                ExperienceToComplete = 80,
                 RewardAbilityName = "Python",
                 RewardMoney = 2000,
                 CourseId = pythonOOPId,
@@ -322,7 +322,7 @@
             {
                 Number = 1,
                 Name = "Defining Classes",
-                TimeMinutes = 80,
+                ExperienceToComplete = 80,
                 RewardAbilityName = "Python",
                 RewardMoney = 2000,
                 CourseId = pythonOOPId,
@@ -334,7 +334,7 @@
             {
                 Number = 9,
                 Name = "Exam",
-                TimeMinutes = 120,
+                ExperienceToComplete = 120,
                 RewardAbilityName = "Python Exam",
                 RewardMoney = 3000,
                 CourseId = pythonAdvancedId,
@@ -343,7 +343,7 @@
             {
                 Number = 8,
                 Name = "Error Handling",
-                TimeMinutes = 60,
+                ExperienceToComplete = 60,
                 RewardAbilityName = "Python",
                 RewardMoney = 1000,
                 CourseId = pythonAdvancedId,
@@ -352,7 +352,7 @@
             {
                 Number = 7,
                 Name = "Modules",
-                TimeMinutes = 60,
+                ExperienceToComplete = 60,
                 RewardAbilityName = "Python",
                 RewardMoney = 1000,
                 CourseId = pythonAdvancedId,
@@ -361,7 +361,7 @@
             {
                 Number = 6,
                 Name = "File Handling",
-                TimeMinutes = 60,
+                ExperienceToComplete = 60,
                 RewardAbilityName = "Python",
                 RewardMoney = 1000,
                 CourseId = pythonAdvancedId,
@@ -370,7 +370,7 @@
             {
                 Number = 5,
                 Name = "Functions Advanced",
-                TimeMinutes = 60,
+                ExperienceToComplete = 60,
                 RewardAbilityName = "Python",
                 RewardMoney = 1000,
                 CourseId = pythonAdvancedId,
@@ -379,7 +379,7 @@
             {
                 Number = 4,
                 Name = "Comprehension",
-                TimeMinutes = 60,
+                ExperienceToComplete = 60,
                 RewardAbilityName = "Python",
                 RewardMoney = 1000,
                 CourseId = pythonAdvancedId,
@@ -388,7 +388,7 @@
             {
                 Number = 3,
                 Name = "Multidimensional Lists",
-                TimeMinutes = 60,
+                ExperienceToComplete = 60,
                 RewardAbilityName = "Python",
                 RewardMoney = 1000,
                 CourseId = pythonAdvancedId,
@@ -397,7 +397,7 @@
             {
                 Number = 2,
                 Name = "Tuples and Sets",
-                TimeMinutes = 60,
+                ExperienceToComplete = 60,
                 RewardAbilityName = "Python",
                 RewardMoney = 1000,
                 CourseId = pythonAdvancedId,
@@ -406,7 +406,7 @@
             {
                 Number = 1,
                 Name = "Lists as Stacks and Queues",
-                TimeMinutes = 60,
+                ExperienceToComplete = 60,
                 RewardAbilityName = "Python",
                 RewardMoney = 1000,
                 CourseId = pythonAdvancedId,
@@ -417,7 +417,7 @@
             {
                 Number = 8,
                 Name = "Exam",
-                TimeMinutes = 280,
+                ExperienceToComplete = 280,
                 RewardAbilityName = "Angular End",
                 RewardMoney = 10000,
                 CourseId = frontEndFrameworkId,
@@ -426,7 +426,7 @@
             {
                 Number = 7,
                 Name = "State Management",
-                TimeMinutes = 140,
+                ExperienceToComplete = 140,
                 RewardAbilityName = "Angular",
                 RewardMoney = 6000,
                 CourseId = frontEndFrameworkId,
@@ -435,7 +435,7 @@
             {
                 Number = 6,
                 Name = "Pipes, Interceptors and Subject",
-                TimeMinutes = 140,
+                ExperienceToComplete = 140,
                 RewardAbilityName = "Angular",
                 RewardMoney = 6000,
                 CourseId = frontEndFrameworkId,
@@ -444,7 +444,7 @@
             {
                 Number = 5,
                 Name = "Forms",
-                TimeMinutes = 140,
+                ExperienceToComplete = 140,
                 RewardAbilityName = "Angular",
                 RewardMoney = 6000,
                 CourseId = frontEndFrameworkId,
@@ -453,7 +453,7 @@
             {
                 Number = 4,
                 Name = "Modules and Routing",
-                TimeMinutes = 140,
+                ExperienceToComplete = 140,
                 RewardAbilityName = "Angular",
                 RewardMoney = 6000,
                 CourseId = frontEndFrameworkId,
@@ -462,7 +462,7 @@
             {
                 Number = 3,
                 Name = "Di,Intro to RXJS,Services",
-                TimeMinutes = 140,
+                ExperienceToComplete = 140,
                 RewardAbilityName = "Angular",
                 RewardMoney = 6000,
                 CourseId = frontEndFrameworkId,
@@ -471,7 +471,7 @@
             {
                 Number = 2,
                 Name = "Components",
-                TimeMinutes = 140,
+                ExperienceToComplete = 140,
                 RewardAbilityName = "Angular",
                 RewardMoney = 6000,
                 CourseId = frontEndFrameworkId,
@@ -480,7 +480,7 @@
             {
                 Number = 1,
                 Name = "Intro to Angular and Typescript",
-                TimeMinutes = 140,
+                ExperienceToComplete = 140,
                 RewardAbilityName = "Angular",
                 RewardMoney = 6000,
                 CourseId = frontEndFrameworkId,
@@ -491,7 +491,7 @@
             {
                 Number = 8,
                 Name = "Exam",
-                TimeMinutes = 240,
+                ExperienceToComplete = 240,
                 RewardAbilityName = "CSS Exam",
                 RewardMoney = 7000,
                 CourseId = htmlAndCssId,
@@ -500,7 +500,7 @@
             {
                 Number = 7,
                 Name = "Media Queries",
-                TimeMinutes = 120,
+                ExperienceToComplete = 120,
                 RewardAbilityName = "CSS Exam",
                 RewardMoney = 5000,
                 CourseId = htmlAndCssId,
@@ -509,7 +509,7 @@
             {
                 Number = 6,
                 Name = "Flexbox",
-                TimeMinutes = 120,
+                ExperienceToComplete = 120,
                 RewardAbilityName = "CSS Exam",
                 RewardMoney = 5000,
                 CourseId = htmlAndCssId,
@@ -518,7 +518,7 @@
             {
                 Number = 5,
                 Name = "Position & Float",
-                TimeMinutes = 120,
+                ExperienceToComplete = 120,
                 RewardAbilityName = "CSS Exam",
                 RewardMoney = 5000,
                 CourseId = htmlAndCssId,
@@ -527,7 +527,7 @@
             {
                 Number = 4,
                 Name = "CSS Box Model",
-                TimeMinutes = 120,
+                ExperienceToComplete = 120,
                 RewardAbilityName = "CSS Exam",
                 RewardMoney = 5000,
                 CourseId = htmlAndCssId,
@@ -536,7 +536,7 @@
             {
                 Number = 3,
                 Name = "CSS & Typography",
-                TimeMinutes = 120,
+                ExperienceToComplete = 120,
                 RewardAbilityName = "CSS Exam",
                 RewardMoney = 5000,
                 CourseId = htmlAndCssId,
@@ -545,7 +545,7 @@
             {
                 Number = 2,
                 Name = "HTML Structure",
-                TimeMinutes = 120,
+                ExperienceToComplete = 120,
                 RewardAbilityName = "HTML End",
                 RewardMoney = 5000,
                 CourseId = htmlAndCssId,
@@ -554,7 +554,7 @@
             {
                 Number = 1,
                 Name = "Introduction To HTML & CSS",
-                TimeMinutes = 120,
+                ExperienceToComplete = 120,
                 RewardAbilityName = "HTML End",
                 RewardMoney = 5000,
                 CourseId = htmlAndCssId,
@@ -565,7 +565,7 @@
             {
                 Number = 9,
                 Name = "Exam",
-                TimeMinutes = 240,
+                ExperienceToComplete = 240,
                 RewardAbilityName = "React.JS Exam",
                 RewardMoney = 6000,
                 CourseId = reactJSId,
@@ -574,7 +574,7 @@
             {
                 Number = 8,
                 Name = "Advanced Techniques",
-                TimeMinutes = 120,
+                ExperienceToComplete = 120,
                 RewardAbilityName = "React.JS",
                 RewardMoney = 4000,
                 CourseId = reactJSId,
@@ -583,7 +583,7 @@
             {
                 Number = 7,
                 Name = "Authentication",
-                TimeMinutes = 120,
+                ExperienceToComplete = 120,
                 RewardAbilityName = "React.JS",
                 RewardMoney = 4000,
                 CourseId = reactJSId,
@@ -592,7 +592,7 @@
             {
                 Number = 6,
                 Name = "React Hooks",
-                TimeMinutes = 120,
+                ExperienceToComplete = 120,
                 RewardAbilityName = "React.JS",
                 RewardMoney = 4000,
                 CourseId = reactJSId,
@@ -601,7 +601,7 @@
             {
                 Number = 5,
                 Name = "Forms",
-                TimeMinutes = 120,
+                ExperienceToComplete = 120,
                 RewardAbilityName = "React.JS",
                 RewardMoney = 4000,
                 CourseId = reactJSId,
@@ -610,7 +610,7 @@
             {
                 Number = 4,
                 Name = "Routing",
-                TimeMinutes = 120,
+                ExperienceToComplete = 120,
                 RewardAbilityName = "React.JS",
                 RewardMoney = 4000,
                 CourseId = reactJSId,
@@ -619,7 +619,7 @@
             {
                 Number = 3,
                 Name = "Components: Deep Dive",
-                TimeMinutes = 120,
+                ExperienceToComplete = 120,
                 RewardAbilityName = "React.JS",
                 RewardMoney = 4000,
                 CourseId = reactJSId,
@@ -628,7 +628,7 @@
             {
                 Number = 2,
                 Name = "Components: Basic Idea",
-                TimeMinutes = 120,
+                ExperienceToComplete = 120,
                 RewardAbilityName = "React.JS",
                 RewardMoney = 4000,
                 CourseId = reactJSId,
@@ -637,7 +637,7 @@
             {
                 Number = 1,
                 Name = "Intro to React and JSK",
-                TimeMinutes = 120,
+                ExperienceToComplete = 120,
                 RewardAbilityName = "React.JS",
                 RewardMoney = 4000,
                 CourseId = reactJSId,
@@ -649,7 +649,7 @@
             {
                 Number = 8,
                 Name = "Exam",
-                TimeMinutes = 200,
+                ExperienceToComplete = 200,
                 RewardAbilityName = "JS Exam",
                 RewardMoney = 5000,
                 CourseId = jsBackEndId,
@@ -658,7 +658,7 @@
             {
                 Number = 7,
                 Name = "Rest API",
-                TimeMinutes = 100,
+                ExperienceToComplete = 100,
                 RewardAbilityName = "JS",
                 RewardMoney = 3000,
                 CourseId = jsBackEndId,
@@ -667,7 +667,7 @@
             {
                 Number = 6,
                 Name = "Validation and Error Handling",
-                TimeMinutes = 100,
+                ExperienceToComplete = 100,
                 RewardAbilityName = "JS",
                 RewardMoney = 3000,
                 CourseId = jsBackEndId,
@@ -676,7 +676,7 @@
             {
                 Number = 5,
                 Name = "Session and Authentication",
-                TimeMinutes = 100,
+                ExperienceToComplete = 100,
                 RewardAbilityName = "JS",
                 RewardMoney = 3000,
                 CourseId = jsBackEndId,
@@ -685,7 +685,7 @@
             {
                 Number = 4,
                 Name = "NOSQL AND MongoDB",
-                TimeMinutes = 100,
+                ExperienceToComplete = 100,
                 RewardAbilityName = "JS",
                 RewardMoney = 3000,
                 CourseId = jsBackEndId,
@@ -694,7 +694,7 @@
             {
                 Number = 3,
                 Name = "ExpressJs and Templating",
-                TimeMinutes = 100,
+                ExperienceToComplete = 100,
                 RewardAbilityName = "JS",
                 RewardMoney = 3000,
                 CourseId = jsBackEndId,
@@ -703,7 +703,7 @@
             {
                 Number = 2,
                 Name = "Node.Js Streams and Utilities",
-                TimeMinutes = 100,
+                ExperienceToComplete = 100,
                 RewardAbilityName = "JS",
                 RewardMoney = 3000,
                 CourseId = jsBackEndId,
@@ -712,7 +712,7 @@
             {
                 Number = 1,
                 Name = "Intro To Node.Js",
-                TimeMinutes = 100,
+                ExperienceToComplete = 100,
                 RewardAbilityName = "JS",
                 RewardMoney = 3000,
                 CourseId = jsBackEndId,
@@ -723,7 +723,7 @@
             {
                 Number = 11,
                 Name = "Exam",
-                TimeMinutes = 160,
+                ExperienceToComplete = 160,
                 RewardAbilityName = "JS Exam",
                 RewardMoney = 4000,
                 CourseId = jsApplicationId,
@@ -732,7 +732,7 @@
             {
                 Number = 10,
                 Name = "Project Arhitecture",
-                TimeMinutes = 80,
+                ExperienceToComplete = 80,
                 RewardAbilityName = "JS",
                 RewardMoney = 2000,
                 CourseId = jsApplicationId,
@@ -741,7 +741,7 @@
             {
                 Number = 9,
                 Name = "Custom Components",
-                TimeMinutes = 80,
+                ExperienceToComplete = 80,
                 RewardAbilityName = "JS",
                 RewardMoney = 2000,
                 CourseId = jsApplicationId,
@@ -750,7 +750,7 @@
             {
                 Number = 8,
                 Name = "Design Patterns and Best Practices",
-                TimeMinutes = 80,
+                ExperienceToComplete = 80,
                 RewardAbilityName = "JS",
                 RewardMoney = 2000,
                 CourseId = jsApplicationId,
@@ -759,7 +759,7 @@
             {
                 Number = 7,
                 Name = "Single Page Application",
-                TimeMinutes = 80,
+                ExperienceToComplete = 80,
                 RewardAbilityName = "JS",
                 RewardMoney = 2000,
                 CourseId = jsApplicationId,
@@ -768,7 +768,7 @@
             {
                 Number = 6,
                 Name = "Routing",
-                TimeMinutes = 80,
+                ExperienceToComplete = 80,
                 RewardAbilityName = "JS",
                 RewardMoney = 2000,
                 CourseId = jsApplicationId,
@@ -777,7 +777,7 @@
             {
                 Number = 5,
                 Name = "Templating",
-                TimeMinutes = 80,
+                ExperienceToComplete = 80,
                 RewardAbilityName = "JS",
                 RewardMoney = 2000,
                 CourseId = jsApplicationId,
@@ -786,7 +786,7 @@
             {
                 Number = 4,
                 Name = "Removete Databases",
-                TimeMinutes = 80,
+                ExperienceToComplete = 80,
                 RewardAbilityName = "JS",
                 RewardMoney = 2000,
                 CourseId = jsApplicationId,
@@ -795,7 +795,7 @@
             {
                 Number = 3,
                 Name = "Asynchronous Programming",
-                TimeMinutes = 80,
+                ExperienceToComplete = 80,
                 RewardAbilityName = "JS",
                 RewardMoney = 2000,
                 CourseId = jsApplicationId,
@@ -804,7 +804,7 @@
             {
                 Number = 2,
                 Name = "Rest Services and Ajax",
-                TimeMinutes = 80,
+                ExperienceToComplete = 80,
                 RewardAbilityName = "JS",
                 RewardMoney = 2000,
                 CourseId = jsApplicationId,
@@ -813,7 +813,7 @@
             {
                 Number = 1,
                 Name = "Unit Testing and Modules",
-                TimeMinutes = 80,
+                ExperienceToComplete = 80,
                 RewardAbilityName = "JS",
                 RewardMoney = 2000,
                 CourseId = jsApplicationId,
@@ -824,7 +824,7 @@
             {
                 Number = 10,
                 Name = "Exam",
-                TimeMinutes = 120,
+                ExperienceToComplete = 120,
                 RewardAbilityName = "JS Exam",
                 RewardMoney = 3000,
                 CourseId = jsAdvancedId,
@@ -833,7 +833,7 @@
             {
                 Number = 9,
                 Name = "Prototypes and Inheritance",
-                TimeMinutes = 60,
+                ExperienceToComplete = 60,
                 RewardAbilityName = "JS",
                 RewardMoney = 1000,
                 CourseId = jsAdvancedId,
@@ -842,7 +842,7 @@
             {
                 Number = 8,
                 Name = "Object Composition",
-                TimeMinutes = 60,
+                ExperienceToComplete = 60,
                 RewardAbilityName = "JS",
                 RewardMoney = 1000,
                 CourseId = jsAdvancedId,
@@ -851,7 +851,7 @@
             {
                 Number = 7,
                 Name = "Advanced Functions",
-                TimeMinutes = 60,
+                ExperienceToComplete = 60,
                 RewardAbilityName = "JS",
                 RewardMoney = 1000,
                 CourseId = jsAdvancedId,
@@ -860,7 +860,7 @@
             {
                 Number = 6,
                 Name = "Function Context",
-                TimeMinutes = 60,
+                ExperienceToComplete = 60,
                 RewardAbilityName = "JS",
                 RewardMoney = 1000,
                 CourseId = jsAdvancedId,
@@ -869,7 +869,7 @@
             {
                 Number = 5,
                 Name = "DOM Manipulations",
-                TimeMinutes = 60,
+                ExperienceToComplete = 60,
                 RewardAbilityName = "JS",
                 RewardMoney = 1000,
                 CourseId = jsAdvancedId,
@@ -878,7 +878,7 @@
             {
                 Number = 4,
                 Name = "DOM",
-                TimeMinutes = 60,
+                ExperienceToComplete = 60,
                 RewardAbilityName = "JS",
                 RewardMoney = 1000,
                 CourseId = jsAdvancedId,
@@ -887,7 +887,7 @@
             {
                 Number = 3,
                 Name = "Objects & Classes",
-                TimeMinutes = 60,
+                ExperienceToComplete = 60,
                 RewardAbilityName = "JS",
                 RewardMoney = 1000,
                 CourseId = jsAdvancedId,
@@ -896,7 +896,7 @@
             {
                 Number = 2,
                 Name = "Arrays",
-                TimeMinutes = 60,
+                ExperienceToComplete = 60,
                 RewardAbilityName = "JS",
                 RewardMoney = 1000,
                 CourseId = jsAdvancedId,
@@ -905,7 +905,7 @@
             {
                 Number = 1,
                 Name = "Syntax, Functions and Statements",
-                TimeMinutes = 60,
+                ExperienceToComplete = 60,
                 RewardAbilityName = "JS",
                 RewardMoney = 1000,
                 CourseId = jsAdvancedId,
@@ -919,7 +919,7 @@
             {
                 Number = 10,
                 Name = "Exam",
-                TimeMinutes = 320,
+                ExperienceToComplete = 320,
                 RewardAbilityName = "Spring Framework End",
                 RewardMoney = 10000,
                 CourseId = springAdvancedId,
@@ -928,7 +928,7 @@
             {
                 Number = 9,
                 Name = "Deployment, Hosting and Monitoring",
-                TimeMinutes = 160,
+                ExperienceToComplete = 160,
                 RewardAbilityName = "Spring Framework",
                 RewardMoney = 6000,
                 CourseId = springAdvancedId,
@@ -937,7 +937,7 @@
             {
                 Number = 8,
                 Name = "Reactive Programming with Webflux",
-                TimeMinutes = 160,
+                ExperienceToComplete = 160,
                 RewardAbilityName = "Spring Framework",
                 RewardMoney = 6000,
                 CourseId = springAdvancedId,
@@ -946,7 +946,7 @@
             {
                 Number = 7,
                 Name = "Unit and Intergration Testing",
-                TimeMinutes = 160,
+                ExperienceToComplete = 160,
                 RewardAbilityName = "Spring Framework",
                 RewardMoney = 6000,
                 CourseId = springAdvancedId,
@@ -955,7 +955,7 @@
             {
                 Number = 6,
                 Name = "Aspect Oriented Programming AOP",
-                TimeMinutes = 160,
+                ExperienceToComplete = 160,
                 RewardAbilityName = "Spring Framework",
                 RewardMoney = 6000,
                 CourseId = springAdvancedId,
@@ -964,7 +964,7 @@
             {
                 Number = 5,
                 Name = "Events",
-                TimeMinutes = 160,
+                ExperienceToComplete = 160,
                 RewardAbilityName = "Spring Framework",
                 RewardMoney = 6000,
                 CourseId = springAdvancedId,
@@ -973,7 +973,7 @@
             {
                 Number = 4,
                 Name = "Error Handling",
-                TimeMinutes = 160,
+                ExperienceToComplete = 160,
                 RewardAbilityName = "Spring Framework",
                 RewardMoney = 6000,
                 CourseId = springAdvancedId,
@@ -982,7 +982,7 @@
             {
                 Number = 3,
                 Name = "Hateoas",
-                TimeMinutes = 160,
+                ExperienceToComplete = 160,
                 RewardAbilityName = "Spring Framework",
                 RewardMoney = 6000,
                 CourseId = springAdvancedId,
@@ -991,7 +991,7 @@
             {
                 Number = 2,
                 Name = "Spring Security",
-                TimeMinutes = 160,
+                ExperienceToComplete = 160,
                 RewardAbilityName = "Spring Framework",
                 RewardMoney = 6000,
                 CourseId = springAdvancedId,
@@ -1000,7 +1000,7 @@
             {
                 Number = 1,
                 Name = "Web API and Rest Controllers",
-                TimeMinutes = 160,
+                ExperienceToComplete = 160,
                 RewardAbilityName = "Spring Framework",
                 RewardMoney = 6000,
                 CourseId = springAdvancedId,
@@ -1011,7 +1011,7 @@
             {
                 Number = 9,
                 Name = "Exam",
-                TimeMinutes = 280,
+                ExperienceToComplete = 280,
                 RewardAbilityName = "Spring Framework Exam",
                 RewardMoney = 7000,
                 CourseId = springFundamentalsId,
@@ -1020,7 +1020,7 @@
             {
                 Number = 8,
                 Name = "Bootstrap,Front-End Basics",
-                TimeMinutes = 140,
+                ExperienceToComplete = 140,
                 RewardAbilityName = "Spring Framework",
                 RewardMoney = 5000,
                 CourseId = springFundamentalsId,
@@ -1029,7 +1029,7 @@
             {
                 Number = 7,
                 Name = "Thymeleaf and Validations",
-                TimeMinutes = 140,
+                ExperienceToComplete = 140,
                 RewardAbilityName = "Spring Framework",
                 RewardMoney = 5000,
                 CourseId = springFundamentalsId,
@@ -1038,7 +1038,7 @@
             {
                 Number = 6,
                 Name = "Spring Essentials",
-                TimeMinutes = 140,
+                ExperienceToComplete = 140,
                 RewardAbilityName = "Spring Framework",
                 RewardMoney = 5000,
                 CourseId = springFundamentalsId,
@@ -1047,7 +1047,7 @@
             {
                 Number = 5,
                 Name = "Spring Introduction(MVC)",
-                TimeMinutes = 140,
+                ExperienceToComplete = 140,
                 RewardAbilityName = "Spring Framework",
                 RewardMoney = 5000,
                 CourseId = springFundamentalsId,
@@ -1056,7 +1056,7 @@
             {
                 Number = 4,
                 Name = "Spring Boot Introduction",
-                TimeMinutes = 140,
+                ExperienceToComplete = 140,
                 RewardAbilityName = "Spring Framework",
                 RewardMoney = 5000,
                 CourseId = springFundamentalsId,
@@ -1065,7 +1065,7 @@
             {
                 Number = 3,
                 Name = "State Management",
-                TimeMinutes = 140,
+                ExperienceToComplete = 140,
                 RewardAbilityName = "Spring Framework",
                 RewardMoney = 5000,
                 CourseId = springFundamentalsId,
@@ -1074,7 +1074,7 @@
             {
                 Number = 2,
                 Name = "HTTP Protocol",
-                TimeMinutes = 140,
+                ExperienceToComplete = 140,
                 RewardAbilityName = "Spring Framework",
                 RewardMoney = 5000,
                 CourseId = springFundamentalsId,
@@ -1084,7 +1084,7 @@
             {
                 Number = 1,
                 Name = "Internet Explained",
-                TimeMinutes = 140,
+                ExperienceToComplete = 140,
                 RewardAbilityName = "Spring Framework",
                 RewardMoney = 5000,
                 CourseId = springFundamentalsId,
@@ -1095,7 +1095,7 @@
             {
                 Number = 10,
                 Name = "Exam",
-                TimeMinutes = 240,
+                ExperienceToComplete = 240,
                 RewardAbilityName = "My SQL Exam",
                 RewardMoney = 6000,
                 CourseId = springDataID,
@@ -1104,7 +1104,7 @@
             {
                 Number = 9,
                 Name = "XML Processing",
-                TimeMinutes = 120,
+                ExperienceToComplete = 120,
                 RewardAbilityName = "My SQL",
                 RewardMoney = 4000,
                 CourseId = springDataID,
@@ -1113,7 +1113,7 @@
             {
                 Number = 8,
                 Name = "JSON Processing",
-                TimeMinutes = 120,
+                ExperienceToComplete = 120,
                 RewardAbilityName = "My SQL",
                 RewardMoney = 4000,
                 CourseId = springDataID,
@@ -1122,7 +1122,7 @@
             {
                 Number = 7,
                 Name = "Spring Data Auto Mapping Objects",
-                TimeMinutes = 120,
+                ExperienceToComplete = 120,
                 RewardAbilityName = "My SQL",
                 RewardMoney = 4000,
                 CourseId = springDataID,
@@ -1131,7 +1131,7 @@
             {
                 Number = 6,
                 Name = "Spring Data Advanced Quering",
-                TimeMinutes = 120,
+                ExperienceToComplete = 120,
                 RewardAbilityName = "My SQL",
                 RewardMoney = 4000,
                 CourseId = springDataID,
@@ -1140,7 +1140,7 @@
             {
                 Number = 5,
                 Name = "Spring Data Intro",
-                TimeMinutes = 120,
+                ExperienceToComplete = 120,
                 RewardAbilityName = "My SQL",
                 RewardMoney = 4000,
                 CourseId = springDataID,
@@ -1149,7 +1149,7 @@
             {
                 Number = 4,
                 Name = "Hibernate Code First",
-                TimeMinutes = 120,
+                ExperienceToComplete = 120,
                 RewardAbilityName = "My SQL",
                 RewardMoney = 4000,
                 CourseId = springDataID,
@@ -1158,7 +1158,7 @@
             {
                 Number = 3,
                 Name = "Introduction to Hibernate",
-                TimeMinutes = 120,
+                ExperienceToComplete = 120,
                 RewardAbilityName = "My SQL",
                 RewardMoney = 4000,
                 CourseId = springDataID,
@@ -1167,7 +1167,7 @@
             {
                 Number = 2,
                 Name = "ORM Fundametals",
-                TimeMinutes = 120,
+                ExperienceToComplete = 120,
                 RewardAbilityName = "My SQL",
                 RewardMoney = 4000,
                 CourseId = springDataID,
@@ -1176,7 +1176,7 @@
             {
                 Number = 1,
                 Name = "DB Apps Introduction",
-                TimeMinutes = 120,
+                ExperienceToComplete = 120,
                 RewardAbilityName = "My SQL",
                 RewardMoney = 4000,
                 CourseId = springDataID,
@@ -1187,7 +1187,7 @@
             {
                 Number = 9,
                 Name = "Exam",
-                TimeMinutes = 200,
+                ExperienceToComplete = 200,
                 RewardAbilityName = "My SQL Exam",
                 RewardMoney = 5000,
                 CourseId = mySqlId,
@@ -1196,7 +1196,7 @@
             {
                 Number = 8,
                 Name = "Database Programmability and Transactions",
-                TimeMinutes = 100,
+                ExperienceToComplete = 100,
                 RewardAbilityName = "My SQL",
                 RewardMoney = 3000,
                 CourseId = mySqlId,
@@ -1205,7 +1205,7 @@
             {
                 Number = 7,
                 Name = "Functions and Stored Procedures",
-                TimeMinutes = 100,
+                ExperienceToComplete = 100,
                 RewardAbilityName = "My SQL",
                 RewardMoney = 3000,
                 CourseId = mySqlId,
@@ -1214,7 +1214,7 @@
             {
                 Number = 6,
                 Name = "Indices and Data Aggregation",
-                TimeMinutes = 100,
+                ExperienceToComplete = 100,
                 RewardAbilityName = "My SQL",
                 RewardMoney = 3000,
                 CourseId = mySqlId,
@@ -1223,7 +1223,7 @@
             {
                 Number = 5,
                 Name = "Subqueries and Joins",
-                TimeMinutes = 100,
+                ExperienceToComplete = 100,
                 RewardAbilityName = "My SQL",
                 RewardMoney = 3000,
                 CourseId = mySqlId,
@@ -1232,7 +1232,7 @@
             {
                 Number = 4,
                 Name = "Build in Functions",
-                TimeMinutes = 100,
+                ExperienceToComplete = 100,
                 RewardAbilityName = "My SQL",
                 RewardMoney = 3000,
                 CourseId = mySqlId,
@@ -1241,7 +1241,7 @@
             {
                 Number = 3,
                 Name = "Table Ralations",
-                TimeMinutes = 100,
+                ExperienceToComplete = 100,
                 RewardAbilityName = "My SQL",
                 RewardMoney = 3000,
                 CourseId = mySqlId,
@@ -1250,7 +1250,7 @@
             {
                 Number = 2,
                 Name = "Basic CRUD",
-                TimeMinutes = 100,
+                ExperienceToComplete = 100,
                 RewardAbilityName = "My SQL",
                 RewardMoney = 3000,
                 CourseId = mySqlId,
@@ -1259,7 +1259,7 @@
             {
                 Number = 1,
                 Name = "Databases Introduction Data Definition and Datatypes",
-                TimeMinutes = 100,
+                ExperienceToComplete = 100,
                 RewardAbilityName = "My SQL",
                 RewardMoney = 3000,
                 CourseId = mySqlId,
@@ -1270,7 +1270,7 @@
             {
                 Number = 13,
                 Name = "Exam",
-                TimeMinutes = 160,
+                ExperienceToComplete = 160,
                 RewardAbilityName = "Java Exam",
                 RewardMoney = 4000,
                 CourseId = javaOOPid,
@@ -1279,7 +1279,7 @@
             {
                 Number = 12,
                 Name = "Design Patterns",
-                TimeMinutes = 80,
+                ExperienceToComplete = 80,
                 RewardAbilityName = "Java",
                 RewardMoney = 2000,
                 CourseId = javaOOPid,
@@ -1288,7 +1288,7 @@
             {
                 Number = 11,
                 Name = "Test Driven Development",
-                TimeMinutes = 80,
+                ExperienceToComplete = 80,
                 RewardAbilityName = "Java",
                 RewardMoney = 2000,
                 CourseId = javaOOPid,
@@ -1297,7 +1297,7 @@
             {
                 Number = 10,
                 Name = "Unit Testing",
-                TimeMinutes = 80,
+                ExperienceToComplete = 80,
                 RewardAbilityName = "Java",
                 RewardMoney = 2000,
                 CourseId = javaOOPid,
@@ -1306,7 +1306,7 @@
             {
                 Number = 9,
                 Name = "Debugging Techniques",
-                TimeMinutes = 80,
+                ExperienceToComplete = 80,
                 RewardAbilityName = "Java",
                 RewardMoney = 2000,
                 CourseId = javaOOPid,
@@ -1315,7 +1315,7 @@
             {
                 Number = 8,
                 Name = "Exception and ErrorHandling",
-                TimeMinutes = 80,
+                ExperienceToComplete = 80,
                 RewardAbilityName = "Java",
                 RewardMoney = 2000,
                 CourseId = javaOOPid,
@@ -1324,7 +1324,7 @@
             {
                 Number = 7,
                 Name = "Reflection and Annotation",
-                TimeMinutes = 80,
+                ExperienceToComplete = 80,
                 RewardAbilityName = "Java",
                 RewardMoney = 2000,
                 CourseId = javaOOPid,
@@ -1333,7 +1333,7 @@
             {
                 Number = 6,
                 Name = "SOLID",
-                TimeMinutes = 80,
+                ExperienceToComplete = 80,
                 RewardAbilityName = "Java",
                 RewardMoney = 2000,
                 CourseId = javaOOPid,
@@ -1342,7 +1342,7 @@
             {
                 Number = 5,
                 Name = "Polymorhism",
-                TimeMinutes = 80,
+                ExperienceToComplete = 80,
                 RewardAbilityName = "Java",
                 RewardMoney = 2000,
                 CourseId = javaOOPid,
@@ -1351,7 +1351,7 @@
             {
                 Number = 4,
                 Name = "Interface and Abstraction",
-                TimeMinutes = 80,
+                ExperienceToComplete = 80,
                 RewardAbilityName = "Java",
                 RewardMoney = 2000,
                 CourseId = javaOOPid,
@@ -1360,7 +1360,7 @@
             {
                 Number = 3,
                 Name = "Encapsulation",
-                TimeMinutes = 80,
+                ExperienceToComplete = 80,
                 RewardAbilityName = "Java",
                 RewardMoney = 2000,
                 CourseId = javaOOPid,
@@ -1369,7 +1369,7 @@
             {
                 Number = 2,
                 Name = "Inheritance",
-                TimeMinutes = 80,
+                ExperienceToComplete = 80,
                 RewardAbilityName = "Java",
                 RewardMoney = 2000,
                 CourseId = javaOOPid,
@@ -1378,7 +1378,7 @@
             {
                 Number = 1,
                 Name = "Abstraction",
-                TimeMinutes = 80,
+                ExperienceToComplete = 80,
                 RewardAbilityName = "Java",
                 RewardMoney = 2000,
                 CourseId = javaOOPid,
@@ -1389,7 +1389,7 @@
             {
                 Number = 9,
                 Name = "Exam",
-                TimeMinutes = 120,
+                ExperienceToComplete = 120,
                 RewardAbilityName = "Java Exam",
                 RewardMoney = 3000,
                 CourseId = javaAdvancedId,
@@ -1398,7 +1398,7 @@
             {
                 Number = 8,
                 Name = "Functional Programming",
-                TimeMinutes = 60,
+                ExperienceToComplete = 60,
                 RewardAbilityName = "Java",
                 RewardMoney = 1000,
                 CourseId = javaAdvancedId,
@@ -1407,7 +1407,7 @@
             {
                 Number = 7,
                 Name = "Iterators and Comparator",
-                TimeMinutes = 60,
+                ExperienceToComplete = 60,
                 RewardAbilityName = "Java",
                 RewardMoney = 1000,
                 CourseId = javaAdvancedId,
@@ -1416,7 +1416,7 @@
             {
                 Number = 6,
                 Name = "Generics",
-                TimeMinutes = 60,
+                ExperienceToComplete = 60,
                 RewardAbilityName = "Java",
                 RewardMoney = 1000,
                 CourseId = javaAdvancedId,
@@ -1425,7 +1425,7 @@
             {
                 Number = 5,
                 Name = "Defining Classes",
-                TimeMinutes = 60,
+                ExperienceToComplete = 60,
                 RewardAbilityName = "Java",
                 RewardMoney = 1000,
                 CourseId = javaAdvancedId,
@@ -1434,7 +1434,7 @@
             {
                 Number = 4,
                 Name = "Streams,Files and Directories",
-                TimeMinutes = 60,
+                ExperienceToComplete = 60,
                 RewardAbilityName = "Java",
                 RewardMoney = 1000,
                 CourseId = javaAdvancedId,
@@ -1443,7 +1443,7 @@
             {
                 Number = 3,
                 Name = "Sets and Maps Advanced",
-                TimeMinutes = 60,
+                ExperienceToComplete = 60,
                 RewardAbilityName = "Java",
                 RewardMoney = 1000,
                 CourseId = javaAdvancedId,
@@ -1452,7 +1452,7 @@
             {
                 Number = 2,
                 Name = "Multidemensional Arrays",
-                TimeMinutes = 60,
+                ExperienceToComplete = 60,
                 RewardAbilityName = "Java",
                 RewardMoney = 1000,
                 CourseId = csharpAdvancedId,
@@ -1461,7 +1461,7 @@
             {
                 Number = 1,
                 Name = "Stacks and Queues",
-                TimeMinutes = 60,
+                ExperienceToComplete = 60,
                 RewardAbilityName = "Java",
                 RewardMoney = 1000,
                 CourseId = javaAdvancedId,
@@ -1472,7 +1472,7 @@
             {
                 Number = 13,
                 Name = "Exam",
-                TimeMinutes = 320,
+                ExperienceToComplete = 1800,
                 RewardAbilityName = "ASP.NET Core End",
                 RewardMoney = 10000,
                 CourseId = aspNetCoreId,
@@ -1481,7 +1481,7 @@
             {
                 Number = 12,
                 Name = "Blazor",
-                TimeMinutes = 160,
+                ExperienceToComplete = 1700,
                 RewardAbilityName = "ASP.NET Core",
                 RewardMoney = 6000,
                 CourseId = aspNetCoreId,
@@ -1490,7 +1490,7 @@
             {
                 Number = 11,
                 Name = "Azure,Deployment & CI",
-                TimeMinutes = 160,
+                ExperienceToComplete = 1650,
                 RewardAbilityName = "ASP.NET Core",
                 RewardMoney = 6000,
                 CourseId = aspNetCoreId,
@@ -1499,7 +1499,7 @@
             {
                 Number = 10,
                 Name = "SignalR",
-                TimeMinutes = 160,
+                ExperienceToComplete = 1600,
                 RewardAbilityName = "ASP.NET Core",
                 RewardMoney = 6000,
                 CourseId = aspNetCoreId,
@@ -1508,7 +1508,7 @@
             {
                 Number = 9,
                 Name = "Advanced Topics",
-                TimeMinutes = 160,
+                ExperienceToComplete = 1550,
                 RewardAbilityName = "ASP.NET Core",
                 RewardMoney = 6000,
                 CourseId = aspNetCoreId,
@@ -1517,7 +1517,7 @@
             {
                 Number = 8,
                 Name = "Project Arhitecture",
-                TimeMinutes = 160,
+                ExperienceToComplete = 1500,
                 RewardAbilityName = "ASP.NET Core",
                 RewardMoney = 6000,
                 CourseId = aspNetCoreId,
@@ -1526,7 +1526,7 @@
             {
                 Number = 7,
                 Name = "Testing",
-                TimeMinutes = 160,
+                ExperienceToComplete = 1450,
                 RewardAbilityName = "ASP.NET Core",
                 RewardMoney = 6000,
                 CourseId = aspNetCoreId,
@@ -1535,7 +1535,7 @@
             {
                 Number = 6,
                 Name = "Security and Identity",
-                TimeMinutes = 160,
+                ExperienceToComplete = 1400,
                 RewardAbilityName = "ASP.NET Core",
                 RewardMoney = 6000,
                 CourseId = aspNetCoreId,
@@ -1544,7 +1544,7 @@
             {
                 Number = 5,
                 Name = "Web API",
-                TimeMinutes = 160,
+                ExperienceToComplete = 1350,
                 RewardAbilityName = "ASP.NET Core",
                 RewardMoney = 6000,
                 CourseId = aspNetCoreId,
@@ -1553,7 +1553,7 @@
             {
                 Number = 4,
                 Name = "Working with Data",
-                TimeMinutes = 160,
+                ExperienceToComplete = 1300,
                 RewardAbilityName = "ASP.NET Core",
                 RewardMoney = 6000,
                 CourseId = aspNetCoreId,
@@ -1562,7 +1562,7 @@
             {
                 Number = 3,
                 Name = "Application Flow,Filters & Middleware",
-                TimeMinutes = 160,
+                ExperienceToComplete = 1250,
                 RewardAbilityName = "ASP.NET Core",
                 RewardMoney = 6000,
                 CourseId = aspNetCoreId,
@@ -1571,7 +1571,7 @@
             {
                 Number = 2,
                 Name = "Razor Views",
-                TimeMinutes = 160,
+                ExperienceToComplete = 1200,
                 RewardAbilityName = "ASP.NET Core",
                 RewardMoney = 6000,
                 CourseId = aspNetCoreId,
@@ -1580,7 +1580,7 @@
             {
                 Number = 1,
                 Name = "Asp.Net Core Introduction",
-                TimeMinutes = 160,
+                ExperienceToComplete = 1150,
                 RewardAbilityName = "ASP.NET Core",
                 RewardMoney = 6000,
                 CourseId = aspNetCoreId,
@@ -1591,7 +1591,7 @@
             {
                 Number = 7,
                 Name = "Exam",
-                TimeMinutes = 280,
+                ExperienceToComplete = 1100,
                 RewardAbilityName = "ASP.NET Core Exam",
                 RewardMoney = 7000,
                 CourseId = csharpWebBasicId,
@@ -1600,7 +1600,7 @@
             {
                 Number = 6,
                 Name = "MVC Advanced - IOC and Data Binding",
-                TimeMinutes = 140,
+                ExperienceToComplete = 1080,
                 RewardAbilityName = "ASP.NET Core",
                 RewardMoney = 5000,
                 CourseId = csharpWebBasicId,
@@ -1609,7 +1609,7 @@
             {
                 Number = 5,
                 Name = "MVC Advanced - View Engine",
-                TimeMinutes = 140,
+                ExperienceToComplete = 1040,
                 RewardAbilityName = "ASP.NET Core",
                 RewardMoney = 5000,
                 CourseId = csharpWebBasicId,
@@ -1618,7 +1618,7 @@
             {
                 Number = 4,
                 Name = "MVC Introduction",
-                TimeMinutes = 140,
+                ExperienceToComplete = 1000,
                 RewardAbilityName = "ASP.NET Core",
                 RewardMoney = 5000,
                 CourseId = csharpWebBasicId,
@@ -1627,7 +1627,7 @@
             {
                 Number = 3,
                 Name = "Web-Server - State Management",
-                TimeMinutes = 140,
+                ExperienceToComplete = 960,
                 RewardAbilityName = "ASP.NET Core",
                 RewardMoney = 5000,
                 CourseId = csharpWebBasicId,
@@ -1636,7 +1636,7 @@
             {
                 Number = 2,
                 Name = "Web-Server - Asynchronous Processing",
-                TimeMinutes = 140,
+                ExperienceToComplete = 920,
                 RewardAbilityName = "ASP.NET Core",
                 RewardMoney = 5000,
                 CourseId = csharpWebBasicId,
@@ -1645,7 +1645,7 @@
             {
                 Number = 1,
                 Name = "Web-Server - HTTP Protocol",
-                TimeMinutes = 140,
+                ExperienceToComplete = 880,
                 RewardAbilityName = "ASP.NET Core",
                 RewardMoney = 5000,
                 CourseId = csharpWebBasicId,
@@ -1656,7 +1656,7 @@
             {
                 Number = 10,
                 Name = "Exam",
-                TimeMinutes = 240,
+                ExperienceToComplete = 840,
                 RewardAbilityName = "MS SQL Exam",
                 RewardMoney = 6000,
                 CourseId = entityFrameworkCoreId,
@@ -1665,7 +1665,7 @@
             {
                 Number = 9,
                 Name = "XML Processing",
-                TimeMinutes = 120,
+                ExperienceToComplete = 820,
                 RewardAbilityName = "MS SQL",
                 RewardMoney = 4000,
                 CourseId = entityFrameworkCoreId,
@@ -1674,7 +1674,7 @@
             {
                 Number = 8,
                 Name = "JSON Processing",
-                TimeMinutes = 120,
+                ExperienceToComplete = 800,
                 RewardAbilityName = "MS SQL",
                 RewardMoney = 4000,
                 CourseId = entityFrameworkCoreId,
@@ -1683,7 +1683,7 @@
             {
                 Number = 7,
                 Name = "C# Auto Mapper",
-                TimeMinutes = 120,
+                ExperienceToComplete = 780,
                 RewardAbilityName = "MS SQL",
                 RewardMoney = 4000,
                 CourseId = entityFrameworkCoreId,
@@ -1692,7 +1692,7 @@
             {
                 Number = 6,
                 Name = "Advanced Querying",
-                TimeMinutes = 120,
+                ExperienceToComplete = 760,
                 RewardAbilityName = "MS SQL",
                 RewardMoney = 4000,
                 CourseId = entityFrameworkCoreId,
@@ -1701,7 +1701,7 @@
             {
                 Number = 5,
                 Name = "LINQ",
-                TimeMinutes = 120,
+                ExperienceToComplete = 740,
                 RewardAbilityName = "MS SQL",
                 RewardMoney = 4000,
                 CourseId = entityFrameworkCoreId,
@@ -1710,7 +1710,7 @@
             {
                 Number = 4,
                 Name = "Entity Relations",
-                TimeMinutes = 120,
+                ExperienceToComplete = 720,
                 RewardAbilityName = "MS SQL",
                 RewardMoney = 4000,
                 CourseId = entityFrameworkCoreId,
@@ -1719,7 +1719,7 @@
             {
                 Number = 3,
                 Name = "Entity Framework Introduction",
-                TimeMinutes = 120,
+                ExperienceToComplete = 700,
                 RewardAbilityName = "MS SQL",
                 RewardMoney = 4000,
                 CourseId = entityFrameworkCoreId,
@@ -1728,7 +1728,7 @@
             {
                 Number = 2,
                 Name = "ORM Fundamentals",
-                TimeMinutes = 120,
+                ExperienceToComplete = 680,
                 RewardAbilityName = "MS SQL",
                 RewardMoney = 4000,
                 CourseId = entityFrameworkCoreId,
@@ -1737,7 +1737,7 @@
             {
                 Number = 1,
                 Name = "ADO.NET",
-                TimeMinutes = 120,
+                ExperienceToComplete = 660,
                 RewardAbilityName = "MS SQL",
                 RewardMoney = 4000,
                 CourseId = entityFrameworkCoreId,
@@ -1748,7 +1748,7 @@
             {
                 Number = 9,
                 Name = "Exam",
-                TimeMinutes = 200,
+                ExperienceToComplete = 640,
                 RewardAbilityName = "MS SQL Exam",
                 RewardMoney = 5000,
                 CourseId = msSqlId,
@@ -1757,7 +1757,7 @@
             {
                 Number = 8,
                 Name = "Triggers and Transactions",
-                TimeMinutes = 100,
+                ExperienceToComplete = 590,
                 RewardAbilityName = "MS SQL",
                 RewardMoney = 3000,
                 CourseId = msSqlId,
@@ -1766,7 +1766,7 @@
             {
                 Number = 7,
                 Name = "Functions and Stored Procedures",
-                TimeMinutes = 100,
+                ExperienceToComplete = 580,
                 RewardAbilityName = "MS SQL",
                 RewardMoney = 3000,
                 CourseId = msSqlId,
@@ -1775,7 +1775,7 @@
             {
                 Number = 6,
                 Name = "Indices and Data Aggregation",
-                TimeMinutes = 100,
+                ExperienceToComplete = 570,
                 RewardAbilityName = "MS SQL",
                 RewardMoney = 3000,
                 CourseId = msSqlId,
@@ -1784,7 +1784,7 @@
             {
                 Number = 5,
                 Name = "Subqueries and Joins",
-                TimeMinutes = 100,
+                ExperienceToComplete = 560,
                 RewardAbilityName = "MS SQL",
                 RewardMoney = 3000,
                 CourseId = msSqlId,
@@ -1793,7 +1793,7 @@
             {
                 Number = 4,
                 Name = "Build in Functions",
-                TimeMinutes = 100,
+                ExperienceToComplete = 550,
                 RewardAbilityName = "MS SQL",
                 RewardMoney = 3000,
                 CourseId = msSqlId,
@@ -1802,7 +1802,7 @@
             {
                 Number = 3,
                 Name = "Table Ralations",
-                TimeMinutes = 100,
+                ExperienceToComplete = 540,
                 RewardAbilityName = "MS SQL",
                 RewardMoney = 3000,
                 CourseId = msSqlId,
@@ -1811,7 +1811,7 @@
             {
                 Number = 2,
                 Name = "CRUD",
-                TimeMinutes = 100,
+                ExperienceToComplete = 530,
                 RewardAbilityName = "MS SQL",
                 RewardMoney = 3000,
                 CourseId = msSqlId,
@@ -1820,7 +1820,7 @@
             {
                 Number = 1,
                 Name = "Databases Introduction",
-                TimeMinutes = 100,
+                ExperienceToComplete = 520,
                 RewardAbilityName = "MS SQL",
                 RewardMoney = 3000,
                 CourseId = msSqlId,
@@ -1831,7 +1831,7 @@
             {
                 Number = 11,
                 Name = "Exam",
-                TimeMinutes = 160,
+                ExperienceToComplete = 500,
                 RewardAbilityName = "C# Exam",
                 RewardMoney = 4000,
                 CourseId = csharpOOPId,
@@ -1840,7 +1840,7 @@
             {
                 Number = 10,
                 Name = "Design Patterns Basics",
-                TimeMinutes = 80,
+                ExperienceToComplete = 480,
                 RewardAbilityName = "C#",
                 RewardMoney = 2000,
                 CourseId = csharpOOPId,
@@ -1849,7 +1849,7 @@
             {
                 Number = 9,
                 Name = "Test Driven Development",
-                TimeMinutes = 80,
+                ExperienceToComplete = 470,
                 RewardAbilityName = "C#",
                 RewardMoney = 2000,
                 CourseId = csharpOOPId,
@@ -1858,7 +1858,7 @@
             {
                 Number = 8,
                 Name = "Exception and ErrorHandling",
-                TimeMinutes = 80,
+                ExperienceToComplete = 460,
                 RewardAbilityName = "C#",
                 RewardMoney = 2000,
                 CourseId = csharpOOPId,
@@ -1867,7 +1867,7 @@
             {
                 Number = 7,
                 Name = "Reflection and Attributes",
-                TimeMinutes = 80,
+                ExperienceToComplete = 450,
                 RewardAbilityName = "C#",
                 RewardMoney = 2000,
                 CourseId = csharpOOPId,
@@ -1876,7 +1876,7 @@
             {
                 Number = 6,
                 Name = "SOLID",
-                TimeMinutes = 80,
+                ExperienceToComplete = 440,
                 RewardAbilityName = "C#",
                 RewardMoney = 2000,
                 CourseId = csharpOOPId,
@@ -1885,7 +1885,7 @@
             {
                 Number = 5,
                 Name = "Polymorhism",
-                TimeMinutes = 80,
+                ExperienceToComplete = 430,
                 RewardAbilityName = "C#",
                 RewardMoney = 2000,
                 CourseId = csharpOOPId,
@@ -1894,7 +1894,7 @@
             {
                 Number = 4,
                 Name = "Interface and Abstraction",
-                TimeMinutes = 80,
+                ExperienceToComplete = 420,
                 RewardAbilityName = "C#",
                 RewardMoney = 2000,
                 CourseId = csharpOOPId,
@@ -1903,7 +1903,7 @@
             {
                 Number = 3,
                 Name = "Encapsulation",
-                TimeMinutes = 80,
+                ExperienceToComplete = 410,
                 RewardAbilityName = "C#",
                 RewardMoney = 2000,
                 CourseId = csharpOOPId,
@@ -1912,7 +1912,7 @@
             {
                 Number = 2,
                 Name = "Inheritance",
-                TimeMinutes = 80,
+                ExperienceToComplete = 400,
                 RewardAbilityName = "C#",
                 RewardMoney = 2000,
                 CourseId = csharpOOPId,
@@ -1921,7 +1921,7 @@
             {
                 Number = 1,
                 Name = "Abstraction",
-                TimeMinutes = 80,
+                ExperienceToComplete = 390,
                 RewardAbilityName = "C#",
                 RewardMoney = 2000,
                 CourseId = csharpOOPId,
@@ -1932,7 +1932,7 @@
             {
                 Number = 9,
                 Name = "Exam",
-                TimeMinutes = 120,
+                ExperienceToComplete = 360,
                 RewardAbilityName = "C# Exam",
                 RewardMoney = 3000,
                 CourseId = csharpAdvancedId,
@@ -1941,7 +1941,7 @@
             {
                 Number = 8,
                 Name = "Iterators and Comparator",
-                TimeMinutes = 60,
+                ExperienceToComplete = 350,
                 RewardAbilityName = "C#",
                 RewardMoney = 1000,
                 CourseId = csharpAdvancedId,
@@ -1950,7 +1950,7 @@
             {
                 Number = 7,
                 Name = "Generics",
-                TimeMinutes = 60,
+                ExperienceToComplete = 340,
                 RewardAbilityName = "C#",
                 RewardMoney = 1000,
                 CourseId = csharpAdvancedId,
@@ -1959,7 +1959,7 @@
             {
                 Number = 6,
                 Name = "Defining Classes",
-                TimeMinutes = 60,
+                ExperienceToComplete = 330,
                 RewardAbilityName = "C#",
                 RewardMoney = 1000,
                 CourseId = csharpAdvancedId,
@@ -1968,7 +1968,7 @@
             {
                 Number = 5,
                 Name = "Functional Programming",
-                TimeMinutes = 60,
+                ExperienceToComplete = 320,
                 RewardAbilityName = "C#",
                 RewardMoney = 1000,
                 CourseId = csharpAdvancedId,
@@ -1977,7 +1977,7 @@
             {
                 Number = 4,
                 Name = "Streams,Files and Directories",
-                TimeMinutes = 60,
+                ExperienceToComplete = 310,
                 RewardAbilityName = "C#",
                 RewardMoney = 1000,
                 CourseId = csharpAdvancedId,
@@ -1986,7 +1986,7 @@
             {
                 Number = 3,
                 Name = "Sets and Dictionary Advanced",
-                TimeMinutes = 60,
+                ExperienceToComplete = 300,
                 RewardAbilityName = "C#",
                 RewardMoney = 1000,
                 CourseId = csharpAdvancedId,
@@ -1995,7 +1995,7 @@
             {
                 Number = 2,
                 Name = "Multidemensional Arrays",
-                TimeMinutes = 60,
+                ExperienceToComplete = 290,
                 RewardAbilityName = "C#",
                 RewardMoney = 1000,
                 CourseId = csharpAdvancedId,
@@ -2004,7 +2004,7 @@
             {
                 Number = 1,
                 Name = "Stacks and Queues",
-                TimeMinutes = 60,
+                ExperienceToComplete = 280,
                 RewardAbilityName = "C#",
                 RewardMoney = 1000,
                 CourseId = csharpAdvancedId,
@@ -2015,7 +2015,7 @@
             {
                 Number = 18,
                 Name = "Exam",
-                TimeMinutes = 120,
+                ExperienceToComplete = 250,
                 RewardAbilityName = "C# Exam",
                 RewardMoney = 2000,
                 CourseId = fundamentalId,
@@ -2024,7 +2024,7 @@
             {
                 Number = 17,
                 Name = "Git and GitHub Basics",
-                TimeMinutes = 40,
+                ExperienceToComplete = 240,
                 RewardAbilityName = "C#",
                 RewardMoney = 500,
                 CourseId = fundamentalId,
@@ -2033,7 +2033,7 @@
             {
                 Number = 16,
                 Name = "Regular Expressions",
-                TimeMinutes = 40,
+                ExperienceToComplete = 230,
                 RewardAbilityName = "C#",
                 RewardMoney = 500,
                 CourseId = fundamentalId,
@@ -2042,7 +2042,7 @@
             {
                 Number = 15,
                 Name = "Databases Basics",
-                TimeMinutes = 40,
+                ExperienceToComplete = 220,
                 RewardAbilityName = "MS SQL",
                 RewardMoney = 500,
                 CourseId = fundamentalId,
@@ -2051,7 +2051,7 @@
             {
                 Number = 14,
                 Name = "Text Processing",
-                TimeMinutes = 40,
+                ExperienceToComplete = 210,
                 RewardAbilityName = "C#",
                 RewardMoney = 500,
                 CourseId = fundamentalId,
@@ -2060,7 +2060,7 @@
             {
                 Number = 13,
                 Name = "Computer Science Basics",
-                TimeMinutes = 40,
+                ExperienceToComplete = 200,
                 RewardAbilityName = "C#",
                 RewardMoney = 500,
                 CourseId = fundamentalId,
@@ -2069,7 +2069,7 @@
             {
                 Number = 12,
                 Name = "Lambda Expressions and LINQ",
-                TimeMinutes = 40,
+                ExperienceToComplete = 190,
                 RewardAbilityName = "C#",
                 RewardMoney = 500,
                 CourseId = fundamentalId,
@@ -2078,7 +2078,7 @@
             {
                 Number = 11,
                 Name = "Dictionary and SortedDictionary",
-                TimeMinutes = 40,
+                ExperienceToComplete = 180,
                 RewardAbilityName = "C#",
                 RewardMoney = 500,
                 CourseId = fundamentalId,
@@ -2087,7 +2087,7 @@
             {
                 Number = 10,
                 Name = "Object and Classes",
-                TimeMinutes = 40,
+                ExperienceToComplete = 170,
                 RewardAbilityName = "C#",
                 RewardMoney = 500,
                 CourseId = fundamentalId,
@@ -2096,7 +2096,7 @@
             {
                 Number = 9,
                 Name = "Bitwise Operation",
-                TimeMinutes = 40,
+                ExperienceToComplete = 160,
                 RewardAbilityName = "C#",
                 RewardMoney = 500,
                 CourseId = fundamentalId,
@@ -2105,7 +2105,7 @@
             {
                 Number = 8,
                 Name = "List",
-                TimeMinutes = 40,
+                ExperienceToComplete = 150,
                 RewardAbilityName = "C#",
                 RewardMoney = 500,
                 CourseId = fundamentalId,
@@ -2114,7 +2114,7 @@
             {
                 Number = 7,
                 Name = "Problem Solving",
-                TimeMinutes = 40,
+                ExperienceToComplete = 140,
                 RewardAbilityName = "C#",
                 RewardMoney = 500,
                 CourseId = fundamentalId,
@@ -2123,7 +2123,7 @@
             {
                 Number = 6,
                 Name = "HTPP Basic",
-                TimeMinutes = 40,
+                ExperienceToComplete = 130,
                 RewardAbilityName = "C#",
                 RewardMoney = 500,
                 CourseId = fundamentalId,
@@ -2132,7 +2132,7 @@
             {
                 Number = 5,
                 Name = "Methods",
-                TimeMinutes = 40,
+                ExperienceToComplete = 120,
                 RewardAbilityName = "C#",
                 RewardMoney = 500,
                 CourseId = fundamentalId,
@@ -2141,8 +2141,8 @@
             {
                 Number = 4,
                 Name = "Basic CSS",
-                TimeMinutes = 40,
-                RewardAbilityName = "C#",
+                ExperienceToComplete = 110,
+                RewardAbilityName = "CSS",
                 RewardMoney = 500,
                 CourseId = fundamentalId,
             });
@@ -2150,7 +2150,7 @@
             {
                 Number = 3,
                 Name = "Array",
-                TimeMinutes = 40,
+                ExperienceToComplete = 100,
                 RewardAbilityName = "C#",
                 RewardMoney = 500,
                 CourseId = fundamentalId,
@@ -2159,8 +2159,8 @@
             {
                 Number = 2,
                 Name = "Basic HTML",
-                TimeMinutes = 40,
-                RewardAbilityName = "C#",
+                ExperienceToComplete = 95,
+                RewardAbilityName = "HTML",
                 RewardMoney = 500,
                 CourseId = fundamentalId,
             });
@@ -2168,18 +2168,18 @@
             {
                 Number = 1,
                 Name = "Data Types and Variables",
-                TimeMinutes = 40,
+                ExperienceToComplete = 90,
                 RewardAbilityName = "C#",
                 RewardMoney = 500,
                 CourseId = fundamentalId,
             });
 
-            // Programming Basci Lecture
+            // Programming Basic Lecture
             dbContext.Lectures.Add(new Lecture
             {
                 Number = 7,
                 Name = "Exam",
-                TimeMinutes = 60,
+                ExperienceToComplete = 70,
                 RewardAbilityName = "C# Exam",
                 RewardMoney = 1000,
                 CourseId = programmingBasicId,
@@ -2188,7 +2188,7 @@
             {
                 Number = 6,
                 Name = "Nested-Loop",
-                TimeMinutes = 20,
+                ExperienceToComplete = 60,
                 RewardAbilityName = "C#",
                 RewardMoney = 200,
                 CourseId = programmingBasicId,
@@ -2197,7 +2197,7 @@
             {
                 Number = 5,
                 Name = "While-Loop",
-                TimeMinutes = 20,
+                ExperienceToComplete = 50,
                 RewardAbilityName = "C#",
                 RewardMoney = 200,
                 CourseId = programmingBasicId,
@@ -2206,7 +2206,7 @@
             {
                 Number = 4,
                 Name = "For-Loop",
-                TimeMinutes = 20,
+                ExperienceToComplete = 40,
                 RewardAbilityName = "C#",
                 RewardMoney = 200,
                 CourseId = programmingBasicId,
@@ -2215,7 +2215,7 @@
             {
                 Number = 3,
                 Name = "Nested Conditional Statement",
-                TimeMinutes = 20,
+                ExperienceToComplete = 30,
                 RewardAbilityName = "C#",
                 RewardMoney = 200,
                 CourseId = programmingBasicId,
@@ -2224,7 +2224,7 @@
             {
                 Number = 2,
                 Name = "Conditional Statement",
-                TimeMinutes = 20,
+                ExperienceToComplete = 20,
                 RewardAbilityName = "C#",
                 RewardMoney = 200,
                 CourseId = programmingBasicId,
@@ -2234,7 +2234,7 @@
             {
                 Number = 1,
                 Name = "Variables and Data Types Basics",
-                TimeMinutes = 20,
+                ExperienceToComplete = 10,
                 RewardAbilityName = "C#",
                 RewardMoney = 200,
                 CourseId = programmingBasicId,

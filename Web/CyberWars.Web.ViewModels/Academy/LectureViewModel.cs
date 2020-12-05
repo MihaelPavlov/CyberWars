@@ -11,7 +11,9 @@
     {
         public string Name { get; set; }
 
-        public int TimeMinutes { get; set; }
+        public int ExperienceToComplete { get; set; }
+
+        public int PlayerExperience { get; set; }
 
         public string RewardAbilityName { get; set; }
 

@@ -25,6 +25,8 @@
     <Compile Remove="Migrations\20201129093216_AddHangfireTables.Designer.cs" />
     <Compile Remove="Migrations\20201203081905_AddIsHealthResetStartToPlayer.cs" />
     <Compile Remove="Migrations\20201203081905_AddIsHealthResetStartToPlayer.Designer.cs" />
+    <Compile Remove="Migrations\20201205151827_FixLectureAndCourse.cs" />
+    <Compile Remove="Migrations\20201205151827_FixLectureAndCourse.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

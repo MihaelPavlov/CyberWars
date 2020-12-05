@@ -18,19 +18,21 @@
         private readonly IDeletableEntityRepository<Contest> contestRepository;
         private readonly IDeletableEntityRepository<Player> playerRepository;
         private readonly IDeletableEntityRepository<PlayerContest> playerContestsRepository;
+        private readonly IDeletableEntityRepository<RandomHangfireContest> randomContestRepository;
 
         public ContestService(IDeletableEntityRepository<Contest> contestRepository
             , IDeletableEntityRepository<Player> playerRepository
-            , IDeletableEntityRepository<PlayerContest> playerContestsRepository)
+            , IDeletableEntityRepository<PlayerContest> playerContestsRepository, IDeletableEntityRepository<RandomHangfireContest> randomContestRepository)
         {
             this.contestRepository = contestRepository;
             this.playerRepository = playerRepository;
             this.playerContestsRepository = playerContestsRepository;
+            this.randomContestRepository = randomContestRepository;
         }
 
         public async Task<IEnumerable<T>> GetContests<T>()
         {
-            return await this.contestRepository.All().Take(3).To<T>().ToListAsync();
+            return await this.randomContestRepository.All().Take(4).To<T>().ToListAsync();
         }
 
         public async Task<T> ResultFromContestById<T>(int contestId, string userId)

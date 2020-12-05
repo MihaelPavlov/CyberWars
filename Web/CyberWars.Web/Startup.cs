@@ -37,6 +37,8 @@
     using CyberWars.Common;
     using CyberWars.Services.Data.Hangfire;
     using Newtonsoft.Json;
+    using System.Collections.Generic;
+    using System.Threading;
 
     public class Startup
     {
@@ -56,23 +58,6 @@
             services.AddDefaultIdentity<ApplicationUser>(IdentityOptionsProvider.GetIdentityOptions)
                 .AddRoles<ApplicationRole>().AddEntityFrameworkStores<ApplicationDbContext>();
 
-            services.AddHangfire(config =>
-            {
-                // ReferenceLoop Fixing json error for resetStats on the player
-                config.UseSerializerSettings(new JsonSerializerSettings() { ReferenceLoopHandling = ReferenceLoopHandling.Ignore });
-                config.SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
-                .UseSqlServerStorage(
-                this.configuration.GetConnectionString("DefaultConnection"),
-                new SqlServerStorageOptions
-                {
-                    PrepareSchemaIfNecessary = true,
-                    QueuePollInterval = TimeSpan.Zero,
-                    UseRecommendedIsolationLevel = true,
-                    UsePageLocksOnDequeue = true,
-                    DisableGlobalLocks = true,
-                });
-            });
-            services.AddHangfireServer();
 
             services.Configure<CookiePolicyOptions>(
                 options =>
@@ -107,10 +92,28 @@
             services.AddTransient<IContestService, ContestService>();
             services.AddTransient<IAcademyService, AcademyService>();
             services.AddTransient<ITeamService, TeamService>();
+
+            services.AddHangfire(config =>
+            {
+                // ReferenceLoop Fixing json error for resetStats on the player
+                config.UseSerializerSettings(new JsonSerializerSettings() { ReferenceLoopHandling = ReferenceLoopHandling.Ignore });
+                config.SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
+                .UseSqlServerStorage(
+                this.configuration.GetConnectionString("DefaultConnection"),
+                new SqlServerStorageOptions
+                {
+                    PrepareSchemaIfNecessary = true,
+                    QueuePollInterval = TimeSpan.Zero,
+                    UseRecommendedIsolationLevel = true,
+                    UsePageLocksOnDequeue = true,
+                    DisableGlobalLocks = true,
+                });
+            });
+            services.AddHangfireServer();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IRecurringJobManager recurringJobManager)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IRecurringJobManager recurringJob)
         {
 
             AutoMapperConfig.RegisterMappings(typeof(ErrorViewModel).GetTypeInfo().Assembly);
@@ -123,7 +126,7 @@
 
                 new ApplicationDbContextSeeder().SeedAsync(dbContext, serviceScope.ServiceProvider).GetAwaiter().GetResult();
 
-                 this.SeedHangfireJobs(recurringJobManager);
+                this.SeedHangfireJobs(recurringJob);
             }
 
             if (env.IsDevelopment())
@@ -155,13 +158,17 @@
                         endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
                         endpoints.MapRazorPages();
                     });
+
+
         }
 
-        private async Task SeedHangfireJobs(IRecurringJobManager recurringJobManager)
+        public async Task SeedHangfireJobs(IRecurringJobManager recurringJob)
         {
-            recurringJobManager.AddOrUpdate<PetStatsService>("PetStatsService", x => x.PetStatsDownEveryHour(), Cron.Hourly);
-            recurringJobManager.AddOrUpdate<UpdatePetFavouriteFoodService>("UpdatePetFavouriteFoodService", x => x.ChangePetFavouriteFoodEveryDay(), Cron.Daily);
-            recurringJobManager.AddOrUpdate<AddJobService>("AddJobService", x => x.UpdateRandomJobs(), Cron.Daily);
+            recurringJob.AddOrUpdate<PetStatsService>("PetStatsService", x => x.PetStatsDownEveryHour(), Cron.Hourly);
+            recurringJob.AddOrUpdate<UpdatePetFavouriteFoodService>("UpdatePetFavouriteFoodService", x => x.ChangePetFavouriteFoodEveryDay(), Cron.Daily);
+            recurringJob.AddOrUpdate<AddJobService>("AddJobService", x => x.UpdateRandomJobs(), Cron.Daily);
+            recurringJob.AddOrUpdate<UpdateContests>("UpdateContests", x => x.UpdateRandomContests(), Cron.Daily);
         }
+
     }
 }

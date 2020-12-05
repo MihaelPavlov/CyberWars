@@ -14,6 +14,8 @@
 
         public string Name { get; set; }
 
+        public int LevelToUnlock { get; set; }
+
         public int CourseTypeId { get; set; }
 
         public CourseType CourseType { get; set; }
