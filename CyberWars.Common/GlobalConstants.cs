@@ -5,5 +5,7 @@
         public const string SystemName = "CyberWars";
 
         public const string AdministratorRoleName = "Administrator";
+
+        public const string UserRoleName = "User";
     }
 }

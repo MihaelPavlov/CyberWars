@@ -3,12 +3,14 @@
     using System.Security.Claims;
     using System.Threading.Tasks;
 
-    using Microsoft.AspNetCore.Mvc;
-
+    using CyberWars.Common;
     using CyberWars.Services.Data.DarkWeb;
     using CyberWars.Web.ViewModels.DarkWeb;
     using CyberWars.Web.ViewModels.HomeViews;
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Mvc;
 
+    [Authorize(Roles = GlobalConstants.UserRoleName)]
     public class DarkWebController : Controller
     {
         private readonly IDarkWebService darkWebService;

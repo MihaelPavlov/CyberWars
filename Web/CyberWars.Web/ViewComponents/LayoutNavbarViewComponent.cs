@@ -1,6 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-
-namespace CyberWars.Web.ViewComponents
+﻿namespace CyberWars.Web.ViewComponents
 {
     using System;
     using System.Collections.Generic;
@@ -13,7 +11,10 @@ namespace CyberWars.Web.ViewComponents
     using CyberWars.Services.Data.Home;
     using CyberWars.Web.ViewModels.HomeViews;
     using Hangfire;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.EntityFrameworkCore;
+
 
     public class LayoutNavbarViewComponent : ViewComponent
     {

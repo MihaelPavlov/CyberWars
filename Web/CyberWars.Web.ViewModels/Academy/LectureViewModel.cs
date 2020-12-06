@@ -9,6 +9,8 @@
 
     public class LectureViewModel : IMapFrom<Lecture>
     {
+        public int Id { get; set; }
+
         public string Name { get; set; }
 
         public int ExperienceToComplete { get; set; }

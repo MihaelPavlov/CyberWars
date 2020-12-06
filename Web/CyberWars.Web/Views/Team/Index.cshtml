@@ -35,7 +35,9 @@
                     <td><a href="/Team/TeamPage?teamName=@team.Name">@team.Name</a></td>
                     <td>@team.MotivationalMotto</td>
                     <td>
-                        <a class="btn yellow rounded" href="/Team/ApplyToTeam?teamId=@team.Id">Apply</a>
+                        <form method="post" asp-controller="Team" asp-action="ApplyToTeam">
+                            <button type="submit" class="btn yellow rounded" name="teamId" value="@team.Id">Apply</button>
+                        </form>
                     </td>
                 </tr>
             }

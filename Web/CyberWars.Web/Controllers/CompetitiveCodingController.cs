@@ -3,10 +3,13 @@
     using System.Security.Claims;
     using System.Threading.Tasks;
 
+    using CyberWars.Common;
     using CyberWars.Services.Data.CompetitiveCoding;
     using CyberWars.Web.ViewModels.WebViews.CompetitiveCoding;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
 
+    [Authorize(Roles = GlobalConstants.UserRoleName)]
     public class CompetitiveCodingController : Controller
     {
         private readonly IContestService contestService;

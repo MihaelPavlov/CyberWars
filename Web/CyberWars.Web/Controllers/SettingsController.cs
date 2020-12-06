@@ -3,13 +3,15 @@
     using System;
     using System.Threading.Tasks;
 
+    using CyberWars.Common;
     using CyberWars.Data.Common.Repositories;
     using CyberWars.Data.Models;
     using CyberWars.Services.Data;
     using CyberWars.Web.ViewModels.Settings;
-
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
 
+    [Authorize(Roles = GlobalConstants.UserRoleName)]
     public class SettingsController : BaseController
     {
         private readonly ISettingsService settingsService;

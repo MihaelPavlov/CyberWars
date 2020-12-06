@@ -3,11 +3,13 @@
     using System.Security.Claims;
     using System.Threading.Tasks;
 
+
+    using CyberWars.Common;
+    using CyberWars.Services.Data.Academy;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
 
-    using CyberWars.Services.Data.Academy;
-    using CyberWars.Web.ViewModels.Academy;
-
+    [Authorize(Roles = GlobalConstants.UserRoleName)]
     public class AcademyController : Controller
     {
         private readonly IAcademyService academyService;
@@ -28,6 +30,18 @@
 
             var viewModel = await this.academyService.GetLecturesByName(courseName, userId);
             return this.View(viewModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CompleteLecture(int lectureId)
+        {
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            await this.academyService.CompleteLectureById(userId, lectureId);
+
+            var courseName = this.academyService.GetCourseNameByLectureId(lectureId);
+
+            return this.Redirect($"/Academy/Lectures?courseName={courseName}");
         }
 
         public IActionResult Languages()

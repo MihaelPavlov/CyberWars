@@ -3,11 +3,14 @@
     using System.Security.Claims;
     using System.Threading.Tasks;
 
+    using CyberWars.Common;
     using CyberWars.Services.Data.Market;
     using CyberWars.Web.ViewModels.HomeViews.Pet;
     using CyberWars.Web.ViewModels.Market;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
 
+    [Authorize(Roles = GlobalConstants.UserRoleName)]
     public class MarketController : Controller
     {
         private readonly IMarketService marketService;

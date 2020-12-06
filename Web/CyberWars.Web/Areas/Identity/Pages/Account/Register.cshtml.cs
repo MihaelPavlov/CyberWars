@@ -15,6 +15,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 using CyberWars.Services.Data;
+using CyberWars.Common;
 
 namespace CyberWars.Web.Areas.Identity.Pages.Account
 {
@@ -23,6 +24,7 @@ namespace CyberWars.Web.Areas.Identity.Pages.Account
     {
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly RoleManager<ApplicationRole> roleManager;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
         private readonly IPlayerService playerService;
@@ -31,13 +33,15 @@ namespace CyberWars.Web.Areas.Identity.Pages.Account
             SignInManager<ApplicationUser> signInManager,
             ILogger<RegisterModel> logger,
             IEmailSender emailSender,
-            IPlayerService playerService)
+            IPlayerService playerService,
+            RoleManager<ApplicationRole> roleManager)
         {
             this._userManager = userManager;
             this._signInManager = signInManager;
             this._logger = logger;
             this._emailSender = emailSender;
             this.playerService = playerService;
+            this.roleManager = roleManager;
         }
 
         [BindProperty]
@@ -118,6 +122,19 @@ namespace CyberWars.Web.Areas.Identity.Pages.Account
 
                     await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
                         $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+
+                    // Roles Logic
+
+                    if (!await this.roleManager.RoleExistsAsync(GlobalConstants.UserRoleName))
+                    {
+                        await this.roleManager.CreateAsync(new ApplicationRole
+                        {
+                            Name = GlobalConstants.UserRoleName,
+                        });
+
+                    }
+
+                    await this._userManager.AddToRoleAsync(user, GlobalConstants.UserRoleName);
 
                     if (_userManager.Options.SignIn.RequireConfirmedAccount)
                     {

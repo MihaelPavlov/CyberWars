@@ -3,6 +3,8 @@
     using System.Diagnostics;
     using System.Security.Claims;
     using System.Threading.Tasks;
+
+    using CyberWars.Common;
     using CyberWars.Data.Common.Repositories;
     using CyberWars.Data.Models;
     using CyberWars.Data.Models.Pet_Food;
@@ -12,9 +14,11 @@
     using CyberWars.Web.ViewModels;
     using CyberWars.Web.ViewModels.HomeViews;
     using CyberWars.Web.ViewModels.HomeViews.Pet;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.EntityFrameworkCore;
 
+    [Authorize(Roles = GlobalConstants.UserRoleName)]
     public class HomeController : BaseController
     {
         private readonly IHomeService homeService;

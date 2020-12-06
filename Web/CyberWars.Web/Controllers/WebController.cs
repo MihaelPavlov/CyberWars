@@ -4,12 +4,14 @@
     using System.Security.Claims;
     using System.Threading.Tasks;
 
-    using Hangfire;
-    using Microsoft.AspNetCore.Mvc;
-    using CyberWars.Services.Data.Hangfire;
+    using CyberWars.Common;
     using CyberWars.Services.Data.Web;
     using CyberWars.Web.ViewModels.WebViews.Job;
+    using Hangfire;
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Mvc;
 
+    [Authorize(Roles = GlobalConstants.UserRoleName)]
     public class WebController : Controller
     {
 

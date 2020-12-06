@@ -1455,7 +1455,7 @@
                 ExperienceToComplete = 60,
                 RewardAbilityName = "Java",
                 RewardMoney = 1000,
-                CourseId = csharpAdvancedId,
+                CourseId = javaAdvancedId,
             });
             dbContext.Lectures.Add(new Lecture
             {

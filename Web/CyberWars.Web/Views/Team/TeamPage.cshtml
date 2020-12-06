@@ -1,6 +1,27 @@
-
 @using CyberWars.Web.ViewModels.Team;
+@using CyberWars.Data.Common.Repositories;
+@using CyberWars.Data.Models.Team;
+@using System.Security.Claims;
+@using CyberWars.Data.Models;
+@using Microsoft.EntityFrameworkCore;
+@using CyberWars.Data.Models.Player;
+
 @model TeamPageViewModel
+
+@inject IDeletableEntityRepository<Team> teamRepository;
+@inject IDeletableEntityRepository<TeamPlayer> teamPlayerRepository;
+@inject IDeletableEntityRepository<ApplicationUser> userRepository;
+@inject IDeletableEntityRepository<Player> playerRepository;
+
+@{
+    var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+    var isUserHaveTeam = await this.teamRepository.All().FirstOrDefaultAsync(x => x.UserId == userId);
+
+    var player = await this.playerRepository.All().FirstOrDefaultAsync(x => x.UserId == userId);
+
+    var teamPlayer = await this.teamPlayerRepository.All().FirstOrDefaultAsync(x => x.PlayerId == player.Id);
+}
 <div class="tableTeam">
     <div>
         <img class="teamIcon" src="/images/Base/01.Programmer.png" alt="">
@@ -25,9 +46,9 @@
             <td class="input">
                 <div>
                     <br>
-                    @foreach (var teamPlayer in Model.TeamPlayers)
+                    @foreach (var playerInTeam in Model.TeamPlayers)
                     {
-                        <a href="/Home/PlayerView?playerName=@teamPlayer.PlayerName">@teamPlayer.PlayerName</a>
+                        <a href="/Home/PlayerView?playerName=@playerInTeam.PlayerName">@playerInTeam.PlayerName</a>
                         <br>
                     }
                 </div>
@@ -35,6 +56,34 @@
 
         </tr>
     </table>
+
+    @if (isUserHaveTeam != null)
+    {
+        <form method="post" asp-controller="Team" asp-action="Abandon">
+            <div class="leaveFromGroupButton">
+                <button type="submit" class="btn dark-blue rounded" name="teamId" value="@Model.Id">Abandon</button>
+            </div>
+        </form>
+
+    }
+    else if (teamPlayer != null)
+    {
+        <form method="post" asp-controller="Team" asp-action="LeaveGroup">
+
+            <div class="leaveFromGroupButton">
+                <button type="submit" class="btn dark-blue rounded" name="teamId" value="@Model.Id">Leave</button>
+            </div>
+        </form>
+    }
+    else
+    {
+        <form method="post" asp-controller="Team" asp-action="ApplyToTeam">
+            <div class="leaveFromGroupButton">
+                <button type="submit" class="btn dark-blue rounded" name="teamId" value="@Model.Id">Apply</button>
+            </div>
+
+        </form>
+    }
 </div>
 
 @section CssFile {

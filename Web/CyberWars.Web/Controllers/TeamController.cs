@@ -3,10 +3,13 @@
     using System.Security.Claims;
     using System.Threading.Tasks;
 
+    using CyberWars.Common;
     using CyberWars.Services.Data.Team;
     using CyberWars.Web.ViewModels.Team;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
 
+    [Authorize(Roles = GlobalConstants.UserRoleName)]
     public class TeamController : Controller
     {
         private readonly ITeamService teamService;
@@ -37,20 +40,55 @@
         {
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            //if (this.ModelState.IsValid)
-            //{
+            // If User Already have Team
+            if (this.teamService.IsUserHaveTeam(userId))
+            {
+                var teamName = await this.teamService.GetTeamNameByUserId(userId);
+                return this.Redirect($"/Team/TeamPage?teamName={teamName}");
+            }
 
-            //}
-            await this.teamService.CreateTeam(userId, input.Name, input.MotivationalMotto, input.Description);
+            // If Player Try Create Team But He already apply to other Team
+            if (await this.teamService.IsPlayerAlreadyApplyToTeam(userId))
+            {
+                var teamName = await this.teamService.GetTeamPlayerTeamNameByUserId(userId);
+                return this.Redirect($"/Team/TeamPage?teamName={teamName}");
+            }
 
-            return this.Redirect("/Home/Index");
+            if (this.ModelState.IsValid)
+            {
+                await this.teamService.CreateTeam(userId, input);
+            }
+
+            var newTeam = await this.teamService.GetTeamNameByUserId(userId);
+
+            return this.Redirect($"/Team/TeamPage?teamName={newTeam}");
         }
 
+        [HttpPost]
         public async Task<IActionResult> ApplyToTeam(int teamId)
         {
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
             await this.teamService.ApplyToTeam(userId, teamId);
-            return this.Redirect("/Home/Index");
+            var teamName = await this.teamService.GetTeamNameById(teamId);
+            return this.Redirect($"/Team/TeamPage?teamName={teamName}");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> LeaveGroup(int teamId)
+        {
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            await this.teamService.LeaveGroup(userId, teamId);
+
+            return this.Redirect("/Team/Index");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Abandon(int teamId)
+        {
+            await this.teamService.Abandon(teamId);
+
+            return this.Redirect("/Team/Index");
         }
 
         public async Task<IActionResult> TeamPage(string teamName)
