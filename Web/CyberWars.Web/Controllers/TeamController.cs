@@ -104,5 +104,17 @@
             var viewModel = await this.teamService.GetTeamPageById(teamId);
             return this.View(viewModel);
         }
+
+        public async Task<IActionResult> SearchTeamByName(string name)
+        {
+            var team = await this.teamService.SearchTeamByName(name);
+
+            if (team == null)
+            {
+                return this.Redirect($"/Team/Ranking");
+            }
+
+            return this.Redirect($"/Team/TeamPage?teamId={team.Id}");
+        }
     }
 }

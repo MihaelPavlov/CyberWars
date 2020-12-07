@@ -5,10 +5,10 @@
     var counter = 1;
 
 }
-@*<form class="example">
-    <input type="text" placeholder="Search.." name="search">
-    <button class="btn yellow rounded" asp-controller="Team" asp-action="SearchTeamByName">Search </button>
-</form>*@
+<form class="example">
+    <input type="text" placeholder="Search.." name="name">
+    <button class="btn yellow rounded" asp-controller="Team" asp-action="SearchTeamByName" type="submit">Search </button>
+</form>
 
 <div class="pagination">
     <a class="pageLink @if (!Model.HasPreviousPage) { <text>disabled</text>} " asp-action="Ranking" asp-route-id="@Model.PreviousPageNumber">&laquo;</a>

@@ -237,5 +237,12 @@
         {
             return await this.teamRepository.All().AnyAsync(x => x.Name == name);
         }
+
+        public async Task<Team> SearchTeamByName(string name)
+        {
+            var team = await this.teamRepository.All().FirstOrDefaultAsync(x => x.Name == name);
+
+            return team;
+        }
     }
 }

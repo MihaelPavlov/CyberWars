@@ -6,7 +6,7 @@
     using System.Threading.Tasks;
 
     using CyberWars.Web.ViewModels.Team;
-
+    using CyberWars.Data.Models.Team;
     public interface ITeamService
     {
         public Task CreateTeam(string userId, RegisterTeamInputModel input);
@@ -36,5 +36,7 @@
         public Task<int> GetTeamCount();
 
         public Task<bool> IsGroupNameAlreadyTaken(string name);
+
+        public Task<Team> SearchTeamByName(string name);
     }
 }
