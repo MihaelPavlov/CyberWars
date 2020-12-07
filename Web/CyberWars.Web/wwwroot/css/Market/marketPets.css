@@ -1,5 +1,15 @@
+.disable {
+    cursor: not-allowed;
+    pointer-events: none;
+    /*Button disabled - CSS color class*/
+    background: #8c8c8c;
+    color: #c0c0c0;
+}
+    .disable:active,
+    .disable:focus {
+        background: #8c8c8c;
+    }
 .btn {
-    background: transparent;
     border: 2px solid transparent;
     box-sizing: border-box;
     cursor: pointer;

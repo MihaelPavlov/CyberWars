@@ -153,6 +153,7 @@ namespace CyberWars.Web.Areas.Identity.Pages.Account
                         return this.Redirect("/Home/Index");
                     }
                 }
+
                 foreach (var error in result.Errors)
                 {
                     this.ModelState.AddModelError(string.Empty, error.Description);

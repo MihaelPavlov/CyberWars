@@ -28,13 +28,20 @@
                 <li>Price : @pet.Price <img class="moneyImg" src="/images/MoneyIcon.png" alt=""></li>
                 @if (!pet.PlayerPets.Any(x => x.PetId == pet.Id && x.PlayerId == player.Id))
                 {
-                    <input class="nameIt" type="text" name="nameIt" placeholder="Name your Pet">
-                    <label for="petId"></label>
-                    <button class="btn yellow rounded" name="petId" value="@pet.Id">Buy</button>
+                    @if (player.Level >= pet.LevelRequirement)
+                    {
+                        <input class="nameIt" type="text" name="nameIt" placeholder="Name your Pet">
+                        <label for="petId"></label>
+                        <button class="btn yellow rounded" name="petId" value="@pet.Id">Buy</button>
+                    }
+                    else
+                    {
+                        <button class="btn disable rounded">Buy</button>
+                    }
                 }
 
                 @*
-                    <a class="btn yellow rounded " href="/Market/Buy?petId=@pet.Id" value="@pet.Id">Buy</a>*@
+        <a class="btn yellow rounded " href="/Market/Buy?petId=@pet.Id" value="@pet.Id">Buy</a>*@
             </ul>
         </div>
     </form>

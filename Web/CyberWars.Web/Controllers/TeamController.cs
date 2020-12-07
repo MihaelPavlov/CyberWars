@@ -35,6 +35,7 @@
                 Teams = await this.teamService.GetTeamRankingList<TeamRankingInList>(id, ItemsPerPage),
                 TeamCount = await this.teamService.GetTeamCount(),
             };
+
             return this.View(viewModel);
         }
 

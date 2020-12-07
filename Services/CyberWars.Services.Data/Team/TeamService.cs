@@ -232,5 +232,10 @@
 
             return sumSkills;
         }
+
+        public async Task<bool> IsGroupNameAlreadyTaken(string name)
+        {
+            return await this.teamRepository.All().AnyAsync(x => x.Name == name);
+        }
     }
 }

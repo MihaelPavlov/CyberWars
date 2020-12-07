@@ -98,15 +98,21 @@
             services.AddTransient<IAcademyService, AcademyService>();
             services.AddTransient<ITeamService, TeamService>();
 
+            services.AddTransient<IAddJobService, AddJobService>();
+
             services.AddHangfire(config =>
             {
                 // ReferenceLoop Fixing json error for resetStats on the player
                 config.UseSerializerSettings(new JsonSerializerSettings() { ReferenceLoopHandling = ReferenceLoopHandling.Ignore });
-                config.SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
+                config.SetDataCompatibilityLevel(CompatibilityLevel.Version_110);
+                config.UseSimpleAssemblyNameTypeSerializer();
+                config.UseRecommendedSerializerSettings()
                 .UseSqlServerStorage(
                 this.configuration.GetConnectionString("DefaultConnection"),
                 new SqlServerStorageOptions
                 {
+                    CommandBatchMaxTimeout = TimeSpan.FromMinutes(5),
+                    SlidingInvisibilityTimeout = TimeSpan.FromMinutes(5),
                     PrepareSchemaIfNecessary = true,
                     QueuePollInterval = TimeSpan.Zero,
                     UseRecommendedIsolationLevel = true,
