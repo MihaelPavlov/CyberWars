@@ -51,15 +51,15 @@
             // If User Already have Team
             if (this.teamService.IsUserHaveTeam(userId))
             {
-                var teamName = await this.teamService.GetTeamNameByUserId(userId);
-                return this.Redirect($"/Team/TeamPage?teamName={teamName}");
+                var teamId = await this.teamService.GetTeamIdByUserId(userId);
+                return this.Redirect($"/Team/TeamPage?teamId={teamId}");
             }
 
             // If Player Try Create Team But He already apply to other Team
             if (await this.teamService.IsPlayerAlreadyApplyToTeam(userId))
             {
-                var teamName = await this.teamService.GetTeamPlayerTeamNameByUserId(userId);
-                return this.Redirect($"/Team/TeamPage?teamName={teamName}");
+                var playerHaveTeamId = await this.teamService.GetTeamPlayerTeamIdByUserId(userId);
+                return this.Redirect($"/Team/TeamPage?teamId={playerHaveTeamId}");
             }
 
             if (this.ModelState.IsValid)
@@ -67,9 +67,9 @@
                 await this.teamService.CreateTeam(userId, input);
             }
 
-            var newTeam = await this.teamService.GetTeamNameByUserId(userId);
+            var newTeamId = await this.teamService.GetTeamIdByUserId(userId);
 
-            return this.Redirect($"/Team/TeamPage?teamName={newTeam}");
+            return this.Redirect($"/Team/TeamPage?teamId={newTeamId}");
         }
 
         [HttpPost]
@@ -77,8 +77,7 @@
         {
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
             await this.teamService.ApplyToTeam(userId, teamId);
-            var teamName = await this.teamService.GetTeamNameById(teamId);
-            return this.Redirect($"/Team/TeamPage?teamName={teamName}");
+            return this.Redirect($"/Team/TeamPage?teamId={teamId}");
         }
 
         [HttpPost]
@@ -99,9 +98,9 @@
             return this.Redirect("/Team/Index");
         }
 
-        public async Task<IActionResult> TeamPage(string teamName)
+        public async Task<IActionResult> TeamPage(int teamId)
         {
-            var viewModel = await this.teamService.GetTeamByName(teamName);
+            var viewModel = await this.teamService.GetTeamPageById(teamId);
             return this.View(viewModel);
         }
     }

@@ -920,7 +920,7 @@
                 Number = 10,
                 Name = "Exam",
                 ExperienceToComplete = 320,
-                RewardAbilityName = "Spring Framework End",
+                RewardAbilityName = "SpringFramework End",
                 RewardMoney = 10000,
                 CourseId = springAdvancedId,
             });
@@ -929,7 +929,7 @@
                 Number = 9,
                 Name = "Deployment, Hosting and Monitoring",
                 ExperienceToComplete = 160,
-                RewardAbilityName = "Spring Framework",
+                RewardAbilityName = "SpringFramework",
                 RewardMoney = 6000,
                 CourseId = springAdvancedId,
             });
@@ -938,7 +938,7 @@
                 Number = 8,
                 Name = "Reactive Programming with Webflux",
                 ExperienceToComplete = 160,
-                RewardAbilityName = "Spring Framework",
+                RewardAbilityName = "SpringFramework",
                 RewardMoney = 6000,
                 CourseId = springAdvancedId,
             });
@@ -947,7 +947,7 @@
                 Number = 7,
                 Name = "Unit and Intergration Testing",
                 ExperienceToComplete = 160,
-                RewardAbilityName = "Spring Framework",
+                RewardAbilityName = "SpringFramework",
                 RewardMoney = 6000,
                 CourseId = springAdvancedId,
             });
@@ -956,7 +956,7 @@
                 Number = 6,
                 Name = "Aspect Oriented Programming AOP",
                 ExperienceToComplete = 160,
-                RewardAbilityName = "Spring Framework",
+                RewardAbilityName = "SpringFramework",
                 RewardMoney = 6000,
                 CourseId = springAdvancedId,
             });
@@ -965,7 +965,7 @@
                 Number = 5,
                 Name = "Events",
                 ExperienceToComplete = 160,
-                RewardAbilityName = "Spring Framework",
+                RewardAbilityName = "SpringFramework",
                 RewardMoney = 6000,
                 CourseId = springAdvancedId,
             });
@@ -974,7 +974,7 @@
                 Number = 4,
                 Name = "Error Handling",
                 ExperienceToComplete = 160,
-                RewardAbilityName = "Spring Framework",
+                RewardAbilityName = "SpringFramework",
                 RewardMoney = 6000,
                 CourseId = springAdvancedId,
             });
@@ -983,7 +983,7 @@
                 Number = 3,
                 Name = "Hateoas",
                 ExperienceToComplete = 160,
-                RewardAbilityName = "Spring Framework",
+                RewardAbilityName = "SpringFramework",
                 RewardMoney = 6000,
                 CourseId = springAdvancedId,
             });
@@ -992,7 +992,7 @@
                 Number = 2,
                 Name = "Spring Security",
                 ExperienceToComplete = 160,
-                RewardAbilityName = "Spring Framework",
+                RewardAbilityName = "SpringFramework",
                 RewardMoney = 6000,
                 CourseId = springAdvancedId,
             });
@@ -1001,7 +1001,7 @@
                 Number = 1,
                 Name = "Web API and Rest Controllers",
                 ExperienceToComplete = 160,
-                RewardAbilityName = "Spring Framework",
+                RewardAbilityName = "SpringFramework",
                 RewardMoney = 6000,
                 CourseId = springAdvancedId,
             });
@@ -1012,7 +1012,7 @@
                 Number = 9,
                 Name = "Exam",
                 ExperienceToComplete = 280,
-                RewardAbilityName = "Spring Framework Exam",
+                RewardAbilityName = "SpringFramework Exam",
                 RewardMoney = 7000,
                 CourseId = springFundamentalsId,
             });
@@ -1021,7 +1021,7 @@
                 Number = 8,
                 Name = "Bootstrap,Front-End Basics",
                 ExperienceToComplete = 140,
-                RewardAbilityName = "Spring Framework",
+                RewardAbilityName = "SpringFramework",
                 RewardMoney = 5000,
                 CourseId = springFundamentalsId,
             });
@@ -1030,7 +1030,7 @@
                 Number = 7,
                 Name = "Thymeleaf and Validations",
                 ExperienceToComplete = 140,
-                RewardAbilityName = "Spring Framework",
+                RewardAbilityName = "SpringFramework",
                 RewardMoney = 5000,
                 CourseId = springFundamentalsId,
             });
@@ -1039,7 +1039,7 @@
                 Number = 6,
                 Name = "Spring Essentials",
                 ExperienceToComplete = 140,
-                RewardAbilityName = "Spring Framework",
+                RewardAbilityName = "SpringFramework",
                 RewardMoney = 5000,
                 CourseId = springFundamentalsId,
             });
@@ -1048,7 +1048,7 @@
                 Number = 5,
                 Name = "Spring Introduction(MVC)",
                 ExperienceToComplete = 140,
-                RewardAbilityName = "Spring Framework",
+                RewardAbilityName = "SpringFramework",
                 RewardMoney = 5000,
                 CourseId = springFundamentalsId,
             });
@@ -1057,7 +1057,7 @@
                 Number = 4,
                 Name = "Spring Boot Introduction",
                 ExperienceToComplete = 140,
-                RewardAbilityName = "Spring Framework",
+                RewardAbilityName = "SpringFramework",
                 RewardMoney = 5000,
                 CourseId = springFundamentalsId,
             });
@@ -1066,7 +1066,7 @@
                 Number = 3,
                 Name = "State Management",
                 ExperienceToComplete = 140,
-                RewardAbilityName = "Spring Framework",
+                RewardAbilityName = "SpringFramework",
                 RewardMoney = 5000,
                 CourseId = springFundamentalsId,
             });
@@ -1075,7 +1075,7 @@
                 Number = 2,
                 Name = "HTTP Protocol",
                 ExperienceToComplete = 140,
-                RewardAbilityName = "Spring Framework",
+                RewardAbilityName = "SpringFramework",
                 RewardMoney = 5000,
                 CourseId = springFundamentalsId,
             });
@@ -1085,7 +1085,7 @@
                 Number = 1,
                 Name = "Internet Explained",
                 ExperienceToComplete = 140,
-                RewardAbilityName = "Spring Framework",
+                RewardAbilityName = "SpringFramework",
                 RewardMoney = 5000,
                 CourseId = springFundamentalsId,
             });
@@ -1096,7 +1096,7 @@
                 Number = 10,
                 Name = "Exam",
                 ExperienceToComplete = 240,
-                RewardAbilityName = "My SQL Exam",
+                RewardAbilityName = "MySQL Exam",
                 RewardMoney = 6000,
                 CourseId = springDataID,
             });
@@ -1105,7 +1105,7 @@
                 Number = 9,
                 Name = "XML Processing",
                 ExperienceToComplete = 120,
-                RewardAbilityName = "My SQL",
+                RewardAbilityName = "MySQL",
                 RewardMoney = 4000,
                 CourseId = springDataID,
             });
@@ -1114,7 +1114,7 @@
                 Number = 8,
                 Name = "JSON Processing",
                 ExperienceToComplete = 120,
-                RewardAbilityName = "My SQL",
+                RewardAbilityName = "MySQL",
                 RewardMoney = 4000,
                 CourseId = springDataID,
             });
@@ -1123,7 +1123,7 @@
                 Number = 7,
                 Name = "Spring Data Auto Mapping Objects",
                 ExperienceToComplete = 120,
-                RewardAbilityName = "My SQL",
+                RewardAbilityName = "MySQL",
                 RewardMoney = 4000,
                 CourseId = springDataID,
             });
@@ -1132,7 +1132,7 @@
                 Number = 6,
                 Name = "Spring Data Advanced Quering",
                 ExperienceToComplete = 120,
-                RewardAbilityName = "My SQL",
+                RewardAbilityName = "MySQL",
                 RewardMoney = 4000,
                 CourseId = springDataID,
             });
@@ -1141,7 +1141,7 @@
                 Number = 5,
                 Name = "Spring Data Intro",
                 ExperienceToComplete = 120,
-                RewardAbilityName = "My SQL",
+                RewardAbilityName = "MySQL",
                 RewardMoney = 4000,
                 CourseId = springDataID,
             });
@@ -1150,7 +1150,7 @@
                 Number = 4,
                 Name = "Hibernate Code First",
                 ExperienceToComplete = 120,
-                RewardAbilityName = "My SQL",
+                RewardAbilityName = "MySQL",
                 RewardMoney = 4000,
                 CourseId = springDataID,
             });
@@ -1159,7 +1159,7 @@
                 Number = 3,
                 Name = "Introduction to Hibernate",
                 ExperienceToComplete = 120,
-                RewardAbilityName = "My SQL",
+                RewardAbilityName = "MySQL",
                 RewardMoney = 4000,
                 CourseId = springDataID,
             });
@@ -1168,7 +1168,7 @@
                 Number = 2,
                 Name = "ORM Fundametals",
                 ExperienceToComplete = 120,
-                RewardAbilityName = "My SQL",
+                RewardAbilityName = "MySQL",
                 RewardMoney = 4000,
                 CourseId = springDataID,
             });
@@ -1177,7 +1177,7 @@
                 Number = 1,
                 Name = "DB Apps Introduction",
                 ExperienceToComplete = 120,
-                RewardAbilityName = "My SQL",
+                RewardAbilityName = "MySQL",
                 RewardMoney = 4000,
                 CourseId = springDataID,
             });
@@ -1188,7 +1188,7 @@
                 Number = 9,
                 Name = "Exam",
                 ExperienceToComplete = 200,
-                RewardAbilityName = "My SQL Exam",
+                RewardAbilityName = "MySQL Exam",
                 RewardMoney = 5000,
                 CourseId = mySqlId,
             });
@@ -1197,7 +1197,7 @@
                 Number = 8,
                 Name = "Database Programmability and Transactions",
                 ExperienceToComplete = 100,
-                RewardAbilityName = "My SQL",
+                RewardAbilityName = "MySQL",
                 RewardMoney = 3000,
                 CourseId = mySqlId,
             });
@@ -1206,7 +1206,7 @@
                 Number = 7,
                 Name = "Functions and Stored Procedures",
                 ExperienceToComplete = 100,
-                RewardAbilityName = "My SQL",
+                RewardAbilityName = "MySQL",
                 RewardMoney = 3000,
                 CourseId = mySqlId,
             });
@@ -1215,7 +1215,7 @@
                 Number = 6,
                 Name = "Indices and Data Aggregation",
                 ExperienceToComplete = 100,
-                RewardAbilityName = "My SQL",
+                RewardAbilityName = "MySQL",
                 RewardMoney = 3000,
                 CourseId = mySqlId,
             });
@@ -1224,7 +1224,7 @@
                 Number = 5,
                 Name = "Subqueries and Joins",
                 ExperienceToComplete = 100,
-                RewardAbilityName = "My SQL",
+                RewardAbilityName = "MySQL",
                 RewardMoney = 3000,
                 CourseId = mySqlId,
             });
@@ -1233,7 +1233,7 @@
                 Number = 4,
                 Name = "Build in Functions",
                 ExperienceToComplete = 100,
-                RewardAbilityName = "My SQL",
+                RewardAbilityName = "MySQL",
                 RewardMoney = 3000,
                 CourseId = mySqlId,
             });
@@ -1242,7 +1242,7 @@
                 Number = 3,
                 Name = "Table Ralations",
                 ExperienceToComplete = 100,
-                RewardAbilityName = "My SQL",
+                RewardAbilityName = "MySQL",
                 RewardMoney = 3000,
                 CourseId = mySqlId,
             });
@@ -1251,7 +1251,7 @@
                 Number = 2,
                 Name = "Basic CRUD",
                 ExperienceToComplete = 100,
-                RewardAbilityName = "My SQL",
+                RewardAbilityName = "MySQL",
                 RewardMoney = 3000,
                 CourseId = mySqlId,
             });
@@ -1260,7 +1260,7 @@
                 Number = 1,
                 Name = "Databases Introduction Data Definition and Datatypes",
                 ExperienceToComplete = 100,
-                RewardAbilityName = "My SQL",
+                RewardAbilityName = "MySQL",
                 RewardMoney = 3000,
                 CourseId = mySqlId,
             });
@@ -1473,7 +1473,7 @@
                 Number = 13,
                 Name = "Exam",
                 ExperienceToComplete = 1800,
-                RewardAbilityName = "ASP.NET Core End",
+                RewardAbilityName = "ASP.NETCore End",
                 RewardMoney = 10000,
                 CourseId = aspNetCoreId,
             });
@@ -1482,7 +1482,7 @@
                 Number = 12,
                 Name = "Blazor",
                 ExperienceToComplete = 1700,
-                RewardAbilityName = "ASP.NET Core",
+                RewardAbilityName = "ASP.NETCore",
                 RewardMoney = 6000,
                 CourseId = aspNetCoreId,
             });
@@ -1491,7 +1491,7 @@
                 Number = 11,
                 Name = "Azure,Deployment & CI",
                 ExperienceToComplete = 1650,
-                RewardAbilityName = "ASP.NET Core",
+                RewardAbilityName = "ASP.NETCore",
                 RewardMoney = 6000,
                 CourseId = aspNetCoreId,
             });
@@ -1500,7 +1500,7 @@
                 Number = 10,
                 Name = "SignalR",
                 ExperienceToComplete = 1600,
-                RewardAbilityName = "ASP.NET Core",
+                RewardAbilityName = "ASP.NETCore",
                 RewardMoney = 6000,
                 CourseId = aspNetCoreId,
             });
@@ -1509,7 +1509,7 @@
                 Number = 9,
                 Name = "Advanced Topics",
                 ExperienceToComplete = 1550,
-                RewardAbilityName = "ASP.NET Core",
+                RewardAbilityName = "ASP.NETCore",
                 RewardMoney = 6000,
                 CourseId = aspNetCoreId,
             });
@@ -1518,7 +1518,7 @@
                 Number = 8,
                 Name = "Project Arhitecture",
                 ExperienceToComplete = 1500,
-                RewardAbilityName = "ASP.NET Core",
+                RewardAbilityName = "ASP.NETCore",
                 RewardMoney = 6000,
                 CourseId = aspNetCoreId,
             });
@@ -1527,7 +1527,7 @@
                 Number = 7,
                 Name = "Testing",
                 ExperienceToComplete = 1450,
-                RewardAbilityName = "ASP.NET Core",
+                RewardAbilityName = "ASP.NETCore",
                 RewardMoney = 6000,
                 CourseId = aspNetCoreId,
             });
@@ -1536,7 +1536,7 @@
                 Number = 6,
                 Name = "Security and Identity",
                 ExperienceToComplete = 1400,
-                RewardAbilityName = "ASP.NET Core",
+                RewardAbilityName = "ASP.NETCore",
                 RewardMoney = 6000,
                 CourseId = aspNetCoreId,
             });
@@ -1545,7 +1545,7 @@
                 Number = 5,
                 Name = "Web API",
                 ExperienceToComplete = 1350,
-                RewardAbilityName = "ASP.NET Core",
+                RewardAbilityName = "ASP.NETCore",
                 RewardMoney = 6000,
                 CourseId = aspNetCoreId,
             });
@@ -1554,7 +1554,7 @@
                 Number = 4,
                 Name = "Working with Data",
                 ExperienceToComplete = 1300,
-                RewardAbilityName = "ASP.NET Core",
+                RewardAbilityName = "ASP.NETCore",
                 RewardMoney = 6000,
                 CourseId = aspNetCoreId,
             });
@@ -1563,7 +1563,7 @@
                 Number = 3,
                 Name = "Application Flow,Filters & Middleware",
                 ExperienceToComplete = 1250,
-                RewardAbilityName = "ASP.NET Core",
+                RewardAbilityName = "ASP.NETCore",
                 RewardMoney = 6000,
                 CourseId = aspNetCoreId,
             });
@@ -1572,7 +1572,7 @@
                 Number = 2,
                 Name = "Razor Views",
                 ExperienceToComplete = 1200,
-                RewardAbilityName = "ASP.NET Core",
+                RewardAbilityName = "ASP.NETCore",
                 RewardMoney = 6000,
                 CourseId = aspNetCoreId,
             });
@@ -1581,7 +1581,7 @@
                 Number = 1,
                 Name = "Asp.Net Core Introduction",
                 ExperienceToComplete = 1150,
-                RewardAbilityName = "ASP.NET Core",
+                RewardAbilityName = "ASP.NETCore",
                 RewardMoney = 6000,
                 CourseId = aspNetCoreId,
             });
@@ -1592,7 +1592,7 @@
                 Number = 7,
                 Name = "Exam",
                 ExperienceToComplete = 1100,
-                RewardAbilityName = "ASP.NET Core Exam",
+                RewardAbilityName = "ASP.NETCore Exam",
                 RewardMoney = 7000,
                 CourseId = csharpWebBasicId,
             });
@@ -1601,7 +1601,7 @@
                 Number = 6,
                 Name = "MVC Advanced - IOC and Data Binding",
                 ExperienceToComplete = 1080,
-                RewardAbilityName = "ASP.NET Core",
+                RewardAbilityName = "ASP.NETCore",
                 RewardMoney = 5000,
                 CourseId = csharpWebBasicId,
             });
@@ -1610,7 +1610,7 @@
                 Number = 5,
                 Name = "MVC Advanced - View Engine",
                 ExperienceToComplete = 1040,
-                RewardAbilityName = "ASP.NET Core",
+                RewardAbilityName = "ASP.NETCore",
                 RewardMoney = 5000,
                 CourseId = csharpWebBasicId,
             });
@@ -1619,7 +1619,7 @@
                 Number = 4,
                 Name = "MVC Introduction",
                 ExperienceToComplete = 1000,
-                RewardAbilityName = "ASP.NET Core",
+                RewardAbilityName = "ASP.NETCore",
                 RewardMoney = 5000,
                 CourseId = csharpWebBasicId,
             });
@@ -1628,7 +1628,7 @@
                 Number = 3,
                 Name = "Web-Server - State Management",
                 ExperienceToComplete = 960,
-                RewardAbilityName = "ASP.NET Core",
+                RewardAbilityName = "ASP.NETCore",
                 RewardMoney = 5000,
                 CourseId = csharpWebBasicId,
             });
@@ -1637,7 +1637,7 @@
                 Number = 2,
                 Name = "Web-Server - Asynchronous Processing",
                 ExperienceToComplete = 920,
-                RewardAbilityName = "ASP.NET Core",
+                RewardAbilityName = "ASP.NETCore",
                 RewardMoney = 5000,
                 CourseId = csharpWebBasicId,
             });
@@ -1646,7 +1646,7 @@
                 Number = 1,
                 Name = "Web-Server - HTTP Protocol",
                 ExperienceToComplete = 880,
-                RewardAbilityName = "ASP.NET Core",
+                RewardAbilityName = "ASP.NETCore",
                 RewardMoney = 5000,
                 CourseId = csharpWebBasicId,
             });
@@ -1657,7 +1657,7 @@
                 Number = 10,
                 Name = "Exam",
                 ExperienceToComplete = 840,
-                RewardAbilityName = "MS SQL Exam",
+                RewardAbilityName = "MSSQL Exam",
                 RewardMoney = 6000,
                 CourseId = entityFrameworkCoreId,
             });
@@ -1666,7 +1666,7 @@
                 Number = 9,
                 Name = "XML Processing",
                 ExperienceToComplete = 820,
-                RewardAbilityName = "MS SQL",
+                RewardAbilityName = "MSSQL",
                 RewardMoney = 4000,
                 CourseId = entityFrameworkCoreId,
             });
@@ -1675,7 +1675,7 @@
                 Number = 8,
                 Name = "JSON Processing",
                 ExperienceToComplete = 800,
-                RewardAbilityName = "MS SQL",
+                RewardAbilityName = "MSSQL",
                 RewardMoney = 4000,
                 CourseId = entityFrameworkCoreId,
             });
@@ -1684,7 +1684,7 @@
                 Number = 7,
                 Name = "C# Auto Mapper",
                 ExperienceToComplete = 780,
-                RewardAbilityName = "MS SQL",
+                RewardAbilityName = "MSSQL",
                 RewardMoney = 4000,
                 CourseId = entityFrameworkCoreId,
             });
@@ -1693,7 +1693,7 @@
                 Number = 6,
                 Name = "Advanced Querying",
                 ExperienceToComplete = 760,
-                RewardAbilityName = "MS SQL",
+                RewardAbilityName = "MSSQL",
                 RewardMoney = 4000,
                 CourseId = entityFrameworkCoreId,
             });
@@ -1702,7 +1702,7 @@
                 Number = 5,
                 Name = "LINQ",
                 ExperienceToComplete = 740,
-                RewardAbilityName = "MS SQL",
+                RewardAbilityName = "MSSQL",
                 RewardMoney = 4000,
                 CourseId = entityFrameworkCoreId,
             });
@@ -1711,7 +1711,7 @@
                 Number = 4,
                 Name = "Entity Relations",
                 ExperienceToComplete = 720,
-                RewardAbilityName = "MS SQL",
+                RewardAbilityName = "MSSQL",
                 RewardMoney = 4000,
                 CourseId = entityFrameworkCoreId,
             });
@@ -1720,7 +1720,7 @@
                 Number = 3,
                 Name = "Entity Framework Introduction",
                 ExperienceToComplete = 700,
-                RewardAbilityName = "MS SQL",
+                RewardAbilityName = "MSSQL",
                 RewardMoney = 4000,
                 CourseId = entityFrameworkCoreId,
             });
@@ -1729,7 +1729,7 @@
                 Number = 2,
                 Name = "ORM Fundamentals",
                 ExperienceToComplete = 680,
-                RewardAbilityName = "MS SQL",
+                RewardAbilityName = "MSSQL",
                 RewardMoney = 4000,
                 CourseId = entityFrameworkCoreId,
             });
@@ -1738,7 +1738,7 @@
                 Number = 1,
                 Name = "ADO.NET",
                 ExperienceToComplete = 660,
-                RewardAbilityName = "MS SQL",
+                RewardAbilityName = "MSSQL",
                 RewardMoney = 4000,
                 CourseId = entityFrameworkCoreId,
             });
@@ -1749,7 +1749,7 @@
                 Number = 9,
                 Name = "Exam",
                 ExperienceToComplete = 640,
-                RewardAbilityName = "MS SQL Exam",
+                RewardAbilityName = "MSSQL Exam",
                 RewardMoney = 5000,
                 CourseId = msSqlId,
             });
@@ -1758,7 +1758,7 @@
                 Number = 8,
                 Name = "Triggers and Transactions",
                 ExperienceToComplete = 590,
-                RewardAbilityName = "MS SQL",
+                RewardAbilityName = "MSSQL",
                 RewardMoney = 3000,
                 CourseId = msSqlId,
             });
@@ -1767,7 +1767,7 @@
                 Number = 7,
                 Name = "Functions and Stored Procedures",
                 ExperienceToComplete = 580,
-                RewardAbilityName = "MS SQL",
+                RewardAbilityName = "MSSQL",
                 RewardMoney = 3000,
                 CourseId = msSqlId,
             });
@@ -1776,7 +1776,7 @@
                 Number = 6,
                 Name = "Indices and Data Aggregation",
                 ExperienceToComplete = 570,
-                RewardAbilityName = "MS SQL",
+                RewardAbilityName = "MSSQL",
                 RewardMoney = 3000,
                 CourseId = msSqlId,
             });
@@ -1785,7 +1785,7 @@
                 Number = 5,
                 Name = "Subqueries and Joins",
                 ExperienceToComplete = 560,
-                RewardAbilityName = "MS SQL",
+                RewardAbilityName = "MSSQL",
                 RewardMoney = 3000,
                 CourseId = msSqlId,
             });
@@ -1794,7 +1794,7 @@
                 Number = 4,
                 Name = "Build in Functions",
                 ExperienceToComplete = 550,
-                RewardAbilityName = "MS SQL",
+                RewardAbilityName = "MSSQL",
                 RewardMoney = 3000,
                 CourseId = msSqlId,
             });
@@ -1803,7 +1803,7 @@
                 Number = 3,
                 Name = "Table Ralations",
                 ExperienceToComplete = 540,
-                RewardAbilityName = "MS SQL",
+                RewardAbilityName = "MSSQL",
                 RewardMoney = 3000,
                 CourseId = msSqlId,
             });
@@ -1812,7 +1812,7 @@
                 Number = 2,
                 Name = "CRUD",
                 ExperienceToComplete = 530,
-                RewardAbilityName = "MS SQL",
+                RewardAbilityName = "MSSQL",
                 RewardMoney = 3000,
                 CourseId = msSqlId,
             });
@@ -1821,7 +1821,7 @@
                 Number = 1,
                 Name = "Databases Introduction",
                 ExperienceToComplete = 520,
-                RewardAbilityName = "MS SQL",
+                RewardAbilityName = "MSSQL",
                 RewardMoney = 3000,
                 CourseId = msSqlId,
             });
@@ -2043,7 +2043,7 @@
                 Number = 15,
                 Name = "Databases Basics",
                 ExperienceToComplete = 220,
-                RewardAbilityName = "MS SQL",
+                RewardAbilityName = "MSSQL",
                 RewardMoney = 500,
                 CourseId = fundamentalId,
             });

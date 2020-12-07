@@ -32,7 +32,7 @@
             {
                 <tr>
                     <th class="circleNumber">@(counter++)</th>
-                    <td><a href="/Team/TeamPage?teamName=@team.Name">@team.Name</a></td>
+                    <td><a href="/Team/TeamPage?teamId=@team.Id">@team.Name</a></td>
                     <td>@team.MotivationalMotto</td>
                     <td>
                         <form method="post" asp-controller="Team" asp-action="ApplyToTeam">

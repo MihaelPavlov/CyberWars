@@ -126,14 +126,14 @@
         {
             bool isCourseComplete = true;
 
-            var courseName = await this.GetCourseNameByLectureId(lecture.Id);
+            var courseName = await this.GetCourseNameNormaly(lecture.Id);
             var courseLectures = await this.lectureRepository.All().Where(x => x.Course.Name == courseName).OrderBy(x => x.Number).ToListAsync();
 
             var playerCompleteLecture = await this.completeLectureRepository.All().Where(x => x.PlayerId == player.Id).ToListAsync();
 
             foreach (var courseLecture in courseLectures)
             {
-                if (!playerCompleteLecture.Any(x => x.Lecture.Id == courseLecture.Id))
+                if (!playerCompleteLecture.Any(x => x.LectureId == courseLecture.Id))
                 {
                     isCourseComplete = false;
                     break;
@@ -156,11 +156,29 @@
             }
         }
 
-        public async Task<string> GetCourseNameByLectureId(int lectureId)
+        public async Task<string> GetCourseNameNormaly(int lectureId)
         {
             var course = await this.courseRepository.All().FirstOrDefaultAsync(x => x.Lectures.Any(x => x.Id == lectureId));
 
             return course.Name;
+        }
+
+        public async Task<string> GetCourseNameByLectureId(int lectureId)
+        {
+            var course = await this.courseRepository.All().FirstOrDefaultAsync(x => x.Lectures.Any(x => x.Id == lectureId));
+            var courseName = string.Empty;
+
+            if (course.Name.Contains("C#"))
+            {
+                var splitName = course.Name.Split(" ");
+                courseName = $"C%23 {splitName[1]}";
+                if (splitName.Count() == 3)
+                {
+                    courseName = $"C%23 {splitName[1]} {splitName[2]}";
+                }
+            }
+
+            return courseName != string.Empty ? courseName : course.Name;
         }
     }
 }

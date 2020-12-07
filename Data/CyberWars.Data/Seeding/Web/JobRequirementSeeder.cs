@@ -45,7 +45,7 @@
                     dbContext.JobRequirements.Add(new JobRequirement
                     {
                         JobId = driveId,
-                        RequirementId = requirements.FirstOrDefault(x => x.Name == $"ASP.NET Core" && x.Points == 25).Id,
+                        RequirementId = requirements.FirstOrDefault(x => x.Name == $"ASP.NETCore" && x.Points == 25).Id,
                     });
                 }
                 else if (splitLanguage[0] == "JS")
@@ -61,7 +61,7 @@
                     dbContext.JobRequirements.Add(new JobRequirement
                     {
                         JobId = driveId,
-                        RequirementId = requirements.FirstOrDefault(x => x.Name == $"Spring Framework" && x.Points == 25).Id,
+                        RequirementId = requirements.FirstOrDefault(x => x.Name == $"SpringFramework" && x.Points == 25).Id,
                     });
                 }
                 else if (splitLanguage[0] == "Python")
@@ -100,7 +100,7 @@
                     dbContext.JobRequirements.Add(new JobRequirement
                     {
                         JobId = applicationId,
-                        RequirementId = requirements.FirstOrDefault(x => x.Name == $"ASP.NET Core" && x.Points == 25).Id,
+                        RequirementId = requirements.FirstOrDefault(x => x.Name == $"ASP.NETCore" && x.Points == 25).Id,
                     });
                 }
                 else if (splitLanguage[0] == "JS")
@@ -116,7 +116,7 @@
                     dbContext.JobRequirements.Add(new JobRequirement
                     {
                         JobId = applicationId,
-                        RequirementId = requirements.FirstOrDefault(x => x.Name == $"Spring Framework" && x.Points == 25).Id,
+                        RequirementId = requirements.FirstOrDefault(x => x.Name == $"SpringFramework" && x.Points == 25).Id,
                     });
                 }
                 else if (splitLanguage[0] == "Python")
@@ -155,7 +155,7 @@
                     dbContext.JobRequirements.Add(new JobRequirement
                     {
                         JobId = programmingId,
-                        RequirementId = requirements.FirstOrDefault(x => x.Name == $"ASP.NET Core" && x.Points == 25).Id,
+                        RequirementId = requirements.FirstOrDefault(x => x.Name == $"ASP.NETCore" && x.Points == 25).Id,
                     });
                 }
                 else if (splitLanguage[0] == "JS")
@@ -171,7 +171,7 @@
                     dbContext.JobRequirements.Add(new JobRequirement
                     {
                         JobId = programmingId,
-                        RequirementId = requirements.FirstOrDefault(x => x.Name == $"Spring Framework" && x.Points == 25).Id,
+                        RequirementId = requirements.FirstOrDefault(x => x.Name == $"SpringFramework" && x.Points == 25).Id,
                     });
                 }
                 else if (splitLanguage[0] == "Python")
@@ -210,7 +210,7 @@
                     dbContext.JobRequirements.Add(new JobRequirement
                     {
                         JobId = systemSoftwareId,
-                        RequirementId = requirements.FirstOrDefault(x => x.Name == $"ASP.NET Core" && x.Points == 25).Id,
+                        RequirementId = requirements.FirstOrDefault(x => x.Name == $"ASP.NETCore" && x.Points == 25).Id,
                     });
                 }
                 else if (splitLanguage[0] == "JS")
@@ -226,7 +226,7 @@
                     dbContext.JobRequirements.Add(new JobRequirement
                     {
                         JobId = systemSoftwareId,
-                        RequirementId = requirements.FirstOrDefault(x => x.Name == $"Spring Framework" && x.Points == 25).Id,
+                        RequirementId = requirements.FirstOrDefault(x => x.Name == $"SpringFramework" && x.Points == 25).Id,
                     });
                 }
                 else if (splitLanguage[0] == "Python")
@@ -301,7 +301,7 @@
                     dbContext.JobRequirements.Add(new JobRequirement
                     {
                         JobId = computerShopId,
-                        RequirementId = requirements.FirstOrDefault(x => x.Name == $"MS SQL" && x.Points == 15).Id,
+                        RequirementId = requirements.FirstOrDefault(x => x.Name == $"MSSQL" && x.Points == 15).Id,
                     });
                 }
                 else if (splitLanguage[0] == "Java")
@@ -309,7 +309,7 @@
                     dbContext.JobRequirements.Add(new JobRequirement
                     {
                         JobId = computerShopId,
-                        RequirementId = requirements.FirstOrDefault(x => x.Name == $"My SQL" && x.Points == 15).Id,
+                        RequirementId = requirements.FirstOrDefault(x => x.Name == $"MySQL" && x.Points == 15).Id,
                     });
                 }
 
@@ -334,7 +334,7 @@
                     dbContext.JobRequirements.Add(new JobRequirement
                     {
                         JobId = shoesShopId,
-                        RequirementId = requirements.FirstOrDefault(x => x.Name == $"MS SQL" && x.Points == 15).Id,
+                        RequirementId = requirements.FirstOrDefault(x => x.Name == $"MSSQL" && x.Points == 15).Id,
                     });
                 }
                 else if (splitLanguage[0] == "Java")
@@ -342,7 +342,7 @@
                     dbContext.JobRequirements.Add(new JobRequirement
                     {
                         JobId = shoesShopId,
-                        RequirementId = requirements.FirstOrDefault(x => x.Name == $"My SQL" && x.Points == 15).Id,
+                        RequirementId = requirements.FirstOrDefault(x => x.Name == $"MySQL" && x.Points == 15).Id,
                     });
                 }
 
@@ -367,7 +367,7 @@
                     dbContext.JobRequirements.Add(new JobRequirement
                     {
                         JobId = acadedmyId,
-                        RequirementId = requirements.FirstOrDefault(x => x.Name == $"MS SQL" && x.Points == 15).Id,
+                        RequirementId = requirements.FirstOrDefault(x => x.Name == $"MSSQL" && x.Points == 15).Id,
                     });
                 }
                 else if (splitLanguage[0] == "Java")
@@ -375,7 +375,7 @@
                     dbContext.JobRequirements.Add(new JobRequirement
                     {
                         JobId = acadedmyId,
-                        RequirementId = requirements.FirstOrDefault(x => x.Name == $"My SQL" && x.Points == 15).Id,
+                        RequirementId = requirements.FirstOrDefault(x => x.Name == $"MySQL" && x.Points == 15).Id,
                     });
                 }
 
@@ -405,7 +405,7 @@
                     dbContext.JobRequirements.Add(new JobRequirement
                     {
                         JobId = dateChatId,
-                        RequirementId = requirements.FirstOrDefault(x => x.Name == $"MS SQL" && x.Points == 15).Id,
+                        RequirementId = requirements.FirstOrDefault(x => x.Name == $"MSSQL" && x.Points == 15).Id,
                     });
                 }
                 else if (splitLanguage[0] == "Java")
@@ -413,7 +413,7 @@
                     dbContext.JobRequirements.Add(new JobRequirement
                     {
                         JobId = dateChatId,
-                        RequirementId = requirements.FirstOrDefault(x => x.Name == $"My SQL" && x.Points == 15).Id,
+                        RequirementId = requirements.FirstOrDefault(x => x.Name == $"MySQL" && x.Points == 15).Id,
                     });
                 }
 
@@ -439,7 +439,7 @@
                     dbContext.JobRequirements.Add(new JobRequirement
                     {
                         JobId = foodDeliveryId,
-                        RequirementId = requirements.FirstOrDefault(x => x.Name == $"MS SQL" && x.Points == 15).Id,
+                        RequirementId = requirements.FirstOrDefault(x => x.Name == $"MSSQL" && x.Points == 15).Id,
                     });
                 }
                 else if (splitLanguage[0] == "Java")
@@ -447,7 +447,7 @@
                     dbContext.JobRequirements.Add(new JobRequirement
                     {
                         JobId = foodDeliveryId,
-                        RequirementId = requirements.FirstOrDefault(x => x.Name == $"My SQL" && x.Points == 15).Id,
+                        RequirementId = requirements.FirstOrDefault(x => x.Name == $"MySQL" && x.Points == 15).Id,
                     });
                 }
 
@@ -472,7 +472,7 @@
                     dbContext.JobRequirements.Add(new JobRequirement
                     {
                         JobId = fitnessId,
-                        RequirementId = requirements.FirstOrDefault(x => x.Name == $"MS SQL" && x.Points == 20).Id,
+                        RequirementId = requirements.FirstOrDefault(x => x.Name == $"MSSQL" && x.Points == 20).Id,
                     });
                 }
                 else if (splitLanguage[0] == "Java")
@@ -480,7 +480,7 @@
                     dbContext.JobRequirements.Add(new JobRequirement
                     {
                         JobId = fitnessId,
-                        RequirementId = requirements.FirstOrDefault(x => x.Name == $"My SQL" && x.Points == 20).Id,
+                        RequirementId = requirements.FirstOrDefault(x => x.Name == $"MySQL" && x.Points == 20).Id,
                     });
                 }
 

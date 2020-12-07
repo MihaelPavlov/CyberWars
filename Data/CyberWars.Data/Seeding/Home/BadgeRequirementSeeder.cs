@@ -73,13 +73,13 @@
             dbContext.BadgeRequirements.Add(new BadgeRequirement
             {
                 BadgeId = badges.FirstOrDefault(x => x.Name == "Junior Developer").Id,
-                RequirementId = requirements.FirstOrDefault(x => x.Name == "MS SQL" && x.Points == 10).Id,
+                RequirementId = requirements.FirstOrDefault(x => x.Name == "MSSQL" && x.Points == 10).Id,
             });
 
             dbContext.BadgeRequirements.Add(new BadgeRequirement
             {
                 BadgeId = badges.FirstOrDefault(x => x.Name == "Junior Developer").Id,
-                RequirementId = requirements.FirstOrDefault(x => x.Name == "ASP.NET Core" && x.Points == 5).Id,
+                RequirementId = requirements.FirstOrDefault(x => x.Name == "ASP.NETCore" && x.Points == 5).Id,
             });
 
             dbContext.BadgeRequirements.Add(new BadgeRequirement
@@ -110,7 +110,7 @@
             dbContext.BadgeRequirements.Add(new BadgeRequirement
             {
                 BadgeId = badges.FirstOrDefault(x => x.Name == "Mid Developer").Id,
-                RequirementId = requirements.FirstOrDefault(x => x.Name == "ASP.NET Core" && x.Points == 10).Id,
+                RequirementId = requirements.FirstOrDefault(x => x.Name == "ASP.NETCore" && x.Points == 10).Id,
             });
 
             // BackEnd Developer
@@ -123,13 +123,13 @@
             dbContext.BadgeRequirements.Add(new BadgeRequirement
             {
                 BadgeId = badges.FirstOrDefault(x => x.Name == "BackEnd Developer").Id,
-                RequirementId = requirements.FirstOrDefault(x => x.Name == "MS SQL" && x.Points == 30).Id,
+                RequirementId = requirements.FirstOrDefault(x => x.Name == "MSSQL" && x.Points == 30).Id,
             });
 
             dbContext.BadgeRequirements.Add(new BadgeRequirement
             {
                 BadgeId = badges.FirstOrDefault(x => x.Name == "BackEnd Developer").Id,
-                RequirementId = requirements.FirstOrDefault(x => x.Name == "ASP.NET Core" && x.Points == 20).Id,
+                RequirementId = requirements.FirstOrDefault(x => x.Name == "ASP.NETCore" && x.Points == 20).Id,
             });
 
             // FrontEnd Developer
@@ -302,12 +302,12 @@
             dbContext.BadgeRequirements.Add(new BadgeRequirement
             {
                 BadgeId = badges.FirstOrDefault(x => x.Name == "Code Guru").Id,
-                RequirementId = requirements.FirstOrDefault(x => x.Name == "ASP.NET Core" && x.Points == 30).Id,
+                RequirementId = requirements.FirstOrDefault(x => x.Name == "ASP.NETCore" && x.Points == 30).Id,
             }); 
             dbContext.BadgeRequirements.Add(new BadgeRequirement
             {
                 BadgeId = badges.FirstOrDefault(x => x.Name == "Code Guru").Id,
-                RequirementId = requirements.FirstOrDefault(x => x.Name == "Spring Framework" && x.Points == 30).Id,
+                RequirementId = requirements.FirstOrDefault(x => x.Name == "SpringFramework" && x.Points == 30).Id,
             }); 
             dbContext.BadgeRequirements.Add(new BadgeRequirement
             {
@@ -366,12 +366,12 @@
             dbContext.BadgeRequirements.Add(new BadgeRequirement
             {
                 BadgeId = badges.FirstOrDefault(x => x.Name == "Code Master").Id,
-                RequirementId = requirements.FirstOrDefault(x => x.Name == "ASP.NET Core" && x.Points == 30).Id,
+                RequirementId = requirements.FirstOrDefault(x => x.Name == "ASP.NETCore" && x.Points == 30).Id,
             });
             dbContext.BadgeRequirements.Add(new BadgeRequirement
             {
                 BadgeId = badges.FirstOrDefault(x => x.Name == "Code Master").Id,
-                RequirementId = requirements.FirstOrDefault(x => x.Name == "Spring Framework" && x.Points == 30).Id,
+                RequirementId = requirements.FirstOrDefault(x => x.Name == "SpringFramework" && x.Points == 30).Id,
             });
             dbContext.BadgeRequirements.Add(new BadgeRequirement
             {

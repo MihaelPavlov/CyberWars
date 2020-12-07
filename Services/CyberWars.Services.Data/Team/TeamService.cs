@@ -13,6 +13,8 @@
     using CyberWars.Web.ViewModels.Team;
     using CyberWars.Services.Mapping;
     using Microsoft.EntityFrameworkCore;
+    using CyberWars.Data.Models.Skills;
+    using CyberWars.Data.Models.Ability;
 
     public class TeamService : ITeamService
     {
@@ -20,16 +22,19 @@
         private readonly IDeletableEntityRepository<Player> playerRepository;
         private readonly IDeletableEntityRepository<TeamPlayer> teamPlayerRepository;
         private readonly IDeletableEntityRepository<ApplicationUser> userRepository;
+        private readonly IDeletableEntityRepository<PlayerSkill> playerSkillsRepository;
 
         public TeamService(IDeletableEntityRepository<Team> teamRepository,
             IDeletableEntityRepository<Player> playerRepository,
             IDeletableEntityRepository<TeamPlayer> teamPlayerRepository,
-            IDeletableEntityRepository<ApplicationUser> userRepository)
+            IDeletableEntityRepository<ApplicationUser> userRepository,
+            IDeletableEntityRepository<PlayerSkill> playerSkillsRepository)
         {
             this.teamRepository = teamRepository;
             this.playerRepository = playerRepository;
             this.teamPlayerRepository = teamPlayerRepository;
             this.userRepository = userRepository;
+            this.playerSkillsRepository = playerSkillsRepository;
         }
 
         public async Task ApplyToTeam(string userId, int teamId)
@@ -65,7 +70,7 @@
                 Team = team,
                 TeamId = team.Id,
             };
-
+            team.Rank += await this.CalculateRank(player.Id);
             team.TeamPlayers.Add(teamPlayer);
             this.teamRepository.Update(team);
             await this.teamRepository.SaveChangesAsync();
@@ -81,6 +86,7 @@
                 Name = input.Name,
                 MotivationalMotto = input.MotivationalMotto,
                 Description = input.Description,
+                Rank = await this.CalculateRank(user.PlayerId),
             };
 
             await this.teamRepository.AddAsync(newTeam);
@@ -97,9 +103,9 @@
             return await this.teamRepository.All().Take(10).To<T>().ToListAsync();
         }
 
-        public async Task<TeamPageViewModel> GetTeamByName(string teamName)
+        public async Task<TeamPageViewModel> GetTeamPageById(int teamId)
         {
-            var team = await this.teamRepository.All().FirstOrDefaultAsync(x => x.Name == teamName);
+            var team = await this.teamRepository.All().FirstOrDefaultAsync(x => x.Id == teamId);
 
             var teamPlayers = await this.teamPlayerRepository.All().Where(x => x.TeamId == team.Id).ToListAsync();
 
@@ -138,18 +144,18 @@
             return team.Name;
         }
 
-        public async Task<string> GetTeamNameByUserId(string userId)
+        public async Task<int> GetTeamIdByUserId(string userId)
         {
-            var team = await this.teamRepository.All().Select(x => new { x.Name, x.UserId }).FirstOrDefaultAsync(x => x.UserId == userId);
+            var team = await this.teamRepository.All().Select(x => new { x.Id, x.Name, x.UserId }).FirstOrDefaultAsync(x => x.UserId == userId);
 
-            return team.Name;
+            return team.Id;
         }
 
-        public async Task<string> GetTeamPlayerTeamNameByUserId(string userId)
+        public async Task<int> GetTeamPlayerTeamIdByUserId(string userId)
         {
-            var team = await this.teamPlayerRepository.All().Select(x => new { x.Team.Name, x.Player.UserId }).FirstOrDefaultAsync(x => x.UserId == userId);
+            var team = await this.teamPlayerRepository.All().Select(x => new { x.TeamId, x.Team.Name, x.Player.UserId }).FirstOrDefaultAsync(x => x.UserId == userId);
 
-            return team.Name;
+            return team.TeamId;
         }
 
         public bool IsUserHaveTeam(string userId)
@@ -169,9 +175,15 @@
             var player = await this.playerRepository.All().FirstOrDefaultAsync(x => x.UserId == userId);
 
             var teamPlayer = await this.teamPlayerRepository.All().FirstOrDefaultAsync(x => x.TeamId == teamId && x.PlayerId == player.Id);
+            var team = await this.teamRepository.All().FirstOrDefaultAsync(x => x.Id == teamId);
+
+            team.Rank -= await this.CalculateRank(player.Id);
 
             this.teamPlayerRepository.HardDelete(teamPlayer);
             await this.teamPlayerRepository.SaveChangesAsync();
+
+            this.teamRepository.Update(team);
+            await this.teamRepository.SaveChangesAsync();
         }
 
 
@@ -212,6 +224,13 @@
         public async Task<int> GetTeamCount()
         {
             return await this.teamRepository.All().CountAsync();
+        }
+
+        public async Task<int> CalculateRank(string playerId)
+        {
+            var sumSkills = await this.playerSkillsRepository.All().Where(x => x.PlayerId == playerId).SumAsync(x => x.Points);
+
+            return sumSkills;
         }
     }
 }

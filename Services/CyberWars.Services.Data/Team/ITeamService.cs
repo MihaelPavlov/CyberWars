@@ -15,13 +15,13 @@
 
         public Task<IEnumerable<T>> Get10RandomTeam<T>();
 
-        public Task<TeamPageViewModel> GetTeamByName(string teamName);
+        public Task<TeamPageViewModel> GetTeamPageById(int teamId);
 
         public Task<string> GetTeamNameById(int teamId);
 
-        public Task<string> GetTeamNameByUserId(string userId);
+        public Task<int> GetTeamIdByUserId(string userId);
 
-        public Task<string> GetTeamPlayerTeamNameByUserId(string userId);
+        public Task<int> GetTeamPlayerTeamIdByUserId(string userId);
 
         public bool IsUserHaveTeam(string userId);
 
@@ -33,6 +33,6 @@
 
         public Task<IEnumerable<T>> GetTeamRankingList<T>(int page, int itemsPetPage = 6);
 
-        public  Task<int> GetTeamCount();
+        public Task<int> GetTeamCount();
     }
 }

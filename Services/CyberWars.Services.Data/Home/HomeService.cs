@@ -17,6 +17,7 @@
     using CyberWars.Data.Models.Pet_Food;
     using CyberWars.Data.Models.Player;
     using CyberWars.Data.Models.Skills;
+    using CyberWars.Data.Models.Team;
     using CyberWars.Services.Mapping;
     using CyberWars.Web.ViewModels.Battle;
     using CyberWars.Web.ViewModels.HomeViews;
@@ -40,6 +41,8 @@
         private readonly IDeletableEntityRepository<BattleRecord> battleRecordRepository;
         private readonly IDeletableEntityRepository<RandomHangfireFood> randomHangfireFoodRepository;
         private readonly IDeletableEntityRepository<PlayerBadge> playerBadgeRepository;
+        private readonly IDeletableEntityRepository<TeamPlayer> teamPlayerRepository;
+        private readonly IDeletableEntityRepository<Team> teamRepository;
 
         public HomeService(IDeletableEntityRepository<Player> playerRepository
             , IDeletableEntityRepository<PlayerSkill> playerSkillRepository
@@ -54,7 +57,9 @@
             , IDeletableEntityRepository<BattleRecord> battleRecordRepository
             , IDeletableEntityRepository<Skill> skillRepository
             , IDeletableEntityRepository<RandomHangfireFood> randomHangfireFoodRepository
-            , IDeletableEntityRepository<PlayerBadge> playerBadgeRepository)
+            , IDeletableEntityRepository<PlayerBadge> playerBadgeRepository,
+            IDeletableEntityRepository<TeamPlayer> teamPlayerRepository,
+            IDeletableEntityRepository<Team> teamRepository)
         {
             this.playerRepository = playerRepository;
             this.playerSkillRepository = playerSkillRepository;
@@ -70,6 +75,8 @@
             this.skillRepository = skillRepository;
             this.randomHangfireFoodRepository = randomHangfireFoodRepository;
             this.playerBadgeRepository = playerBadgeRepository;
+            this.teamPlayerRepository = teamPlayerRepository;
+            this.teamRepository = teamRepository;
         }
 
         public async Task<PlayerDataView> GetPlayerData(string userId)
@@ -156,6 +163,23 @@
             await this.battleRecordRepository.SaveChangesAsync();
             await this.playerSkillRepository.SaveChangesAsync();
             await this.playerRepository.SaveChangesAsync();
+
+            // Update Team Rank if Player up skills
+            if (await this.IsPlayerApplyInGroup(player.Id))
+            {
+                var team = await this.teamRepository.All().FirstOrDefaultAsync(x => x.TeamPlayers.Any(x => x.PlayerId == player.Id));
+                team.Rank++;
+                this.teamRepository.Update(team);
+            }
+
+            if (await this.IsUserHaveGroup(userId))
+            {
+                var team = await this.teamRepository.All().FirstOrDefaultAsync(x => x.UserId == userId);
+                team.Rank++;
+                this.teamRepository.Update(team);
+            }
+
+            await this.teamRepository.SaveChangesAsync();
         }
 
         public async Task<IEnumerable<T>> GetPlayerAbilitiesByType<T>(string playerId, string type)
@@ -351,6 +375,17 @@
                 await this.playerBadgeRepository.AddAsync(playerBadge);
                 await this.playerBadgeRepository.SaveChangesAsync();
             }
+        }
+
+        public async Task<bool> IsPlayerApplyInGroup(string playerId)
+        {
+            return await this.teamPlayerRepository.All().AnyAsync(x => x.PlayerId == playerId);
+        }
+
+        public async Task<bool> IsUserHaveGroup(string userId)
+        {
+            return await this.teamRepository.All().AnyAsync(x => x.UserId == userId);
+
         }
     }
 }

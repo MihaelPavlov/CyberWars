@@ -1,16 +1,15 @@
 @using CyberWars.Web.ViewModels.Academy
 @using CyberWars.Data.Common.Repositories;
 @using CyberWars.Data.Models.Course;
+@using Microsoft.EntityFrameworkCore;
 
 @model IEnumerable<LectureViewModel>
 @inject IDeletableEntityRepository<CompleteLecture> completeLectureRepository;
 @{
     int counter = 1;
 }
-@{
-    var courseName = Model.Take(1).First();
-}
-<h1 class="courseHader">@courseName.CourseName</h1>
+
+<h1 class="courseHader">Test</h1>
 <table class="courseTable">
     <thead>
         <tr>

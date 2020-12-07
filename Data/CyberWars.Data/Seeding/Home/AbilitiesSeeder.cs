@@ -63,7 +63,7 @@
             // AbilityT Type -> Database
             dbContext.Abilities.Add(new Ability
             {
-                Name = "My SQL",
+                Name = "MySQL",
                 Description = "Developed by Oracle, MySQL Database Software is a client/server system",
                 AbilityTypeId = 2,
             });
@@ -77,7 +77,7 @@
 
             dbContext.Abilities.Add(new Ability
             {
-                Name = "MS SQL",
+                Name = "MSSQL",
                 Description = "SQL Server is a relational database management system developed by Microsoft",
                 AbilityTypeId = 2,
             });
@@ -106,14 +106,14 @@
             // Ability type -> Frameworks
             dbContext.Abilities.Add(new Ability
             {
-                Name = "ASP.NET Core",
+                Name = "ASP.NETCore",
                 Description = "ASP.NET Core is designed to allow runtime components, APIs, compilers and languages while providing a stable and supported platform to keep apps running",
                 AbilityTypeId = 3,
             });
 
             dbContext.Abilities.Add(new Ability
             {
-                Name = "Spring Framework",
+                Name = "SpringFramework",
                 Description = "The Spring Framework provides a comprehensive programming and configuration model for modern Java-based enterprise applications",
                 AbilityTypeId = 3,
             });
@@ -146,7 +146,7 @@
 
             dbContext.Abilities.Add(new Ability
             {
-                Name = "Ruby on Rails",
+                Name = "RubyOnRails",
                 Description = "Ruby on Rails is a web-application framework written in Ruby language. The framework includes everything needed to create database-backed web applications according to the Model-View-Controller (MVC) pattern",
                 AbilityTypeId = 3,
             });

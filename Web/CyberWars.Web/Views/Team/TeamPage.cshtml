@@ -57,7 +57,7 @@
         </tr>
     </table>
 
-    @if (isUserHaveTeam != null)
+    @if (isUserHaveTeam != null && Model.UserId==userId)
     {
         <form method="post" asp-controller="Team" asp-action="Abandon">
             <div class="leaveFromGroupButton">
@@ -75,7 +75,7 @@
             </div>
         </form>
     }
-    else
+    else if (isUserHaveTeam == null && teamPlayer == null)
     {
         <form method="post" asp-controller="Team" asp-action="ApplyToTeam">
             <div class="leaveFromGroupButton">
@@ -83,6 +83,11 @@
             </div>
 
         </form>
+    }
+    else
+    {
+
+
     }
 </div>
 
