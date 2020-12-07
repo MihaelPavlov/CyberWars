@@ -25,9 +25,17 @@
             return this.View(viewModel);
         }
 
-        public IActionResult Ranking()
+        public async Task<IActionResult> Ranking(int id = 1)
         {
-            return this.View();
+            const int ItemsPerPage = 6;
+            var viewModel = new TeamRankingListViewModel
+            {
+                ItemsPerPage = ItemsPerPage,
+                PageNumber = id,
+                Teams = await this.teamService.GetTeamRankingList<TeamRankingInList>(id, ItemsPerPage),
+                TeamCount = await this.teamService.GetTeamCount(),
+            };
+            return this.View(viewModel);
         }
 
         public IActionResult Register()

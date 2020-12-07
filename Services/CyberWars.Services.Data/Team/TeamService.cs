@@ -175,7 +175,7 @@
         }
 
 
-        public async Task Abandon( int teamId)
+        public async Task Abandon(int teamId)
         {
             var teamPlayers = await this.teamPlayerRepository.All().Where(x => x.TeamId == teamId).ToListAsync();
 
@@ -199,6 +199,19 @@
 
             await this.teamPlayerRepository.SaveChangesAsync();
 
+        }
+
+        public async Task<IEnumerable<T>> GetTeamRankingList<T>(int page, int itemsPetPage = 6)
+        {
+            return await this.teamRepository.AllAsNoTracking().OrderByDescending(x => x.Rank).Skip((page - 1) * itemsPetPage).Take(itemsPetPage).To<T>().ToListAsync();
+            // 1-6 - page 1  Skip 0
+            // 7-12 - page 2  sKIP 6
+            // 13- 18 - page 3 SKIP 12
+        }
+
+        public async Task<int> GetTeamCount()
+        {
+            return await this.teamRepository.All().CountAsync();
         }
     }
 }

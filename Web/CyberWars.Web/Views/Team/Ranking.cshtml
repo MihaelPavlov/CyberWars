@@ -1,38 +1,58 @@
-<form class="example" >
-          <input type="text" placeholder="Search.." name="search">
-          <a class="btn yellow rounded" href="#">Search </a>
-        </form>
+@using CyberWars.Web.ViewModels.Team;
 
-        <table class="teamRankingTable">
-          <thead>
+@model TeamRankingListViewModel
+@{
+    var counter = 1;
+
+}
+<form class="example">
+    <input type="text" placeholder="Search.." name="search">
+    <a class="btn yellow rounded" href="#">Search </a>
+</form>
+
+<div class="pagination">
+    <a class="pageLink @if (!Model.HasPreviousPage) { <text>disabled</text>} " asp-action="Ranking" asp-route-id="@Model.PreviousPageNumber">&laquo;</a>
+    @for (int i = Model.PageNumber - 2; i < Model.PageNumber; i++)
+    {
+        @if (i > 0)
+        {
+            <a class="pageLink" asp-action="Ranking" asp-route-id="@i">@i</a>
+        }
+
+    }
+    <a class="pageLink active" href="#">@Model.PageNumber</a>
+    @for (int i = Model.PageNumber + 1; i <= Model.PageNumber + 2; i++)
+    {
+        @if (i <= Model.PagesCount)
+        {
+            <a class="pageLink" asp-action="Ranking" asp-route-id="@i">@i</a>
+        }
+    }
+    <a class="pageLink @if (!Model.HasNextPage) { <text>disabled</text>} " asp-action="Ranking" asp-route-id="@Model.NextPageNumber">&raquo;</a>
+</div>
+
+<table class="teamRankingTable">
+    <thead>
+        <tr>
+            <th scope="col">Number</th>
+            <th scope="col">Group-Name</th>
+            <th scope="col">Motto</th>
+            <th scope="col">Rank</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var team in this.Model.Teams)
+        {
             <tr>
-                <th scope="col">Number</th>
-              <th scope="col">Group-Name</th>
-              <th scope="col">Motto</th>
-              <th scope="col">Rank</th>
+                <th class="circleNumber">@counter</th>
+                <td>@team.Name</td>
+                <td>@team.MotivationalMotto</td>
+                <td class="rank">@team.Rank</td>
             </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th class="circleNumber">1</th>
-              <td>Bithes</td>
-              <td>Join Us .The Perfect group .Come here</td>
-              <td class="rank">999.99</td>
-            </tr>
-            <tr>
-              <th  class="circleNumber">2</th>
-              <td>The Quiters</td>
-              <td>Come and we will quit together </td>
-              <td class="rank">129.7</td>
-            </tr>
-            <tr>
-              <th  class="circleNumber">3</th>
-              <td>The Quiters</td>
-              <td>Come and we will quit together </td>
-              <td class="rank">129.7</td>
-            </tr>
-          </tbody>
-        </table> 
+            counter++;
+        }
+    </tbody>
+</table>
 
 @section CssFile {
     <link rel="stylesheet" href="/css/Team/teamRanking.css">

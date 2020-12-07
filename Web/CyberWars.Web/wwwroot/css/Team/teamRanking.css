@@ -1,3 +1,31 @@
+/* Pagination links */
+.disabled {
+    pointer-events:none;
+}
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+    .pagination .pageLink {
+        color: black;
+        float: left;
+        padding: 8px 16px;
+        text-decoration: none;
+        transition: background-color 0.3s;
+    }
+
+        /* Style the active/current link */
+        .pagination .pageLink.active {
+            background-color: dodgerblue;
+            color: white;
+        }
+
+        /* Add a grey background color on mouse-over */
+        .pagination .pageLink:hover:not(.active) {
+            background-color: gray;
+        }
 .example {
   margin: 30px;
   text-align: center;

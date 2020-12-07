@@ -80,11 +80,18 @@ namespace CyberWars.Web.Areas.Identity.Pages.Account
             public string Avatar { get; set; }
         }
 
-        public async Task OnGetAsync(string returnUrl = null, string type = null)
+        public async Task<IActionResult> OnGetAsync(string returnUrl = null, string type = null)
         {
+            if (type == null)
+            {
+                return this.RedirectToPage("/Account/RegisterChoose");
+            }
+
             this.Type = type;
-            ReturnUrl = returnUrl;
-            ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+            this.ReturnUrl = returnUrl;
+            this.ExternalLogins = (await this._signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+
+            return this.Page();
         }
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null, string type = null)

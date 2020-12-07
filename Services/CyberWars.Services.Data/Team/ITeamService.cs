@@ -30,5 +30,9 @@
         public Task LeaveGroup(string userId, int teamId);
 
         public Task Abandon(int teamId);
+
+        public Task<IEnumerable<T>> GetTeamRankingList<T>(int page, int itemsPetPage = 6);
+
+        public  Task<int> GetTeamCount();
     }
 }
