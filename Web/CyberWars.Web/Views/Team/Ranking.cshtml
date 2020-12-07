@@ -17,6 +17,7 @@
         @if (i > 0)
         {
             <a class="pageLink" asp-action="Ranking" asp-route-id="@i">@i</a>
+            counter += 6;
         }
 
     }
@@ -26,6 +27,7 @@
         @if (i <= Model.PagesCount)
         {
             <a class="pageLink" asp-action="Ranking" asp-route-id="@i">@i</a>
+
         }
     }
     <a class="pageLink @if (!Model.HasNextPage) { <text>disabled</text>} " asp-action="Ranking" asp-route-id="@Model.NextPageNumber">&raquo;</a>
