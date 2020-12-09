@@ -30,7 +30,13 @@
         {
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            var viewModel = await this.contestService.ResultFromContestById<ResultContestViewModel>(contestId, userId);
+            var viewModel = await this.contestService.ResultFromContestById(contestId, userId);
+
+            // Need to be Error
+            if (viewModel == null)
+            {
+              return  this.Redirect("/CompetitiveCoding/Index");
+            }
 
             return this.View(viewModel);
         }

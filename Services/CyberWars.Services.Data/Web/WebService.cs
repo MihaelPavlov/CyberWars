@@ -22,8 +22,12 @@
         private readonly IDeletableEntityRepository<PlayerJob> playerJobReposiotry;
         private readonly IDeletableEntityRepository<PlayerAbility> playerAbilityJobReposiotry;
 
-        public WebService(IDeletableEntityRepository<Job> jobsReposiotry, IDeletableEntityRepository<RandomHangfireJob> hangfireJobsReposiotry
-            , IDeletableEntityRepository<Player> playerReposiotry, IDeletableEntityRepository<PlayerJob> playerJobReposiotry, IDeletableEntityRepository<PlayerAbility> playerAbilityJobReposiotry)
+        public WebService(
+            IDeletableEntityRepository<Job> jobsReposiotry,
+            IDeletableEntityRepository<RandomHangfireJob> hangfireJobsReposiotry,
+            IDeletableEntityRepository<Player> playerReposiotry,
+            IDeletableEntityRepository<PlayerJob> playerJobReposiotry,
+            IDeletableEntityRepository<PlayerAbility> playerAbilityJobReposiotry)
         {
             this.jobsReposiotry = jobsReposiotry;
             this.hangfireJobsReposiotry = hangfireJobsReposiotry;
@@ -34,7 +38,6 @@
 
         public async Task<IEnumerable<T>> GetRandomJobs<T>()
         {
-
             return await this.hangfireJobsReposiotry.All().Take(15).OrderBy(x => x.Job.JobRequirements.Count).To<T>().ToListAsync();
         }
 

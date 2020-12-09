@@ -105,6 +105,14 @@
             var attackPlayer = await this.GetAttackPlayerDataView(userId);
             var defencePlayer = await this.GetDefencePlayerWithSkillsDataView(defencePlayerId);
 
+
+            var attackPlayerData = await this.playerRepository.All().FirstOrDefaultAsync(x => x.UserId == userId);
+
+            if (attackPlayer.Energy - 3 < 0)
+            {
+                return null;
+            }
+
             var attackPlayerStats = await this.SumStats(attackPlayer);
             var defencePlayerStats = await this.SumStats(defencePlayer);
 

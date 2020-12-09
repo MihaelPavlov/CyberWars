@@ -298,22 +298,6 @@
             // PlayerSkills
             var playerSkills = await this.playerSkillRepository.All().Where(x => x.PlayerId == player.Id).To<PlayerSkillViewModel>().ToListAsync();
 
-            //var viewPlayerSkills = new List<PlayerSkillViewModel>();
-
-            //foreach (var ps in playerSkills)
-            //{
-            //    viewPlayerSkills.Add(new PlayerSkillViewModel
-            //    {
-            //        Player = ps.Player,
-            //        PlayerId = ps.PlayerId,
-            //        Points = ps.Points,
-            //        SkillDescription = this.skillRepository.All().FirstOrDefault(x => x.Id == ps.SkillId).Description,
-            //        SkillId = ps.SkillId,
-            //        SkillName = this.skillRepository.All().FirstOrDefault(x => x.Id == ps.SkillId).Name,
-            //        SkillStartMoney = this.skillRepository.All().FirstOrDefault(x => x.Id == ps.SkillId).StartMoney,
-            //    });
-            //}
-
             // PlayerBattleRecord
             var playerBattleRecord = await this.battleRecordRepository.All().FirstOrDefaultAsync(x => x.PlayerId == player.Id);
 

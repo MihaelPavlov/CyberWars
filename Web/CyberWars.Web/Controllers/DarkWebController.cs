@@ -30,6 +30,12 @@
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
             var viewModel = new PlayerDataView();
 
+            // Need to be Error
+            if (input.Type == null)
+            {
+                return this.Redirect("/DarkWeb/Attack");
+            }
+
             if (input.Type == "Normal")
             {
                 viewModel = await this.darkWebService.FindNormalEnemy(userId);
@@ -42,7 +48,19 @@
 
             if (input.Type == "Search")
             {
+                // Need to be Error
+                if (input.SearchName == null)
+                {
+                    return this.Redirect("/DarkWeb/Attack");
+                }
+
                 viewModel = await this.darkWebService.FindEnemyByName(userId, input.SearchName);
+
+                // Need to be Error
+                if (viewModel == null)
+                {
+                    return this.Redirect("/DarkWeb/Attack");
+                }
             }
 
             return this.View(viewModel);
@@ -53,6 +71,10 @@
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
 
             var viewModel = await this.darkWebService.ResultFromBattle(userId, defencePlayerId);
+            if (viewModel== null)
+            {
+                return this.Redirect("/DarkWeb/Attack");
+            }
             return this.View(viewModel);
         }
     }
