@@ -30,7 +30,7 @@
             var player = await this.dbContext.Players.FirstOrDefaultAsync(x => x.UserId == userId);
             if ((player.Health < player.MaxHealth || player.Energy < player.MaxEnergy) && !player.IsStatsResetStart)
             {
-                BackgroundJob.Schedule(() => this.ResetStats(player), TimeSpan.FromMinutes(59));
+                BackgroundJob.Schedule(() => this.ResetStats(player.Id), TimeSpan.FromMinutes(59));
                 player.IsStatsResetStart = true;
             }
 
@@ -58,13 +58,13 @@
             return this.View(viewModel);
         }
 
-        public async Task ResetStats(Player player)
+        public async Task ResetStats(string playerId)
         {
             /* Here we need get the player again from the database or we get the player that wi give to the hangifre.Scedule
               function and all changes when we do in that time will return .*/
-            var nowPlayer = await this.dbContext.Players.FirstOrDefaultAsync(x => x.Id == player.Id);
-            nowPlayer.Health = player.MaxHealth;
-            nowPlayer.Energy = player.MaxEnergy;
+            var nowPlayer = await this.dbContext.Players.FirstOrDefaultAsync(x => x.Id == playerId);
+            nowPlayer.Health = nowPlayer.MaxHealth;
+            nowPlayer.Energy = nowPlayer.MaxEnergy;
             nowPlayer.IsStatsResetStart = false;
             this.dbContext.Players.Update(nowPlayer);
             await this.dbContext.SaveChangesAsync();

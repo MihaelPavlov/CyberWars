@@ -52,6 +52,7 @@
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
             services.AddDbContext<ApplicationDbContext>(
                 options => options.UseSqlServer(this.configuration.GetConnectionString("DefaultConnection")));
 
@@ -100,6 +101,8 @@
 
             services.AddTransient<IAddJobService, AddJobService>();
 
+
+
             services.AddHangfire(config =>
             {
                 // ReferenceLoop Fixing json error for resetStats on the player
@@ -117,6 +120,7 @@
                     QueuePollInterval = TimeSpan.Zero,
                     UseRecommendedIsolationLevel = true,
                     UsePageLocksOnDequeue = true,
+
                     DisableGlobalLocks = true,
                 });
             });
@@ -169,8 +173,6 @@
                         endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
                         endpoints.MapRazorPages();
                     });
-
-
         }
 
         public async Task SeedHangfireJobs(IRecurringJobManager recurringJob)

@@ -6,12 +6,11 @@
 
     public class RegisterTeamInputModel
     {
-        [IsTeamNameAlreadyTakenAttribute]
         [Required(ErrorMessage = "Group Name is required.")]
         [MaxLength(10, ErrorMessage = "Group Name should be max 10 characters.")]
         [MinLength(4, ErrorMessage = "Group Name should be min 4 characters.")]
         public string Name { get; set; }
-        
+
         [Required(ErrorMessage = "Motivational Motto is required.")]
         [MaxLength(60, ErrorMessage = "Motivationa Motto should be max 60 characters.")]
         [MinLength(10, ErrorMessage = "Motivational Motto should be min 10 characters.")]

@@ -7,9 +7,11 @@
 @inject IDeletableEntityRepository<CompleteLecture> completeLectureRepository;
 @{
     int counter = 1;
+    var courseName = Model.FirstOrDefault();
 }
 
-<h1 class="courseHader">Test</h1>
+
+<h1 class="courseHader">@courseName.CourseName</h1>
 <table class="courseTable">
     <thead>
         <tr>
@@ -33,13 +35,13 @@
                     <div>
                         @if (this.completeLectureRepository.All().Any(x => x.LectureId == lecture.Id))
                         {
-                            <a id="btn-disable" class="btn yellow rounded " href="#">Complete</a>
+                            <a id="btn-disable" class="btn yellow rounded " href="#">Completed</a>
 
                         }
                         else if (lecture.PlayerExperience >= lecture.ExperienceToComplete)
                         {
                             <form method="post" asp-controller="Academy" asp-action="CompleteLecture">
-                                <button type="submit" class="btn yellow rounded" role="button" name="lectureId" value="@lecture.Id">start</button>
+                                <button type="submit" class="btn yellow rounded" role="button" name="lectureId" value="@lecture.Id">Complete</button>
                             </form>
                         }
                         else

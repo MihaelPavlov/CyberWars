@@ -47,17 +47,22 @@
             var dataViewAttackPlayer = await this.GetAttackPlayerDataView(userId);
             var dataViewPlayers = await this.GetAllPlayersWithoutTheAttackPlayer(userId);
 
-            Dictionary<string, int> playerWithStats = new Dictionary<string, int>();
+            Dictionary<string, int> playersWithStats = new Dictionary<string, int>();
 
             foreach (var player in dataViewPlayers)
             {
                 int statsSum = await this.SumStats(player);
-                playerWithStats.Add(player.Id, statsSum);
+                playersWithStats.Add(player.Id, statsSum);
             }
 
             var attackPlayerStats = await this.SumStats(dataViewAttackPlayer);
-            var playerWithSmallerStats = playerWithStats.Where(x => x.Value < attackPlayerStats);
+            var playerWithSmallerStats = playersWithStats.Where(x => x.Value < attackPlayerStats).ToList();
+
             var random = new Random().Next(0, playerWithSmallerStats.Count());
+            if (playerWithSmallerStats.Count == 0 || playerWithSmallerStats == null)
+            {
+                return await this.GetDefencePlayerWithSkillsDataView(dataViewPlayers.FirstOrDefault().Id);
+            }
 
             return await this.GetDefencePlayerWithSkillsDataView(playerWithSmallerStats.ElementAt(random).Key);
         }
@@ -68,17 +73,22 @@
             var dataViewAttackPlayer = await this.GetAttackPlayerDataView(userId);
             var dataViewPlayers = await this.GetAllPlayersWithoutTheAttackPlayer(userId);
 
-            Dictionary<string, int> playerWithStats = new Dictionary<string, int>();
+            Dictionary<string, int> playersWithStats = new Dictionary<string, int>();
 
             foreach (var player in dataViewPlayers)
             {
                 int statsSum = await this.SumStats(player);
-                playerWithStats.Add(player.Id, statsSum);
+                playersWithStats.Add(player.Id, statsSum);
             }
 
             var attackPlayerStats = await this.SumStats(dataViewAttackPlayer);
-            var playerWithStrongerStats = playerWithStats.Where(x => x.Value > attackPlayerStats);
-            var random = new Random().Next(0, playerWithStats.Count);
+            var playerWithStrongerStats = playersWithStats.Where(x => x.Value < attackPlayerStats).ToList();
+
+            var random = new Random().Next(0, playerWithStrongerStats.Count());
+            if (playerWithStrongerStats.Count == 0 || playerWithStrongerStats == null)
+            {
+                return await this.GetDefencePlayerWithSkillsDataView(dataViewPlayers.FirstOrDefault().Id);
+            }
 
             return await this.GetDefencePlayerWithSkillsDataView(playerWithStrongerStats.ElementAt(random).Key);
         }
