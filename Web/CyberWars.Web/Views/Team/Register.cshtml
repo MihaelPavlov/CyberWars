@@ -46,7 +46,7 @@
                         <h2 class="title">Register a Group</h2>
                     </div>
                     <div class="card-body">
-                        <form method="post" asp-controller="Team" asp-action="Register">
+                        <form method="post" asp-controller="Team" asp-action="Register" enctype="multipart/form-data">
                             <div asp-validation-summary="All"></div>
                             <div class="form-row">
                                 <div class="name">Group name</div>
@@ -71,6 +71,13 @@
                                         <textarea class="textarea--style-6" name="description" asp-for="Description"></textarea>
                                         <span asp-validation-for="Description" class=""></span>
                                     </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="name">Choose Group Image</div>
+                                <div class="value">
+                                    <input class="input--style-6" asp-for="Image">
+                                    <span asp-validation-for="Image" class=""></span>
                                 </div>
                             </div>
                             <div class="card-footer">

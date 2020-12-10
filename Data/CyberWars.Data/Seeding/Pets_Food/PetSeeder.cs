@@ -19,11 +19,47 @@
 
             dbContext.Pets.Add(new Pet
             {
+                Name = "Shark",
+                ImageName = "Shark",
+                Price = 14350.00M,
+                Description = "Arrrr...",
+                LevelRequirement = 17,
+            });
+
+            dbContext.Pets.Add(new Pet
+            {
+                Name = "Octopus",
+                ImageName = "Octopus",
+                Price = 12500.00M,
+                Description = "Pluk pLUK",
+                LevelRequirement = 15,
+            });
+
+            dbContext.Pets.Add(new Pet
+            {
+                Name = "Rabbit",
+                ImageName = "Rabbit",
+                Price = 9500.00M,
+                Description = "Jump Jump",
+                LevelRequirement = 13,
+            });
+
+            dbContext.Pets.Add(new Pet
+            {
+                Name = "Lizzar",
+                ImageName = "Lizzard",
+                Price = 8000.00M,
+                Description = "Lizzzard",
+                LevelRequirement = 10,
+            });
+
+            dbContext.Pets.Add(new Pet
+            {
                 Name = "Bat",
                 ImageName = "Bat",
                 Price = 6700.00M,
                 Description = "Mini Batman",
-                LevelRequirement = 14,
+                LevelRequirement = 8,
             });
 
             dbContext.Pets.Add(new Pet
@@ -32,7 +68,7 @@
                 ImageName = "Turtle",
                 Price = 5500.00M,
                 Description = "Slowly as .....",
-                LevelRequirement = 11,
+                LevelRequirement = 7,
             });
 
             dbContext.Pets.Add(new Pet
@@ -41,7 +77,7 @@
                 ImageName = "Fish_Dori",
                 Price = 4000.00M,
                 Description = "Fish Go Plup plup",
-                LevelRequirement = 8,
+                LevelRequirement = 5,
             });
 
             dbContext.Pets.Add(new Pet
@@ -50,7 +86,7 @@
                 ImageName = "Dog",
                 Price = 1500.00M,
                 Description = "Your Best Friend",
-                LevelRequirement = 6,
+                LevelRequirement = 4,
             });
 
             dbContext.Pets.Add(new Pet

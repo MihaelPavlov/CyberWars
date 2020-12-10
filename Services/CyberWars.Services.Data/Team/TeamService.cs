@@ -15,6 +15,7 @@
     using Microsoft.EntityFrameworkCore;
     using CyberWars.Data.Models.Skills;
     using CyberWars.Data.Models.Ability;
+    using System.IO;
 
     public class TeamService : ITeamService
     {
@@ -76,9 +77,15 @@
             await this.teamRepository.SaveChangesAsync();
         }
 
-        public async Task CreateTeam(string userId, RegisterTeamInputModel input)
+        public async Task<bool> IsTeamUsernameAlreadyUse(string name)
+        {
+            return await this.teamRepository.All().AnyAsync(x => x.Name == name);
+        }
+
+        public async Task CreateTeam(string userId, RegisterTeamInputModel input, string imageName)
         {
             var user = await this.userRepository.All().FirstOrDefaultAsync(x => x.Id == userId);
+
 
             var newTeam = new Team
             {
@@ -87,6 +94,7 @@
                 MotivationalMotto = input.MotivationalMotto,
                 Description = input.Description,
                 Rank = await this.CalculateRank(user.PlayerId),
+                Image = imageName,
             };
 
             await this.teamRepository.AddAsync(newTeam);
@@ -132,6 +140,7 @@
                 UserId = team.UserId,
                 TeamPlayers = viewTeamPlayer,
                 Rank = team.Rank,
+                Image = team.Image,
             };
 
             return viewTeamPage;
@@ -187,7 +196,7 @@
         }
 
 
-        public async Task Abandon(int teamId)
+        public async Task Abandon(int teamId, string imagePath)
         {
             var teamPlayers = await this.teamPlayerRepository.All().Where(x => x.TeamId == teamId).ToListAsync();
 
@@ -204,6 +213,8 @@
             await this.userRepository.SaveChangesAsync();
 
             var team = await this.teamRepository.All().FirstOrDefaultAsync(x => x.Id == teamId);
+
+            File.Delete(imagePath);
 
             this.teamRepository.HardDelete(team);
 
@@ -233,16 +244,13 @@
             return sumSkills;
         }
 
-        public async Task<bool> IsGroupNameAlreadyTaken(string name)
-        {
-            return await this.teamRepository.All().AnyAsync(x => x.Name == name);
-        }
-
         public async Task<Team> SearchTeamByName(string name)
         {
             var team = await this.teamRepository.All().FirstOrDefaultAsync(x => x.Name == name);
 
             return team;
         }
+
+
     }
 }

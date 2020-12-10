@@ -28,6 +28,8 @@
 
         public int Rank { get; set; }
 
+        public string Image { get; set; }
+
         public virtual ICollection<TeamPlayersViewModel> TeamPlayers { get; set; }
     }
 }

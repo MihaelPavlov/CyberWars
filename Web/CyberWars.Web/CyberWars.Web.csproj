@@ -45,4 +45,8 @@
     <ProjectReference Include="..\CyberWars.Web.Infrastructure\CyberWars.Web.Infrastructure.csproj" />
     <ProjectReference Include="..\CyberWars.Web.ViewModels\CyberWars.Web.ViewModels.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\TeamImages\" />
+  </ItemGroup>
 </Project>

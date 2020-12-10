@@ -25,6 +25,8 @@
 
         public int Rank { get; set; }
 
+        public string Image { get; set; }
+
         public ICollection<TeamPlayer> TeamPlayers { get; set; }
     }
 }

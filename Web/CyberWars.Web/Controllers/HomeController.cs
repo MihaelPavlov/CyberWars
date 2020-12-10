@@ -41,6 +41,7 @@
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
 
             var viewModel = await this.homeService.GetPlayerSkills<PlayerSkillViewModel>(userId);
+
             return this.View(viewModel);
         }
 

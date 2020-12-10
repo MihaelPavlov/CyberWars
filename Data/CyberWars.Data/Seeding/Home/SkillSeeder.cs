@@ -21,35 +21,35 @@
             {
                 Name = "Firewall Defence",
                 Description = "Increase the chanse to defence from attacks",
-                StartMoney = 120,
+                StartMoney = 98,
             });
 
             dbContext.Skills.Add(new Skill
             {
                 Name = "Motivation",
                 Description = "Motivation is the reason for people's action",
-                StartMoney = 120,
+                StartMoney = 112,
             });
 
             dbContext.Skills.Add(new Skill
             {
-                Name = "Knowledge",
+                Name = "Cunning",
                 Description = "Enhances the money of perBattle + 5",
-                StartMoney = 120,
+                StartMoney = 124,
             });
 
             dbContext.Skills.Add(new Skill
             {
                 Name = "Staying Power",
                 Description = "Increase the energy + 5",
-                StartMoney = 120,
+                StartMoney = 89,
             });
 
             dbContext.Skills.Add(new Skill
             {
                 Name = "Health",
                 Description = "Affects the amount of life + 10",
-                StartMoney = 120,
+                StartMoney = 113,
             });
 
             dbContext.SaveChanges();

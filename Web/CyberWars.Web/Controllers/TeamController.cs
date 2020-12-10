@@ -1,5 +1,6 @@
 ﻿namespace CyberWars.Web.Controllers
 {
+    using System.IO;
     using System.Security.Claims;
     using System.Threading.Tasks;
 
@@ -7,15 +8,18 @@
     using CyberWars.Services.Data.Team;
     using CyberWars.Web.ViewModels.Team;
     using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Mvc;
 
     [Authorize(Roles = GlobalConstants.UserRoleName)]
     public class TeamController : Controller
     {
         private readonly ITeamService teamService;
+        private readonly IWebHostEnvironment webHostEnvironment;
 
-        public TeamController(ITeamService teamService)
+        public TeamController(ITeamService teamService, IWebHostEnvironment webHostEnvironment)
         {
+            this.webHostEnvironment = webHostEnvironment;
             this.teamService = teamService;
         }
 
@@ -63,11 +67,25 @@
                 return this.Redirect($"/Team/TeamPage?teamId={playerHaveTeamId}");
             }
 
-            if (this.ModelState.IsValid)
+            if (await this.teamService.IsTeamUsernameAlreadyUse(input.Name))
             {
-                await this.teamService.CreateTeam(userId, input);
+                this.ModelState.AddModelError("Name", "GroupName is already taken");
             }
 
+            if (!this.ModelState.IsValid)
+            {
+                return this.View();
+            }
+
+            // Save TeamImage
+            using (FileStream fs = new FileStream(Path.Combine(this.webHostEnvironment.WebRootPath, "TeamImages", $"{userId}.png"), FileMode.Create))
+            {
+                await input.Image.CopyToAsync(fs);
+            }
+
+            var imagePath = this.webHostEnvironment.WebRootFileProvider.GetFileInfo($"/TeamImages/{userId}.png").Name;
+
+            await this.teamService.CreateTeam(userId, input, imagePath);
             var newTeamId = await this.teamService.GetTeamIdByUserId(userId);
 
             return this.Redirect($"/Team/TeamPage?teamId={newTeamId}");
@@ -94,7 +112,11 @@
         [HttpPost]
         public async Task<IActionResult> Abandon(int teamId)
         {
-            await this.teamService.Abandon(teamId);
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            var imagePath = this.webHostEnvironment.WebRootFileProvider.GetFileInfo($"/TeamImages/{userId}.png").PhysicalPath;
+
+            await this.teamService.Abandon(teamId, imagePath);
 
             return this.Redirect("/Team/Index");
         }

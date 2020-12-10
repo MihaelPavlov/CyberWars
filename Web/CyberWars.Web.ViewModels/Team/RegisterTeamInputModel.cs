@@ -1,8 +1,10 @@
 ﻿namespace CyberWars.Web.ViewModels.Team
 {
     using System.ComponentModel.DataAnnotations;
+    using CyberWars.Common.Attributes;
     using CyberWars.Web;
     using CyberWars.Web.Infrastructure.Attributes;
+    using Microsoft.AspNetCore.Http;
 
     public class RegisterTeamInputModel
     {
@@ -19,6 +21,10 @@
         [Required(ErrorMessage = "Description is required.")]
         [MaxLength(100, ErrorMessage = "Description should be max 100 characters.")]
         public string Description { get; set; }
+
+        [Required(ErrorMessage ="Group Image is required.")]
+        [AllowedExtensionsAttribute]
+        public IFormFile Image { get; set; }
 
     }
 }
