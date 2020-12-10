@@ -8,13 +8,13 @@
 
     public class PlayerSkill : IDeletableEntity
     {
-        public string PlayerId { get; set; }
+        public virtual string PlayerId { get; set; }
 
-        public Player Player { get; set; }
+        public  Player Player { get; set; }
 
-        public int SkillId { get; set; }
+        public virtual int SkillId { get; set; }
 
-        public Skill Skill { get; set; }
+        public  Skill Skill { get; set; }
 
         public int Points { get; set; }
 

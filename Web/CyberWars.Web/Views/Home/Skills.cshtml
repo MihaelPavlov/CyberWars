@@ -16,7 +16,9 @@
             <span class="name">@skill.SkillName</span>
             <div class="bar">@skill.SkillDescription</div>
             <span class="circle">@skill.Points</span>
-            <a class="button" href="/Home/TrainSkill?skillName=@skill.SkillName">Train -</a>
+            <form method="post" asp-controller="Home" asp-action="TrainSkill">
+                <a class="button" href="/Home/TrainSkill?skillName=@skill.SkillName">Train -</a>
+            </form>
             <span class="money">@skill.Money</span>
             <img class="MoneyIcon" src="/images/MoneyIcon.png" alt="" />
         </div>

@@ -118,8 +118,8 @@
 
         public async Task TrainSkillByName(string userId, string skillName)
         {
-            var playerSkill = await this.playerSkillRepository.All().FirstOrDefaultAsync(x => x.Player.UserId == userId && x.Skill.Name == skillName);
             var player = await this.playerRepository.All().FirstOrDefaultAsync(x => x.UserId == userId);
+            var playerSkill = await this.playerSkillRepository.All().FirstOrDefaultAsync(x => x.Player.UserId == userId && x.Skill.Name == skillName);
             var playerBattleRecord = await this.battleRecordRepository.All().FirstOrDefaultAsync(x => x.PlayerId == player.Id);
 
             var multipleNumber = 0.20M;

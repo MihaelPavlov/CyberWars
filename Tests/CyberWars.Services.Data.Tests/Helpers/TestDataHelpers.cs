@@ -9,8 +9,19 @@ namespace CyberWars.Services.Data.Tests.Helpers
 {
     public static class TestDataHelpers
     {
-       
 
+        public static List<PlayerSkill> GetTestPlayerSkill()
+        {
+            return new List<PlayerSkill>
+            {
+                new PlayerSkill
+                {
+                    PlayerId = "PlayerTest1",
+                    SkillId = 1,
+                    Points = 0,
+                },
+            };
+        }
         public static List<Skill> GetTestSkills()
         {
             return new List<Skill>
@@ -41,6 +52,7 @@ namespace CyberWars.Services.Data.Tests.Helpers
                  },
                new Skill
                  {
+                    Id = 1,
                     Name = "Health",
                     Description = "Affects the amount of life + 10",
                     StartMoney = 120,

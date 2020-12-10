@@ -45,6 +45,7 @@
             return this.View(viewModel);
         }
 
+        [HttpPost]
         public async Task<IActionResult> TrainSkill(string skillName)
         {
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
