@@ -109,7 +109,7 @@ And more…
 ![20 BattleResult](https://user-images.githubusercontent.com/57910640/101638715-12536680-3a37-11eb-86c0-45c04c4882a2.png)
 
 ### Academy
-![21 Academy](https://user-images.githubusercontent.com/57910640/101638733-1aaba180-3a37-11eb-9deb-d8dd3d9c9bad.png)
+![21 Academy](https://user-images.githubusercontent.com/57910640/101788806-31222d80-3b09-11eb-8d42-a0e8b59aa034.png)
 
 ### Academy Languages
 ![22 Academy Languages](https://user-images.githubusercontent.com/57910640/101638778-2d25db00-3a37-11eb-8729-7dbe5822414a.png)
