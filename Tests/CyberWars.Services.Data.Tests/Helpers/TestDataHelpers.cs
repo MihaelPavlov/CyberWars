@@ -18,6 +18,7 @@
     using CyberWars.Services.Data.Home;
     using CyberWars.Services.Data.Tests.Helpers.TestViewModel;
     using CyberWars.Services.Mapping;
+    using CyberWars.Web.ViewModels.HomeViews;
     using Microsoft.EntityFrameworkCore;
 
     public static class TestDataHelpers
@@ -425,7 +426,7 @@
                 PlayerId = player.Id,
                 Health = 80,
                 MaxHealth = 100,
-                Mood = 80,
+                Mood = 50,
                 MaxMood = 100,
                 NameIt = "TestPet",
             });
@@ -498,6 +499,32 @@
                 Quantity = 2,
             });
             await playerFoodRepositoryInMemory.SaveChangesAsync();
+
+
+            var requirement7 = await requirementsRepositoryInMemory.All().FirstOrDefaultAsync(x => x.Id == 7);
+            var requirement6 = await requirementsRepositoryInMemory.All().FirstOrDefaultAsync(x => x.Id == 6);
+            var requirement5 = await requirementsRepositoryInMemory.All().FirstOrDefaultAsync(x => x.Id == 5);
+            var requirement10 = await requirementsRepositoryInMemory.All().FirstOrDefaultAsync(x => x.Id == 10);
+
+            var abilitiy7 = await playerAbilitiesRepositoryInMemory.All().FirstOrDefaultAsync(x => x.AbilityId == requirement7.AbilityId);
+            abilitiy7.Points = requirement7.Points;
+
+            playerAbilitiesRepositoryInMemory.Update(abilitiy7);
+
+            var abilitiy6 = await playerAbilitiesRepositoryInMemory.All().FirstOrDefaultAsync(x => x.AbilityId == requirement6.AbilityId);
+            abilitiy6.Points = requirement6.Points;
+
+            playerAbilitiesRepositoryInMemory.Update(abilitiy6);
+
+            var abilitiy5 = await playerAbilitiesRepositoryInMemory.All().FirstOrDefaultAsync(x => x.AbilityId == requirement5.AbilityId);
+            abilitiy5.Points = requirement5.Points;
+
+            playerAbilitiesRepositoryInMemory.Update(abilitiy5);
+
+            var abilitiy10 = await playerAbilitiesRepositoryInMemory.All().FirstOrDefaultAsync(x => x.AbilityId == requirement10.AbilityId);
+            abilitiy10.Points = requirement10.Points;
+
+            playerAbilitiesRepositoryInMemory.Update(abilitiy10);
 
             AutoMapperConfig.RegisterMappings(typeof(TestPlayerSkillViewModel).Assembly);
             AutoMapperConfig.RegisterMappings(typeof(TestPlayerAbilityViewModel).Assembly);

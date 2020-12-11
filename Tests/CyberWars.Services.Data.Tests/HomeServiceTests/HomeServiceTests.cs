@@ -200,7 +200,7 @@
             var result = await homeService.GetPetById<TestPlayerPetViewModel>("Pesho", 1);
 
             Assert.Equal(95, result.Health);
-            Assert.Equal(90, result.Mood);
+            Assert.Equal(60, result.Mood);
         }
 
         [Fact]
@@ -212,6 +212,98 @@
             var result = await homeService.GetPetById<TestPlayerPetViewModel>("Pesho", 1);
 
             Assert.Equal("TestCat", result.NameIt);
+        }
+
+        [Fact]
+        public async Task TestScratchPetBelly()
+        {
+            var homeService = await TestDataHelpers.GetHomeService();
+
+            await homeService.ScratchPetBelly(1, "Pesho");
+            var result = await homeService.GetPetById<TestPlayerPetViewModel>("Pesho", 1);
+
+            Assert.Equal(90, result.Mood);
+        }
+
+        [Fact]
+        public async Task TestSellPetById()
+        {
+            var homeService = await TestDataHelpers.GetHomeService();
+
+            await homeService.SellPetById(1, "Pesho");
+            var result = await homeService.GetPlayerPets<TestPlayerPetViewModel>("Pesho");
+
+            Assert.Empty(result);
+        }
+
+        [Fact]
+        public async Task TestSellPetByIdAndGetMoneyBack()
+        {
+            var homeService = await TestDataHelpers.GetHomeService();
+
+            var player = await homeService.GetPlayerData("Pesho");
+
+            Assert.Equal(1000, player.Money);
+
+            await homeService.SellPetById(1, "Pesho");
+            var result = await homeService.GetPlayerPets<TestPlayerPetViewModel>("Pesho");
+
+            var playerAfterSellPet = await homeService.GetPlayerData("Pesho");
+
+            Assert.Empty(result);
+            Assert.Equal(1200, playerAfterSellPet.Money);
+        }
+
+        [Fact]
+        public async Task TestGetPlayerViewData()
+        {
+            var homeService = await TestDataHelpers.GetHomeService();
+
+            var player = await homeService.GetPlayerViewData("PlayerPesho");
+
+            Assert.NotNull(player.BattleRecord);
+            Assert.NotNull(player.PlayerSkills);
+            Assert.Equal(5, player.PlayerSkills.Count());
+            Assert.Equal("PlayerPesho", player.Name);
+        }
+
+        [Fact]
+        public async Task TestCompleteBadge()
+        {
+            var homeService = await TestDataHelpers.GetHomeService();
+
+            var playerBadge = await homeService.GetPlayerBadgeById(1);
+
+            Assert.Null(playerBadge);
+
+            await homeService.CompleteBadge(1, "Pesho");
+
+            var playerBadgeCompletes = await homeService.GetPlayerBadgeById(1);
+
+            Assert.NotNull(playerBadgeCompletes);
+            Assert.Equal(1, playerBadgeCompletes.BadgeId);
+        }
+
+        [Fact]
+        public async Task TestIsPlayerApplyInGroup()
+        {
+            var homeService = await TestDataHelpers.GetHomeService();
+
+            var player = await homeService.GetPlayerData("Pesho");
+
+            var isPlayerInGroup = await homeService.IsPlayerApplyInGroup(player.Id);
+
+            Assert.False(isPlayerInGroup);
+        }
+
+        [Fact]
+        public async Task TestIsUserHaveGroup()
+        {
+            var homeService = await TestDataHelpers.GetHomeService();
+
+            var isPlayerInGroup = await homeService.IsUserHaveGroup("Pesho");
+
+            Assert.False(isPlayerInGroup);
         }
     }
 }

@@ -308,7 +308,20 @@
             var player = await this.playerRepository.All().FirstOrDefaultAsync(x => x.Name == playerName);
 
             // PlayerSkills
-            var playerSkills = await this.playerSkillRepository.All().Where(x => x.PlayerId == player.Id).To<PlayerSkillViewModel>().ToListAsync();
+            var playerSkills = await this.playerSkillRepository.All().Where(x => x.PlayerId == player.Id).ToListAsync();
+
+            var playerSkillViewData = new List<PlayerSkillViewModel>();
+
+            foreach (var skill in playerSkills)
+            {
+                playerSkillViewData.Add(new PlayerSkillViewModel
+                {
+                    PlayerId = skill.PlayerId,
+                    SkillId = skill.SkillId,
+                    Money = skill.Money,
+                    Points = skill.Points,
+                });
+            }
 
             // PlayerBattleRecord
             var playerBattleRecord = await this.battleRecordRepository.All().FirstOrDefaultAsync(x => x.PlayerId == player.Id);
@@ -337,7 +350,7 @@
                 Money = player.Money,
                 LearnPoint = player.LearnPoint,
                 Level = player.Level,
-                PlayerSkills = playerSkills,
+                PlayerSkills = playerSkillViewData,
                 BattleRecord = viewPlayerBattleRecord,
                 IsStatsResetStart = player.IsStatsResetStart,
             };
@@ -361,9 +374,7 @@
             {
                 var playerBadge = new PlayerBadge
                 {
-                    Player = player,
                     PlayerId = player.Id,
-                    Badge = badge,
                     BadgeId = badge.Id,
                     AchievementDate = DateTime.UtcNow,
                 };
@@ -371,6 +382,11 @@
                 await this.playerBadgeRepository.AddAsync(playerBadge);
                 await this.playerBadgeRepository.SaveChangesAsync();
             }
+        }
+
+        public async Task<PlayerBadge> GetPlayerBadgeById(int badgeId)
+        {
+            return await this.playerBadgeRepository.All().FirstOrDefaultAsync(x => x.BadgeId == badgeId);
         }
 
         public async Task<bool> IsPlayerApplyInGroup(string playerId)
