@@ -1,4 +1,4 @@
-﻿namespace CyberWars.Services.Data.Team
+﻿namespace CyberWars.Services.Data.Teams
 {
     using System;
     using System.Collections.Generic;
@@ -9,7 +9,7 @@
     using CyberWars.Data.Common.Repositories;
     using CyberWars.Data.Models;
     using CyberWars.Data.Models.Player;
-    using CyberWars.Data.Models.Team;
+    using CyberWars.Data.Models.Teams;
     using CyberWars.Web.ViewModels.Team;
     using CyberWars.Services.Mapping;
     using Microsoft.EntityFrameworkCore;

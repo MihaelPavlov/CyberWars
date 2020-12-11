@@ -6,7 +6,7 @@ namespace CyberWars.Data.Models
 
     using Microsoft.AspNetCore.Identity;
 
-    using CyberWars.Data.Models.Team;
+    using CyberWars.Data.Models.Teams;
     using CyberWars.Data.Models.Player;
     using CyberWars.Data.Common.Models;
     public class ApplicationUser : IdentityUser, IAuditInfo, IDeletableEntity

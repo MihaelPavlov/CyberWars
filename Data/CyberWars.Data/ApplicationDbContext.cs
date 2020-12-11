@@ -17,7 +17,7 @@
     using CyberWars.Data.Models.Pet_Food;
     using CyberWars.Data.Models.Player;
     using CyberWars.Data.Models.Skills;
-    using CyberWars.Data.Models.Team;
+    using CyberWars.Data.Models.Teams;
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
 

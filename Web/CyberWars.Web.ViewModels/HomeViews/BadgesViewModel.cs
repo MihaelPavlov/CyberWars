@@ -28,7 +28,7 @@
 
         public string Description { get; set; }
 
-        public ICollection<BadgeRequirementsViewModel> BadgeRequirements { get; set; }
+        public virtual ICollection<BadgeRequirementsViewModel> BadgeRequirements { get; set; }
 
         public bool IsAllBadgeRequirementsComplete { get; set; }
 

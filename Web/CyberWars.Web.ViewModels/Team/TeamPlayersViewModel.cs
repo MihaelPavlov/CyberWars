@@ -5,7 +5,7 @@
     using System.Text;
 
     using CyberWars.Data.Models.Player;
-    using CyberWars.Data.Models.Team;
+    using CyberWars.Data.Models.Teams;
     using CyberWars.Services.Mapping;
 
     public class TeamPlayersViewModel : IMapFrom<TeamPlayer>

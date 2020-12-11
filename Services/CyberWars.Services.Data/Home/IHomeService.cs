@@ -6,6 +6,7 @@
     using System.Threading.Tasks;
 
     using CyberWars.Data.Models;
+    using CyberWars.Data.Models.Battle;
     using CyberWars.Data.Models.Player;
     using CyberWars.Data.Models.Skills;
     using CyberWars.Web.ViewModels.HomeViews;
@@ -16,9 +17,13 @@
 
         public Task<PlayerDataView> GetPlayerData(string userId);
 
+        public Task<PlayerSkill> GetPlayerSkillByName(string name, string userId);
+
         public Task<IEnumerable<T>> GetPlayerSkills<T>(string userId);
 
         public Task TrainSkillByName(string userId, string skillName);
+
+        public Task<BattleRecord> GetPlayerBattleRecordByPlayerName(string name);
 
         public Task<IEnumerable<T>> GetPlayerAbilitiesByType<T>(string playerId, string type);
 

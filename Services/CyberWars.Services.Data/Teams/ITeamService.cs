@@ -1,11 +1,11 @@
-﻿namespace CyberWars.Services.Data.Team
+﻿namespace CyberWars.Services.Data.Teams
 {
     using System;
     using System.Collections.Generic;
     using System.Text;
     using System.Threading.Tasks;
 
-    using CyberWars.Data.Models.Team;
+    using CyberWars.Data.Models.Teams;
     using CyberWars.Web.ViewModels.Team;
 
     public interface ITeamService

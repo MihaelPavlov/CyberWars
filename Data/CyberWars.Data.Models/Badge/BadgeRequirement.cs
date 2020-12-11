@@ -6,11 +6,11 @@ namespace CyberWars.Data.Models.Badge
 {
     public class BadgeRequirement : IDeletableEntity
     {
-        public int BadgeId { get; set; }
+        public virtual int BadgeId { get; set; }
 
         public Badge Badge { get; set; }
 
-        public int RequirementId { get; set; }
+        public virtual int RequirementId { get; set; }
 
         public Requirement Requirement { get; set; }
 

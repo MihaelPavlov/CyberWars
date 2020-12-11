@@ -1,4 +1,4 @@
-﻿namespace CyberWars.Data.Models.Team
+﻿namespace CyberWars.Data.Models.Teams
 {
     using System;
     using System.Collections.Generic;

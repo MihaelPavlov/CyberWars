@@ -7,11 +7,11 @@
     public class PlayerAbility : IDeletableEntity
 
     {
-        public string PlayerId { get; set; }
+        public virtual string PlayerId { get; set; }
 
-        public Player Player { get; set; }
+        public virtual Player Player { get; set; }
 
-        public int AbilityId { get; set; }
+        public virtual int AbilityId { get; set; }
 
         public virtual Ability Ability { get; set; }
 

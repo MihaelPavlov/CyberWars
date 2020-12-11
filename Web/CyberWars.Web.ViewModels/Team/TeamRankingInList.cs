@@ -4,7 +4,7 @@
     using System.Collections.Generic;
     using System.Text;
 
-    using CyberWars.Data.Models.Team;
+    using CyberWars.Data.Models.Teams;
     using CyberWars.Services.Mapping;
 
     public class TeamRankingInList : IMapFrom<Team>

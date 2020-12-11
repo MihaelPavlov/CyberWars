@@ -5,7 +5,7 @@
     using System.Threading.Tasks;
 
     using CyberWars.Common;
-    using CyberWars.Services.Data.Team;
+    using CyberWars.Services.Data.Teams;
     using CyberWars.Web.ViewModels.Team;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Hosting;

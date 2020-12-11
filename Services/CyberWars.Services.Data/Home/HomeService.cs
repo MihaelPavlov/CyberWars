@@ -17,7 +17,7 @@
     using CyberWars.Data.Models.Pet_Food;
     using CyberWars.Data.Models.Player;
     using CyberWars.Data.Models.Skills;
-    using CyberWars.Data.Models.Team;
+    using CyberWars.Data.Models.Teams;
     using CyberWars.Services.Mapping;
     using CyberWars.Web.ViewModels.Battle;
     using CyberWars.Web.ViewModels.HomeViews;
@@ -111,6 +111,11 @@
             return await this.userRepository.All().FirstOrDefaultAsync(x => x.Id == userId);
         }
 
+        public async Task<PlayerSkill> GetPlayerSkillByName(string name, string userId)
+        {
+            return await this.playerSkillRepository.All().FirstOrDefaultAsync(x => x.Skill.Name == name && x.Player.UserId == userId);
+        }
+
         public async Task<IEnumerable<T>> GetPlayerSkills<T>(string userId)
         {
             return await this.playerSkillRepository.All().Where(x => x.Player.UserId == userId).To<T>().ToListAsync();
@@ -182,6 +187,11 @@
             await this.teamRepository.SaveChangesAsync();
         }
 
+        public async Task<BattleRecord> GetPlayerBattleRecordByPlayerName(string name)
+        {
+            return await this.battleRecordRepository.All().FirstOrDefaultAsync(x => x.Player.Name == name);
+        }
+
         public async Task<IEnumerable<T>> GetPlayerAbilitiesByType<T>(string playerId, string type)
         {
             return await this.playerAbilityRepository.All().Where(x => x.PlayerId == playerId && x.Ability.AbilityType.Type == type).OrderByDescending(x => x.Points).To<T>().ToListAsync();
@@ -221,6 +231,8 @@
             var playerFood = await this.playerFoodRepository.All().FirstOrDefaultAsync(x => x.PlayerId == player.Id && x.FoodId == foodId);
 
             var petFavouriteFood = await this.randomHangfireFoodRepository.All().Where(x => x.PetId == playerPet.PetId).ToListAsync();
+
+            playerFood.Food = food;
 
             // If you feed your pet with his favourite food you will give him +10 mood
             if (petFavouriteFood.Any(x => x.FoodId == food.Id))

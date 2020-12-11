@@ -7,11 +7,11 @@
 
     public class PlayerPet : IDeletableEntity
     {
-        public string PlayerId { get; set; }
+        public virtual string PlayerId { get; set; }
 
         public Player Player { get; set; }
 
-        public int PetId { get; set; }
+        public virtual int PetId { get; set; }
 
         public Pet Pet { get; set; }
 
