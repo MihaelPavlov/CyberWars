@@ -155,7 +155,7 @@
 
                 player.MaxEnergy += addEnergy;
             }
-            else if (skillName == "Knowledge")
+            else if (skillName == "Cunning")
             {
                 var addStealPetBattleMoney = 5;
                 playerBattleRecord.StealPerBattle += addStealPetBattleMoney;
@@ -320,7 +320,9 @@
                     SkillId = skill.SkillId,
                     Money = skill.Money,
                     Points = skill.Points,
+                    SkillName =  this.skillRepository.All().FirstOrDefault(x => x.Id == skill.SkillId).Name,
                 });
+                ;
             }
 
             // PlayerBattleRecord
