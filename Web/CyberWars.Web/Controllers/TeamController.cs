@@ -85,7 +85,19 @@
 
             var imagePath = this.webHostEnvironment.WebRootFileProvider.GetFileInfo($"/TeamImages/{userId}.png").Name;
 
-            await this.teamService.CreateTeam(userId, input, imagePath);
+            var isCreated = await this.teamService.CreateTeam(userId, input, imagePath);
+
+            if (!isCreated)
+            {
+                this.ModelState.AddModelError("Name", "You dont have enough money!!");
+
+                var falseimagePath = this.webHostEnvironment.WebRootFileProvider.GetFileInfo($"/TeamImages/{userId}.png").PhysicalPath;
+
+                await this.teamService.RemoveImage( falseimagePath);
+
+                return this.View();
+            }
+
             var newTeamId = await this.teamService.GetTeamIdByUserId(userId);
 
             return this.Redirect($"/Team/TeamPage?teamId={newTeamId}");

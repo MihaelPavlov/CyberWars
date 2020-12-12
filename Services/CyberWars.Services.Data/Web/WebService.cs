@@ -7,6 +7,7 @@
     using System.Threading.Tasks;
 
     using CyberWars.Data.Common.Repositories;
+    using CyberWars.Data.Models;
     using CyberWars.Data.Models.Ability;
     using CyberWars.Data.Models.Job;
     using CyberWars.Data.Models.Player;
@@ -86,6 +87,11 @@
             await this.playerAbilityJobReposiotry.SaveChangesAsync();
             await this.playerJobReposiotry.SaveChangesAsync();
             await this.playerReposiotry.SaveChangesAsync();
+        }
+
+        public async Task<IEnumerable<PlayerJob>> GetPlayerCompleteJobs(string userId)
+        {
+            return await this.playerJobReposiotry.All().Where(x => x.Player.UserId == userId).ToListAsync();
         }
     }
 }

@@ -82,10 +82,15 @@
             return await this.teamRepository.All().AnyAsync(x => x.Name == name);
         }
 
-        public async Task CreateTeam(string userId, RegisterTeamInputModel input, string imageName)
+        public async Task<bool> CreateTeam(string userId, RegisterTeamInputModel input, string imageName)
         {
             var user = await this.userRepository.All().FirstOrDefaultAsync(x => x.Id == userId);
+            var player = await this.playerRepository.All().FirstOrDefaultAsync(x => x.UserId == userId);
 
+            if (player.Money < 9999)
+            {
+                return false;
+            }
 
             var newTeam = new Team
             {
@@ -104,6 +109,11 @@
             user.TeamId = team.Id;
             this.userRepository.Update(user);
             await this.userRepository.SaveChangesAsync();
+
+            player.Money -= 9999;
+            this.playerRepository.Update(player);
+            await this.playerRepository.SaveChangesAsync();
+            return true;
         }
 
         public async Task<IEnumerable<T>> Get10RandomTeam<T>()
@@ -222,6 +232,11 @@
 
             await this.teamPlayerRepository.SaveChangesAsync();
 
+        }
+
+        public async Task RemoveImage(string imagePath)
+        {
+            File.Delete(imagePath);
         }
 
         public async Task<IEnumerable<T>> GetTeamRankingList<T>(int page, int itemsPetPage = 6)

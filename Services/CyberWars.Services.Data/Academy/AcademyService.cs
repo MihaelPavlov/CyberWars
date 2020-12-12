@@ -62,13 +62,23 @@
 
             var completeLecture = this.CreateCompleteLecture(lecture, player);
 
-            await this.GetRewardFromCompleteLecture(player.Id, lecture);
 
             await this.completeLectureRepository.AddAsync(completeLecture);
 
             await this.completeLectureRepository.SaveChangesAsync();
+            await this.GetRewardFromCompleteLecture(player.Id, lecture);
 
             await this.CheckIsCourseComplete(player, lecture);
+        }
+
+        public async Task<CompleteLecture> GetCompleteLectureById(string playerId, int lectureId)
+        {
+            return await this.completeLectureRepository.All().FirstOrDefaultAsync(x => x.PlayerId == playerId && x.LectureId == lectureId);
+        }
+
+        public async Task<Lecture> GetLectureById(int lectureId)
+        {
+            return await this.lectureRepository.All().FirstOrDefaultAsync(x => x.Id == lectureId);
         }
 
         public async Task GetRewardFromCompleteLecture(string playerId, Lecture lecture)
@@ -108,14 +118,25 @@
             await this.playerRepository.SaveChangesAsync();
         }
 
+
+        public async Task<IEnumerable<PlayerAbility>> CheckPlayerAbilities(string playerId)
+        {
+            return await this.playerAbilityRepository.All().Where(x => x.PlayerId == playerId).ToListAsync();
+        }
+
+        public async Task<Player> GetPlayerById(string playerId)
+        {
+            return await this.playerRepository.All().FirstOrDefaultAsync(x => x.Id == playerId);
+        }
+
         public CompleteLecture CreateCompleteLecture(Lecture lecture, Player player)
         {
             var newCompleteLecture = new CompleteLecture
             {
                 IsComplete = true,
-                Lecture = lecture,
+                //  Lecture = lecture,
                 LectureId = lecture.Id,
-                Player = player,
+                //  Player = player,
                 PlayerId = player.Id,
             };
 
@@ -145,9 +166,7 @@
                 var course = await this.courseRepository.All().FirstOrDefaultAsync(x => x.Name == courseName);
                 var playerCourse = new PlayerCourse()
                 {
-                    Player = player,
                     PlayerId = player.Id,
-                    Course = course,
                     CourseId = course.Id,
                     CompleteDate = DateTime.UtcNow,
                 };

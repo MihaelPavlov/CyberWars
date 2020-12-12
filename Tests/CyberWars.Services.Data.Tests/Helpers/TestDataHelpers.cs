@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
 
@@ -10,13 +11,18 @@
     using CyberWars.Data.Models.Ability;
     using CyberWars.Data.Models.Badge;
     using CyberWars.Data.Models.Battle;
+    using CyberWars.Data.Models.Course;
+    using CyberWars.Data.Models.Job;
     using CyberWars.Data.Models.Pet_Food;
     using CyberWars.Data.Models.Player;
     using CyberWars.Data.Models.Skills;
     using CyberWars.Data.Models.Teams;
     using CyberWars.Data.Repositories;
+    using CyberWars.Services.Data.Academy;
     using CyberWars.Services.Data.Home;
     using CyberWars.Services.Data.Tests.Helpers.TestViewModel;
+    using CyberWars.Services.Data.Tests.Helpers.TestViewModel.WebViewModel;
+    using CyberWars.Services.Data.Web;
     using CyberWars.Services.Mapping;
     using CyberWars.Web.ViewModels.HomeViews;
     using Microsoft.EntityFrameworkCore;
@@ -46,8 +52,6 @@
             var playerBadgeRepositoryInMemory = new EfDeletableEntityRepository<PlayerBadge>(new ApplicationDbContext(options.Options));
             var teamPlayerRepositoryInMemory = new EfDeletableEntityRepository<TeamPlayer>(new ApplicationDbContext(options.Options));
             var teamRepositoryInMemory = new EfDeletableEntityRepository<CyberWars.Data.Models.Teams.Team>(new ApplicationDbContext(options.Options));
-
-
 
             var player = new Player
             {
@@ -108,7 +112,7 @@
             });
             await skillRepositoryInMemory.AddAsync(new Skill
             {
-                Name = "Knowledge",
+                Name = "Cunning",
                 Description = "Enhances the money of perBattle + 5",
                 StartMoney = 120,
             });
@@ -555,5 +559,756 @@
 
         }
 
+
+        public static async Task<WebService> GetWebService()
+        {
+            var options = new DbContextOptionsBuilder<ApplicationDbContext>().UseInMemoryDatabase(Guid.NewGuid().ToString());
+
+            var playerRepositoryInMemory = new EfDeletableEntityRepository<Player>(new ApplicationDbContext(options.Options));
+            var playerAbilitiesRepositoryInMemory = new EfDeletableEntityRepository<PlayerAbility>(new ApplicationDbContext(options.Options));
+            var abilityTypeRepositoryInMemory = new EfDeletableEntityRepository<AbilityType>(new ApplicationDbContext(options.Options));
+            var abilitiesRepositoryInMemory = new EfDeletableEntityRepository<Ability>(new ApplicationDbContext(options.Options));
+            var userRepositoryInMemory = new EfDeletableEntityRepository<ApplicationUser>(new ApplicationDbContext(options.Options));
+            var requirementsRepositoryInMemory = new EfDeletableEntityRepository<Requirement>(new ApplicationDbContext(options.Options));
+            var jobRequirementsRepositoryInMemory = new EfDeletableEntityRepository<JobRequirement>(new ApplicationDbContext(options.Options));
+            var jobRepositoryInMemory = new EfDeletableEntityRepository<Job>(new ApplicationDbContext(options.Options));
+            var randomHangfireJobRepositoryInMemory = new EfDeletableEntityRepository<RandomHangfireJob>(new ApplicationDbContext(options.Options));
+            var playerJobRepositoryInMemory = new EfDeletableEntityRepository<PlayerJob>(new ApplicationDbContext(options.Options));
+            var jobTypeRepositoryInMemory = new EfDeletableEntityRepository<JobType>(new ApplicationDbContext(options.Options));
+
+
+            var player = new Player
+            {
+                Name = "PlayerPesho",
+                Money = 1000,
+                UserId = "Pesho",
+                Class = "Programmer",
+                MaxHealth = 1000,
+                MaxEnergy = 100,
+            };
+
+            var player1 = new Player
+            {
+                Name = "PlayerTest",
+                Money = 1000,
+                UserId = "Test",
+                Class = "Programmer",
+                MaxHealth = 1000,
+                MaxEnergy = 100,
+            };
+
+            await playerRepositoryInMemory.AddAsync(player);
+            await playerRepositoryInMemory.AddAsync(player1);
+
+            await playerRepositoryInMemory.SaveChangesAsync();
+
+
+            var user = new ApplicationUser
+            {
+                UserName = "Test",
+                Id = "Pesho",
+                PlayerId = player.Id,
+                Email = "Test@abv.bg",
+            };
+            var user1 = new ApplicationUser
+            {
+                UserName = "Test1",
+                Id = "Test",
+                PlayerId = player1.Id,
+                Email = "Test@abv.bg",
+            };
+            await userRepositoryInMemory.AddAsync(user);
+            await userRepositoryInMemory.AddAsync(user1);
+
+            await userRepositoryInMemory.SaveChangesAsync();
+
+            await abilityTypeRepositoryInMemory.AddAsync(new AbilityType
+            {
+                Id = 3,
+                Type = "Frameworks",
+            });
+
+            await abilityTypeRepositoryInMemory.AddAsync(new AbilityType
+            {
+                Id = 2,
+                Type = "Database",
+            });
+
+            await abilityTypeRepositoryInMemory.AddAsync(new AbilityType
+            {
+                Id = 1,
+                Type = "Languages",
+            });
+
+            await abilityTypeRepositoryInMemory.SaveChangesAsync();
+
+            await abilitiesRepositoryInMemory.AddAsync(new Ability
+            {
+                Name = "C#",
+                Description = "Develop by Microsoft , Structured,Object-Oriented,Functional Language and more",
+                AbilityTypeId = 1,
+            });
+
+            await abilitiesRepositoryInMemory.AddAsync(new Ability
+            {
+                Name = "JS",
+                Description = "Script Language .Write By Student",
+                AbilityTypeId = 1,
+            });
+
+            await abilitiesRepositoryInMemory.AddAsync(new Ability
+            {
+                Name = "Java",
+                Description = "Develop by Oracle Corparation ,Design by James Cosling",
+                AbilityTypeId = 1,
+            });
+
+            await abilitiesRepositoryInMemory.AddAsync(new Ability
+            {
+                Name = "Python",
+                Description = "Develop by Python Software Foundation",
+                AbilityTypeId = 1,
+            });
+
+            await abilitiesRepositoryInMemory.AddAsync(new Ability
+            {
+                Name = "HTML",
+                Description = "Hyper Text Markup Language",
+                AbilityTypeId = 1,
+            });
+
+            await abilitiesRepositoryInMemory.AddAsync(new Ability
+            {
+                Name = "CSS",
+                Description = "Cascade Style Sheets",
+                AbilityTypeId = 1,
+            });
+
+            await abilitiesRepositoryInMemory.AddAsync(new Ability
+            {
+                Name = "MySQL",
+                Description = "Developed by Oracle, MySQL Database Software is a client/server system",
+                AbilityTypeId = 2,
+            });
+
+            await abilitiesRepositoryInMemory.AddAsync(new Ability
+            {
+                Name = "PostgreSQL",
+                Description = "PostgreSQL is a powerful, open-source object-relational database system",
+                AbilityTypeId = 2,
+            });
+
+            await abilitiesRepositoryInMemory.AddAsync(new Ability
+            {
+                Name = "MSSQL",
+                Description = "SQL Server is a relational database management system developed by Microsoft",
+                AbilityTypeId = 2,
+            });
+
+            await abilitiesRepositoryInMemory.AddAsync(new Ability
+            {
+                Name = "SQLite",
+                Description = "SQLite is an in-process library that implements a self-contained, serverless, zero-configuration, transactional SQL database engine",
+                AbilityTypeId = 2,
+            });
+
+            await abilitiesRepositoryInMemory.AddAsync(new Ability
+            {
+                Name = "MongoDB",
+                Description = "MongoDB is a general-purpose, document-based, distributed database built for modern application developers and for the cloud era",
+                AbilityTypeId = 2,
+            });
+
+            await abilitiesRepositoryInMemory.AddAsync(new Ability
+            {
+                Name = "Oracle",
+                Description = "Oracle Database is a multi-model database management system to run all of the workloads more securely",
+                AbilityTypeId = 2,
+            });
+
+            await abilitiesRepositoryInMemory.AddAsync(new Ability
+            {
+                Name = "ASP.NETCore",
+                Description = "ASP.NET Core is designed to allow runtime components, APIs, compilers and languages while providing a stable and supported platform to keep apps running",
+                AbilityTypeId = 3,
+            });
+
+            await abilitiesRepositoryInMemory.AddAsync(new Ability
+            {
+                Name = "SpringFramework",
+                Description = "The Spring Framework provides a comprehensive programming and configuration model for modern Java-based enterprise applications",
+                AbilityTypeId = 3,
+            });
+            await abilitiesRepositoryInMemory.AddAsync(new Ability
+            {
+                Name = "Django",
+                Description = "Django is a high-level Python Web framework that encourages rapid development and clean, pragmatic design.",
+                AbilityTypeId = 3,
+            });
+            await abilitiesRepositoryInMemory.AddAsync(new Ability
+            {
+                Name = "Vue.JS",
+                Description = "Vue.js is a popular JavaScript framework which achieved the 7th position at the Stack Overflow Developer Survey 2020 as the most used web framework",
+                AbilityTypeId = 3,
+            });
+
+            await abilitiesRepositoryInMemory.AddAsync(new Ability
+            {
+                Name = "React.JS",
+                Description = "React is a popular JavaScript library for building user interfaces",
+                AbilityTypeId = 3,
+            });
+
+            await abilitiesRepositoryInMemory.AddAsync(new Ability
+            {
+                Name = "Angular",
+                Description = "Angular is a TypeScript-based open-source web application framework which can be used for building mobile and desktop web applications using TypeScript or JavaScript and other programming languages",
+                AbilityTypeId = 3,
+            });
+
+            await abilitiesRepositoryInMemory.AddAsync(new Ability
+            {
+                Name = "RubyOnRails",
+                Description = "Ruby on Rails is a web-application framework written in Ruby language. The framework includes everything needed to create database-backed web applications according to the Model-View-Controller (MVC) pattern",
+                AbilityTypeId = 3,
+            });
+
+            await abilitiesRepositoryInMemory.SaveChangesAsync();
+
+            foreach (var ability in abilitiesRepositoryInMemory.All())
+            {
+                await playerAbilitiesRepositoryInMemory.AddAsync(new PlayerAbility
+                {
+                    PlayerId = player.Id,
+                    AbilityId = ability.Id,
+                    Points = 0,
+                });
+            }
+
+            await playerAbilitiesRepositoryInMemory.SaveChangesAsync();
+
+            await jobTypeRepositoryInMemory.AddAsync(new JobType
+            {
+                Name = "Website",
+            });
+            await jobTypeRepositoryInMemory.AddAsync(new JobType
+            {
+                Name = "Software",
+            });
+            await jobTypeRepositoryInMemory.AddAsync(new JobType
+            {
+                Name = "Console",
+            });
+
+            await jobTypeRepositoryInMemory.SaveChangesAsync();
+
+            var software = jobTypeRepositoryInMemory.All().FirstOrDefault(x => x.Name == "Software").Id;
+            var website = jobTypeRepositoryInMemory.All().FirstOrDefault(x => x.Name == "Website").Id;
+            var console = jobTypeRepositoryInMemory.All().FirstOrDefault(x => x.Name == "Console").Id;
+
+            await jobRepositoryInMemory.AddAsync(new Job
+            {
+                Id = 1,
+                Name = "Hello World",
+                JobTypeId = software,
+                LevelRequirement = 1,
+                RewardMoney = 50,
+                RewardExp = 5,
+                RewardAbilityNames = "Python",
+            });
+            await jobRepositoryInMemory.AddAsync(new Job
+            {
+                Id = 2,
+                Name = "Chess Game",
+                JobTypeId = software,
+                LevelRequirement = 1,
+                RewardMoney = 100,
+                RewardExp = 10,
+                RewardAbilityNames = "Python",
+            });
+            await jobRepositoryInMemory.AddAsync(new Job
+            {
+                Id = 3,
+                Name = "Timer",
+                JobTypeId = software,
+                LevelRequirement = 1,
+                RewardMoney = 100,
+                RewardExp = 10,
+                RewardAbilityNames = "Python",
+            });
+            await jobRepositoryInMemory.AddAsync(new Job
+            {
+                Id = 4,
+                Name = "Snake Game",
+                JobTypeId = software,
+                LevelRequirement = 1,
+                RewardMoney = 100,
+                RewardExp = 10,
+                RewardAbilityNames = "Python",
+            });
+            await jobRepositoryInMemory.AddAsync(new Job
+            {
+                Id = 5,
+                Name = "Tik-Toe Game",
+                JobTypeId = software,
+                LevelRequirement = 1,
+                RewardMoney = 100,
+                RewardExp = 10,
+                RewardAbilityNames = "Python",
+            });
+            await jobRepositoryInMemory.AddAsync(new Job
+            {
+                Id = 6,
+                Name = "Yu-Gi-Oh Simple Card Game",
+                JobTypeId = software,
+                LevelRequirement = 1,
+                RewardMoney = 100,
+                RewardExp = 10,
+                RewardAbilityNames = "Python",
+            });
+
+            // Website Level 5 C#
+            await jobRepositoryInMemory.AddAsync(new Job
+            {
+                Id = 7,
+                Name = "Fitness",
+                JobTypeId = website,
+                LevelRequirement = 5,
+                RewardMoney = 500,
+                RewardExp = 20,
+                RewardAbilityNames = "Python Python",
+            });
+            await jobRepositoryInMemory.AddAsync(new Job
+            {
+                Id = 8,
+                Name = "Food Delivery",
+                JobTypeId = website,
+                LevelRequirement = 5,
+                RewardMoney = 600,
+                RewardExp = 20,
+                RewardAbilityNames = "Python Python",
+            });
+            await jobRepositoryInMemory.AddAsync(new Job
+            {
+                Id = 9,
+                Name = "Date Chat",
+                JobTypeId = website,
+                LevelRequirement = 5,
+                RewardMoney = 550,
+                RewardExp = 20,
+                RewardAbilityNames = "Python Python",
+            });
+            await jobRepositoryInMemory.AddAsync(new Job
+            {
+                Id = 10,
+                Name = "Academy",
+                JobTypeId = website,
+                LevelRequirement = 5,
+                RewardMoney = 780,
+                RewardExp = 20,
+                RewardAbilityNames = "Python Python",
+            });
+            await jobRepositoryInMemory.AddAsync(new Job
+            {
+                Id = 11,
+                Name = "Shoes Shop",
+                JobTypeId = website,
+                LevelRequirement = 5,
+                RewardMoney = 690,
+                RewardExp = 20,
+                RewardAbilityNames = "Python Python",
+            });
+            await jobRepositoryInMemory.AddAsync(new Job
+            {
+                Id = 12,
+                Name = "Computer Shop",
+                JobTypeId = website,
+                LevelRequirement = 5,
+                RewardMoney = 850,
+                RewardExp = 20,
+                RewardAbilityNames = "Python Python",
+            });
+
+            // Software Level 8 C#
+            await jobRepositoryInMemory.AddAsync(new Job
+            {
+                Id = 13,
+                Name = "System Software",
+                JobTypeId = software,
+                LevelRequirement = 8,
+                RewardMoney = 1000,
+                RewardExp = 40,
+                RewardAbilityNames = "Python Python Python",
+            });
+            await jobRepositoryInMemory.AddAsync(new Job
+            {
+                Id = 14,
+                Name = "Programming Software",
+                JobTypeId = software,
+                LevelRequirement = 8,
+                RewardMoney = 1300,
+                RewardExp = 40,
+                RewardAbilityNames = "Python Python Python",
+            });
+            await jobRepositoryInMemory.AddAsync(new Job
+            {
+                Id = 15,
+                Name = "Application Software",
+                JobTypeId = software,
+                LevelRequirement = 8,
+                RewardMoney = 1200,
+                RewardExp = 40,
+                RewardAbilityNames = "Python Python Python",
+            });
+            await jobRepositoryInMemory.AddAsync(new Job
+            {
+                Id = 16,
+                Name = "Driver Software",
+                JobTypeId = software,
+                LevelRequirement = 8,
+                RewardMoney = 1700,
+                RewardExp = 40,
+                RewardAbilityNames = "Python Python Python",
+            });
+
+            await jobRepositoryInMemory.SaveChangesAsync();
+
+            foreach (var job in jobRepositoryInMemory.All())
+            {
+                await randomHangfireJobRepositoryInMemory.AddAsync(new RandomHangfireJob
+                {
+                    JobId = job.Id,
+                    PlayerId = player.Id,
+                });
+            }
+            await randomHangfireJobRepositoryInMemory.SaveChangesAsync();
+
+            await playerJobRepositoryInMemory.AddAsync(new PlayerJob
+            {
+                PlayerId = player.Id,
+                JobId = 1,
+            });
+
+            await playerJobRepositoryInMemory.SaveChangesAsync();
+
+
+
+            AutoMapperConfig.RegisterMappings(typeof(TestJobViewModel).Assembly);
+            AutoMapperConfig.RegisterMappings(typeof(TestJobRequirementViewModel).Assembly);
+
+            var webservice = new WebService(
+                jobRepositoryInMemory,
+                randomHangfireJobRepositoryInMemory,
+                playerRepositoryInMemory,
+                playerJobRepositoryInMemory,
+                playerAbilitiesRepositoryInMemory);
+
+            return webservice;
+        }
+
+
+        public static async Task<AcademyService> GetAcademyService()
+        {
+            var options = new DbContextOptionsBuilder<ApplicationDbContext>().UseInMemoryDatabase(Guid.NewGuid().ToString());
+
+            var playerRepositoryInMemory = new EfDeletableEntityRepository<Player>(new ApplicationDbContext(options.Options));
+            var playerAbilitiesRepositoryInMemory = new EfDeletableEntityRepository<PlayerAbility>(new ApplicationDbContext(options.Options));
+            var abilityTypeRepositoryInMemory = new EfDeletableEntityRepository<AbilityType>(new ApplicationDbContext(options.Options));
+            var abilitiesRepositoryInMemory = new EfDeletableEntityRepository<Ability>(new ApplicationDbContext(options.Options));
+            var userRepositoryInMemory = new EfDeletableEntityRepository<ApplicationUser>(new ApplicationDbContext(options.Options));
+            var courseTypeRepositoryInMemory = new EfDeletableEntityRepository<CourseType>(new ApplicationDbContext(options.Options));
+            var courseRepositoryInMemory = new EfDeletableEntityRepository<Course>(new ApplicationDbContext(options.Options));
+            var playerCourseRepositoryInMemory = new EfDeletableEntityRepository<PlayerCourse>(new ApplicationDbContext(options.Options));
+            var lectureRepositoryInMemory = new EfDeletableEntityRepository<Lecture>(new ApplicationDbContext(options.Options));
+            var completeLectureRepositoryInMemory = new EfDeletableEntityRepository<CompleteLecture>(new ApplicationDbContext(options.Options));
+
+            var player = new Player
+            {
+                Id = "TestId",
+                Name = "PlayerPesho",
+                Money = 1000,
+                UserId = "Pesho",
+                Class = "Programmer",
+                MaxHealth = 1000,
+                MaxEnergy = 100,
+            };
+
+            var player1 = new Player
+            {
+                Name = "PlayerTest",
+                Money = 1000,
+                UserId = "Test",
+                Class = "Programmer",
+                MaxHealth = 1000,
+                MaxEnergy = 100,
+            };
+
+            await playerRepositoryInMemory.AddAsync(player);
+            await playerRepositoryInMemory.AddAsync(player1);
+
+            await playerRepositoryInMemory.SaveChangesAsync();
+
+
+            var user = new ApplicationUser
+            {
+                UserName = "Test",
+                Id = "Pesho",
+                PlayerId = player.Id,
+                Email = "Test@abv.bg",
+            };
+            var user1 = new ApplicationUser
+            {
+                UserName = "Test1",
+                Id = "Test",
+                PlayerId = player1.Id,
+                Email = "Test@abv.bg",
+            };
+            await userRepositoryInMemory.AddAsync(user);
+            await userRepositoryInMemory.AddAsync(user1);
+
+            await userRepositoryInMemory.SaveChangesAsync();
+
+            await abilityTypeRepositoryInMemory.AddAsync(new AbilityType
+            {
+                Id = 3,
+                Type = "Frameworks",
+            });
+
+            await abilityTypeRepositoryInMemory.AddAsync(new AbilityType
+            {
+                Id = 2,
+                Type = "Database",
+            });
+
+            await abilityTypeRepositoryInMemory.AddAsync(new AbilityType
+            {
+                Id = 1,
+                Type = "Languages",
+            });
+
+            await abilityTypeRepositoryInMemory.SaveChangesAsync();
+
+            await abilitiesRepositoryInMemory.AddAsync(new Ability
+            {
+                Name = "C#",
+                Description = "Develop by Microsoft , Structured,Object-Oriented,Functional Language and more",
+                AbilityTypeId = 1,
+            });
+
+            await abilitiesRepositoryInMemory.AddAsync(new Ability
+            {
+                Name = "JS",
+                Description = "Script Language .Write By Student",
+                AbilityTypeId = 1,
+            });
+
+            await abilitiesRepositoryInMemory.AddAsync(new Ability
+            {
+                Name = "Java",
+                Description = "Develop by Oracle Corparation ,Design by James Cosling",
+                AbilityTypeId = 1,
+            });
+
+            await abilitiesRepositoryInMemory.AddAsync(new Ability
+            {
+                Name = "Python",
+                Description = "Develop by Python Software Foundation",
+                AbilityTypeId = 1,
+            });
+
+            await abilitiesRepositoryInMemory.AddAsync(new Ability
+            {
+                Name = "HTML",
+                Description = "Hyper Text Markup Language",
+                AbilityTypeId = 1,
+            });
+
+            await abilitiesRepositoryInMemory.AddAsync(new Ability
+            {
+                Name = "CSS",
+                Description = "Cascade Style Sheets",
+                AbilityTypeId = 1,
+            });
+
+            await abilitiesRepositoryInMemory.AddAsync(new Ability
+            {
+                Name = "MySQL",
+                Description = "Developed by Oracle, MySQL Database Software is a client/server system",
+                AbilityTypeId = 2,
+            });
+
+            await abilitiesRepositoryInMemory.AddAsync(new Ability
+            {
+                Name = "PostgreSQL",
+                Description = "PostgreSQL is a powerful, open-source object-relational database system",
+                AbilityTypeId = 2,
+            });
+
+            await abilitiesRepositoryInMemory.AddAsync(new Ability
+            {
+                Name = "MSSQL",
+                Description = "SQL Server is a relational database management system developed by Microsoft",
+                AbilityTypeId = 2,
+            });
+
+            await abilitiesRepositoryInMemory.AddAsync(new Ability
+            {
+                Name = "SQLite",
+                Description = "SQLite is an in-process library that implements a self-contained, serverless, zero-configuration, transactional SQL database engine",
+                AbilityTypeId = 2,
+            });
+
+            await abilitiesRepositoryInMemory.AddAsync(new Ability
+            {
+                Name = "MongoDB",
+                Description = "MongoDB is a general-purpose, document-based, distributed database built for modern application developers and for the cloud era",
+                AbilityTypeId = 2,
+            });
+
+            await abilitiesRepositoryInMemory.AddAsync(new Ability
+            {
+                Name = "Oracle",
+                Description = "Oracle Database is a multi-model database management system to run all of the workloads more securely",
+                AbilityTypeId = 2,
+            });
+
+            await abilitiesRepositoryInMemory.AddAsync(new Ability
+            {
+                Name = "ASP.NETCore",
+                Description = "ASP.NET Core is designed to allow runtime components, APIs, compilers and languages while providing a stable and supported platform to keep apps running",
+                AbilityTypeId = 3,
+            });
+
+            await abilitiesRepositoryInMemory.AddAsync(new Ability
+            {
+                Name = "SpringFramework",
+                Description = "The Spring Framework provides a comprehensive programming and configuration model for modern Java-based enterprise applications",
+                AbilityTypeId = 3,
+            });
+            await abilitiesRepositoryInMemory.AddAsync(new Ability
+            {
+                Name = "Django",
+                Description = "Django is a high-level Python Web framework that encourages rapid development and clean, pragmatic design.",
+                AbilityTypeId = 3,
+            });
+            await abilitiesRepositoryInMemory.AddAsync(new Ability
+            {
+                Name = "Vue.JS",
+                Description = "Vue.js is a popular JavaScript framework which achieved the 7th position at the Stack Overflow Developer Survey 2020 as the most used web framework",
+                AbilityTypeId = 3,
+            });
+
+            await abilitiesRepositoryInMemory.AddAsync(new Ability
+            {
+                Name = "React.JS",
+                Description = "React is a popular JavaScript library for building user interfaces",
+                AbilityTypeId = 3,
+            });
+
+            await abilitiesRepositoryInMemory.AddAsync(new Ability
+            {
+                Name = "Angular",
+                Description = "Angular is a TypeScript-based open-source web application framework which can be used for building mobile and desktop web applications using TypeScript or JavaScript and other programming languages",
+                AbilityTypeId = 3,
+            });
+
+            await abilitiesRepositoryInMemory.AddAsync(new Ability
+            {
+                Name = "RubyOnRails",
+                Description = "Ruby on Rails is a web-application framework written in Ruby language. The framework includes everything needed to create database-backed web applications according to the Model-View-Controller (MVC) pattern",
+                AbilityTypeId = 3,
+            });
+
+            await abilitiesRepositoryInMemory.SaveChangesAsync();
+
+            foreach (var ability in abilitiesRepositoryInMemory.All())
+            {
+                await playerAbilitiesRepositoryInMemory.AddAsync(new PlayerAbility
+                {
+                    PlayerId = player.Id,
+                    AbilityId = ability.Id,
+                    Points = 0,
+                });
+            }
+
+            await playerAbilitiesRepositoryInMemory.SaveChangesAsync();
+
+            await courseTypeRepositoryInMemory.AddAsync(new CourseType
+            {
+                Id = 5,
+                Name = "Basic",
+            });
+
+            await courseTypeRepositoryInMemory.AddAsync(new CourseType
+            {
+                Id = 4,
+                Name = "C#",
+            });
+
+            await courseTypeRepositoryInMemory.AddAsync(new CourseType
+            {
+                Id = 3,
+                Name = "JS",
+            });
+
+            await courseTypeRepositoryInMemory.AddAsync(new CourseType
+            {
+                Id = 2,
+                Name = "Java",
+            });
+
+            await courseTypeRepositoryInMemory.AddAsync(new CourseType
+            {
+                Id = 1,
+                Name = "Python",
+            });
+
+            await courseTypeRepositoryInMemory.SaveChangesAsync();
+
+            var pythonId = courseTypeRepositoryInMemory.All().FirstOrDefault(x => x.Name == "Python").Id;
+
+            await courseRepositoryInMemory.AddAsync(new Course
+            {
+                Id = 2,
+                Name = "Python OOP",
+                CourseTypeId = pythonId,
+                LevelToUnlock = 10,
+            });
+
+            await courseRepositoryInMemory.AddAsync(new Course
+            {
+                Id = 1,
+                Name = "Python Advanced",
+                CourseTypeId = pythonId,
+                LevelToUnlock = 9,
+            });
+            await courseRepositoryInMemory.SaveChangesAsync();
+
+            // Python OOP Lectures
+            var pythonOOPId = courseRepositoryInMemory.All().FirstOrDefault(x => x.Name == "Python OOP").Id;
+
+            await lectureRepositoryInMemory.AddAsync(new Lecture
+            {
+                Id = 1,
+                Number = 1,
+                Name = "Defining Classes",
+                ExperienceToComplete = 80,
+                RewardAbilityName = "Python",
+                RewardMoney = 2000,
+                CourseId = pythonOOPId,
+            });
+
+            await lectureRepositoryInMemory.SaveChangesAsync();
+
+            var academyService = new AcademyService(
+                courseRepositoryInMemory,
+                lectureRepositoryInMemory,
+                playerAbilitiesRepositoryInMemory,
+                playerRepositoryInMemory,
+                completeLectureRepositoryInMemory,
+                playerCourseRepositoryInMemory);
+
+            return academyService;
+        }
     }
 }

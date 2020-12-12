@@ -56,11 +56,12 @@
 
                 viewModel = await this.darkWebService.FindEnemyByName(userId, input.SearchName);
 
-                // Need to be Error
-                if (viewModel == null)
-                {
-                    return this.Redirect("/DarkWeb/Attack");
-                }
+            }
+
+            // Need to be Error
+            if (viewModel == null)
+            {
+                return this.Redirect("/DarkWeb/Attack");
             }
 
             return this.View(viewModel);
@@ -71,7 +72,7 @@
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
 
             var viewModel = await this.darkWebService.ResultFromBattle(userId, defencePlayerId);
-            if (viewModel== null)
+            if (viewModel == null)
             {
                 return this.Redirect("/DarkWeb/Attack");
             }

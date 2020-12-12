@@ -10,7 +10,7 @@
 
     public interface ITeamService
     {
-        public Task CreateTeam(string userId, RegisterTeamInputModel input, string imageName);
+        public Task<bool> CreateTeam(string userId, RegisterTeamInputModel input, string imageName);
 
         public Task<bool> IsTeamUsernameAlreadyUse(string name);
 
@@ -33,6 +33,8 @@
         public Task LeaveGroup(string userId, int teamId);
 
         public Task Abandon(int teamId, string imagePath);
+
+        public Task RemoveImage(string imagePath);
 
         public Task<IEnumerable<T>> GetTeamRankingList<T>(int page, int itemsPetPage = 6);
 

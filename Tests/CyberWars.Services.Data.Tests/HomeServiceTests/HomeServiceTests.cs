@@ -59,7 +59,7 @@
         {
             var homeService = await TestDataHelpers.GetHomeService();
 
-            await homeService.TrainSkillByName("Pesho", "Knowledge");
+            await homeService.TrainSkillByName("Pesho", "Cunning");
 
             var resultBattleRecord = await homeService.GetPlayerBattleRecordByPlayerName("PlayerPesho");
             Assert.Equal(55, resultBattleRecord.StealPerBattle);

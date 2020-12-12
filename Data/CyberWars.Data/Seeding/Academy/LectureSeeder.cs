@@ -2179,7 +2179,7 @@
             {
                 Number = 7,
                 Name = "Exam",
-                ExperienceToComplete = 70,
+                ExperienceToComplete = 0,
                 RewardAbilityName = "C# Exam",
                 RewardMoney = 1000,
                 CourseId = programmingBasicId,
@@ -2188,7 +2188,7 @@
             {
                 Number = 6,
                 Name = "Nested-Loop",
-                ExperienceToComplete = 60,
+                ExperienceToComplete = 0,
                 RewardAbilityName = "C#",
                 RewardMoney = 200,
                 CourseId = programmingBasicId,
@@ -2197,7 +2197,7 @@
             {
                 Number = 5,
                 Name = "While-Loop",
-                ExperienceToComplete = 50,
+                ExperienceToComplete = 0,
                 RewardAbilityName = "C#",
                 RewardMoney = 200,
                 CourseId = programmingBasicId,
@@ -2206,7 +2206,7 @@
             {
                 Number = 4,
                 Name = "For-Loop",
-                ExperienceToComplete = 40,
+                ExperienceToComplete = 0,
                 RewardAbilityName = "C#",
                 RewardMoney = 200,
                 CourseId = programmingBasicId,
@@ -2215,7 +2215,7 @@
             {
                 Number = 3,
                 Name = "Nested Conditional Statement",
-                ExperienceToComplete = 30,
+                ExperienceToComplete = 0,
                 RewardAbilityName = "C#",
                 RewardMoney = 200,
                 CourseId = programmingBasicId,
@@ -2224,7 +2224,7 @@
             {
                 Number = 2,
                 Name = "Conditional Statement",
-                ExperienceToComplete = 20,
+                ExperienceToComplete = 0,
                 RewardAbilityName = "C#",
                 RewardMoney = 200,
                 CourseId = programmingBasicId,
@@ -2234,7 +2234,7 @@
             {
                 Number = 1,
                 Name = "Variables and Data Types Basics",
-                ExperienceToComplete = 10,
+                ExperienceToComplete = 0,
                 RewardAbilityName = "C#",
                 RewardMoney = 200,
                 CourseId = programmingBasicId,

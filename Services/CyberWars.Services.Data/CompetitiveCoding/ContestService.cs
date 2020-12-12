@@ -43,7 +43,10 @@
             var playerContest = await this.playerContestsRepository.All().FirstOrDefaultAsync(x => x.Player.UserId == userId && x.ContestId == contestId);
             var player = await this.playerRepository.All().FirstOrDefaultAsync(x => x.UserId == userId);
 
-            if ((player.Energy -= contest.ConsumeEnergy) < 0)
+            var playerEnergy = player.Energy;
+            var contestEnergy = contest.ConsumeEnergy;
+
+            if ((playerEnergy -= contestEnergy) < 0)
             {
                 return null;
             }

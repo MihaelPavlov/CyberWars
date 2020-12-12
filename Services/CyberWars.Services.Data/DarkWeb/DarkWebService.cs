@@ -47,6 +47,11 @@
             var dataViewAttackPlayer = await this.GetAttackPlayerDataView(userId);
             var dataViewPlayers = await this.GetAllPlayersWithoutTheAttackPlayer(userId);
 
+            if (dataViewPlayers.Count() == 0)
+            {
+                return null;
+            }
+
             Dictionary<string, int> playersWithStats = new Dictionary<string, int>();
 
             foreach (var player in dataViewPlayers)
@@ -73,6 +78,11 @@
             var dataViewAttackPlayer = await this.GetAttackPlayerDataView(userId);
             var dataViewPlayers = await this.GetAllPlayersWithoutTheAttackPlayer(userId);
 
+            if (dataViewPlayers.Count() == 0)
+            {
+                return null;
+            }
+
             Dictionary<string, int> playersWithStats = new Dictionary<string, int>();
 
             foreach (var player in dataViewPlayers)
@@ -95,6 +105,10 @@
 
         public async Task<PlayerDataView> FindEnemyByName(string userId, string searchName)
         {
+            if (!await this.playerRepository.All().AnyAsync(x => x.Name == searchName))
+            {
+                return null;
+            }
             var defencePlayer = await this.GetDefencePlayerWithSkillsDataView_ByName(searchName);
 
             return defencePlayer;
@@ -108,7 +122,9 @@
 
             var attackPlayerData = await this.playerRepository.All().FirstOrDefaultAsync(x => x.UserId == userId);
 
-            if (attackPlayer.Energy - 3 < 0)
+            var attackPlayerEnergy = attackPlayer.Energy;
+
+            if (attackPlayerEnergy - 3 < 0)
             {
                 return null;
             }
