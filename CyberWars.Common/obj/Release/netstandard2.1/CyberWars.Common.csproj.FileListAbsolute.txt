@@ -1,0 +1,9 @@
+C:\Users\Owner\Documents\CyberWars\CyberWars.Common\bin\Release\netstandard2.1\CyberWars.Common.deps.json
+C:\Users\Owner\Documents\CyberWars\CyberWars.Common\bin\Release\netstandard2.1\CyberWars.Common.dll
+C:\Users\Owner\Documents\CyberWars\CyberWars.Common\bin\Release\netstandard2.1\CyberWars.Common.pdb
+C:\Users\Owner\Documents\CyberWars\CyberWars.Common\obj\Release\netstandard2.1\CyberWars.Common.csprojAssemblyReference.cache
+C:\Users\Owner\Documents\CyberWars\CyberWars.Common\obj\Release\netstandard2.1\CyberWars.Common.AssemblyInfoInputs.cache
+C:\Users\Owner\Documents\CyberWars\CyberWars.Common\obj\Release\netstandard2.1\CyberWars.Common.AssemblyInfo.cs
+C:\Users\Owner\Documents\CyberWars\CyberWars.Common\obj\Release\netstandard2.1\CyberWars.Common.csproj.CoreCompileInputs.cache
+C:\Users\Owner\Documents\CyberWars\CyberWars.Common\obj\Release\netstandard2.1\CyberWars.Common.dll
+C:\Users\Owner\Documents\CyberWars\CyberWars.Common\obj\Release\netstandard2.1\CyberWars.Common.pdb

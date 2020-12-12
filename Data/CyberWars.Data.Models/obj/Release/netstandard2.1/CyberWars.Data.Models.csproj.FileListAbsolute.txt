@@ -1,0 +1,12 @@
+C:\Users\Owner\Documents\CyberWars\Data\CyberWars.Data.Models\bin\Release\netstandard2.1\CyberWars.Data.Models.deps.json
+C:\Users\Owner\Documents\CyberWars\Data\CyberWars.Data.Models\bin\Release\netstandard2.1\CyberWars.Data.Models.dll
+C:\Users\Owner\Documents\CyberWars\Data\CyberWars.Data.Models\bin\Release\netstandard2.1\CyberWars.Data.Models.pdb
+C:\Users\Owner\Documents\CyberWars\Data\CyberWars.Data.Models\bin\Release\netstandard2.1\CyberWars.Data.Common.dll
+C:\Users\Owner\Documents\CyberWars\Data\CyberWars.Data.Models\bin\Release\netstandard2.1\CyberWars.Data.Common.pdb
+C:\Users\Owner\Documents\CyberWars\Data\CyberWars.Data.Models\obj\Release\netstandard2.1\CyberWars.Data.Models.csprojAssemblyReference.cache
+C:\Users\Owner\Documents\CyberWars\Data\CyberWars.Data.Models\obj\Release\netstandard2.1\CyberWars.Data.Models.AssemblyInfoInputs.cache
+C:\Users\Owner\Documents\CyberWars\Data\CyberWars.Data.Models\obj\Release\netstandard2.1\CyberWars.Data.Models.AssemblyInfo.cs
+C:\Users\Owner\Documents\CyberWars\Data\CyberWars.Data.Models\obj\Release\netstandard2.1\CyberWars.Data.Models.csproj.CoreCompileInputs.cache
+C:\Users\Owner\Documents\CyberWars\Data\CyberWars.Data.Models\obj\Release\netstandard2.1\CyberWars.Data.Models.csproj.CopyComplete
+C:\Users\Owner\Documents\CyberWars\Data\CyberWars.Data.Models\obj\Release\netstandard2.1\CyberWars.Data.Models.dll
+C:\Users\Owner\Documents\CyberWars\Data\CyberWars.Data.Models\obj\Release\netstandard2.1\CyberWars.Data.Models.pdb

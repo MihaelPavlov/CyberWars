@@ -1,0 +1,93 @@
+.courseHader {
+  text-align: center;
+}
+#btn-disable {
+  cursor: not-allowed;
+  pointer-events: none;
+  color: gray;
+}
+.btn {
+  background: transparent;
+  border: 2px solid transparent;
+  box-sizing: border-box;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1;
+  margin: 18px;
+  padding: 15px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  outline: none;
+  -webkit-transition: all 0.2s ease-in-out 0s;
+  -moz-transition: all 0.2s ease-in-out 0s;
+  -ms-transition: all 0.2s ease-in-out 0s;
+  transition: all 0.2s ease-in-out 0s;
+}
+.rounded {
+  border-radius: 5px;
+}
+.full-rounded {
+  border-radius: 20em;
+}
+
+.yellow {
+  background: #fac75a;
+  color: black;
+  box-shadow: 0 3px 0 #f9b629;
+}
+.yellow:hover {
+  background: #fce17a;
+}
+.yellow:active,
+.yellow:focus {
+  background: #fac24b;
+}
+.courseTable {
+  border-spacing: 1;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 6px;
+  overflow: hidden;
+  min-width: 900px;
+}
+.competitiveEnergy {
+  position: relative;
+  top: 10px;
+}
+.courseTable td {
+  text-align: center;
+}
+.courseTable td,
+th {
+  max-width: 200px;
+}
+
+.courseTable thead tr {
+  height: 60px;
+  background: #ffed86;
+  font-size: 20px;
+}
+
+.courseTable tbody tr {
+  align-items: center;
+
+  height: 48px;
+  border-bottom: 1px solid #e3f1d5;
+}
+
+.circleNumber {
+  display: block;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  border: 2px solid #dcb97b;
+  margin: auto;
+  margin-top: 15px;
+  line-height: 50px;
+}
+blockquote {
+  color: white;
+  text-align: center;
+}

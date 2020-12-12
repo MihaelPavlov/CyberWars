@@ -1,0 +1,9 @@
+C:\Users\Owner\Documents\CyberWars\Web\CyberWars.Web.Infrastructure\bin\Release\netstandard2.1\CyberWars.Web.Infrastructure.deps.json
+C:\Users\Owner\Documents\CyberWars\Web\CyberWars.Web.Infrastructure\bin\Release\netstandard2.1\CyberWars.Web.Infrastructure.dll
+C:\Users\Owner\Documents\CyberWars\Web\CyberWars.Web.Infrastructure\bin\Release\netstandard2.1\CyberWars.Web.Infrastructure.pdb
+C:\Users\Owner\Documents\CyberWars\Web\CyberWars.Web.Infrastructure\obj\Release\netstandard2.1\CyberWars.Web.Infrastructure.csprojAssemblyReference.cache
+C:\Users\Owner\Documents\CyberWars\Web\CyberWars.Web.Infrastructure\obj\Release\netstandard2.1\CyberWars.Web.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\Owner\Documents\CyberWars\Web\CyberWars.Web.Infrastructure\obj\Release\netstandard2.1\CyberWars.Web.Infrastructure.AssemblyInfo.cs
+C:\Users\Owner\Documents\CyberWars\Web\CyberWars.Web.Infrastructure\obj\Release\netstandard2.1\CyberWars.Web.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\Owner\Documents\CyberWars\Web\CyberWars.Web.Infrastructure\obj\Release\netstandard2.1\CyberWars.Web.Infrastructure.dll
+C:\Users\Owner\Documents\CyberWars\Web\CyberWars.Web.Infrastructure\obj\Release\netstandard2.1\CyberWars.Web.Infrastructure.pdb

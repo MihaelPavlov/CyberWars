@@ -1,0 +1,367 @@
+html {
+  box-sizing: border-box;
+  background-color: #232323;
+}
+
+body {
+}
+h1 {
+}
+
+.container {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 50px;
+  padding-right: 130px;
+}
+
+.logo {
+  padding-left: 50px;
+  margin-right: 150px;
+}
+
+.navButton {
+  background-color: #dfdede;
+  border: 4px solid #dcb97b;
+  border-radius: 10px;
+  box-sizing: content-box;
+  width: auto;
+  height: 50px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 55%;
+  font-size: 1.5rem;
+  line-height: 0;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.stats {
+  background-color: #dfdede;
+  border: 4px solid #dcb97b;
+  border-radius: 10px;
+  display: flex;
+  width: 900px;
+  height: 100px;
+  margin-left: 430px;
+}
+
+.item1 {
+  font-size: 30px;
+  padding-top: 10px;
+  width: 20%;
+  padding-left: 20px;
+}
+
+.item2 {
+  width: 60%;
+}
+
+.item3 {
+  width: 20%;
+}
+
+.item1,
+.item2 {
+  border-right: 3px solid #dcb97b;
+}
+
+.item {
+  display: inline-block;
+}
+
+.Money {
+  align-items: baseline;
+}
+
+.Health {
+  padding-top: 15px;
+  display: flex;
+  font-size: 1.2rem;
+  height: 25px;
+  justify-content: space-around;
+}
+
+.Energy {
+  padding-top: 20px;
+  display: flex;
+  font-size: 1.2rem;
+  height: 25px;
+  justify-content: space-between;
+}
+.points {
+  text-align: right;
+  min-width: 120px;
+}
+.green {
+  border: 3px solid #dcb97b;
+  border-radius: 10px;
+  max-width: 300px;
+  background-color: white;
+}
+
+.star {
+  font-size: 10px;
+  width: 36px;
+  margin: 7px 0 7px 10px;
+}
+
+.text {
+  position: relative;
+  bottom: 15px;
+  font-size: 1.2rem;
+  left: 5px;
+}
+
+.nav2 a {
+  text-decoration: none;
+  color: black;
+}
+
+.nav2 {
+  display: inline-block;
+  width: 250px;
+  height: 500px auto;
+  background-color: #dfdede;
+  border: 4px solid #dcb97b;
+  position: absolute;
+  top: 400px;
+  left: 100px;
+  border-radius: 10px;
+}
+
+ul {
+  list-style: none;
+  text-align: center;
+  padding-left: 0;
+}
+
+.nav2style li {
+  font-size: 1.7rem;
+  margin: 15px auto;
+}
+
+.nav2style li:first-child {
+  padding: 10px 0;
+  border-top: 4px solid #dcb97b;
+  border-bottom: 4px solid #dcb97b;
+}
+
+.Hero li:first-child {
+  border-top: none;
+  padding-bottom: 10px;
+  padding-top: 0;
+}
+
+.Box {
+  border: 3px solid #dcb97b;
+  border-radius: 10px;
+  background-color: #dfdede;
+  width: 900px;
+  min-height: 400px;
+  height: auto;
+  margin-top: 20px;
+  margin-left: 430px;
+}
+.tooltip {
+  position: relative;
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+
+  /* Position the tooltip text */
+  position: absolute;
+  z-index: 1;
+  position: absolute;
+  z-index: 1;
+  left: -1em;
+  top: -1em;
+
+  /* Fade in tooltip */
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+/* Tooltip arrow */
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+.meter {
+  margin-left: 15px;
+  width: 300px;
+  height: 15px; /* Can be anything */
+  position: relative;
+  background: #555;
+  -moz-border-radius: 25px;
+  -webkit-border-radius: 25px;
+  border-radius: 50px;
+  padding: 6px;
+  -webkit-box-shadow: inset 0 -1px 1px rgba(255, 255, 255, 0.3);
+  -moz-box-shadow: inset 0 -1px 1px rgba(255, 255, 255, 0.3);
+  box-shadow: inset 0 -1px 1px rgba(255, 255, 255, 0.3);
+}
+.meter > .line {
+  display: block;
+  height: 100%;
+  -webkit-border-top-right-radius: 8px;
+  -webkit-border-bottom-right-radius: 8px;
+  -moz-border-radius-topright: 8px;
+  -moz-border-radius-bottomright: 8px;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  -webkit-border-top-left-radius: 20px;
+  -webkit-border-bottom-left-radius: 20px;
+  -moz-border-radius-topleft: 20px;
+  -moz-border-radius-bottomleft: 20px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  background-color: rgb(43, 194, 83);
+  background-image: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(0, rgb(43, 194, 83)),
+    color-stop(1, rgb(84, 240, 84))
+  );
+  background-image: -moz-linear-gradient(
+    center bottom,
+    rgb(43, 194, 83) 37%,
+    rgb(84, 240, 84) 69%
+  );
+  -webkit-box-shadow: inset 0 2px 9px rgba(255, 255, 255, 0.3),
+    inset 0 -2px 6px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: inset 0 2px 9px rgba(255, 255, 255, 0.3),
+    inset 0 -2px 6px rgba(0, 0, 0, 0.4);
+  box-shadow: inset 0 2px 9px rgba(255, 255, 255, 0.3),
+    inset 0 -2px 6px rgba(0, 0, 0, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+.meter > .line:after,
+.animate > .line > .line {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-image: -webkit-gradient(
+    linear,
+    0 0,
+    100% 100%,
+    color-stop(0.25, rgba(255, 255, 255, 0.2)),
+    color-stop(0.25, transparent),
+    color-stop(0.5, transparent),
+    color-stop(0.5, rgba(255, 255, 255, 0.2)),
+    color-stop(0.75, rgba(255, 255, 255, 0.2)),
+    color-stop(0.75, transparent),
+    to(transparent)
+  );
+  background-image: -moz-linear-gradient(
+    -45deg,
+    rgba(255, 255, 255, 0.2) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0.2) 75%,
+    transparent 75%,
+    transparent
+  );
+  z-index: 1;
+  -webkit-background-size: 50px 50px;
+  -moz-background-size: 50px 50px;
+  -webkit-animation: move 2s linear infinite;
+  -webkit-border-top-right-radius: 8px;
+  -webkit-border-bottom-right-radius: 8px;
+  -moz-border-radius-topright: 8px;
+  -moz-border-radius-bottomright: 8px;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  -webkit-border-top-left-radius: 20px;
+  -webkit-border-bottom-left-radius: 20px;
+  -moz-border-radius-topleft: 20px;
+  -moz-border-radius-bottomleft: 20px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  overflow: hidden;
+}
+
+.animate > .line:after {
+  display: none;
+}
+
+@-webkit-keyframes move {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 50px 50px;
+  }
+}
+
+.orange > .line {
+  background-color: #f1a165;
+  background-image: -moz-linear-gradient(top, #f1a165, #f36d0a);
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0, #f1a165),
+    color-stop(1, #f36d0a)
+  );
+  background-image: -webkit-linear-gradient(#f1a165, #f36d0a);
+}
+
+.red > .line {
+  background-color: #f0a3a3;
+  background-image: -moz-linear-gradient(top, #f0a3a3, #f42323);
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0, #f0a3a3),
+    color-stop(1, #f42323)
+  );
+  background-image: -webkit-linear-gradient(#f0a3a3, #f42323);
+}
+.blue > .line {
+  background-color: #f0a3a3;
+  background-image: -moz-linear-gradient(top, #a3a8f0, #2623f4);
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0, #f0a3a3),
+    color-stop(1, #f42323)
+  );
+  background-image: -webkit-linear-gradient(#a4a3f0, #3823f4);
+}
+.nostripes > .line > .line,
+.nostripes > .line:after {
+  -webkit-animation: none;
+  background-image: none;
+}

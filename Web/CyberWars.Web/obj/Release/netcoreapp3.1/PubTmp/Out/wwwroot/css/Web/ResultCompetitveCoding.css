@@ -1,0 +1,90 @@
+.resultCompetitive {
+  display: inline-block;
+  margin: 10px;
+  border: 2px solid #dcb97b;
+  border-radius: 20px;
+}
+.credit {
+  position: relative;
+}
+.btn {
+  background: transparent;
+  border: 2px solid transparent;
+  box-sizing: border-box;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1;
+  padding: 10px 25px;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  -webkit-transition: all 0.2s ease-in-out 0s;
+  -moz-transition: all 0.2s ease-in-out 0s;
+  -ms-transition: all 0.2s ease-in-out 0s;
+  transition: all 0.2s ease-in-out 0s;
+}
+.rounded {
+  border-radius: 5px;
+}
+.full-rounded {
+  border-radius: 20em;
+}
+
+.yellow {
+  background: #8f6815;
+  color: black;
+  box-shadow: 0 3px 0 #8f6815;
+}
+.yellow:hover {
+  background: #6b4e0e;
+}
+.yellow:active,
+.yellow:focus {
+  background: #8f6815;
+}
+.competitiveEnergy {
+  position: relative;
+  top: 10px;
+}
+
+/*PEN STYLES*/
+
+.blog-card {
+  display: flex;
+  background: #fff;
+  line-height: 1.4;
+  border-radius: 10px;
+  margin: 20px;
+  border: 4px solid #dcb97b;
+  z-index: 0;
+}
+
+.description {
+  padding: 1rem;
+  background: #fff;
+  position: relative;
+  z-index: 1;
+}
+
+.ResultcompetitveHeader {
+  line-height: 1;
+  margin: 0;
+  font-size: 1.5rem;
+}
+.ResultCompetitiveSecondHeader {
+  font-size: 1rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  color: gray;
+  margin-top: 5px;
+}
+.read-more {
+  margin-left: 300px;
+  margin-bottom: 15px;
+}
+.earn {
+  font-size: 25px;
+  font-weight: bolder;
+  margin-bottom: 0;
+}

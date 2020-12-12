@@ -1,0 +1,9 @@
+C:\Users\Owner\Documents\CyberWars\Services\CyberWars.Services.Mapping\bin\Release\netstandard2.1\CyberWars.Services.Mapping.deps.json
+C:\Users\Owner\Documents\CyberWars\Services\CyberWars.Services.Mapping\bin\Release\netstandard2.1\CyberWars.Services.Mapping.dll
+C:\Users\Owner\Documents\CyberWars\Services\CyberWars.Services.Mapping\bin\Release\netstandard2.1\CyberWars.Services.Mapping.pdb
+C:\Users\Owner\Documents\CyberWars\Services\CyberWars.Services.Mapping\obj\Release\netstandard2.1\CyberWars.Services.Mapping.csprojAssemblyReference.cache
+C:\Users\Owner\Documents\CyberWars\Services\CyberWars.Services.Mapping\obj\Release\netstandard2.1\CyberWars.Services.Mapping.AssemblyInfoInputs.cache
+C:\Users\Owner\Documents\CyberWars\Services\CyberWars.Services.Mapping\obj\Release\netstandard2.1\CyberWars.Services.Mapping.AssemblyInfo.cs
+C:\Users\Owner\Documents\CyberWars\Services\CyberWars.Services.Mapping\obj\Release\netstandard2.1\CyberWars.Services.Mapping.csproj.CoreCompileInputs.cache
+C:\Users\Owner\Documents\CyberWars\Services\CyberWars.Services.Mapping\obj\Release\netstandard2.1\CyberWars.Services.Mapping.dll
+C:\Users\Owner\Documents\CyberWars\Services\CyberWars.Services.Mapping\obj\Release\netstandard2.1\CyberWars.Services.Mapping.pdb

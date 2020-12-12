@@ -1,0 +1,88 @@
+.playerView {
+  margin: 20px;
+  border: 2px solid #fac75a;
+  display: flex;
+  flex-direction: column;
+  background-color: #fbe6af;
+}
+.playerNameHeader {
+  padding: 5px;
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.7rem;
+  margin: 20px;
+}
+
+.playerNameHeader:hover {
+  color: #f9b629;
+  text-decoration: none;
+  cursor: pointer;
+}
+.playerSkills {
+  border: 2px solid #fac75a;
+  width: 40%;
+}
+.playerViewUl {
+  margin: 0;
+}
+.playerIcon {
+  border: 5px solid #fac75a;
+}
+.playerImg {
+  margin: 20px;
+  border-top-left-radius: 100px;
+  border-bottom-right-radius: 100px;
+  width: 300px;
+  height: 450px;
+}
+.playerStats {
+  position: relative;
+  bottom: 50px;
+  width: 35%;
+}
+.img {
+  display: flex;
+  width: 60px;
+  height: 60px;
+}
+.lable {
+  margin-left: 20px;
+  position: relative;
+  bottom: 35px;
+  padding-left: 30px;
+  font-weight: 700;
+}
+
+.lableStats {
+  margin-top: 100px;
+  font-weight: 700;
+}
+
+.li {
+  padding: 20px;
+  border-bottom: 5px solid #fac75a;
+}
+
+/* button */
+
+.rounded {
+  border-radius: 5px;
+}
+.full-rounded {
+  border-radius: 20em;
+}
+
+.yellow {
+  background: #fac75a;
+  color: black;
+  box-shadow: 0 3px 0 #f9b629;
+}
+.yellow:hover {
+  background: #fce17a;
+}
+.yellow:active,
+.yellow:focus {
+  background: #fac24b;
+}
