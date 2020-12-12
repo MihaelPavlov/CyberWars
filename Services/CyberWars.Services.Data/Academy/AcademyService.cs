@@ -62,7 +62,6 @@
 
             var completeLecture = this.CreateCompleteLecture(lecture, player);
 
-
             await this.completeLectureRepository.AddAsync(completeLecture);
 
             await this.completeLectureRepository.SaveChangesAsync();

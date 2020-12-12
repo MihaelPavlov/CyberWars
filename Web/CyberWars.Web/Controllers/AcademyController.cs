@@ -24,6 +24,11 @@
             return this.View();
         }
 
+        public IActionResult Basic()
+        {
+            return this.View();
+        }
+
         public async Task<IActionResult> Lectures(string courseName)
         {
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);

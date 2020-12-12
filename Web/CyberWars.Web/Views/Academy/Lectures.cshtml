@@ -1,13 +1,20 @@
 @using CyberWars.Web.ViewModels.Academy
 @using CyberWars.Data.Common.Repositories;
 @using CyberWars.Data.Models.Course;
+@using CyberWars.Data.Models.Player;
 @using Microsoft.EntityFrameworkCore;
+@using System.Security.Claims;
 
 @model IEnumerable<LectureViewModel>
 @inject IDeletableEntityRepository<CompleteLecture> completeLectureRepository;
+@inject IDeletableEntityRepository<Player> playerRepository;
 @{
     int counter = 1;
     var courseName = Model.FirstOrDefault();
+    var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+    var player = await this.playerRepository.All().FirstOrDefaultAsync(x => x.UserId == userId);
+
+    var completeLecture = await this.completeLectureRepository.All().Where(x => x.PlayerId == player.Id).ToListAsync();
 }
 
 
@@ -33,7 +40,7 @@
                 </td>
                 <td>
                     <div>
-                        @if (this.completeLectureRepository.All().Any(x => x.LectureId == lecture.Id))
+                        @if (completeLecture.Any(x => x.LectureId == lecture.Id))
                         {
                             <a id="btn-disable" class="btn yellow rounded " href="#">Completed</a>
 
