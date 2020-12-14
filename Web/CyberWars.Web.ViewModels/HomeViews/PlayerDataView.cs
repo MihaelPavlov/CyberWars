@@ -28,6 +28,8 @@
             this.PlayerSkills = new HashSet<PlayerSkillViewModel>();
         }
 
+        public string TypeFight { get; set; }
+
         public string UserId { get; set; }
 
         public string Id { get; set; }

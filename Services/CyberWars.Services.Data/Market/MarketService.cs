@@ -19,15 +19,20 @@
         private readonly IDeletableEntityRepository<Food> foodRepository;
         private readonly IDeletableEntityRepository<Player> playerRepository;
         private readonly IDeletableEntityRepository<PlayerFood> playerFoodRepository;
+        private readonly IDeletableEntityRepository<PlayerPet> playerPetRepository;
 
-        public MarketService(IDeletableEntityRepository<Pet> petRepository, IDeletableEntityRepository<Food> foodRepository
-            , IDeletableEntityRepository<Player> playerRepository
-           , IDeletableEntityRepository<PlayerFood> playerFoodRepository)
+        public MarketService(
+            IDeletableEntityRepository<Pet> petRepository,
+            IDeletableEntityRepository<Food> foodRepository,
+            IDeletableEntityRepository<Player> playerRepository,
+            IDeletableEntityRepository<PlayerFood> playerFoodRepository,
+            IDeletableEntityRepository<PlayerPet> playerPetRepository)
         {
             this.petRepository = petRepository;
             this.foodRepository = foodRepository;
             this.playerRepository = playerRepository;
             this.playerFoodRepository = playerFoodRepository;
+            this.playerPetRepository = playerPetRepository;
         }
 
         public async Task<IEnumerable<T>> GetAllFood<T>()
@@ -39,6 +44,16 @@
         public async Task<IEnumerable<T>> GetAllPets<T>()
         {
             return await this.petRepository.All().To<T>().ToListAsync();
+        }
+
+        public async Task<IEnumerable<PlayerPet>> GetAllPlayerPets(string playerId)
+        {
+            return await this.playerPetRepository.All().Where(x => x.PlayerId == playerId).ToListAsync();
+        }
+
+        public async Task<IEnumerable<PlayerFood>> GetAllPlayerFood(string playerId)
+        {
+            return await this.playerFoodRepository.All().Where(x => x.PlayerId == playerId).ToListAsync();
         }
 
         public async Task BuyPet(int petId, string userId, string nameIt)
@@ -53,9 +68,9 @@
                 PetId = pet.Id,
                 PlayerId = player.Id,
                 Health = 100,
-                MaxHealth=100,
+                MaxHealth = 100,
                 Mood = 100,
-                MaxMood=100,
+                MaxMood = 100,
                 Level = 1,
                 NameIt = nameIt,
             };
@@ -110,8 +125,6 @@
             {
                 var playerFood = new PlayerFood
                 {
-                    Player = player,
-                    Food = food,
                     PlayerId = player.Id,
                     FoodId = food.Id,
                     Quantity = 1,

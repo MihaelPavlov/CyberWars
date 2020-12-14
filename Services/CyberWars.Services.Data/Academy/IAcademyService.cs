@@ -23,5 +23,7 @@
         public Task<IEnumerable<PlayerAbility>> CheckPlayerAbilities(string playerId);
 
         public Task<string> GetCourseNameByLectureId(int lectureId);
+
+        public Task<PlayerCourse> GetPlayerCourseByPlayerId(string playerId);
     }
 }

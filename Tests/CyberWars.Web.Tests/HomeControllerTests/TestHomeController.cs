@@ -8,6 +8,7 @@
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.EntityFrameworkCore;
     using Moq;
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
@@ -15,25 +16,12 @@
 
     public class TestHomeController
     {
-       
-        //[Fact]
-        //public async Task TestViewModelForIndex()
-        //{
-        //    var mockController = new Mock<IHomeService>();
-        //    mockController.Setup(x => x.GetPlayerData("Test")).ReturnsAsync(MockHomeService.GetPlayerDataView("Test"));
 
-        //    var controller = new HomeController(mockController.Object);
-        //    var result = controller.Index();
-        //    Assert.IsType<ViewResult>(result);
+        [Fact]
+        public async Task TestViewModelForIndex()
+        {
 
-        //    var viewResult =  result as ViewResult;
-
-        //    Assert.IsType<PlayerDataView>(viewResult.Model);
-
-        //    var viewModel = viewResult.Model as PlayerDataView;
-
-        //    Assert.Equal("Test", viewModel.UserId);
-        //}
+        }
 
 
     }

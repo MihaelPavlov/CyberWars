@@ -16,7 +16,7 @@ namespace CyberWars.Services.Data.Tests.AcademyServiceTests
         {
             var academyService = await TestDataHelpers.GetAcademyService();
             var result = await academyService.GetLecturesByName("Python OOP", "Pesho");
-            Assert.Equal(1, result.Count());
+            Assert.Equal(3, result.Count());
         }
 
         [Fact]
@@ -47,6 +47,34 @@ namespace CyberWars.Services.Data.Tests.AcademyServiceTests
         }
 
         [Fact]
+        public async Task TestGetRewardCorrectFromCompleteLectureExam()
+        {
+            var academyService = await TestDataHelpers.GetAcademyService();
+
+            var lecture = await academyService.GetLectureById(2);
+
+            await academyService.GetRewardFromCompleteLecture("TestId", lecture);
+
+            var playerAbilities = await academyService.CheckPlayerAbilities("TestId");
+
+            Assert.Contains(playerAbilities, x => x.Points == 4);
+        }
+
+        [Fact]
+        public async Task TestGetRewardCorrectFromCompleteLectureEnd()
+        {
+            var academyService = await TestDataHelpers.GetAcademyService();
+
+            var lecture = await academyService.GetLectureById(3);
+
+            await academyService.GetRewardFromCompleteLecture("TestId", lecture);
+
+            var playerAbilities = await academyService.CheckPlayerAbilities("TestId");
+
+            Assert.Contains(playerAbilities, x => x.Points == 11);
+        }
+
+        [Fact]
         public async Task TestCompleteLectureCreated()
         {
             var academyService = await TestDataHelpers.GetAcademyService();
@@ -56,6 +84,45 @@ namespace CyberWars.Services.Data.Tests.AcademyServiceTests
             var result = academyService.CreateCompleteLecture(lecture, player);
 
             Assert.IsType<CompleteLecture>(result);
+        }
+
+        [Fact]
+        public async Task TestCheckIsCourseCompleteNeedToBeNull()
+        {
+            var academyService = await TestDataHelpers.GetAcademyService();
+
+            var lecture = await academyService.GetLectureById(1);
+            var player = await academyService.GetPlayerById("TestId");
+            await academyService.CheckIsCourseComplete(player, lecture);
+
+            var playerCourse = await academyService.GetPlayerCourseByPlayerId(player.Id);
+
+            Assert.Null(playerCourse);
+        }
+
+        [Fact]
+        public async Task TestCheckIsCourseComplete()
+        {
+            var academyService = await TestDataHelpers.GetAcademyService();
+
+            await academyService.CompleteLectureById("Pesho", 1);
+            await academyService.CompleteLectureById("Pesho", 2);
+            await academyService.CompleteLectureById("Pesho", 3);
+            var player = await academyService.GetPlayerById("TestId");
+
+            var playerCourse = await academyService.GetPlayerCourseByPlayerId(player.Id);
+
+            Assert.True(playerCourse.IsComplete);
+        }
+
+        [Fact]
+        public async Task TestGetCourseNameNormaly()
+        {
+            var academyService = await TestDataHelpers.GetAcademyService();
+
+            var courseName = await academyService.GetCourseNameNormaly(1);
+
+            Assert.Equal("Python OOP", courseName);
         }
     }
 }

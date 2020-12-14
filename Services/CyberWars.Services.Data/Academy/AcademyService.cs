@@ -168,10 +168,16 @@
                     PlayerId = player.Id,
                     CourseId = course.Id,
                     CompleteDate = DateTime.UtcNow,
+                    IsComplete = true,
                 };
                 await this.playerCourseRepository.AddAsync(playerCourse);
                 await this.playerCourseRepository.SaveChangesAsync();
             }
+        }
+
+        public async Task<PlayerCourse> GetPlayerCourseByPlayerId(string playerId)
+        {
+            return await this.playerCourseRepository.All().FirstOrDefaultAsync(x => x.PlayerId == playerId);
         }
 
         public async Task<string> GetCourseNameNormaly(int lectureId)

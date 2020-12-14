@@ -46,7 +46,6 @@
 
             var courseName = await this.academyService.GetCourseNameByLectureId(lectureId);
 
-
             return this.Redirect($"/Academy/Lectures?courseName={courseName}");
         }
 

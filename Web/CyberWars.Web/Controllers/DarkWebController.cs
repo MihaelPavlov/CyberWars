@@ -38,12 +38,12 @@
 
             if (input.Type == "Normal")
             {
-                viewModel = await this.darkWebService.FindNormalEnemy(userId);
+                viewModel = await this.darkWebService.FindNormalEnemy(userId,"Normal");
             }
 
             if (input.Type == "Stronger")
             {
-                viewModel = await this.darkWebService.FindStrongerEnemy(userId);
+                viewModel = await this.darkWebService.FindStrongerEnemy(userId, "Stronger");
             }
 
             if (input.Type == "Search")
@@ -54,7 +54,7 @@
                     return this.Redirect("/DarkWeb/Attack");
                 }
 
-                viewModel = await this.darkWebService.FindEnemyByName(userId, input.SearchName);
+                viewModel = await this.darkWebService.FindEnemyByName(userId, input.SearchName , "Normal");
 
             }
 

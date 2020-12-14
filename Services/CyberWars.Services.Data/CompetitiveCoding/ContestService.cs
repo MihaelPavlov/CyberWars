@@ -37,7 +37,7 @@
             return await this.randomContestRepository.All().Take(4).To<T>().ToListAsync();
         }
 
-        public async Task<ResultContestViewModel> ResultFromContestById(int contestId, string userId)
+        public async Task<T> ResultFromContestById<T>(int contestId, string userId)
         {
             var contest = await this.contestRepository.All().FirstOrDefaultAsync(x => x.Id == contestId);
             var playerContest = await this.playerContestsRepository.All().FirstOrDefaultAsync(x => x.Player.UserId == userId && x.ContestId == contestId);
@@ -48,7 +48,7 @@
 
             if ((playerEnergy -= contestEnergy) < 0)
             {
-                return null;
+                return default(T);
             }
 
             if (playerContest != null)
@@ -75,7 +75,7 @@
                 this.playerContestsRepository.Update(playerContest);
                 await this.playerContestsRepository.SaveChangesAsync();
 
-                return await this.playerContestsRepository.All().Where(x => x.ContestId == playerContest.ContestId && playerContest.PlayerId == x.Player.Id).To<ResultContestViewModel>().FirstAsync();
+                return await this.playerContestsRepository.All().Where(x => x.ContestId == playerContest.ContestId && playerContest.PlayerId == x.Player.Id).To<T>().FirstAsync();
             }
             else
             {
@@ -84,9 +84,7 @@
                     // save the new Player Contest
                     var newPlayerContest = new PlayerContest
                     {
-                        Contest = contest,
                         ContestId = contest.Id,
-                        Player = player,
                         PlayerId = player.Id,
                         DateCompleteContext = DateTime.UtcNow,
                         IsWin = true,
@@ -103,15 +101,13 @@
                     this.playerRepository.Update(player);
                     await this.playerRepository.SaveChangesAsync();
 
-                    return await this.playerContestsRepository.All().Where(x => x.ContestId == newPlayerContest.ContestId && newPlayerContest.PlayerId == x.Player.Id).To<ResultContestViewModel>().FirstAsync();
+                    return await this.playerContestsRepository.All().Where(x => x.ContestId == newPlayerContest.ContestId && newPlayerContest.PlayerId == x.Player.Id).To<T>().FirstAsync();
                 }
                 else
                 {
                     var newPlayerContest = new PlayerContest
                     {
-                        Contest = contest,
                         ContestId = contest.Id,
-                        Player = player,
                         PlayerId = player.Id,
                         DateCompleteContext = DateTime.UtcNow,
                         IsWin = false,
@@ -124,7 +120,7 @@
                     this.playerRepository.Update(player);
                     await this.playerRepository.SaveChangesAsync();
 
-                    return await this.playerContestsRepository.All().Where(x => x.ContestId == newPlayerContest.ContestId && newPlayerContest.PlayerId == x.Player.Id).To< ResultContestViewModel>().FirstAsync();
+                    return await this.playerContestsRepository.All().Where(x => x.ContestId == newPlayerContest.ContestId && newPlayerContest.PlayerId == x.Player.Id).To<T>().FirstAsync();
                 }
             }
         }

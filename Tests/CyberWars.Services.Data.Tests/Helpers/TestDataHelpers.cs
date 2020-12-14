@@ -11,6 +11,7 @@
     using CyberWars.Data.Models.Ability;
     using CyberWars.Data.Models.Badge;
     using CyberWars.Data.Models.Battle;
+    using CyberWars.Data.Models.CompetitiveCoding;
     using CyberWars.Data.Models.Course;
     using CyberWars.Data.Models.Job;
     using CyberWars.Data.Models.Pet_Food;
@@ -19,12 +20,19 @@
     using CyberWars.Data.Models.Teams;
     using CyberWars.Data.Repositories;
     using CyberWars.Services.Data.Academy;
+    using CyberWars.Services.Data.CompetitiveCoding;
     using CyberWars.Services.Data.Home;
+    using CyberWars.Services.Data.Market;
+    using CyberWars.Services.Data.Teams;
     using CyberWars.Services.Data.Tests.Helpers.TestViewModel;
+    using CyberWars.Services.Data.Tests.Helpers.TestViewModel.ContestViewModel;
+    using CyberWars.Services.Data.Tests.Helpers.TestViewModel.MarketViewModel;
+    using CyberWars.Services.Data.Tests.Helpers.TestViewModel.TeamViewModel;
     using CyberWars.Services.Data.Tests.Helpers.TestViewModel.WebViewModel;
     using CyberWars.Services.Data.Web;
     using CyberWars.Services.Mapping;
     using CyberWars.Web.ViewModels.HomeViews;
+    using CyberWars.Web.ViewModels.WebViews.CompetitiveCoding;
     using Microsoft.EntityFrameworkCore;
 
     public static class TestDataHelpers
@@ -1298,6 +1306,26 @@
                 CourseId = pythonOOPId,
             });
 
+            await lectureRepositoryInMemory.AddAsync(new Lecture
+            {
+                Id = 2,
+                Number = 1,
+                Name = "Interface",
+                ExperienceToComplete = 80,
+                RewardAbilityName = "Python Exam",
+                RewardMoney = 2000,
+                CourseId = pythonOOPId,
+            });
+            await lectureRepositoryInMemory.AddAsync(new Lecture
+            {
+                Id = 3,
+                Number = 1,
+                Name = "Classes",
+                ExperienceToComplete = 80,
+                RewardAbilityName = "Python End",
+                RewardMoney = 2000,
+                CourseId = pythonOOPId,
+            });
             await lectureRepositoryInMemory.SaveChangesAsync();
 
             var academyService = new AcademyService(
@@ -1309,6 +1337,495 @@
                 playerCourseRepositoryInMemory);
 
             return academyService;
+        }
+
+        public static async Task<TeamService> GetTeamService()
+        {
+            var options = new DbContextOptionsBuilder<ApplicationDbContext>().UseInMemoryDatabase(Guid.NewGuid().ToString());
+
+            var playerRepositoryInMemory = new EfDeletableEntityRepository<Player>(new ApplicationDbContext(options.Options));
+            var playerAbilitiesRepositoryInMemory = new EfDeletableEntityRepository<PlayerAbility>(new ApplicationDbContext(options.Options));
+            var abilityTypeRepositoryInMemory = new EfDeletableEntityRepository<AbilityType>(new ApplicationDbContext(options.Options));
+            var abilitiesRepositoryInMemory = new EfDeletableEntityRepository<Ability>(new ApplicationDbContext(options.Options));
+            var userRepositoryInMemory = new EfDeletableEntityRepository<ApplicationUser>(new ApplicationDbContext(options.Options));
+            var teamRepositoryInMemory = new EfDeletableEntityRepository<Team>(new ApplicationDbContext(options.Options));
+            var teamPlayerRepositoryInMemory = new EfDeletableEntityRepository<TeamPlayer>(new ApplicationDbContext(options.Options));
+            var playerSkillRepositoryInMemory = new EfDeletableEntityRepository<PlayerSkill>(new ApplicationDbContext(options.Options));
+
+
+            var player = new Player
+            {
+                Id = "TestId",
+                Name = "PlayerPesho",
+                Money = 10000,
+                UserId = "Pesho",
+                Class = "Programmer",
+                MaxHealth = 1000,
+                MaxEnergy = 100,
+            };
+
+            var player1 = new Player
+            {
+                Name = "PlayerTest",
+                Money = 10000,
+                UserId = "Test",
+                Class = "Programmer",
+                MaxHealth = 1000,
+                MaxEnergy = 100,
+            };
+
+            await playerRepositoryInMemory.AddAsync(player);
+            await playerRepositoryInMemory.AddAsync(player1);
+
+            await playerRepositoryInMemory.SaveChangesAsync();
+
+
+            var user = new ApplicationUser
+            {
+                UserName = "Test",
+                Id = "Pesho",
+                PlayerId = player.Id,
+                Email = "Test@abv.bg",
+            };
+            var user1 = new ApplicationUser
+            {
+                UserName = "Test1",
+                Id = "Test",
+                PlayerId = player1.Id,
+                Email = "Test@abv.bg",
+            };
+            await userRepositoryInMemory.AddAsync(user);
+            await userRepositoryInMemory.AddAsync(user1);
+
+            await userRepositoryInMemory.SaveChangesAsync();
+
+            await abilityTypeRepositoryInMemory.AddAsync(new AbilityType
+            {
+                Id = 3,
+                Type = "Frameworks",
+            });
+
+            await abilityTypeRepositoryInMemory.AddAsync(new AbilityType
+            {
+                Id = 2,
+                Type = "Database",
+            });
+
+            await abilityTypeRepositoryInMemory.AddAsync(new AbilityType
+            {
+                Id = 1,
+                Type = "Languages",
+            });
+
+            await abilityTypeRepositoryInMemory.SaveChangesAsync();
+
+            await abilitiesRepositoryInMemory.AddAsync(new Ability
+            {
+                Name = "C#",
+                Description = "Develop by Microsoft , Structured,Object-Oriented,Functional Language and more",
+                AbilityTypeId = 1,
+            });
+
+            await abilitiesRepositoryInMemory.AddAsync(new Ability
+            {
+                Name = "JS",
+                Description = "Script Language .Write By Student",
+                AbilityTypeId = 1,
+            });
+
+            await abilitiesRepositoryInMemory.AddAsync(new Ability
+            {
+                Name = "Java",
+                Description = "Develop by Oracle Corparation ,Design by James Cosling",
+                AbilityTypeId = 1,
+            });
+
+            await abilitiesRepositoryInMemory.AddAsync(new Ability
+            {
+                Name = "Python",
+                Description = "Develop by Python Software Foundation",
+                AbilityTypeId = 1,
+            });
+
+            await abilitiesRepositoryInMemory.AddAsync(new Ability
+            {
+                Name = "HTML",
+                Description = "Hyper Text Markup Language",
+                AbilityTypeId = 1,
+            });
+
+            await abilitiesRepositoryInMemory.AddAsync(new Ability
+            {
+                Name = "CSS",
+                Description = "Cascade Style Sheets",
+                AbilityTypeId = 1,
+            });
+
+            await abilitiesRepositoryInMemory.AddAsync(new Ability
+            {
+                Name = "MySQL",
+                Description = "Developed by Oracle, MySQL Database Software is a client/server system",
+                AbilityTypeId = 2,
+            });
+
+            await abilitiesRepositoryInMemory.AddAsync(new Ability
+            {
+                Name = "PostgreSQL",
+                Description = "PostgreSQL is a powerful, open-source object-relational database system",
+                AbilityTypeId = 2,
+            });
+
+            await abilitiesRepositoryInMemory.AddAsync(new Ability
+            {
+                Name = "MSSQL",
+                Description = "SQL Server is a relational database management system developed by Microsoft",
+                AbilityTypeId = 2,
+            });
+
+            await abilitiesRepositoryInMemory.AddAsync(new Ability
+            {
+                Name = "SQLite",
+                Description = "SQLite is an in-process library that implements a self-contained, serverless, zero-configuration, transactional SQL database engine",
+                AbilityTypeId = 2,
+            });
+
+            await abilitiesRepositoryInMemory.AddAsync(new Ability
+            {
+                Name = "MongoDB",
+                Description = "MongoDB is a general-purpose, document-based, distributed database built for modern application developers and for the cloud era",
+                AbilityTypeId = 2,
+            });
+
+            await abilitiesRepositoryInMemory.AddAsync(new Ability
+            {
+                Name = "Oracle",
+                Description = "Oracle Database is a multi-model database management system to run all of the workloads more securely",
+                AbilityTypeId = 2,
+            });
+
+            await abilitiesRepositoryInMemory.AddAsync(new Ability
+            {
+                Name = "ASP.NETCore",
+                Description = "ASP.NET Core is designed to allow runtime components, APIs, compilers and languages while providing a stable and supported platform to keep apps running",
+                AbilityTypeId = 3,
+            });
+
+            await abilitiesRepositoryInMemory.AddAsync(new Ability
+            {
+                Name = "SpringFramework",
+                Description = "The Spring Framework provides a comprehensive programming and configuration model for modern Java-based enterprise applications",
+                AbilityTypeId = 3,
+            });
+            await abilitiesRepositoryInMemory.AddAsync(new Ability
+            {
+                Name = "Django",
+                Description = "Django is a high-level Python Web framework that encourages rapid development and clean, pragmatic design.",
+                AbilityTypeId = 3,
+            });
+            await abilitiesRepositoryInMemory.AddAsync(new Ability
+            {
+                Name = "Vue.JS",
+                Description = "Vue.js is a popular JavaScript framework which achieved the 7th position at the Stack Overflow Developer Survey 2020 as the most used web framework",
+                AbilityTypeId = 3,
+            });
+
+            await abilitiesRepositoryInMemory.AddAsync(new Ability
+            {
+                Name = "React.JS",
+                Description = "React is a popular JavaScript library for building user interfaces",
+                AbilityTypeId = 3,
+            });
+
+            await abilitiesRepositoryInMemory.AddAsync(new Ability
+            {
+                Name = "Angular",
+                Description = "Angular is a TypeScript-based open-source web application framework which can be used for building mobile and desktop web applications using TypeScript or JavaScript and other programming languages",
+                AbilityTypeId = 3,
+            });
+
+            await abilitiesRepositoryInMemory.AddAsync(new Ability
+            {
+                Name = "RubyOnRails",
+                Description = "Ruby on Rails is a web-application framework written in Ruby language. The framework includes everything needed to create database-backed web applications according to the Model-View-Controller (MVC) pattern",
+                AbilityTypeId = 3,
+            });
+
+            await abilitiesRepositoryInMemory.SaveChangesAsync();
+
+            foreach (var ability in abilitiesRepositoryInMemory.All())
+            {
+                await playerAbilitiesRepositoryInMemory.AddAsync(new PlayerAbility
+                {
+                    PlayerId = player.Id,
+                    AbilityId = ability.Id,
+                    Points = 0,
+                });
+            }
+
+            await playerAbilitiesRepositoryInMemory.SaveChangesAsync();
+
+            AutoMapperConfig.RegisterMappings(typeof(TestTeamViewModel).Assembly);
+
+            var teamService = new TeamService(
+                teamRepositoryInMemory,
+                playerRepositoryInMemory,
+                teamPlayerRepositoryInMemory,
+                userRepositoryInMemory,
+                playerSkillRepositoryInMemory);
+
+            return teamService;
+        }
+
+
+        public static async Task<ContestService> GetContestService()
+        {
+            var options = new DbContextOptionsBuilder<ApplicationDbContext>().UseInMemoryDatabase(Guid.NewGuid().ToString());
+
+            var playerRepositoryInMemory = new EfDeletableEntityRepository<Player>(new ApplicationDbContext(options.Options));
+            var userRepositoryInMemory = new EfDeletableEntityRepository<ApplicationUser>(new ApplicationDbContext(options.Options));
+            var contestRepositoryInMemory = new EfDeletableEntityRepository<Contest>(new ApplicationDbContext(options.Options));
+            var playerContestRepositoryInMemory = new EfDeletableEntityRepository<PlayerContest>(new ApplicationDbContext(options.Options));
+            var randomContestRepositoryInMemory = new EfDeletableEntityRepository<RandomHangfireContest>(new ApplicationDbContext(options.Options));
+
+
+
+            var player = new Player
+            {
+                Id = "TestId",
+                Name = "PlayerPesho",
+                Money = 10000,
+                UserId = "Pesho",
+                Class = "Programmer",
+                MaxHealth = 1000,
+                MaxEnergy = 100,
+            };
+
+            var player1 = new Player
+            {
+                Name = "PlayerTest",
+                Money = 10000,
+                UserId = "Test",
+                Class = "Programmer",
+                MaxHealth = 1000,
+                MaxEnergy = 100,
+            };
+
+            await playerRepositoryInMemory.AddAsync(player);
+            await playerRepositoryInMemory.AddAsync(player1);
+
+            await playerRepositoryInMemory.SaveChangesAsync();
+
+
+            var user = new ApplicationUser
+            {
+                UserName = "Test",
+                Id = "Pesho",
+                PlayerId = player.Id,
+                Email = "Test@abv.bg",
+            };
+            var user1 = new ApplicationUser
+            {
+                UserName = "Test1",
+                Id = "Test",
+                PlayerId = player1.Id,
+                Email = "Test@abv.bg",
+            };
+            await userRepositoryInMemory.AddAsync(user);
+            await userRepositoryInMemory.AddAsync(user1);
+
+            await userRepositoryInMemory.SaveChangesAsync();
+
+            await contestRepositoryInMemory.AddAsync(new Contest
+            {
+                Id = 3,
+                Name = "Google Code Jam",
+                ConsumeEnergy = 3,
+                RewardExp = 3,
+                RewardMoney = 60,
+                Percentage = 55,
+                ImageName = "GoogleCodeJam",
+            });
+            await contestRepositoryInMemory.AddAsync(new Contest
+            {
+                Id = 2,
+                Name = "IEEEXtreme Programming",
+                ConsumeEnergy = 4,
+                RewardExp = 8,
+                RewardMoney = 80,
+                Percentage = 50,
+                ImageName = "IEEEXtremeProgramming",
+            });
+            await contestRepositoryInMemory.AddAsync(new Contest
+            {
+                Id = 1,
+                Name = "Topcoder Open",
+                ConsumeEnergy = 2,
+                RewardExp = 4,
+                RewardMoney = 50,
+                Percentage = 70,
+                ImageName = "TopCoder",
+            });
+            await contestRepositoryInMemory.AddAsync(new Contest
+            {
+                Id = 4,
+                Name = "Cyber Wars",
+                ConsumeEnergy = 20,
+                RewardExp = 100,
+                RewardMoney = 10000,
+                Percentage = 1,
+                ImageName = "CyberWars",
+            });
+            await contestRepositoryInMemory.SaveChangesAsync();
+
+            await randomContestRepositoryInMemory.AddAsync(new RandomHangfireContest
+            {
+                ContestId = 1,
+            });
+            await randomContestRepositoryInMemory.AddAsync(new RandomHangfireContest
+            {
+                ContestId = 2,
+            });
+            await randomContestRepositoryInMemory.AddAsync(new RandomHangfireContest
+            {
+                ContestId = 3,
+            });
+            await randomContestRepositoryInMemory.AddAsync(new RandomHangfireContest
+            {
+                ContestId = 4,
+            });
+            await randomContestRepositoryInMemory.SaveChangesAsync();
+
+            AutoMapperConfig.RegisterMappings(typeof(TestContestViewModel).Assembly);
+            AutoMapperConfig.RegisterMappings(typeof(TestResultContestViewModel).Assembly);
+
+            var contestService = new ContestService(
+                contestRepositoryInMemory,
+                playerRepositoryInMemory,
+                playerContestRepositoryInMemory,
+                randomContestRepositoryInMemory);
+
+            return contestService;
+
+        }
+
+        public static async Task<MarketService> GetMarketService()
+        {
+            var options = new DbContextOptionsBuilder<ApplicationDbContext>().UseInMemoryDatabase(Guid.NewGuid().ToString());
+
+            var playerRepositoryInMemory = new EfDeletableEntityRepository<Player>(new ApplicationDbContext(options.Options));
+            var userRepositoryInMemory = new EfDeletableEntityRepository<ApplicationUser>(new ApplicationDbContext(options.Options));
+            var foodRepositoryInMemory = new EfDeletableEntityRepository<Food>(new ApplicationDbContext(options.Options));
+            var petRepositoryInMemory = new EfDeletableEntityRepository<Pet>(new ApplicationDbContext(options.Options));
+            var playerFoodRepositoryInMemory = new EfDeletableEntityRepository<PlayerFood>(new ApplicationDbContext(options.Options));
+            var playerPetRepositoryInMemory = new EfDeletableEntityRepository<PlayerPet>(new ApplicationDbContext(options.Options));
+
+
+
+            var player = new Player
+            {
+                Id = "TestId",
+                Name = "PlayerPesho",
+                Money = 10000,
+                UserId = "Pesho",
+                Class = "Programmer",
+                MaxHealth = 1000,
+                MaxEnergy = 100,
+            };
+
+            var player1 = new Player
+            {
+                Name = "PlayerTest",
+                Money = 10000,
+                UserId = "Test",
+                Class = "Programmer",
+                MaxHealth = 1000,
+                MaxEnergy = 100,
+            };
+
+            await playerRepositoryInMemory.AddAsync(player);
+            await playerRepositoryInMemory.AddAsync(player1);
+
+            await playerRepositoryInMemory.SaveChangesAsync();
+
+
+            var user = new ApplicationUser
+            {
+                UserName = "Test",
+                Id = "Pesho",
+                PlayerId = player.Id,
+                Email = "Test@abv.bg",
+            };
+            var user1 = new ApplicationUser
+            {
+                UserName = "Test1",
+                Id = "Test",
+                PlayerId = player1.Id,
+                Email = "Test@abv.bg",
+            };
+            await userRepositoryInMemory.AddAsync(user);
+            await userRepositoryInMemory.AddAsync(user1);
+
+            await userRepositoryInMemory.SaveChangesAsync();
+
+            await foodRepositoryInMemory.AddAsync(new Food
+            {
+                Id = 2,
+                Name = "Food +20",
+                GainHealth = 20,
+                GainExp = 40,
+                LevelRequirement = 3,
+                Price = 70.00M,
+                ImageName = "Food2",
+                Description = "No",
+            });
+
+            await foodRepositoryInMemory.AddAsync(new Food
+            {
+                Id = 1,
+                Name = "Food +15",
+                GainHealth = 15,
+                GainExp = 20,
+                LevelRequirement = 2,
+                Price = 50.00M,
+                ImageName = "Food1",
+                Description = "No",
+            });
+
+            await foodRepositoryInMemory.SaveChangesAsync();
+
+            await petRepositoryInMemory.AddAsync(new Pet
+            {
+                Id = 2,
+                Name = "Dog",
+                ImageName = "Dog",
+                Price = 1500.00M,
+                Description = "Your Best Friend",
+                LevelRequirement = 4,
+            });
+
+            await petRepositoryInMemory.AddAsync(new Pet
+            {
+                Id = 1,
+                Name = "Cat",
+                ImageName = "Cat",
+                Price = 200.00M,
+                Description = "The Cutes Cat in the world.",
+                LevelRequirement = 2,
+            });
+
+            await petRepositoryInMemory.SaveChangesAsync();
+
+            AutoMapperConfig.RegisterMappings(typeof(TestMarketFoodViewModel).Assembly);
+            AutoMapperConfig.RegisterMappings(typeof(TestMarketPetViewModel).Assembly);
+
+            var marketService = new MarketService(
+                petRepositoryInMemory,
+                foodRepositoryInMemory,
+                playerRepositoryInMemory,
+                playerFoodRepositoryInMemory,
+                playerPetRepositoryInMemory);
+
+            return marketService;
         }
     }
 }

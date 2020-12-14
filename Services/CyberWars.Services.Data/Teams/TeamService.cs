@@ -3,19 +3,19 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
     using System.Threading.Tasks;
+    using System.Text;
+    using System.IO;
 
     using CyberWars.Data.Common.Repositories;
     using CyberWars.Data.Models;
-    using CyberWars.Data.Models.Player;
-    using CyberWars.Data.Models.Teams;
-    using CyberWars.Web.ViewModels.Team;
-    using CyberWars.Services.Mapping;
-    using Microsoft.EntityFrameworkCore;
-    using CyberWars.Data.Models.Skills;
     using CyberWars.Data.Models.Ability;
-    using System.IO;
+    using CyberWars.Data.Models.Player;
+    using CyberWars.Data.Models.Skills;
+    using CyberWars.Data.Models.Teams;
+    using CyberWars.Services.Mapping;
+    using CyberWars.Web.ViewModels.Team;
+    using Microsoft.EntityFrameworkCore;
 
     public class TeamService : ITeamService
     {
@@ -25,7 +25,8 @@
         private readonly IDeletableEntityRepository<ApplicationUser> userRepository;
         private readonly IDeletableEntityRepository<PlayerSkill> playerSkillsRepository;
 
-        public TeamService(IDeletableEntityRepository<Team> teamRepository,
+        public TeamService(
+            IDeletableEntityRepository<Team> teamRepository,
             IDeletableEntityRepository<Player> playerRepository,
             IDeletableEntityRepository<TeamPlayer> teamPlayerRepository,
             IDeletableEntityRepository<ApplicationUser> userRepository,
@@ -66,9 +67,7 @@
 
             var teamPlayer = new TeamPlayer
             {
-                Player = player,
                 PlayerId = player.Id,
-                Team = team,
                 TeamId = team.Id,
             };
             team.Rank += await this.CalculateRank(player.Id);
@@ -135,7 +134,7 @@
                 {
                     PlayerName = this.playerRepository.All().FirstOrDefault(x => x.Id == teamPlayer.PlayerId).Name,
                     PlayerId = teamPlayer.PlayerId,
-                    TeamName = teamPlayer.Team.Name,
+                    TeamName = team.Name,
                     TeamId = teamPlayer.TeamId,
                 });
             }
