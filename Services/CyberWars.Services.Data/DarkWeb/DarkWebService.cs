@@ -62,6 +62,17 @@
                 }
             }
 
+            if (collection.Count() == 0)
+            {
+                var random2 = new Random().Next(0, dataViewPlayers.Count());
+                return await this.GetDefencePlayerWithSkillsDataView(dataViewPlayers.ElementAt(random2).Id, typeFight);
+            }
+
+            if (dataViewPlayers.Count() == 0)
+            {
+                return null;
+            }
+
             var random = new Random().Next(0, collection.Count());
             return await this.GetDefencePlayerWithSkillsDataView(collection[random].Id, typeFight);
         }
@@ -86,6 +97,17 @@
                     collection.Add(count, player);
                     count++;
                 }
+            }
+
+            if (collection.Count() == 0)
+            {
+                var random2 = new Random().Next(0, dataViewPlayers.Count());
+                return await this.GetDefencePlayerWithSkillsDataView(dataViewPlayers.ElementAt(random2).Id, typeFight);
+            }
+
+            if (dataViewPlayers.Count() == 0)
+            {
+                return null;
             }
 
             var random = new Random().Next(0, collection.Count());

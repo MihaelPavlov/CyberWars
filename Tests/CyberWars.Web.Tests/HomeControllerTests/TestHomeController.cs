@@ -1,61 +1,68 @@
 ﻿namespace CyberWars.Web.Tests.HomeControllerTests
 {
-    using CyberWars.Data;
-    using CyberWars.Data.Models;
-    using CyberWars.Services.Data.Home;
-    using CyberWars.Web.Controllers;
-    using CyberWars.Web.ViewModels.HomeViews;
-    using Microsoft.AspNetCore.Mvc;
-    using Microsoft.EntityFrameworkCore;
-    using Moq;
-    using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Security.Claims;
     using System.Threading.Tasks;
+
+    using CyberWars.Web.Controllers;
+    using CyberWars.Web.Tests.Extensions;
+    using CyberWars.Web.Tests.Helpers;
+    using CyberWars.Web.ViewModels.HomeViews;
+    using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.Mvc;
+
     using Xunit;
 
     public class TestHomeController
     {
-
         [Fact]
-        public async Task TestViewModelForIndex()
+        public async Task TestIndexActionShouldReturnPlayerDataView()
         {
+            var homeController = new HomeController(new FakeHomeService())
+                .WithTestUser();
 
+            var result = await homeController.Index();
+
+            var viewResult = Assert.IsType<ViewResult>(result);
+            var model = Assert.IsAssignableFrom<PlayerDataView>(viewResult.Model);
         }
 
-
-    }
-
-    public static class MockHomeService
-    {
-        public static PlayerDataView GetPlayerDataView(string userId)
+        [Fact]
+        public async Task TestSkillActionShouldReutrnPlayerSkillViewModel()
         {
-            var list = new List<PlayerDataView>()
-           {
-               new PlayerDataView
-               {
-                   Id="TestPlayer",
-                   Money=1000,
-                   UserId="Test",
-                   Class="Programmer",
-               },
-               new PlayerDataView
-               {
-                   Id="TestPesho",
-                   Money=1000,
-                   UserId="Pesho",
-                   Class="Programmer",
-               },
-               new PlayerDataView
-               {
-                   Id="TestGosho",
-                   Money=1000,
-                   UserId="Gosho",
-                   Class="Programmer",
-               },
-           };
+            var homeController = new HomeController(new FakeHomeService());
+            homeController.WithTestUser();
 
-            return list.FirstOrDefault(x => x.UserId == userId);
+            var result = await homeController.Skills();
+
+            var viewResult = Assert.IsType<ViewResult>(result);
+            var model = Assert.IsAssignableFrom<IEnumerable<PlayerSkillViewModel>>(viewResult.Model);
+            Assert.Equal(3, model.Count());
+        }
+
+        [Fact]
+        public async Task TestTrainSkillAction()
+        {
+            var homeController = new HomeController(new FakeHomeService()).WithTestUser();
+
+
+            var result = await homeController.TrainSkill("Health");
+
+            var viewResult = Assert.IsType<RedirectResult>(result);
+        }
+
+        [Fact]
+        public async Task TestAbilitiesAction()
+        {
+            var homeController = new HomeController(new FakeHomeService()).WithTestUser();
+
+
+            var result = await homeController.Abilities("Language");
+
+            var viewResult = Assert.IsType<ViewResult>(result);
+            var model = Assert.IsAssignableFrom<IEnumerable<PlayerAbilitiesViewModel>>(viewResult.Model);
+            Assert.Equal(4, model.Count());
         }
     }
 }

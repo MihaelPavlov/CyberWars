@@ -44,6 +44,11 @@
         {
             var player = await this.playerRepository.All().FirstOrDefaultAsync(x => x.UserId == userId);
 
+            if (courseName.Contains("HTML"))
+            {
+                courseName = "HTML & CSS";
+            }
+
             return await this.lectureRepository.All().Where(x => x.Course.Name == courseName).OrderBy(x => x.Number).Select(x => new LectureViewModel
             {
                 CourseId = x.CourseId,
