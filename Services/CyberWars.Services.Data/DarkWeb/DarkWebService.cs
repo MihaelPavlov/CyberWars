@@ -3,7 +3,6 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
     using System.Threading.Tasks;
 
     using CyberWars.Data.Common.Repositories;
@@ -25,13 +24,13 @@
         private readonly IDeletableEntityRepository<PlayerBattle> playerBattleRepository;
         private readonly IDeletableEntityRepository<BattleRecord> battleRecordRepository;
 
-
-        public DarkWebService(IDeletableEntityRepository<Player> playerRepository
-            , IDeletableEntityRepository<PlayerAbility> playerAbilityRepository
-            , IDeletableEntityRepository<PlayerSkill> playerSkillRepository
-            , IDeletableEntityRepository<Battle> battleRepository
-            , IDeletableEntityRepository<PlayerBattle> playerBattleRepository
-            , IDeletableEntityRepository<BattleRecord> battleRecordRepository)
+        public DarkWebService(
+            IDeletableEntityRepository<Player> playerRepository,
+            IDeletableEntityRepository<PlayerAbility> playerAbilityRepository,
+            IDeletableEntityRepository<PlayerSkill> playerSkillRepository,
+            IDeletableEntityRepository<Battle> battleRepository,
+            IDeletableEntityRepository<PlayerBattle> playerBattleRepository,
+            IDeletableEntityRepository<BattleRecord> battleRecordRepository)
         {
             this.playerRepository = playerRepository;
             this.playerAbilityRepository = playerAbilityRepository;
@@ -41,36 +40,6 @@
             this.battleRecordRepository = battleRecordRepository;
         }
 
-        // Logic Methods
-        //public async Task<PlayerDataView> FindNormalEnemy(string userId)
-        //{
-        //    var dataViewAttackPlayer = await this.GetAttackPlayerDataView(userId);
-        //    var dataViewPlayers = await this.GetAllPlayersWithoutTheAttackPlayer(userId);
-
-        //    if (dataViewPlayers.Count() == 0)
-        //    {
-        //        return null;
-        //    }
-
-        //    Dictionary<string, int> playersWithStats = new Dictionary<string, int>();
-
-        //    foreach (var player in dataViewPlayers)
-        //    {
-        //        int statsSum = await this.SumStats(player);
-        //        playersWithStats.Add(player.Id, statsSum);
-        //    }
-
-        //    var attackPlayerStats = await this.SumStats(dataViewAttackPlayer);
-        //    var playerWithSmallerStats = playersWithStats.Where(x => x.Value <= attackPlayerStats).ToList();
-
-        //    var random = new Random().Next(0, playerWithSmallerStats.Count() - 1);
-        //    if (playerWithSmallerStats.Count == 0 || playerWithSmallerStats == null)
-        //    {
-        //        return await this.GetDefencePlayerWithSkillsDataView(dataViewPlayers.FirstOrDefault().Id);
-        //    }
-
-        //    return await this.GetDefencePlayerWithSkillsDataView(playerWithSmallerStats.ElementAt(random).Key);
-        //}
         public async Task<PlayerDataView> FindNormalEnemy(string userId, string typeFight)
         {
             var dataViewAttackPlayer = await this.GetAttackPlayerDataView(userId);
@@ -86,7 +55,6 @@
             {
                 var sumAllStats = await this.SumStats(player);
 
-
                 if (sumAllStats <= attackPlayerStatsSum)
                 {
                     collection.Add(count, player);
@@ -94,7 +62,7 @@
                 }
             }
 
-            var random = new Random().Next(0, collection.Count() );
+            var random = new Random().Next(0, collection.Count());
             return await this.GetDefencePlayerWithSkillsDataView(collection[random].Id, typeFight);
         }
 
@@ -113,7 +81,6 @@
             {
                 var sumAllStats = await this.SumStats(player);
 
-
                 if (sumAllStats >= attackPlayerStatsSum)
                 {
                     collection.Add(count, player);
@@ -125,41 +92,9 @@
             return await this.GetDefencePlayerWithSkillsDataView(collection[random].Id, typeFight);
         }
 
-        //public async Task<PlayerDataView> FindStrongerEnemy(string userId)
-        //{
-
-        //    var dataViewAttackPlayer = await this.GetAttackPlayerDataView(userId);
-        //    var dataViewPlayers = await this.GetAllPlayersWithoutTheAttackPlayer(userId);
-
-        //    if (dataViewPlayers.Count() == 0)
-        //    {
-        //        return null;
-        //    }
-
-        //    Dictionary<int, PlayerDataView> playersWithStats = new Dictionary<int, PlayerDataView>();
-
-        //    foreach (var player in dataViewPlayers)
-        //    {
-        //        int statsSum = await this.SumStats(player);
-        //        playersWithStats.Add(statsSum, player);
-        //    }
-
-        //    var attackPlayerStats = await this.SumStats(dataViewAttackPlayer);
-
-        //    var playerWithStrongerStats = playersWithStats.Where(x => x.Key > attackPlayerStats).ToList();
-
-        //    var random = new Random().Next(0, playerWithStrongerStats.Count() - 1);
-        //    if (playerWithStrongerStats.Count == 0 || playerWithStrongerStats == null)
-        //    {
-        //        return await this.GetDefencePlayerWithSkillsDataView(dataViewPlayers.FirstOrDefault().Id);
-        //    }
-
-        //    return await this.GetDefencePlayerWithSkillsDataView(playerWithStrongerStats.ElementAt(random).Value.Id);
-        //}
-
         public async Task<PlayerDataView> FindEnemyByName(string userId, string searchName, string typeFight)
         {
-            if (!await this.playerRepository.All().AnyAsync(x => x.Name == searchName))
+            if (!await this.playerRepository.All().AnyAsync(x => x.Name == searchName && x.UserId != userId))
             {
                 return null;
             }
@@ -174,10 +109,10 @@
             var attackPlayer = await this.GetAttackPlayerDataView(userId);
             var defencePlayer = await this.GetDefencePlayerWithSkillsDataView(defencePlayerId, "Normal");
 
-
             var attackPlayerData = await this.playerRepository.All().FirstOrDefaultAsync(x => x.UserId == userId);
 
             var attackPlayerEnergy = attackPlayer.Energy;
+            var attackPlayerHealth = attackPlayer.Health;
 
             if (attackPlayerEnergy - 3 < 0)
             {
@@ -186,6 +121,11 @@
 
             var attackPlayerStats = await this.SumStats(attackPlayer);
             var defencePlayerStats = await this.SumStats(defencePlayer);
+
+            if (attackPlayerHealth <= defencePlayerStats)
+            {
+                return null;
+            }
 
             var winner = new PlayerDataView();
 
@@ -201,9 +141,6 @@
                 var battleRecordAttackPlayer = await this.battleRecordRepository.All().FirstOrDefaultAsync(x => x.PlayerId == attackPlayer.Id);
                 var battleRecordDefencePlayer = await this.battleRecordRepository.All().FirstOrDefaultAsync(x => x.PlayerId == defencePlayer.Id);
 
-                //var attackP = await this.playerRepository.All().FirstOrDefaultAsync(x => x.UserId == userId);
-                //var defenceP = await this.playerRepository.All().FirstOrDefaultAsync(x => x.Id == defencePlayerId);
-
                 var playerBattle = new PlayerBattle
                 {
                     PlayerId = attackPlayer.Id,
@@ -218,7 +155,6 @@
                 }
                 else
                 {
-
                     playerDefenceUpdateMoney.Money -= battleRecordAttackPlayer.StealPerBattle;
                 }
 
@@ -252,9 +188,9 @@
                 }
                 else
                 {
-
                     playerAttackUpdateMoney.Money -= battleRecordDefencePlayer.StealPerBattle;
                 }
+
                 this.playerRepository.Update(playerAttackUpdateMoney);
 
                 // Battle Record update
@@ -439,5 +375,69 @@
 
             return sumAbilities + sumSkills;
         }
+
+        // Logic Methods
+        /*public async Task<PlayerDataView> FindNormalEnemy(string userId)
+       {
+           var dataViewAttackPlayer = await this.GetAttackPlayerDataView(userId);
+           var dataViewPlayers = await this.GetAllPlayersWithoutTheAttackPlayer(userId);
+
+           if (dataViewPlayers.Count() == 0)
+           {
+               return null;
+           }
+
+           Dictionary<string, int> playersWithStats = new Dictionary<string, int>();
+
+           foreach (var player in dataViewPlayers)
+           {
+               int statsSum = await this.SumStats(player);
+               playersWithStats.Add(player.Id, statsSum);
+           }
+
+           var attackPlayerStats = await this.SumStats(dataViewAttackPlayer);
+           var playerWithSmallerStats = playersWithStats.Where(x => x.Value <= attackPlayerStats).ToList();
+
+           var random = new Random().Next(0, playerWithSmallerStats.Count() - 1);
+           if (playerWithSmallerStats.Count == 0 || playerWithSmallerStats == null)
+           {
+               return await this.GetDefencePlayerWithSkillsDataView(dataViewPlayers.FirstOrDefault().Id);
+           }
+
+           return await this.GetDefencePlayerWithSkillsDataView(playerWithSmallerStats.ElementAt(random).Key);
+        }
+        */
+
+        /*public async Task<PlayerDataView> FindStrongerEnemy(string userId)
+        {
+
+         var dataViewAttackPlayer = await this.GetAttackPlayerDataView(userId);
+         var dataViewPlayers = await this.GetAllPlayersWithoutTheAttackPlayer(userId);
+
+         if (dataViewPlayers.Count() == 0)
+         {
+             return null;
+         }
+
+         Dictionary<int, PlayerDataView> playersWithStats = new Dictionary<int, PlayerDataView>();
+
+         foreach (var player in dataViewPlayers)
+         {
+             int statsSum = await this.SumStats(player);
+             playersWithStats.Add(statsSum, player);
+         }
+
+         var attackPlayerStats = await this.SumStats(dataViewAttackPlayer);
+
+         var playerWithStrongerStats = playersWithStats.Where(x => x.Key > attackPlayerStats).ToList();
+
+         var random = new Random().Next(0, playerWithStrongerStats.Count() - 1);
+         if (playerWithStrongerStats.Count == 0 || playerWithStrongerStats == null)
+         {
+             return await this.GetDefencePlayerWithSkillsDataView(dataViewPlayers.FirstOrDefault().Id);
+         }
+
+         return await this.GetDefencePlayerWithSkillsDataView(playerWithStrongerStats.ElementAt(random).Value.Id);
+       }*/
     }
 }

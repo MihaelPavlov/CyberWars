@@ -3,7 +3,6 @@
     using System.Security.Claims;
     using System.Threading.Tasks;
 
-
     using CyberWars.Common;
     using CyberWars.Services.Data.Academy;
     using Microsoft.AspNetCore.Authorization;

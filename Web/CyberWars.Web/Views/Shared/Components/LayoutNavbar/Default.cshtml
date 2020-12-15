@@ -32,7 +32,7 @@
             <img class="Cash" src="/images/MoneyIcon.png" alt=""> <span class="Money">@Model.Money</span>
         </div>
         <div class="tooltip">
-            <span class="tooltiptext">Points</span>
+            <span class="tooltiptext">Ability</span>
             <img class="Expirience" src="/images/LampIcon.png" alt=""> <span class="Exp">@playerAbilities.Sum(x => x.Points)</span>
         </div>
     </div>
@@ -58,8 +58,9 @@
         </div>
     </div>
     <div class="item item3 ">
-        <div class="Stars ">
+        <div class="Stars tooltip">
             <img class="star" src="/images/Star.png" alt="">
+            <span class="tooltiptext">Level & Exp</span>
             <span class="text">
                 @if (level == null)
                 {
@@ -84,7 +85,7 @@
                 }
             }
 
-            @if (level==null)
+            @if (level == null)
             {
                 <img class="star " src="/images/Star.png" alt=""> <span class="text">LastLevel</span>
             }

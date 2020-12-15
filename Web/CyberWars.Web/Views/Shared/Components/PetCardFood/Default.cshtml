@@ -6,8 +6,9 @@
     @for (int i = 0; i < food.Quantity; i++)
     {
         <form method="post" class="foodForm">
-            <div class="food">
+            <div class="food tooltipPetCard">
                 <ul>
+                    <span class="tooltiptextPetCard">+ @food.Food.FoodGainHealth Health</span>
                     <li> <img class="foodImg" src="/images/Market/Food/@(food.Food.FoodImageName + ".png")" alt=""></li>
                     <label for="foodId"></label>
                     <button class="btn-pet yellow rounded" name="foodId" value="@food.FoodId">Feed</button>
@@ -18,5 +19,4 @@
 }
 @section CssFile{
     <link rel="stylesheet" href="/css/Home/petCard.css">
-
 }

@@ -1,8 +1,6 @@
 ﻿namespace CyberWars.Services.Data.Tests.Helpers.TestViewModel
 {
-    using System;
     using System.Collections.Generic;
-    using System.Text;
 
     using CyberWars.Data.Models.Badge;
     using CyberWars.Services.Mapping;

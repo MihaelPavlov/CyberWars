@@ -38,7 +38,6 @@
         public async Task<IEnumerable<T>> GetAllFood<T>()
         {
             return await this.foodRepository.All().To<T>().ToListAsync();
-
         }
 
         public async Task<IEnumerable<T>> GetAllPets<T>()
@@ -95,7 +94,6 @@
 
             this.playerRepository.Update(player);
             await this.playerRepository.SaveChangesAsync();
-
         }
 
         public async Task BuyFood(int foodId, string userId)

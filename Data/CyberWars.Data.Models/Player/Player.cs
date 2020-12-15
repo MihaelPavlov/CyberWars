@@ -2,8 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
+
     using CyberWars.Data.Common.Models;
     using CyberWars.Data.Models.Ability;
     using CyberWars.Data.Models.Badge;
@@ -14,7 +13,6 @@
     using CyberWars.Data.Models.Pet_Food;
     using CyberWars.Data.Models.Skills;
     using CyberWars.Data.Models.Teams;
-    using Microsoft.AspNetCore.Identity;
 
     public class Player : BaseDeletableModel<string>
     {

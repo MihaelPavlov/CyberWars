@@ -26,6 +26,7 @@
                 Percentage = 1,
                 ImageName = "CyberWars",
             });
+
             await dbContext.Contests.AddAsync(new Contest
             {
                 Name = "International Collegiate Contest",
@@ -45,6 +46,7 @@
                 Percentage = 15,
                 ImageName = "InternationalOlympiadContest",
             });
+
             await dbContext.Contests.AddAsync(new Contest
             {
                 Name = "Code Chef",
@@ -54,6 +56,7 @@
                 Percentage = 35,
                 ImageName = "CodeChef",
             });
+
             await dbContext.Contests.AddAsync(new Contest
             {
                 Name = "Code Force",
@@ -63,6 +66,7 @@
                 Percentage = 40,
                 ImageName = "CodeForces",
             });
+
             await dbContext.Contests.AddAsync(new Contest
             {
                 Name = "Facebook Hacker Cup",
@@ -72,6 +76,7 @@
                 Percentage = 50,
                 ImageName = "FacebookHackerCup",
             });
+
             await dbContext.Contests.AddAsync(new Contest
             {
                 Name = "Hacker Rank",
@@ -81,6 +86,7 @@
                 Percentage = 50,
                 ImageName = "HackerRank",
             });
+
             await dbContext.Contests.AddAsync(new Contest
             {
                 Name = "Google Code Jam",
@@ -90,6 +96,7 @@
                 Percentage = 55,
                 ImageName = "GoogleCodeJam",
             });
+
             await dbContext.Contests.AddAsync(new Contest
             {
                 Name = "IEEEXtreme Programming",
@@ -99,6 +106,7 @@
                 Percentage = 50,
                 ImageName = "IEEEXtremeProgramming",
             });
+
             await dbContext.Contests.AddAsync(new Contest
             {
                 Name = "Topcoder Open",
@@ -108,6 +116,7 @@
                 Percentage = 70,
                 ImageName = "TopCoder",
             });
+
             await dbContext.SaveChangesAsync();
         }
     }

@@ -1,11 +1,12 @@
-﻿using CyberWars.Data.Models.Course;
-using CyberWars.Services.Mapping;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace CyberWars.Web.ViewModels.Academy
+﻿namespace CyberWars.Web.ViewModels.Academy
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+
+    using CyberWars.Data.Models.Course;
+    using CyberWars.Services.Mapping;
+
     public class LanguageViewModel : IMapFrom<Course>
     {
         public int Id { get; set; }

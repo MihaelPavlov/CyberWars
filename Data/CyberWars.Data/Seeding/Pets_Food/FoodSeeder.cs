@@ -27,6 +27,7 @@
                 ImageName = "Food7",
                 Description = "No",
             });
+
             dbContext.Foods.Add(new Food
             {
                 Name = "Food +80",
@@ -37,6 +38,7 @@
                 ImageName = "Food6",
                 Description = "No",
             });
+
             dbContext.Foods.Add(new Food
             {
                 Name = "Food +65",
@@ -47,6 +49,7 @@
                 ImageName = "Food5",
                 Description = "No",
             });
+
             dbContext.Foods.Add(new Food
             {
                 Name = "Food +50",

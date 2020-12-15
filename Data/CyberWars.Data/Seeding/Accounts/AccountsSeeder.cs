@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CyberWars.Data.Seeding.Accounts
+﻿namespace CyberWars.Data.Seeding.Accounts
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+    using System.Threading.Tasks;
+
     public class AccountsSeeder : ISeeder
     {
         public Task SeedAsync(ApplicationDbContext dbContext, IServiceProvider serviceProvider)

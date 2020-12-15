@@ -4,11 +4,9 @@ namespace CyberWars.Data.Models
     using System;
     using System.Collections.Generic;
 
+    using CyberWars.Data.Common.Models;
     using Microsoft.AspNetCore.Identity;
 
-    using CyberWars.Data.Models.Teams;
-    using CyberWars.Data.Models.Player;
-    using CyberWars.Data.Common.Models;
     public class ApplicationUser : IdentityUser, IAuditInfo, IDeletableEntity
     {
         public ApplicationUser()
@@ -24,7 +22,6 @@ namespace CyberWars.Data.Models
         public int TeamId { get; set; }
 
         // Audit info
-
         public DateTime CreatedOn { get; set; }
 
         public DateTime? ModifiedOn { get; set; }

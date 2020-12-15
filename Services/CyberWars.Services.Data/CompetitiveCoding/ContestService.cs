@@ -3,14 +3,12 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
     using System.Threading.Tasks;
 
     using CyberWars.Data.Common.Repositories;
     using CyberWars.Data.Models.CompetitiveCoding;
     using CyberWars.Data.Models.Player;
     using CyberWars.Services.Mapping;
-    using CyberWars.Web.ViewModels.WebViews.CompetitiveCoding;
     using Microsoft.EntityFrameworkCore;
 
     public class ContestService : IContestService
@@ -56,6 +54,7 @@
                 if (IsWin(contest.Percentage))
                 {
                     playerContest.IsWin = true;
+
                     // Give Player Reward
                     player.Money += contest.RewardMoney;
                     player.Experience += contest.RewardExp;

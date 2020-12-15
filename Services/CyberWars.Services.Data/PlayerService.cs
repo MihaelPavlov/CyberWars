@@ -27,14 +27,15 @@
         private readonly IDeletableEntityRepository<Food> foodRepository;
         private readonly IDeletableEntityRepository<BattleRecord> battleRecordRepository;
 
-        public PlayerService(IDeletableEntityRepository<ApplicationUser> userRepository
-            , IDeletableEntityRepository<Player> playerRepository
-            , IDeletableEntityRepository<Skill> skillsRepository
-            , IDeletableEntityRepository<PlayerSkill> playerSkillRepository
-            , IDeletableEntityRepository<Ability> abilityRepository
-            , IDeletableEntityRepository<PlayerAbility> playerAbilityRepository
-            , IDeletableEntityRepository<Food> foodRepository
-            , IDeletableEntityRepository<BattleRecord> battleRecordRepository)
+        public PlayerService(
+             IDeletableEntityRepository<ApplicationUser> userRepository,
+             IDeletableEntityRepository<Player> playerRepository,
+             IDeletableEntityRepository<Skill> skillsRepository,
+             IDeletableEntityRepository<PlayerSkill> playerSkillRepository,
+             IDeletableEntityRepository<Ability> abilityRepository,
+             IDeletableEntityRepository<PlayerAbility> playerAbilityRepository,
+             IDeletableEntityRepository<Food> foodRepository,
+             IDeletableEntityRepository<BattleRecord> battleRecordRepository)
         {
             this.playerRepository = playerRepository;
             this.userRepository = userRepository;

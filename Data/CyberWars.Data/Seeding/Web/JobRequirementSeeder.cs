@@ -258,9 +258,7 @@
                     JobId = systemSoftwareId,
                     RequirementId = requirements.FirstOrDefault(x => x.Name == $"CSS" && x.Points == 35).Id,
                 });
-
             }
-
 
             // Job Level 5
             var listWithLanguagesLevel5 = new List<string>();
@@ -417,7 +415,6 @@
                     });
                 }
 
-
                 // Food Delivery
                 dbContext.JobRequirements.Add(new JobRequirement
                 {
@@ -483,7 +480,6 @@
                         RequirementId = requirements.FirstOrDefault(x => x.Name == $"MySQL" && x.Points == 20).Id,
                     });
                 }
-
             }
 
             // Job Level 1

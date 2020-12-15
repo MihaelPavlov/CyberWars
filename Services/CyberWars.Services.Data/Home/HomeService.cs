@@ -3,10 +3,6 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Net.Http.Headers;
-    using System.Runtime.InteropServices;
-    using System.Security.Cryptography.X509Certificates;
-    using System.Text;
     using System.Threading.Tasks;
 
     using CyberWars.Data.Common.Repositories;
@@ -21,8 +17,6 @@
     using CyberWars.Services.Mapping;
     using CyberWars.Web.ViewModels.Battle;
     using CyberWars.Web.ViewModels.HomeViews;
-    using CyberWars.Web.ViewModels.HomeViews.Pet;
-    using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
 
     public class HomeService : IHomeService
@@ -44,20 +38,21 @@
         private readonly IDeletableEntityRepository<TeamPlayer> teamPlayerRepository;
         private readonly IDeletableEntityRepository<Team> teamRepository;
 
-        public HomeService(IDeletableEntityRepository<Player> playerRepository
-            , IDeletableEntityRepository<PlayerSkill> playerSkillRepository
-            , IDeletableEntityRepository<PlayerAbility> playerAbilityRepository
-            , IDeletableEntityRepository<ApplicationUser> userRepository
-            , IDeletableEntityRepository<Badge> badgeRepository
-            , IDeletableEntityRepository<BadgeRequirement> badgeRequirementRepository
-            , IDeletableEntityRepository<PlayerPet> playerPetRepository
-            , IDeletableEntityRepository<Food> foodRepository
-            , IDeletableEntityRepository<Pet> petRepository
-            , IDeletableEntityRepository<PlayerFood> playerFoodRepository
-            , IDeletableEntityRepository<BattleRecord> battleRecordRepository
-            , IDeletableEntityRepository<Skill> skillRepository
-            , IDeletableEntityRepository<RandomHangfireFood> randomHangfireFoodRepository
-            , IDeletableEntityRepository<PlayerBadge> playerBadgeRepository,
+        public HomeService(
+            IDeletableEntityRepository<Player> playerRepository,
+            IDeletableEntityRepository<PlayerSkill> playerSkillRepository,
+            IDeletableEntityRepository<PlayerAbility> playerAbilityRepository,
+            IDeletableEntityRepository<ApplicationUser> userRepository,
+            IDeletableEntityRepository<Badge> badgeRepository,
+            IDeletableEntityRepository<BadgeRequirement> badgeRequirementRepository,
+            IDeletableEntityRepository<PlayerPet> playerPetRepository,
+            IDeletableEntityRepository<Food> foodRepository,
+            IDeletableEntityRepository<Pet> petRepository,
+            IDeletableEntityRepository<PlayerFood> playerFoodRepository,
+            IDeletableEntityRepository<BattleRecord> battleRecordRepository,
+            IDeletableEntityRepository<Skill> skillRepository,
+            IDeletableEntityRepository<RandomHangfireFood> randomHangfireFoodRepository,
+            IDeletableEntityRepository<PlayerBadge> playerBadgeRepository,
             IDeletableEntityRepository<TeamPlayer> teamPlayerRepository,
             IDeletableEntityRepository<Team> teamRepository)
         {
@@ -81,7 +76,7 @@
 
         public async Task<PlayerDataView> GetPlayerData(string userId)
         {
-            // Get The Player with userId 
+            // Get The Player with userId
             var player = await this.playerRepository
                 .All()
                 .FirstOrDefaultAsync(x => x.UserId == userId);
@@ -248,7 +243,6 @@
 
             playerPet.Health += playerFood.Food.GainHealth;
 
-
             if (playerPet.Health > playerPet.MaxHealth)
             {
                 playerPet.Health = playerPet.MaxHealth;
@@ -257,7 +251,6 @@
             this.playerPetRepository.Update(playerPet);
 
             // Delete PlayerFood and Save
-
             playerFood.Quantity--;
             this.playerFoodRepository.Update(playerFood);
 
@@ -320,9 +313,8 @@
                     SkillId = skill.SkillId,
                     Money = skill.Money,
                     Points = skill.Points,
-                    SkillName =  this.skillRepository.All().FirstOrDefault(x => x.Id == skill.SkillId).Name,
+                    SkillName = this.skillRepository.All().FirstOrDefault(x => x.Id == skill.SkillId).Name,
                 });
-                ;
             }
 
             // PlayerBattleRecord

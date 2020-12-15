@@ -1,7 +1,8 @@
 ﻿namespace CyberWars.Data.Models.Course
 {
-    using CyberWars.Data.Common.Models;
     using System.Collections.Generic;
+
+    using CyberWars.Data.Common.Models;
 
     public class CourseType : BaseDeletableModel<int>
     {

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace CyberWars.Web.ViewModels.DarkWeb
+﻿namespace CyberWars.Web.ViewModels.DarkWeb
 {
     public class TypeOfAttackInputModel
     {

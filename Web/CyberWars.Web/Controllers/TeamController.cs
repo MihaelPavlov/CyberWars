@@ -93,7 +93,7 @@
 
                 var falseimagePath = this.webHostEnvironment.WebRootFileProvider.GetFileInfo($"/TeamImages/{userId}.png").PhysicalPath;
 
-                await this.teamService.RemoveImage( falseimagePath);
+                await this.teamService.RemoveImage(falseimagePath);
 
                 return this.View();
             }

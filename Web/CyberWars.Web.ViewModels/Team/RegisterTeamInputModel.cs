@@ -1,9 +1,8 @@
 ﻿namespace CyberWars.Web.ViewModels.Team
 {
     using System.ComponentModel.DataAnnotations;
+
     using CyberWars.Common.Attributes;
-    using CyberWars.Web;
-    using CyberWars.Web.Infrastructure.Attributes;
     using Microsoft.AspNetCore.Http;
 
     public class RegisterTeamInputModel

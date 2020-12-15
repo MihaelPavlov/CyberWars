@@ -4,8 +4,8 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
-
     using System.Threading.Tasks;
+
     using CyberWars.Data.Models.Course;
 
     public class LectureSeeder : ISeeder
@@ -135,7 +135,6 @@
             });
 
             // Python Web Basics Lectures
-
             dbContext.Lectures.Add(new Lecture
             {
                 Number = 9,
@@ -327,7 +326,6 @@
                 RewardMoney = 2000,
                 CourseId = pythonOOPId,
             });
-
 
             // Python Advanced Lectures
             dbContext.Lectures.Add(new Lecture
@@ -643,7 +641,6 @@
                 CourseId = reactJSId,
             });
 
-
             // JS Back-End
             dbContext.Lectures.Add(new Lecture
             {
@@ -911,10 +908,7 @@
                 CourseId = jsAdvancedId,
             });
 
-
-
-
-            // Spring Advanced Lectures 
+            // Spring Advanced Lectures
             dbContext.Lectures.Add(new Lecture
             {
                 Number = 10,

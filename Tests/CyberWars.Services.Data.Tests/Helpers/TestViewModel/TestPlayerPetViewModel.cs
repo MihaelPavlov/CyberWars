@@ -1,11 +1,10 @@
-﻿using CyberWars.Data.Models.Pet_Food;
-using CyberWars.Services.Mapping;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace CyberWars.Services.Data.Tests.Helpers.TestViewModel
+﻿namespace CyberWars.Services.Data.Tests.Helpers.TestViewModel
 {
+    using System.Collections.Generic;
+
+    using CyberWars.Data.Models.Pet_Food;
+    using CyberWars.Services.Mapping;
+
     public class TestPlayerPetViewModel : IMapFrom<PlayerPet>
     {
         public TestPlayerPetViewModel()

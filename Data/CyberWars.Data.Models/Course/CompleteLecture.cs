@@ -1,8 +1,9 @@
 ﻿namespace CyberWars.Data.Models.Course
 {
+    using System;
+
     using CyberWars.Data.Common.Models;
     using CyberWars.Data.Models.Player;
-    using System;
 
     public class CompleteLecture : IDeletableEntity
     {

@@ -1,20 +1,13 @@
 ﻿namespace CyberWars.Web.ViewModels.HomeViews
 {
-    using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Security.Cryptography.X509Certificates;
-    using System.Text;
 
-    using AutoMapper;
-    using CyberWars.Data.Models.Ability;
     using CyberWars.Data.Models.Badge;
     using CyberWars.Data.Models.Battle;
     using CyberWars.Data.Models.Course;
     using CyberWars.Data.Models.Job;
     using CyberWars.Data.Models.Pet_Food;
     using CyberWars.Data.Models.Player;
-    using CyberWars.Data.Models.Skills;
     using CyberWars.Services.Mapping;
     using CyberWars.Web.ViewModels.Battle;
     using CyberWars.Web.ViewModels.HomeViews.Pet;

@@ -1,9 +1,5 @@
 ﻿namespace CyberWars.Web.ViewModels.Market
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
-
     using CyberWars.Data.Models.Pet_Food;
     using CyberWars.Services.Mapping;
 

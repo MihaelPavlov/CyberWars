@@ -1,11 +1,11 @@
 ﻿namespace CyberWars.Data.Models.Ability
 {
-    using CyberWars.Data.Models.Player;
-    using CyberWars.Data.Common.Models;
     using System;
 
-    public class PlayerAbility : IDeletableEntity
+    using CyberWars.Data.Common.Models;
+    using CyberWars.Data.Models.Player;
 
+    public class PlayerAbility : IDeletableEntity
     {
         public virtual string PlayerId { get; set; }
 

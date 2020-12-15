@@ -151,7 +151,6 @@
             await battleRecordRepositoryInMemory.AddAsync(battleRecord);
             await battleRecordRepositoryInMemory.SaveChangesAsync();
 
-
             foreach (var skillInMemory in skillRepositoryInMemory.All())
             {
                 await playerSkillRepositoryInMemory.AddAsync(new PlayerSkill
@@ -175,7 +174,6 @@
             }
 
             await playerSkillRepositoryInMemory.SaveChangesAsync();
-
 
             await abilityTypeRepositoryInMemory.AddAsync(new AbilityType
             {
@@ -409,7 +407,6 @@
 
             await badgeRequirementsRepositoryInMemory.SaveChangesAsync();
 
-
             await petRepositoryInMemory.AddAsync(new Pet
             {
                 Id = 2,
@@ -512,7 +509,6 @@
             });
             await playerFoodRepositoryInMemory.SaveChangesAsync();
 
-
             var requirement7 = await requirementsRepositoryInMemory.All().FirstOrDefaultAsync(x => x.Id == 7);
             var requirement6 = await requirementsRepositoryInMemory.All().FirstOrDefaultAsync(x => x.Id == 6);
             var requirement5 = await requirementsRepositoryInMemory.All().FirstOrDefaultAsync(x => x.Id == 5);
@@ -564,9 +560,7 @@
                 teamRepositoryInMemory);
 
             return homeService;
-
         }
-
 
         public static async Task<WebService> GetWebService()
         {
@@ -583,7 +577,6 @@
             var randomHangfireJobRepositoryInMemory = new EfDeletableEntityRepository<RandomHangfireJob>(new ApplicationDbContext(options.Options));
             var playerJobRepositoryInMemory = new EfDeletableEntityRepository<PlayerJob>(new ApplicationDbContext(options.Options));
             var jobTypeRepositoryInMemory = new EfDeletableEntityRepository<JobType>(new ApplicationDbContext(options.Options));
-
 
             var player = new Player
             {
@@ -609,7 +602,6 @@
             await playerRepositoryInMemory.AddAsync(player1);
 
             await playerRepositoryInMemory.SaveChangesAsync();
-
 
             var user = new ApplicationUser
             {
@@ -999,8 +991,6 @@
 
             await playerJobRepositoryInMemory.SaveChangesAsync();
 
-
-
             AutoMapperConfig.RegisterMappings(typeof(TestJobViewModel).Assembly);
             AutoMapperConfig.RegisterMappings(typeof(TestJobRequirementViewModel).Assembly);
 
@@ -1013,7 +1003,6 @@
 
             return webservice;
         }
-
 
         public static async Task<AcademyService> GetAcademyService()
         {
@@ -1055,7 +1044,6 @@
             await playerRepositoryInMemory.AddAsync(player1);
 
             await playerRepositoryInMemory.SaveChangesAsync();
-
 
             var user = new ApplicationUser
             {
@@ -1352,7 +1340,6 @@
             var teamPlayerRepositoryInMemory = new EfDeletableEntityRepository<TeamPlayer>(new ApplicationDbContext(options.Options));
             var playerSkillRepositoryInMemory = new EfDeletableEntityRepository<PlayerSkill>(new ApplicationDbContext(options.Options));
 
-
             var player = new Player
             {
                 Id = "TestId",
@@ -1378,7 +1365,6 @@
             await playerRepositoryInMemory.AddAsync(player1);
 
             await playerRepositoryInMemory.SaveChangesAsync();
-
 
             var user = new ApplicationUser
             {
@@ -1576,7 +1562,6 @@
             return teamService;
         }
 
-
         public static async Task<ContestService> GetContestService()
         {
             var options = new DbContextOptionsBuilder<ApplicationDbContext>().UseInMemoryDatabase(Guid.NewGuid().ToString());
@@ -1586,8 +1571,6 @@
             var contestRepositoryInMemory = new EfDeletableEntityRepository<Contest>(new ApplicationDbContext(options.Options));
             var playerContestRepositoryInMemory = new EfDeletableEntityRepository<PlayerContest>(new ApplicationDbContext(options.Options));
             var randomContestRepositoryInMemory = new EfDeletableEntityRepository<RandomHangfireContest>(new ApplicationDbContext(options.Options));
-
-
 
             var player = new Player
             {
@@ -1614,7 +1597,6 @@
             await playerRepositoryInMemory.AddAsync(player1);
 
             await playerRepositoryInMemory.SaveChangesAsync();
-
 
             var user = new ApplicationUser
             {
@@ -1705,7 +1687,6 @@
                 randomContestRepositoryInMemory);
 
             return contestService;
-
         }
 
         public static async Task<MarketService> GetMarketService()
@@ -1718,8 +1699,6 @@
             var petRepositoryInMemory = new EfDeletableEntityRepository<Pet>(new ApplicationDbContext(options.Options));
             var playerFoodRepositoryInMemory = new EfDeletableEntityRepository<PlayerFood>(new ApplicationDbContext(options.Options));
             var playerPetRepositoryInMemory = new EfDeletableEntityRepository<PlayerPet>(new ApplicationDbContext(options.Options));
-
-
 
             var player = new Player
             {
@@ -1746,7 +1725,6 @@
             await playerRepositoryInMemory.AddAsync(player1);
 
             await playerRepositoryInMemory.SaveChangesAsync();
-
 
             var user = new ApplicationUser
             {

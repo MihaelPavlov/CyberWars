@@ -1,13 +1,9 @@
 ﻿namespace CyberWars.Web.ViewModels.HomeViews
 {
-    using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
 
     using CyberWars.Data.Models.Badge;
     using CyberWars.Services.Mapping;
-    using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
 
     public class BadgesViewModel : IMapFrom<Badge>
     {
@@ -31,9 +27,5 @@
         public virtual ICollection<BadgeRequirementsViewModel> BadgeRequirements { get; set; }
 
         public bool IsAllBadgeRequirementsComplete { get; set; }
-
-        // TODO: Property bool IsAllBadgeRequirement are complete  
-
     }
-
 }

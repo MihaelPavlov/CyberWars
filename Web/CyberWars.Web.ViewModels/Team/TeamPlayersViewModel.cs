@@ -1,10 +1,5 @@
 ﻿namespace CyberWars.Web.ViewModels.Team
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
-
-    using CyberWars.Data.Models.Player;
     using CyberWars.Data.Models.Teams;
     using CyberWars.Services.Mapping;
 

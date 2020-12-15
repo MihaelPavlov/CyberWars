@@ -1,9 +1,5 @@
 ﻿namespace CyberWars.Services.Data.Tests.Helpers.TestViewModel.WebViewModel
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
-
     using CyberWars.Data.Models.Badge;
     using CyberWars.Data.Models.Job;
     using CyberWars.Services.Mapping;

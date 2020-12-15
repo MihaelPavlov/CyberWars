@@ -3,9 +3,8 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Threading.Tasks;
-    using System.Text;
     using System.IO;
+    using System.Threading.Tasks;
 
     using CyberWars.Data.Common.Repositories;
     using CyberWars.Data.Models;
@@ -204,7 +203,6 @@
             await this.teamRepository.SaveChangesAsync();
         }
 
-
         public async Task Abandon(int teamId, string imagePath)
         {
             var teamPlayers = await this.teamPlayerRepository.All().Where(x => x.TeamId == teamId).ToListAsync();
@@ -264,7 +262,5 @@
 
             return team;
         }
-
-
     }
 }

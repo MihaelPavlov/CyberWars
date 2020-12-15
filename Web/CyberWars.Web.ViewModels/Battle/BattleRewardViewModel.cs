@@ -1,10 +1,6 @@
 ﻿namespace CyberWars.Web.ViewModels.Battle
 {
     using System;
-    using System.Collections.Generic;
-    using System.Text;
-
-    using CyberWars.Services.Mapping;
 
     public class BattleRewardViewModel
     {

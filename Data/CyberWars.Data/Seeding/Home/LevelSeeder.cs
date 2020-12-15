@@ -24,6 +24,7 @@
                 Exp = 13363,
                 ExpDifference = 1332,
             });
+
             // 29
             dbContext.Levels.Add(new Level
             {
@@ -31,6 +32,7 @@
                 Exp = 12031,
                 ExpDifference = 1207,
             });
+
             // 28
             dbContext.Levels.Add(new Level
             {
@@ -38,6 +40,7 @@
                 Exp = 10824,
                 ExpDifference = 1094,
             });
+
             // 27
             dbContext.Levels.Add(new Level
             {
@@ -45,6 +48,7 @@
                 Exp = 9730,
                 ExpDifference = 990,
             });
+
             // 26
             dbContext.Levels.Add(new Level
             {
@@ -52,6 +56,7 @@
                 Exp = 8740,
                 ExpDifference = 737,
             });
+
             // 25
             dbContext.Levels.Add(new Level
             {
@@ -59,6 +64,7 @@
                 Exp = 7842,
                 ExpDifference = 814,
             });
+
             // 24
             dbContext.Levels.Add(new Level
             {
@@ -66,6 +72,7 @@
                 Exp = 7028,
                 ExpDifference = 737,
             });
+
             // 23
             dbContext.Levels.Add(new Level
             {
@@ -73,6 +80,7 @@
                 Exp = 6291,
                 ExpDifference = 667,
             });
+
             // 22
             dbContext.Levels.Add(new Level
             {
@@ -80,6 +88,7 @@
                 Exp = 5624,
                 ExpDifference = 606,
             });
+
             // 21
             dbContext.Levels.Add(new Level
             {
@@ -87,6 +96,7 @@
                 Exp = 5018,
                 ExpDifference = 548,
             });
+
             // 20
             dbContext.Levels.Add(new Level
             {
@@ -94,6 +104,7 @@
                 Exp = 4470,
                 ExpDifference = 497,
             });
+
             // 19
             dbContext.Levels.Add(new Level
             {

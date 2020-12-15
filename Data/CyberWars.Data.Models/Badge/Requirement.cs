@@ -4,8 +4,8 @@
     using System.ComponentModel.DataAnnotations;
 
     using CyberWars.Data.Common.Models;
-    using CyberWars.Data.Models.Job;
     using CyberWars.Data.Models.Ability;
+    using CyberWars.Data.Models.Job;
 
     public class Requirement : BaseDeletableModel<int>
     {

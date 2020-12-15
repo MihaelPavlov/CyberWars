@@ -3,11 +3,10 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
     using System.Threading.Tasks;
 
-    using CyberWars.Data.Models.Pet_Food;
     using CyberWars.Data.Common.Repositories;
+    using CyberWars.Data.Models.Pet_Food;
     using Microsoft.EntityFrameworkCore;
 
     public class UpdatePetFavouriteFoodService
@@ -16,8 +15,10 @@
         private readonly IDeletableEntityRepository<Pet> petRepository;
         private readonly IDeletableEntityRepository<RandomHangfireFood> randomHangfireFoodRepository;
 
-        public UpdatePetFavouriteFoodService(IDeletableEntityRepository<Food> foodRepository, IDeletableEntityRepository<Pet> petRepository
-          , IDeletableEntityRepository<RandomHangfireFood> randomHangfireFoodRepository)
+        public UpdatePetFavouriteFoodService(
+            IDeletableEntityRepository<Food> foodRepository,
+            IDeletableEntityRepository<Pet> petRepository,
+            IDeletableEntityRepository<RandomHangfireFood> randomHangfireFoodRepository)
         {
             this.foodRepository = foodRepository;
             this.petRepository = petRepository;

@@ -20,7 +20,6 @@
             Assert.Equal("Test", result.UserId);
         }
 
-
         [Fact]
         public async Task TestTrainSkillByNameAsync()
         {

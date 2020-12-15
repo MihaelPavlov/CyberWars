@@ -1,9 +1,10 @@
-﻿using CyberWars.Data.Common.Models;
-using System;
-using System.Data.Common;
-
-namespace CyberWars.Data.Models.Badge
+﻿namespace CyberWars.Data.Models.Badge
 {
+    using System;
+    using System.Data.Common;
+
+    using CyberWars.Data.Common.Models;
+
     public class BadgeRequirement : IDeletableEntity
     {
         public virtual int BadgeId { get; set; }

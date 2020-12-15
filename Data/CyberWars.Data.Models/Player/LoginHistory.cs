@@ -1,5 +1,4 @@
-﻿
-namespace CyberWars.Data.Models.Player
+﻿namespace CyberWars.Data.Models.Player
 {
     using System;
 

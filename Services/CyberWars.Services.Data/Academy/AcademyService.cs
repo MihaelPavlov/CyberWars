@@ -24,10 +24,13 @@
         private readonly IDeletableEntityRepository<CompleteLecture> completeLectureRepository;
         private readonly IDeletableEntityRepository<PlayerCourse> playerCourseRepository;
 
-        public AcademyService(IDeletableEntityRepository<Course> courseRepository
-            , IDeletableEntityRepository<Lecture> lectureRepository, IDeletableEntityRepository<PlayerAbility> playerAbilityRepository
-            , IDeletableEntityRepository<Player> playerRepository, IDeletableEntityRepository<CompleteLecture> completeLectureRepository
-            , IDeletableEntityRepository<PlayerCourse> playerCourseRepository)
+        public AcademyService(
+            IDeletableEntityRepository<Course> courseRepository,
+            IDeletableEntityRepository<Lecture> lectureRepository,
+            IDeletableEntityRepository<PlayerAbility> playerAbilityRepository,
+            IDeletableEntityRepository<Player> playerRepository,
+            IDeletableEntityRepository<CompleteLecture> completeLectureRepository,
+            IDeletableEntityRepository<PlayerCourse> playerCourseRepository)
         {
             this.courseRepository = courseRepository;
             this.lectureRepository = lectureRepository;
@@ -62,10 +65,10 @@
 
             var completeLecture = this.CreateCompleteLecture(lecture, player);
 
+            await this.GetRewardFromCompleteLecture(player.Id, lecture);
             await this.completeLectureRepository.AddAsync(completeLecture);
 
             await this.completeLectureRepository.SaveChangesAsync();
-            await this.GetRewardFromCompleteLecture(player.Id, lecture);
 
             await this.CheckIsCourseComplete(player, lecture);
         }
@@ -89,7 +92,7 @@
 
             var splitReward = lecture.RewardAbilityName.Split(" ").ToArray();
 
-            var abilityReward = await this.playerAbilityRepository.All().FirstOrDefaultAsync(x => x.Ability.Name == splitReward[0]);
+            var abilityReward = await this.playerAbilityRepository.All().FirstOrDefaultAsync(x => x.PlayerId == playerId && x.Ability.Name == splitReward[0]);
 
             foreach (var reward in splitReward)
             {
@@ -110,13 +113,12 @@
                 }
             }
 
-            this.playerAbilityRepository.Update(abilityReward);
-            await this.playerAbilityRepository.SaveChangesAsync();
-
             this.playerRepository.Update(player);
             await this.playerRepository.SaveChangesAsync();
-        }
 
+            this.playerAbilityRepository.Update(abilityReward);
+            await this.playerAbilityRepository.SaveChangesAsync();
+        }
 
         public async Task<IEnumerable<PlayerAbility>> CheckPlayerAbilities(string playerId)
         {
@@ -133,9 +135,7 @@
             var newCompleteLecture = new CompleteLecture
             {
                 IsComplete = true,
-                //  Lecture = lecture,
                 LectureId = lecture.Id,
-                //  Player = player,
                 PlayerId = player.Id,
             };
 

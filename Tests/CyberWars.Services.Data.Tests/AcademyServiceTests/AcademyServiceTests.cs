@@ -1,14 +1,15 @@
-﻿using CyberWars.Data.Models.Course;
-using CyberWars.Services.Data.Tests.Helpers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Xunit;
-
-namespace CyberWars.Services.Data.Tests.AcademyServiceTests
+﻿namespace CyberWars.Services.Data.Tests.AcademyServiceTests
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+
+    using CyberWars.Data.Models.Course;
+    using CyberWars.Services.Data.Tests.Helpers;
+    using Xunit;
+
     public class AcademyServiceTests
     {
         [Fact]
@@ -25,7 +26,6 @@ namespace CyberWars.Services.Data.Tests.AcademyServiceTests
             var academyService = await TestDataHelpers.GetAcademyService();
 
             await academyService.CompleteLectureById("Pesho", 1);
-
 
             var result = await academyService.GetCompleteLectureById("TestId", 1);
             Assert.Equal(1, result.LectureId);

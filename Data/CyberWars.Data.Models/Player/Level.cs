@@ -1,7 +1,7 @@
-﻿using CyberWars.Data.Common.Models;
-
-namespace CyberWars.Data.Models.Player
+﻿namespace CyberWars.Data.Models.Player
 {
+    using CyberWars.Data.Common.Models;
+
     public class Level : BaseDeletableModel<int>
     {
         public int LevelName { get; set; }

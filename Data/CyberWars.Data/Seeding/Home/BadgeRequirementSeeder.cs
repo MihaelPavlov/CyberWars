@@ -303,12 +303,12 @@
             {
                 BadgeId = badges.FirstOrDefault(x => x.Name == "Code Guru").Id,
                 RequirementId = requirements.FirstOrDefault(x => x.Name == "ASP.NETCore" && x.Points == 30).Id,
-            }); 
+            });
             dbContext.BadgeRequirements.Add(new BadgeRequirement
             {
                 BadgeId = badges.FirstOrDefault(x => x.Name == "Code Guru").Id,
                 RequirementId = requirements.FirstOrDefault(x => x.Name == "SpringFramework" && x.Points == 30).Id,
-            }); 
+            });
             dbContext.BadgeRequirements.Add(new BadgeRequirement
             {
                 BadgeId = badges.FirstOrDefault(x => x.Name == "Code Guru").Id,

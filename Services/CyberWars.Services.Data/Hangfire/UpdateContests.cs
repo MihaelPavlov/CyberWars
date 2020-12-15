@@ -1,9 +1,7 @@
 ﻿namespace CyberWars.Services.Data.Hangfire
 {
     using System;
-    using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
     using System.Threading.Tasks;
 
     using CyberWars.Data.Common.Repositories;

@@ -1,9 +1,5 @@
 ﻿namespace CyberWars.Web.ViewModels.HomeViews
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
-
     using CyberWars.Data.Models.Ability;
     using CyberWars.Services.Mapping;
 

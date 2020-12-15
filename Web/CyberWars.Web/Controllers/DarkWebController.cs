@@ -55,7 +55,6 @@
                 }
 
                 viewModel = await this.darkWebService.FindEnemyByName(userId, input.SearchName , "Normal");
-
             }
 
             // Need to be Error
@@ -76,6 +75,7 @@
             {
                 return this.Redirect("/DarkWeb/Attack");
             }
+
             return this.View(viewModel);
         }
     }

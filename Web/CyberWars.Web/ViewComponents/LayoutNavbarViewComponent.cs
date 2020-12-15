@@ -15,7 +15,6 @@
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.EntityFrameworkCore;
 
-
     public class LayoutNavbarViewComponent : ViewComponent
     {
         private readonly ApplicationDbContext dbContext;
@@ -69,6 +68,5 @@
             this.dbContext.Players.Update(nowPlayer);
             await this.dbContext.SaveChangesAsync();
         }
-
     }
 }

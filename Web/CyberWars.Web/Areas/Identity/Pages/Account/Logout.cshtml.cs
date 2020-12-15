@@ -1,16 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
-using CyberWars.Data.Models;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.Extensions.Logging;
-
-namespace CyberWars.Web.Areas.Identity.Pages.Account
+﻿namespace CyberWars.Web.Areas.Identity.Pages.Account
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+
+    using CyberWars.Data.Models;
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Mvc.RazorPages;
+    using Microsoft.Extensions.Logging;
+
     [AllowAnonymous]
     public class LogoutModel : PageModel
     {
@@ -25,7 +26,7 @@ namespace CyberWars.Web.Areas.Identity.Pages.Account
 
         public void OnGet()
         {
-         
+
         }
 
         public async Task<IActionResult> OnPost(string returnUrl = null)
@@ -34,7 +35,7 @@ namespace CyberWars.Web.Areas.Identity.Pages.Account
             this._logger.LogInformation("User logged out.");
             if (returnUrl != null)
             {
-                return LocalRedirect(returnUrl);
+                return this.LocalRedirect(returnUrl);
             }
             else
             {

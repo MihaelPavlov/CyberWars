@@ -1,15 +1,11 @@
 ﻿namespace CyberWars.Services.Data.Hangfire
 {
     using System;
-    using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
     using System.Threading.Tasks;
 
-    using CyberWars.Data;
     using CyberWars.Data.Common.Repositories;
     using CyberWars.Data.Models.Job;
-    using CyberWars.Data.Models.Pet_Food;
     using Microsoft.EntityFrameworkCore;
 
     public class AddJobService : IAddJobService

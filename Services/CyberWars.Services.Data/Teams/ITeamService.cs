@@ -1,8 +1,6 @@
 ﻿namespace CyberWars.Services.Data.Teams
 {
-    using System;
     using System.Collections.Generic;
-    using System.Text;
     using System.Threading.Tasks;
 
     using CyberWars.Data.Models.Teams;

@@ -1,11 +1,6 @@
 ﻿namespace CyberWars.Web.ViewModels.HomeViews.Pet
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
-
     using CyberWars.Data.Models.Pet_Food;
-    using CyberWars.Data.Models.Player;
     using CyberWars.Services.Mapping;
 
     public class PlayerFoodViewModel : IMapFrom<PlayerFood>

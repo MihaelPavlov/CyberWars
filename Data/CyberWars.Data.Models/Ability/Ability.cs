@@ -10,7 +10,7 @@
     {
         public Ability()
         {
-            this.PlayerAbilities = new HashSet<PlayerAbility>(); 
+            this.PlayerAbilities = new HashSet<PlayerAbility>();
             this.Requirements = new HashSet<Requirement>();
         }
 

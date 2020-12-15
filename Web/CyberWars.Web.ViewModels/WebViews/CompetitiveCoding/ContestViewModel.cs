@@ -1,9 +1,7 @@
 ﻿namespace CyberWars.Web.ViewModels.WebViews.CompetitiveCoding
 {
     using System;
-    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using System.Text;
 
     using CyberWars.Data.Models.CompetitiveCoding;
     using CyberWars.Services.Mapping;

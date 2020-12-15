@@ -35,7 +35,6 @@
 
         public DbSet<Setting> Settings { get; set; }
 
-
         public DbSet<LoginHistory> LoginHistories { get; set; }
 
         // Players
@@ -177,7 +176,6 @@
                  .HasForeignKey(x => x.AttackPlayerId)
                  .OnDelete(DeleteBehavior.NoAction);
 
-
                 entity.HasOne(x => x.DefencePlayer)
               .WithMany(x => x.DefencesPlayer)
               .HasForeignKey(x => x.DefencePlayerId)
@@ -246,7 +244,6 @@
             {
                 entity.HasKey(x => new { x.PlayerId, x.TeamId });
             });
-
         }
 
         private static void SetIsDeletedQueryFilter<T>(ModelBuilder builder)

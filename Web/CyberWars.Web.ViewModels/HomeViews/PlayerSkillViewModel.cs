@@ -1,12 +1,9 @@
-﻿using CyberWars.Data.Models.Player;
-using CyberWars.Data.Models.Skills;
-using CyberWars.Services.Mapping;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace CyberWars.Web.ViewModels.HomeViews
+﻿namespace CyberWars.Web.ViewModels.HomeViews
 {
+    using CyberWars.Data.Models.Player;
+    using CyberWars.Data.Models.Skills;
+    using CyberWars.Services.Mapping;
+
     public class PlayerSkillViewModel : IMapFrom<PlayerSkill>
     {
         public string PlayerId { get; set; }

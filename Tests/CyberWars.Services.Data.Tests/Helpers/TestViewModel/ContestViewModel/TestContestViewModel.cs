@@ -1,9 +1,5 @@
 ﻿namespace CyberWars.Services.Data.Tests.Helpers.TestViewModel.ContestViewModel
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
-
     using CyberWars.Data.Models.CompetitiveCoding;
     using CyberWars.Services.Mapping;
 

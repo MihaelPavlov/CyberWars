@@ -1,13 +1,10 @@
 ﻿namespace CyberWars.Services.Data.Home
 {
-    using System;
     using System.Collections.Generic;
-    using System.Text;
     using System.Threading.Tasks;
 
     using CyberWars.Data.Models;
     using CyberWars.Data.Models.Battle;
-    using CyberWars.Data.Models.Player;
     using CyberWars.Data.Models.Skills;
     using CyberWars.Web.ViewModels.HomeViews;
 

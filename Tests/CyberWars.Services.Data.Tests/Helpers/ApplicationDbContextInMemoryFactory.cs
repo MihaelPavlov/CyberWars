@@ -1,11 +1,10 @@
-﻿using CyberWars.Data;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace CyberWars.Services.Data.Tests.Helpers
+﻿namespace CyberWars.Services.Data.Tests.Helpers
 {
+    using System;
+
+    using CyberWars.Data;
+    using Microsoft.EntityFrameworkCore;
+
     public class ApplicationDbContextInMemoryFactory
     {
         public static ApplicationDbContext InitializeContext()

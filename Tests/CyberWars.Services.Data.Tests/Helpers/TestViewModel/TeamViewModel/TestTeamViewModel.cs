@@ -1,9 +1,5 @@
 ﻿namespace CyberWars.Services.Data.Tests.Helpers.TestViewModel.TeamViewModel
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
-
     using CyberWars.Data.Models.Teams;
     using CyberWars.Services.Mapping;
 
