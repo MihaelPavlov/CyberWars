@@ -17,6 +17,7 @@
     using CyberWars.Services.Mapping;
     using CyberWars.Web.ViewModels.Battle;
     using CyberWars.Web.ViewModels.HomeViews;
+    using CyberWars.Web.ViewModels.HomeViews.Pet;
     using Microsoft.EntityFrameworkCore;
 
     public class HomeService : IHomeService
@@ -197,9 +198,9 @@
             return await this.badgeRepository.All().To<T>().ToListAsync();
         }
 
-        public async Task<T> GetAllRequirementForBadgeById<T>(int badgeId)
+        public async Task<BadgesViewModel> GetAllRequirementForBadgeById(int badgeId)
         {
-            return await this.badgeRepository.All().Where(x => x.Id == badgeId).To<T>().FirstOrDefaultAsync();
+            return await this.badgeRepository.All().Where(x => x.Id == badgeId).To<BadgesViewModel>().FirstOrDefaultAsync();
         }
 
         public async Task<IEnumerable<T>> GetPlayerPets<T>(string userId)
@@ -212,9 +213,9 @@
             return await this.randomHangfireFoodRepository.All().Where(x => x.PetId == petId).To<T>().ToListAsync();
         }
 
-        public async Task<T> GetPetById<T>(string userId, int petId)
+        public async Task<PetViewModel> GetPetById(string userId, int petId)
         {
-            return await this.playerPetRepository.All().Where(x => x.Player.UserId == userId && x.PetId == petId).To<T>().FirstOrDefaultAsync();
+            return await this.playerPetRepository.All().Where(x => x.Player.UserId == userId && x.PetId == petId).To<PetViewModel>().FirstOrDefaultAsync();
         }
 
         public async Task FeedPetById(int foodId, int petId, string userId)

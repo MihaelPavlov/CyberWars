@@ -9,6 +9,7 @@
     using CyberWars.Data.Models.CompetitiveCoding;
     using CyberWars.Data.Models.Player;
     using CyberWars.Services.Mapping;
+    using CyberWars.Web.ViewModels.WebViews.CompetitiveCoding;
     using Microsoft.EntityFrameworkCore;
 
     public class ContestService : IContestService
@@ -35,7 +36,7 @@
             return await this.randomContestRepository.All().Take(4).To<T>().ToListAsync();
         }
 
-        public async Task<T> ResultFromContestById<T>(int contestId, string userId)
+        public async Task<ResultContestViewModel> ResultFromContestById(int contestId, string userId)
         {
             var contest = await this.contestRepository.All().FirstOrDefaultAsync(x => x.Id == contestId);
             var playerContest = await this.playerContestsRepository.All().FirstOrDefaultAsync(x => x.Player.UserId == userId && x.ContestId == contestId);
@@ -46,7 +47,7 @@
 
             if ((playerEnergy -= contestEnergy) < 0)
             {
-                return default(T);
+                return null;
             }
 
             if (playerContest != null)
@@ -74,7 +75,7 @@
                 this.playerContestsRepository.Update(playerContest);
                 await this.playerContestsRepository.SaveChangesAsync();
 
-                return await this.playerContestsRepository.All().Where(x => x.ContestId == playerContest.ContestId && playerContest.PlayerId == x.Player.Id).To<T>().FirstAsync();
+                return await this.playerContestsRepository.All().Where(x => x.ContestId == playerContest.ContestId && playerContest.PlayerId == x.Player.Id).To<ResultContestViewModel>().FirstAsync();
             }
             else
             {
@@ -100,7 +101,7 @@
                     this.playerRepository.Update(player);
                     await this.playerRepository.SaveChangesAsync();
 
-                    return await this.playerContestsRepository.All().Where(x => x.ContestId == newPlayerContest.ContestId && newPlayerContest.PlayerId == x.Player.Id).To<T>().FirstAsync();
+                    return await this.playerContestsRepository.All().Where(x => x.ContestId == newPlayerContest.ContestId && newPlayerContest.PlayerId == x.Player.Id).To<ResultContestViewModel>().FirstAsync();
                 }
                 else
                 {
@@ -119,7 +120,7 @@
                     this.playerRepository.Update(player);
                     await this.playerRepository.SaveChangesAsync();
 
-                    return await this.playerContestsRepository.All().Where(x => x.ContestId == newPlayerContest.ContestId && newPlayerContest.PlayerId == x.Player.Id).To<T>().FirstAsync();
+                    return await this.playerContestsRepository.All().Where(x => x.ContestId == newPlayerContest.ContestId && newPlayerContest.PlayerId == x.Player.Id).To<ResultContestViewModel>().FirstAsync();
                 }
             }
         }

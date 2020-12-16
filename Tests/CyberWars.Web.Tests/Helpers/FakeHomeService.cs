@@ -10,12 +10,13 @@
     using CyberWars.Data.Models.Skills;
     using CyberWars.Services.Data.Home;
     using CyberWars.Web.ViewModels.HomeViews;
+    using CyberWars.Web.ViewModels.HomeViews.Pet;
 
     public class FakeHomeService : IHomeService
     {
-        public Task ChangePetName(string newName, int petId, string userId)
+        public async Task ChangePetName(string newName, int petId, string userId)
         {
-            throw new System.NotImplementedException();
+
         }
 
         public Task CompleteBadge(int badgeId, string userId)
@@ -28,9 +29,16 @@
             throw new System.NotImplementedException();
         }
 
-        public Task<IEnumerable<T>> GetAllBadges<T>()
+        public async Task<IEnumerable<T>> GetAllBadges<T>()
         {
-            throw new System.NotImplementedException();
+            var result = new List<BadgesViewModel>
+            {
+                new BadgesViewModel{ Id=1 },
+                new BadgesViewModel{ Id=2 },
+                new BadgesViewModel{ Id=3 },
+                new BadgesViewModel{ Id=4 },
+            };
+            return (IEnumerable<T>)await Task.FromResult(result);
         }
 
         public async Task<PlayerDataView> GetPlayerData(string userId)
@@ -47,19 +55,44 @@
                 MaxHealth = 1000,
             });
 
-        public Task<T> GetAllRequirementForBadgeById<T>(int badgeId)
+        public async Task<BadgesViewModel> GetAllRequirementForBadgeById(int badgeId)
         {
-            throw new System.NotImplementedException();
+            var result = new BadgesViewModel
+            {
+                Id = 1,
+                BadgeRequirements = new List<BadgeRequirementsViewModel>
+                {
+                        new BadgeRequirementsViewModel{ BadgeId = 1, RequirementId = 1,},
+                        new BadgeRequirementsViewModel{ BadgeId = 1, RequirementId = 2,},
+                        new BadgeRequirementsViewModel{ BadgeId = 1, RequirementId = 3,},
+                },
+
+            };
+            BadgesViewModel badgesViewModel = await Task.FromResult(result);
+            return badgesViewModel;
         }
 
-        public Task<T> GetPetById<T>(string userId, int petId)
+        public async Task<PetViewModel> GetPetById(string userId, int petId)
         {
-            throw new System.NotImplementedException();
+            var result = new PetViewModel
+            {
+                PetId = 1,
+            };
+
+            return await Task.FromResult(result);
         }
 
-        public Task<IEnumerable<T>> GetPetRandomFood<T>(int petId)
+        public async Task<IEnumerable<T>> GetPetRandomFood<T>(int petId)
         {
-            throw new System.NotImplementedException();
+            var result = new List<FoodViewModel>
+            {
+                new FoodViewModel{FoodId=1,},
+                new FoodViewModel{FoodId=1,},
+                new FoodViewModel{FoodId=1,},
+                new FoodViewModel{FoodId=1,},
+            };
+
+            return (IEnumerable<T>)await Task.FromResult(result);
         }
 
         public async Task<IEnumerable<T>> GetPlayerAbilitiesByType<T>(string playerId, string type)
@@ -72,7 +105,6 @@
                 new PlayerAbilitiesViewModel{PlayerId="Test" , AbilityId=4 },
             };
             return (IEnumerable<T>)await Task.FromResult(result);
-
         }
 
         public Task<BattleRecord> GetPlayerBattleRecordByPlayerName(string name)
@@ -81,9 +113,16 @@
         }
 
 
-        public Task<IEnumerable<T>> GetPlayerPets<T>(string userId)
+        public async Task<IEnumerable<T>> GetPlayerPets<T>(string userId)
         {
-            throw new System.NotImplementedException();
+            var result = new List<PetViewModel>
+            {
+                new PetViewModel{PetId = 1},
+                new PetViewModel{PetId = 2,},
+                new PetViewModel{PetId = 3,},
+                new PetViewModel{PetId = 4},
+            };
+            return (IEnumerable<T>)await Task.FromResult(result);
         }
 
         public Task<PlayerSkill> GetPlayerSkillByName(string name, string userId)
@@ -104,9 +143,15 @@
             return (IEnumerable<T>)await Task.FromResult(result);
         }
 
-        public Task<PlayerDataView> GetPlayerViewData(string playerName)
+        public async Task<PlayerDataView> GetPlayerViewData(string playerName)
         {
-            throw new System.NotImplementedException();
+            var result = new PlayerDataView
+            {
+                Id = "Test",
+                UserId = "TestUser",
+            };
+
+            return await Task.FromResult(result);
         }
 
         public async Task<ApplicationUser> GetUserById(string userId)
@@ -114,14 +159,14 @@
             return new ApplicationUser { Id = "TestUser", PlayerId = "Test" };
         }
 
-        public Task ScratchPetBelly(int petId, string userId)
+        public async Task ScratchPetBelly(int petId, string userId)
         {
-            throw new System.NotImplementedException();
+
         }
 
-        public Task SellPetById(int petId, string userId)
+        public async Task SellPetById(int petId, string userId)
         {
-            throw new System.NotImplementedException();
+
         }
 
         public async Task TrainSkillByName(string userId, string skillName)

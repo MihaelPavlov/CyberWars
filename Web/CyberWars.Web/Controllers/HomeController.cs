@@ -73,7 +73,7 @@
 
         public async Task<IActionResult> BadgeRequirements(int badgeId)
         {
-            var viewModel = await this.homeService.GetAllRequirementForBadgeById<BadgesViewModel>(badgeId);
+            var viewModel = await this.homeService.GetAllRequirementForBadgeById(badgeId);
             return this.View(viewModel);
         }
 
@@ -96,7 +96,7 @@
         {
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            var viewModel = await this.homeService.GetPetById<PetViewModel>(userId, petId);
+            var viewModel = await this.homeService.GetPetById(userId, petId);
 
             return this.View(viewModel);
         }

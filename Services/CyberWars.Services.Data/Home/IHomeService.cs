@@ -7,6 +7,7 @@
     using CyberWars.Data.Models.Battle;
     using CyberWars.Data.Models.Skills;
     using CyberWars.Web.ViewModels.HomeViews;
+    using CyberWars.Web.ViewModels.HomeViews.Pet;
 
     public interface IHomeService
     {
@@ -26,13 +27,13 @@
 
         public Task<IEnumerable<T>> GetAllBadges<T>();
 
-        public Task<T> GetAllRequirementForBadgeById<T>(int badgeId);
+        public Task<BadgesViewModel> GetAllRequirementForBadgeById(int badgeId);
 
         public Task<IEnumerable<T>> GetPlayerPets<T>(string userId);
 
         public Task<IEnumerable<T>> GetPetRandomFood<T>(int petId);
 
-        public Task<T> GetPetById<T>(string userId, int petId);
+        public Task<PetViewModel> GetPetById(string userId, int petId);
 
         public Task FeedPetById(int foodId, int petId, string userId);
 
