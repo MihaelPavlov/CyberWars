@@ -39,9 +39,10 @@ And more…
 - ASP.NET [CORE 3.1](https://dotnet.microsoft.com/download/dotnet-core/3.1 "CORE 3.1") MVC
 - ASP.NET CORE view components
 - ASP.NET Core areas
+- Entity Framework CORE 3.1(https://docs.microsoft.com/en-us/ef/core/)
 - MSSQL Server
 - [HangFire](https://www.hangfire.io/ "HangFire")
-- More...
+- xUnit
 
 ## :wrench: DB Diagram
 ![Database](https://user-images.githubusercontent.com/57910640/101654274-ffe22880-3a48-11eb-99fd-819bdf1a04bd.png)
@@ -141,3 +142,6 @@ And more…
 
 ### Market Food
 ![29 Market Food](https://user-images.githubusercontent.com/57910640/102648510-4da91000-4170-11eb-98ba-4ff280402c2d.png)
+
+## Using ASP.NET-MVC-Template originally developed by:
+- [Nikolay Kostov](https://github.com/NikolayIT)
