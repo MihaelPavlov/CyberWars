@@ -39,7 +39,7 @@ And more…
 - ASP.NET [CORE 3.1](https://dotnet.microsoft.com/download/dotnet-core/3.1 "CORE 3.1") MVC
 - ASP.NET CORE view components
 - ASP.NET Core areas
-* Entity Framework [CORE 3.1](https://docs.microsoft.com/en-us/ef/core/ "CORE 3.1")
+- Entity Framework [CORE 3.1](https://docs.microsoft.com/en-us/ef/core/ "CORE 3.1")
 - MSSQL Server
 - [HangFire](https://www.hangfire.io/ "HangFire")
 - xUnit
