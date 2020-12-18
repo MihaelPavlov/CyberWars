@@ -3,6 +3,9 @@
 
 Cyber Wars is my defense project for ASP.NET Core course at SoftUni. It is a ready-to-use ASP.NET Core application.
 
+# Trello Plan
+https://trello.com/b/xFjdkhpY/project-cyber-wars
+
 # 📝 Project Description
 
 This is a static browser game. Each new player can choose to be a programmer or a hacker.
