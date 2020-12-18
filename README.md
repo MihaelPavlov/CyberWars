@@ -66,8 +66,11 @@ And more…
 ### Home Page / Player Page
 ![HomePage](https://user-images.githubusercontent.com/57910640/101538498-e340e480-39a5-11eb-8629-38b49a928d7c.png)
 
+### Home / Player View
+![30 HomePlayerView](https://user-images.githubusercontent.com/57910640/102648570-69141b00-4170-11eb-8544-b8202084af76.png)
+
 ### Skill Page 
-![SkillPage](https://user-images.githubusercontent.com/57910640/101539155-bc36e280-39a6-11eb-8654-30750a4ff1fb.png)
+![07 SkillPage](https://user-images.githubusercontent.com/57910640/102648211-c5c30600-416f-11eb-85d1-f748bbce3ab5.png)
 
 ### Abilities Languages
 ![Languages](https://user-images.githubusercontent.com/57910640/101539841-d02f1400-39a7-11eb-9844-7173b1c8cc1c.png)
@@ -121,5 +124,20 @@ And more…
 ![25 TeamIndexPage](https://user-images.githubusercontent.com/57910640/101638892-5181b780-3a37-11eb-8d2d-09cedda2f1aa.png)
 
 ### Team Register
-![24 RegisterTeam](https://user-images.githubusercontent.com/57910640/101638915-58a8c580-3a37-11eb-85ba-f99b98a8ebea.png)
+![24 TeamRegister](https://user-images.githubusercontent.com/57910640/102648315-f73bd180-416f-11eb-9081-7b399f3414e7.png)
 
+### Team Ranking
+![26 TeamRanking](https://user-images.githubusercontent.com/57910640/102648344-03279380-4170-11eb-9318-32d372c9c91f.png)
+
+## Team Page
+![27 TeamPage](https://user-images.githubusercontent.com/57910640/102648380-10448280-4170-11eb-918b-26517f81c05a.png)
+
+
+### Market Index
+![26 MarketIndex](https://user-images.githubusercontent.com/57910640/102648459-32d69b80-4170-11eb-9d5d-49b8fc417698.png)
+
+### Market Pets
+![28 Market Pets](https://user-images.githubusercontent.com/57910640/102648486-441fa800-4170-11eb-9d91-efa8d8beaf6e.png)
+
+### Market Food
+![29 Market Food](https://user-images.githubusercontent.com/57910640/102648510-4da91000-4170-11eb-98ba-4ff280402c2d.png)
