@@ -300,6 +300,10 @@
         public async Task<PlayerDataView> GetPlayerViewData(string playerName)
         {
             var player = await this.playerRepository.All().FirstOrDefaultAsync(x => x.Name == playerName);
+            if (player == null)
+            {
+                return null;
+            }
 
             // PlayerSkills
             var playerSkills = await this.playerSkillRepository.All().Where(x => x.PlayerId == player.Id).ToListAsync();

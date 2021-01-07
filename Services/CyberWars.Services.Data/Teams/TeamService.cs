@@ -2,8 +2,8 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
     using System.IO;
+    using System.Linq;
     using System.Threading.Tasks;
 
     using CyberWars.Data.Common.Repositories;
@@ -114,9 +114,9 @@
             return true;
         }
 
-        public async Task<IEnumerable<T>> Get10RandomTeam<T>()
+        public async Task<IEnumerable<T>> Get10StrongerTeam<T>()
         {
-            return await this.teamRepository.All().Take(10).To<T>().ToListAsync();
+            return await this.teamRepository.All().OrderByDescending(x => x.Rank).Take(10).To<T>().ToListAsync();
         }
 
         public async Task<TeamPageViewModel> GetTeamPageById(int teamId)

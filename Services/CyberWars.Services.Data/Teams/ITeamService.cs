@@ -14,7 +14,7 @@
 
         public Task ApplyToTeam(string userId, int teamId);
 
-        public Task<IEnumerable<T>> Get10RandomTeam<T>();
+        public Task<IEnumerable<T>> Get10StrongerTeam<T>();
 
         public Task<TeamPageViewModel> GetTeamPageById(int teamId);
 

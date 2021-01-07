@@ -14,7 +14,6 @@
     [Authorize(Roles = GlobalConstants.UserRoleName)]
     public class WebController : Controller
     {
-
         private readonly IWebService webService;
 
         public WebController(IWebService webService)

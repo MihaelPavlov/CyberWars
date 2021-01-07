@@ -6,11 +6,11 @@
     using System.Text;
     using System.Threading.Tasks;
 
-    using Microsoft.EntityFrameworkCore;
     using CyberWars.Data.Common.Repositories;
     using CyberWars.Data.Models.Pet_Food;
-    using CyberWars.Services.Mapping;
     using CyberWars.Data.Models.Player;
+    using CyberWars.Services.Mapping;
+    using Microsoft.EntityFrameworkCore;
 
     public class MarketService : IMarketService
     {

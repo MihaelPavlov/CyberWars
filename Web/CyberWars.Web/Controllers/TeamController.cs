@@ -25,7 +25,7 @@
 
         public async Task<IActionResult> Index()
         {
-            var viewModel = await this.teamService.Get10RandomTeam<TeamViewModel>();
+            var viewModel = await this.teamService.Get10StrongerTeam<TeamViewModel>();
             return this.View(viewModel);
         }
 

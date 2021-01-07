@@ -1,6 +1,9 @@
 ﻿namespace CyberWars.Web
 {
+    using System;
     using System.Reflection;
+    using System.Threading.Tasks;
+    using Newtonsoft.Json;
 
     using CyberWars.Data;
     using CyberWars.Data.Common;
@@ -19,6 +22,7 @@
     using CyberWars.Services.Mapping;
     using CyberWars.Services.Messaging;
     using CyberWars.Web.ViewModels;
+    using CyberWars.Services.Data.Hangfire;
 
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
@@ -30,15 +34,6 @@
     using Microsoft.Extensions.Hosting;
     using Hangfire;
     using Hangfire.SqlServer;
-    using System;
-    using CyberWars.Web.ViewModels.WebViews.Job;
-    using System.Threading.Tasks;
-    using Hangfire.Dashboard;
-    using CyberWars.Common;
-    using CyberWars.Services.Data.Hangfire;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Threading;
 
     public class Startup
     {
@@ -100,8 +95,6 @@
             services.AddTransient<ITeamService, TeamService>();
 
             services.AddTransient<IAddJobService, AddJobService>();
-
-
 
             services.AddHangfire(config =>
             {

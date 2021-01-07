@@ -136,6 +136,7 @@
             var attackPlayerEnergy = attackPlayer.Energy;
             var attackPlayerHealth = attackPlayer.Health;
 
+            // Check Attack Player have Energy
             if (attackPlayerEnergy - 3 < 0)
             {
                 return null;

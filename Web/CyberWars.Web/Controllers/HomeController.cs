@@ -144,6 +144,10 @@
         public async Task<IActionResult> PlayerView(string playerName)
         {
             var viewModel = await this.homeService.GetPlayerViewData(playerName);
+            if (viewModel == null)
+            {
+                return this.Redirect("/Home/Index");
+            }
             return this.View(viewModel);
         }
 
