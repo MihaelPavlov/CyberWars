@@ -1,16 +1,18 @@
-﻿@using CyberWars.Web.ViewModels.Battle;
+﻿@using System.Security.Claims
+
+@using CyberWars.Web.ViewModels.Battle
 @using CyberWars.Data.Common.Repositories
 @using CyberWars.Data.Models.Player
-@using System.Security.Claims;
 
 @model BattleRewardViewModel
-
 @inject IDeletableEntityRepository<Player> playerRepository
+
 @{
     var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
 
     var player = this.playerRepository.All().FirstOrDefault(x => x.Id == userId);
 }
+
 <div class="blog-card">
     <img src="/images/Web/Result Attack.jpg" alt="">
     <div class="description">
@@ -20,10 +22,11 @@
 
         <p>@Model.WinnerPlayerName earn @Model.RewardMoney money and @Model.RewardExp experience.</p>
         <div class="read-more">
-            <a class="btn yellow rounded" href="/DarkWeb/Search?type=Normal">Again ( 3 <img class="competitiveEnergy" src="/images/Web/CompetitiveLightIcon.png" alt=""> )</a>
+            <a class="btn yellow rounded" asp-controller="DarkWeb" asp-action="Search" asp-route-type="Normal">Again ( 3 <img class="competitiveEnergy" src="/images/Web/CompetitiveLightIcon.png" alt=""> )</a>
         </div>
     </div>
 </div>
+
 @section CssFile {
     <link rel="stylesheet" href="/css/Web/ResultCompetitveCoding.css">
 }

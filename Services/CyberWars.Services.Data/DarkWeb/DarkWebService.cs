@@ -13,8 +13,12 @@
     using CyberWars.Services.Mapping;
     using CyberWars.Web.ViewModels.Battle;
     using CyberWars.Web.ViewModels.HomeViews;
+
     using Microsoft.EntityFrameworkCore;
 
+    /// <summary>
+    /// A custom implementation of <see cref="IDarkWebService"/>.
+    /// </summary>
     public class DarkWebService : IDarkWebService
     {
         private readonly IDeletableEntityRepository<Player> playerRepository;
@@ -24,6 +28,9 @@
         private readonly IDeletableEntityRepository<PlayerBattle> playerBattleRepository;
         private readonly IDeletableEntityRepository<BattleRecord> battleRecordRepository;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DarkWebService"/> class.
+        /// </summary>
         public DarkWebService(
             IDeletableEntityRepository<Player> playerRepository,
             IDeletableEntityRepository<PlayerAbility> playerAbilityRepository,
@@ -32,14 +39,15 @@
             IDeletableEntityRepository<PlayerBattle> playerBattleRepository,
             IDeletableEntityRepository<BattleRecord> battleRecordRepository)
         {
-            this.playerRepository = playerRepository;
-            this.playerAbilityRepository = playerAbilityRepository;
-            this.playerSkillRepository = playerSkillRepository;
-            this.battleRepository = battleRepository;
-            this.playerBattleRepository = playerBattleRepository;
-            this.battleRecordRepository = battleRecordRepository;
+            this.playerRepository = playerRepository ?? throw new ArgumentNullException(nameof(playerRepository));
+            this.playerAbilityRepository = playerAbilityRepository ?? throw new ArgumentNullException(nameof(playerAbilityRepository));
+            this.playerSkillRepository = playerSkillRepository ?? throw new ArgumentNullException(nameof(playerSkillRepository));
+            this.battleRepository = battleRepository ?? throw new ArgumentNullException(nameof(battleRepository));
+            this.playerBattleRepository = playerBattleRepository ?? throw new ArgumentNullException(nameof(playerBattleRepository));
+            this.battleRecordRepository = battleRecordRepository ?? throw new ArgumentNullException(nameof(battleRecordRepository));
         }
 
+        /// <inheritdoc />
         public async Task<PlayerDataView> FindNormalEnemy(string userId, string typeFight)
         {
             var dataViewAttackPlayer = await this.GetAttackPlayerDataView(userId);
@@ -77,6 +85,7 @@
             return await this.GetDefencePlayerWithSkillsDataView(collection[random].Id, typeFight);
         }
 
+        /// <inheritdoc />
         public async Task<PlayerDataView> FindStrongerEnemy(string userId, string typeFight)
         {
             var dataViewAttackPlayer = await this.GetAttackPlayerDataView(userId);
@@ -114,6 +123,7 @@
             return await this.GetDefencePlayerWithSkillsDataView(collection[random].Id, typeFight);
         }
 
+        /// <inheritdoc />
         public async Task<PlayerDataView> FindEnemyByName(string userId, string searchName, string typeFight)
         {
             if (!await this.playerRepository.All().AnyAsync(x => x.Name == searchName && x.UserId != userId))
@@ -126,6 +136,7 @@
             return defencePlayer;
         }
 
+        /// <inheritdoc />
         public async Task<BattleRewardViewModel> ResultFromBattle(string userId, string defencePlayerId)
         {
             var attackPlayer = await this.GetAttackPlayerDataView(userId);
@@ -398,69 +409,5 @@
 
             return sumAbilities + sumSkills;
         }
-
-        // Logic Methods
-        /*public async Task<PlayerDataView> FindNormalEnemy(string userId)
-       {
-           var dataViewAttackPlayer = await this.GetAttackPlayerDataView(userId);
-           var dataViewPlayers = await this.GetAllPlayersWithoutTheAttackPlayer(userId);
-
-           if (dataViewPlayers.Count() == 0)
-           {
-               return null;
-           }
-
-           Dictionary<string, int> playersWithStats = new Dictionary<string, int>();
-
-           foreach (var player in dataViewPlayers)
-           {
-               int statsSum = await this.SumStats(player);
-               playersWithStats.Add(player.Id, statsSum);
-           }
-
-           var attackPlayerStats = await this.SumStats(dataViewAttackPlayer);
-           var playerWithSmallerStats = playersWithStats.Where(x => x.Value <= attackPlayerStats).ToList();
-
-           var random = new Random().Next(0, playerWithSmallerStats.Count() - 1);
-           if (playerWithSmallerStats.Count == 0 || playerWithSmallerStats == null)
-           {
-               return await this.GetDefencePlayerWithSkillsDataView(dataViewPlayers.FirstOrDefault().Id);
-           }
-
-           return await this.GetDefencePlayerWithSkillsDataView(playerWithSmallerStats.ElementAt(random).Key);
-        }
-        */
-
-        /*public async Task<PlayerDataView> FindStrongerEnemy(string userId)
-        {
-
-         var dataViewAttackPlayer = await this.GetAttackPlayerDataView(userId);
-         var dataViewPlayers = await this.GetAllPlayersWithoutTheAttackPlayer(userId);
-
-         if (dataViewPlayers.Count() == 0)
-         {
-             return null;
-         }
-
-         Dictionary<int, PlayerDataView> playersWithStats = new Dictionary<int, PlayerDataView>();
-
-         foreach (var player in dataViewPlayers)
-         {
-             int statsSum = await this.SumStats(player);
-             playersWithStats.Add(statsSum, player);
-         }
-
-         var attackPlayerStats = await this.SumStats(dataViewAttackPlayer);
-
-         var playerWithStrongerStats = playersWithStats.Where(x => x.Key > attackPlayerStats).ToList();
-
-         var random = new Random().Next(0, playerWithStrongerStats.Count() - 1);
-         if (playerWithStrongerStats.Count == 0 || playerWithStrongerStats == null)
-         {
-             return await this.GetDefencePlayerWithSkillsDataView(dataViewPlayers.FirstOrDefault().Id);
-         }
-
-         return await this.GetDefencePlayerWithSkillsDataView(playerWithStrongerStats.ElementAt(random).Value.Id);
-       }*/
     }
 }

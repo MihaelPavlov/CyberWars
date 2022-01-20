@@ -1,41 +1,44 @@
 ﻿@using CyberWars.Web.ViewModels.HomeViews
-@model PlayerDataView 
-<h2 class="descriptionCompetitiveSecondHeader">You find you oppenent .Let's Fight. </h2>
-<div class="Profile">
-    <img src="/images/Base/@(Model.ImageName)" alt="PlayerIcon">
-</div>
-<h1 class="descriptionHeader">Description of @Model.Name</h1>
-<table class="DescriptionTable">
-    <tr>
-        <th>Charasteristic:</th>
-        <td>@Model.Name</td>
-    </tr>
-    <tr>
-        <th>Level:</th>
-        <td>@Model.Level</td>
-    </tr>
-    <tr>
-        <th>Health:</th>
-        <td>@Model.Health</td>
-    </tr>
-    @foreach (var skill in Model.PlayerSkills.Skip(1))
-    {
-    <tr>
-        <th>@skill.SkillName</th>
-        <td>@skill.Points</td>
-    </tr>
-    }
-</table>
-<div class="buttons">
-    <a class="btn yellow rounded" type="submit" href="/DarkWeb/Result?defencePlayerId=@Model.Id">Fight ( 3 <img class="competitiveEnergy" src="/images/Web/CompetitiveLightIcon.png" alt=""> )</a>
-    <a class="btn yellow rounded" href="/DarkWeb/Search?type=@Model.TypeFight">Search other</a>
-</div>
 
+@model PlayerDataView
 
+<form method="post"  asp-controller="DarkWeb" asp-action="Result" asp-route-defencePlayerId="@Model.Id">
+    <h2 class="descriptionCompetitiveSecondHeader">You find you oppenent .Let's Fight. </h2>
+    <div class="Profile">
+        <img src="/images/Base/@(Model.ImageName)" alt="PlayerIcon">
+    </div>
+    <h1 class="descriptionHeader">Description of @Model.Name</h1>
+    <table class="DescriptionTable">
+        <tr>
+            <th>Charasteristic:</th>
+            <td>@Model.Name</td>
+        </tr>
+        <tr>
+            <th>Level:</th>
+            <td>@Model.Level</td>
+        </tr>
+        <tr>
+            <th>Health:</th>
+            <td>@Model.Health</td>
+        </tr>
+        @foreach (var skill in Model.PlayerSkills.Skip(1))
+        {
+            <tr>
+                <th>@skill.SkillName</th>
+                <td>@skill.Points</td>
+            </tr>
+        }
+    </table>
+    <div class="buttons">
+        <button type="submit" class="btn yellow rounded">Fight ( 3 <img class="competitiveEnergy" src="/images/Web/CompetitiveLightIcon.png" alt=""> )</button>
+        <a class="btn yellow rounded" asp-controller="DarkWeb" asp-action="Search" asp-route-type="@Model.TypeFight">Search other</a>
+    </div>
+</form>
 
 @section CssFile {
     <link rel="stylesheet" href="/css/Web/SearchAttack.css">
 }
+
 @section PageHeader{
     Search
 }

@@ -1,28 +1,31 @@
-﻿@using CyberWars.Web.ViewModels.DarkWeb;
-@model TypeOfAttackInputModel;
+﻿@using CyberWars.Web.ViewModels.DarkWeb
+
+@model TypeOfAttackInputModel
+
 <div class="blog-card">
     <img src="/images/Web/attackIcon.png" alt="">
     <div class="description">
         <h1 class="ResultcompetitveHeader">Find and Hack a Programmer</h1>
         <h2 class="ResultCompetitiveSecondHeader">Here you can find and hack or destroy network and get file and sell it from a programmer.Let's go hack </h2>
-     <form method="get" asp-controller="DarkWeb" asp-action="Search">
-        <div class="attackChoise">
-            <input type="radio" name="type" value="Normal" asp-for="Type">
-           <span>Find Enemy</span>
+        <form method="get" asp-controller="DarkWeb" asp-action="Search">
+            <div class="attackChoise">
+                <input type="radio" name="type" value="Normal" asp-for="Type">
+                <span>Find Enemy</span>
 
-            <input type="radio" name="type" value="Stronger"asp-for="Type" >
-            <span>Find Stronger Enemy</span>
+                <input type="radio" name="type" value="Stronger" asp-for="Type">
+                <span>Find Stronger Enemy</span>
 
-            <input type="radio" name="type" value="Search" asp-for="Type">
-            <span>Find By Name</span>
+                <input type="radio" name="type" value="Search" asp-for="Type">
+                <span>Find By Name</span>
 
-            <input class="input" type="text" name="searchName" size="25" maxlength="15"asp-for="SearchName">
-            <button class="btn yellow rounded" name="choise"  onclick="/DarkWeb/Search">Search</button>
-        </div>
-    
-         </form>
+                <input class="input" type="text" name="searchName" size="25" maxlength="15" asp-for="SearchName">
+                <button type="submit" class="btn yellow rounded" name="choise">Search</button>
+            </div>
+
+        </form>
     </div>
 </div>
+
 @section CssFile {
     <link rel="stylesheet" href="/css/Web/attack.css">
 }
