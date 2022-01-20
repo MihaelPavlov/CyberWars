@@ -6,22 +6,29 @@
 
     using CyberWars.Data.Common.Repositories;
     using CyberWars.Data.Models.Job;
+
     using Microsoft.EntityFrameworkCore;
 
+    /// <summary>
+    /// A custom implementation of <see cref="IAddJobService"/>.
+    /// </summary>
     public class AddJobService : IAddJobService
     {
         private readonly IDeletableEntityRepository<Job> jobsReposiotry;
         private readonly IDeletableEntityRepository<RandomHangfireJob> hangfireJobsReposiotry;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AddJobService"/> class.
+        /// </summary>
         public AddJobService(IDeletableEntityRepository<Job> jobsReposiotry, IDeletableEntityRepository<RandomHangfireJob> hangfireJobsReposiotry)
         {
-            this.jobsReposiotry = jobsReposiotry;
-            this.hangfireJobsReposiotry = hangfireJobsReposiotry;
+            this.jobsReposiotry = jobsReposiotry ?? throw new ArgumentNullException(nameof(jobsReposiotry));
+            this.hangfireJobsReposiotry = hangfireJobsReposiotry ?? throw new ArgumentNullException(nameof(hangfireJobsReposiotry));
         }
 
+        /// <inheritdoc/>
         public async Task UpdateRandomJobs()
         {
-
             var randomJobs = await this.jobsReposiotry.All().ToListAsync();
 
             while (randomJobs.Count() != 15)

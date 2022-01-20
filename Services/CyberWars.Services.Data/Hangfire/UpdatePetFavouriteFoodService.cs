@@ -7,31 +7,40 @@
 
     using CyberWars.Data.Common.Repositories;
     using CyberWars.Data.Models.Pet_Food;
+
     using Microsoft.EntityFrameworkCore;
 
+    /// <summary>
+    /// Use this class to update pet favourite food on every n hour.
+    /// </summary>
     public class UpdatePetFavouriteFoodService
     {
         private readonly IDeletableEntityRepository<Food> foodRepository;
         private readonly IDeletableEntityRepository<Pet> petRepository;
         private readonly IDeletableEntityRepository<RandomHangfireFood> randomHangfireFoodRepository;
 
+        /// <summary>
+        /// Constructor that instantiates UpdatePetFavouriteFoodService.
+        /// </summary>
         public UpdatePetFavouriteFoodService(
             IDeletableEntityRepository<Food> foodRepository,
             IDeletableEntityRepository<Pet> petRepository,
             IDeletableEntityRepository<RandomHangfireFood> randomHangfireFoodRepository)
         {
-            this.foodRepository = foodRepository;
-            this.petRepository = petRepository;
-            this.randomHangfireFoodRepository = randomHangfireFoodRepository;
+            this.foodRepository = foodRepository ?? throw new ArgumentNullException(nameof(foodRepository));
+            this.petRepository = petRepository ?? throw new ArgumentNullException(nameof(petRepository));
+            this.randomHangfireFoodRepository = randomHangfireFoodRepository ?? throw new ArgumentNullException(nameof(randomHangfireFoodRepository));
         }
 
+        /// <summary>
+        /// Use this method to change every n hours the pet favourite food.
+        /// </summary>
         public async Task ChangePetFavouriteFoodEveryDay()
         {
             var allPets = await this.petRepository.All().ToListAsync();
 
             foreach (var pet in allPets)
             {
-
                 var randomFoodForPet = await this.randomHangfireFoodRepository.All().Where(x => x.PetId == pet.Id).ToListAsync();
 
                 foreach (var food in randomFoodForPet)
@@ -57,6 +66,10 @@
             await this.randomHangfireFoodRepository.SaveChangesAsync();
         }
 
+        /// <summary>
+        /// Helper method.
+        /// </summary>
+        /// <returns>A collection of food.</returns>
         public async Task<IEnumerable<Food>> GetRandomFood()
         {
             var allFood = await this.foodRepository.All().ToListAsync();
