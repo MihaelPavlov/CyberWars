@@ -21,7 +21,7 @@
     using Microsoft.EntityFrameworkCore;
 
     [Authorize(Roles = GlobalConstants.UserRoleName)]
-    public class HomeController : BaseController
+    public class HomeController : Controller
     {
         private readonly IHomeService homeService;
 

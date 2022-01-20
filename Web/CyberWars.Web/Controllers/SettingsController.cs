@@ -12,7 +12,7 @@
     using Microsoft.AspNetCore.Mvc;
 
     [Authorize(Roles = GlobalConstants.UserRoleName)]
-    public class SettingsController : BaseController
+    public class SettingsController : Controller
     {
         private readonly ISettingsService settingsService;
 
