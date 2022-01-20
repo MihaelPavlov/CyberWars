@@ -1,9 +1,10 @@
 ﻿@using CyberWars.Web.ViewModels.WebViews.CompetitiveCoding
+
 @model IEnumerable<ContestViewModel>
 
 @foreach (var contest in Model)
 {
-    <div class="containerCompetitiveCoding">
+    <form class="containerCompetitiveCoding" method="post" asp-controller="CompetitiveCoding" asp-action="Result">
         <img class="competitiveImg" src="/images/Web/CompetitiveCodingIcons/@(contest.ContestImageName + ".png")" alt="">
         <h3 class="competitiveName">@contest.ContestName</h3>
         <h3>Chanse to Win:  @contest.ContestPercentage %</h3>
@@ -11,9 +12,9 @@
             <li><img src="/images/Web/CompetitiveCoinIcon.png" alt=""> <span class="points">@contest.ContestRewardMoney +  </span>  <img src="/images/Web/CompetitiveStarIcon.png" alt=""> <span class="points"> @contest.ContestRewardExp </span> </li>
         </ul>
         <div>
-            <a class="btn yellow rounded" href="/CompetitiveCoding/Result?contestId=@contest.ContestId">Participate ( @contest.ContestConsumeEnergy <img class="competitiveEnergy" src="/images/Web/CompetitiveLightIcon.png" alt=""> )</a>
+            <button class="btn yellow rounded" type="submit" name="contestId" value="@contest.ContestId">Participate ( @contest.ContestConsumeEnergy <img class="competitiveEnergy" src="/images/Web/CompetitiveLightIcon.png" alt=""> )</button>
         </div>
-    </div>
+    </form>
 }
 
 @section CssFile {

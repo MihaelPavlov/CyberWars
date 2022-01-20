@@ -6,7 +6,6 @@
     using System.Threading.Tasks;
 
     using CyberWars.Data.Common.Repositories;
-    using CyberWars.Data.Models;
     using CyberWars.Data.Models.Ability;
     using CyberWars.Data.Models.Course;
     using CyberWars.Data.Models.Player;
@@ -136,7 +135,7 @@
         }
 
         /// <summary>
-        /// Use this method to collect reward from completing lecture.
+        /// Use this method to collect reward from completed lecture.
         /// </summary>
         /// <param name="playerId">A string that contains the player Id.To this player we will give the reward.</param>
         /// <param name="lecture">A model <see cref="Lecture"/>.</param>

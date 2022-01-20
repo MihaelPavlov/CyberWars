@@ -1,6 +1,8 @@
 ﻿@using CyberWars.Web.ViewModels.WebViews.CompetitiveCoding
+
 @model ResultContestViewModel
-<div class="blog-card">
+
+<form class="blog-card" method="post" asp-controller="CompetitiveCoding" asp-action="Result">
     <img src="/images/Web/CompetitiveCodingIcons/@(Model.ContestImageName + ".png")" alt="">
     <div class="description">
         <h4 class="ResultcompetitveHeader">@Model.ContestName (@Model.DateCompleteContext)</h4>
@@ -11,7 +13,7 @@
 
             <p>@Model.PlayerName earn @Model.ContestRewardMoney money and @Model.ContestRewardExp experience.</p>
             <div class="read-more">
-                <a class="btn yellow rounded" href="/CompetitiveCoding/Result?contestId= @Model.ContestId">Again ( @Model.ContestConsumeEnergy <img class="competitiveEnergy" src="/images/Web/CompetitiveLightIcon.png" alt=""> )</a>
+                <button class="btn yellow rounded" type="submit" name="contestId" value="@Model.ContestId" ">Again ( @Model.ContestConsumeEnergy <img class="competitiveEnergy" src="/images/Web/CompetitiveLightIcon.png" alt=""> )</button>
             </div>
 
         }
@@ -21,11 +23,11 @@
 
             <p>Try Again Next Time Maybe You Will</p>
             <div class="read-more">
-                <a class="btn yellow rounded" href="/CompetitiveCoding/Result?contestId= @Model.ContestId">Again ( @Model.ContestConsumeEnergy <img class="competitiveEnergy" src="/images/Web/CompetitiveLightIcon.png" alt=""> )</a>
+                <button class="btn yellow rounded" type="submit" name="contestId" value="@Model.ContestId">Again ( @Model.ContestConsumeEnergy <img class="competitiveEnergy" src="/images/Web/CompetitiveLightIcon.png" alt=""> )</button>
             </div>
         }
     </div>
-</div>
+</form>
 
 @section CssFile {
     <link rel="stylesheet" href="/css/Web/ResultCompetitveCoding.css">

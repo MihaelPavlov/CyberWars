@@ -24,7 +24,7 @@
         /// </summary>
         public CompetitiveCodingController(IContestService contestService)
         {
-            this.contestService = contestService ?? throw new ArgumentNullException(nameof(contestService)); ;
+            this.contestService = contestService ?? throw new ArgumentNullException(nameof(contestService));
         }
 
         /// <summary>
@@ -38,12 +38,12 @@
             return this.View(viewModel);
         }
 
+        // TODO: Separate the tasks in Result method. We need separate the complete, show result and reward logic.
         /// <summary>
-        /// 
+        /// Use this method to complete competitive coding challenge and get the result + reward.
         /// </summary>
-        /// <param name="contestId"></param>
-        /// <returns></returns>
-        [HttpGet]
+        /// <param name="contestId">A string that contains the completed contest Id.</param>
+        [HttpPost] // POST /CompetitiveCoding/Result?contestId={contestId}
         public async Task<IActionResult> Result(int contestId)
         {
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);

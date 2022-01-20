@@ -10,8 +10,12 @@
     using CyberWars.Data.Models.Player;
     using CyberWars.Services.Mapping;
     using CyberWars.Web.ViewModels.WebViews.CompetitiveCoding;
+
     using Microsoft.EntityFrameworkCore;
 
+    /// <summary>
+    /// A custom implementation of <see cref="IContestService"/>.
+    /// </summary>
     public class ContestService : IContestService
     {
         private readonly IDeletableEntityRepository<Contest> contestRepository;
@@ -19,23 +23,29 @@
         private readonly IDeletableEntityRepository<PlayerContest> playerContestsRepository;
         private readonly IDeletableEntityRepository<RandomHangfireContest> randomContestRepository;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ContestService"/> class.
+        /// </summary>
         public ContestService(
             IDeletableEntityRepository<Contest> contestRepository,
             IDeletableEntityRepository<Player> playerRepository,
             IDeletableEntityRepository<PlayerContest> playerContestsRepository,
             IDeletableEntityRepository<RandomHangfireContest> randomContestRepository)
         {
-            this.contestRepository = contestRepository;
-            this.playerRepository = playerRepository;
-            this.playerContestsRepository = playerContestsRepository;
-            this.randomContestRepository = randomContestRepository;
+            this.contestRepository = contestRepository ?? throw new ArgumentNullException(nameof(contestRepository));
+            this.playerRepository = playerRepository ?? throw new ArgumentNullException(nameof(playerRepository));
+            this.playerContestsRepository = playerContestsRepository ?? throw new ArgumentNullException(nameof(playerContestsRepository));
+            this.randomContestRepository = randomContestRepository ?? throw new ArgumentNullException(nameof(randomContestRepository));
         }
 
+        /// <inheritdoc />
         public async Task<IEnumerable<T>> GetContests<T>()
         {
             return await this.randomContestRepository.All().Take(4).To<T>().ToListAsync();
         }
 
+        // TODO: Separate the tasks in Result method. We need separate the complete, show result and reward logic.
+        /// <inheritdoc />
         public async Task<ResultContestViewModel> ResultFromContestById(int contestId, string userId)
         {
             var contest = await this.contestRepository.All().FirstOrDefaultAsync(x => x.Id == contestId);
@@ -125,6 +135,10 @@
             }
         }
 
+        /// <summary>
+        /// Use this method to calculate randomly if the player wins.
+        /// </summary>
+        /// <param name="percentage">Every contest have a different chanse/percentage to win.</param>
         private static bool IsWin(double percentage)
         {
             var percentNumber = percentage / 100;
@@ -134,10 +148,8 @@
             {
                 return true;
             }
-            else
-            {
-                return false;
-            }
+
+            return false;
         }
     }
 }
