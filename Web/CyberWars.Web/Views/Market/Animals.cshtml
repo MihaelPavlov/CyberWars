@@ -1,9 +1,10 @@
-﻿@using CyberWars.Web.ViewModels.Market
+﻿@using System.Security.Claims
+@using CyberWars.Web.ViewModels.Market
 @using CyberWars.Data.Common.Repositories
-@using CyberWars.Web.ViewModels.HomeViews
-@using System.Security.Claims
 @using CyberWars.Data.Models.Player
+
 @model IEnumerable<MarketPetViewModel>
+
 @inject IDeletableEntityRepository<Player> playerRepository
 
 @{
@@ -15,6 +16,7 @@
     <img src="/images/Market/PetBackground.png" alt="">
 
 </div>
+
 @foreach (var pet in Model)
 {
     <form method="post" class="petForm">
@@ -39,19 +41,15 @@
                         <button class="btn disable rounded">Buy</button>
                     }
                 }
-
-                @*
-        <a class="btn yellow rounded " href="/Market/Buy?petId=@pet.Id" value="@pet.Id">Buy</a>*@
             </ul>
         </div>
     </form>
 }
 
-
-
 @section CssFile {
     <link rel="stylesheet" href="/css/Market/marketPets.css">
 }
+
 @section PageHeader{
     Animals
 }

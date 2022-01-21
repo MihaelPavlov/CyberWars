@@ -1,10 +1,12 @@
 ﻿@using CyberWars.Web.ViewModels.Market
+
 @model IEnumerable<MarketFoodViewModel>
 
 <div class="blog-card">
     <img src="/images/Market/PetFoodbackground.png" alt="">
 
 </div>
+
 @foreach (var food in Model)
 {
     <form method="post" class="foodForm">
@@ -24,6 +26,7 @@
 @section CssFile {
     <link rel="stylesheet" href="/css/Market/marketFood.css">
 }
+
 @section PageHeader{
     Food
 }

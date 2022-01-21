@@ -1,13 +1,14 @@
 <div class="parent">
 
     <img class="image1" src="/images/Market/Market.png" alt="">
-    <a href="/Market/Food"> <img class="image2" src="/images/Market/food.png" alt=""></a>
-    <a href="/Market/Animals"> <img class="image3" src="/images/Market/pets.png" alt=""></a>
+    <a asp-controller="Market" asp-action="Food"> <img class="image2" src="/images/Market/food.png" alt=""></a>
+    <a asp-controller="Market" asp-action="Animals"> <img class="image3" src="/images/Market/pets.png" alt=""></a>
 </div>
 
 @section CssFile {
     <link rel="stylesheet" href="/css/Market/market.css">
 }
+
 @section PageHeader{
     Market
 }
