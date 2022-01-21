@@ -1,21 +1,23 @@
-﻿@using CyberWars.Web.ViewModels.WebViews.Job;
-@using CyberWars.Data.Models.Ability;
-@using CyberWars.Data.Models.Player;
-@using CyberWars.Data.Common.Repositories;
-@using System.Security.Claims;
-@using CyberWars.Services.Mapping;
-@using CyberWars.Web.ViewModels.HomeViews;
-@using CyberWars.Data.Models.Job;
+﻿@using System.Security.Claims
+@using CyberWars.Web.ViewModels.WebViews.Job
+@using CyberWars.Data.Models.Ability
+@using CyberWars.Data.Models.Player
+@using CyberWars.Data.Common.Repositories
+@using CyberWars.Services.Mapping
+@using CyberWars.Web.ViewModels.HomeViews
+@using CyberWars.Data.Models.Job
 
 @model IEnumerable<JobViewModel>
 
-@inject IDeletableEntityRepository<PlayerAbility> playerAbilityRepository;
-@inject IDeletableEntityRepository<PlayerJob> playerJobsRepository;
-@inject IDeletableEntityRepository<Player> playerRepository;
+@inject IDeletableEntityRepository<PlayerAbility> playerAbilityRepository
+@inject IDeletableEntityRepository<PlayerJob> playerJobsRepository
+@inject IDeletableEntityRepository<Player> playerRepository
 
 @{
     var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+
     var playerAbilities = this.playerAbilityRepository.All().Where(x => x.Player.UserId == userId).To<PlayerAbilitiesViewModel>().ToList();
+
     var player = this.playerRepository.All().FirstOrDefault(x => x.UserId == userId);
 
     var playerJobs = this.playerJobsRepository.All().Where(x => x.PlayerId == player.Id).ToList();
@@ -23,7 +25,6 @@
 
 @foreach (var job in Model)
 {
-
     var canAcceptTheJob = true;
     var pointReward = job.JobRewardAbilityNames.Split(" ").ToArray();
     <div class="frellacingTable">
@@ -46,8 +47,6 @@
                 }
             }
         </ul>
-
-
         <div class="rewardDiv">
             <p class="rewardHeading">Reward</p>
             <span>@job.JobRewardExp Exp</span>
@@ -61,12 +60,10 @@
         @if (player.Level < job.JobLevelRequirement)
         {
             <a class="btn yellow rounded " id="btn-disable" href="">For Level (@job.JobLevelRequirement)</a>
-
         }
         else if (!canAcceptTheJob)
         {
             <a class="btn yellow rounded " id="btn-disable" href="">Accept</a>
-
         }
         else if (playerJobs.Any(x => x.JobId == job.JobId))
         {
@@ -77,7 +74,6 @@
             if (isPlayedToday)
             {
                 <a class="btn yellow rounded" id="btn-disable">Job is Complete</a>
-
             }
             else
             {
@@ -93,16 +89,16 @@
             </form>
         }
     </div>
-
-
 }
 
 @section MyScript{
     <script src="~/js/Timer.js" asp-append-version="true"></script>
 }
+
 @section CssFile {
     <link rel="stylesheet" href="/css/Web/frellancing.css">
 }
+
 @section PageHeader{
     Jobs
 }

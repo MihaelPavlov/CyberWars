@@ -3,18 +3,19 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
     using System.Threading.Tasks;
 
     using CyberWars.Data.Common.Repositories;
-    using CyberWars.Data.Models;
     using CyberWars.Data.Models.Ability;
     using CyberWars.Data.Models.Job;
     using CyberWars.Data.Models.Player;
     using CyberWars.Services.Mapping;
-    using CyberWars.Web.ViewModels.WebViews.Job;
+
     using Microsoft.EntityFrameworkCore;
 
+    /// <summary>
+    /// A custom implementation of <see cref="IWebService"/>.
+    /// </summary>
     public class WebService : IWebService
     {
         private readonly IDeletableEntityRepository<Job> jobsReposiotry;
@@ -23,6 +24,9 @@
         private readonly IDeletableEntityRepository<PlayerJob> playerJobReposiotry;
         private readonly IDeletableEntityRepository<PlayerAbility> playerAbilityJobReposiotry;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WebService"/> class.
+        /// </summary>
         public WebService(
             IDeletableEntityRepository<Job> jobsReposiotry,
             IDeletableEntityRepository<RandomHangfireJob> hangfireJobsReposiotry,
@@ -30,18 +34,14 @@
             IDeletableEntityRepository<PlayerJob> playerJobReposiotry,
             IDeletableEntityRepository<PlayerAbility> playerAbilityJobReposiotry)
         {
-            this.jobsReposiotry = jobsReposiotry;
-            this.hangfireJobsReposiotry = hangfireJobsReposiotry;
-            this.playerReposiotry = playerReposiotry;
-            this.playerJobReposiotry = playerJobReposiotry;
-            this.playerAbilityJobReposiotry = playerAbilityJobReposiotry;
+            this.jobsReposiotry = jobsReposiotry ?? throw new ArgumentNullException(nameof(jobsReposiotry));
+            this.hangfireJobsReposiotry = hangfireJobsReposiotry ?? throw new ArgumentNullException(nameof(hangfireJobsReposiotry));
+            this.playerReposiotry = playerReposiotry ?? throw new ArgumentNullException(nameof(playerReposiotry));
+            this.playerJobReposiotry = playerJobReposiotry ?? throw new ArgumentNullException(nameof(playerJobReposiotry));
+            this.playerAbilityJobReposiotry = playerAbilityJobReposiotry ?? throw new ArgumentNullException(nameof(playerAbilityJobReposiotry));
         }
 
-        public async Task<IEnumerable<T>> GetRandomJobs<T>()
-        {
-            return await this.hangfireJobsReposiotry.All().Take(15).OrderBy(x => x.Job.JobRequirements.Count).To<T>().ToListAsync();
-        }
-
+        /// <inheritdoc />
         public async Task CompleteJob(int jobId, string userId)
         {
             var player = await this.playerReposiotry.All().FirstOrDefaultAsync(x => x.UserId == userId);
@@ -89,6 +89,13 @@
             await this.playerReposiotry.SaveChangesAsync();
         }
 
+        /// <inheritdoc />
+        public async Task<IEnumerable<T>> GetRandomJobs<T>()
+        {
+            return await this.hangfireJobsReposiotry.All().Take(15).OrderBy(x => x.Job.JobRequirements.Count).To<T>().ToListAsync();
+        }
+
+        /// <inheritdoc />
         public async Task<IEnumerable<PlayerJob>> GetPlayerCompleteJobs(string userId)
         {
             return await this.playerJobReposiotry.All().Where(x => x.Player.UserId == userId).ToListAsync();
