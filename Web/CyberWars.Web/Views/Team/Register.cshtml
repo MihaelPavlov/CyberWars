@@ -1,16 +1,15 @@
-@using CyberWars.Web.ViewModels.Team;
-@using CyberWars.Data.Common.Repositories;
-@using CyberWars.Data.Models.Teams;
-@using System.Security.Claims;
-@using CyberWars.Data.Models.Player;
-@using Microsoft.EntityFrameworkCore;
-
+@using System.Security.Claims
+@using CyberWars.Web.ViewModels.Team
+@using CyberWars.Data.Common.Repositories
+@using CyberWars.Data.Models.Teams
+@using CyberWars.Data.Models.Player
+@using Microsoft.EntityFrameworkCore
 
 @model RegisterTeamInputModel;
 
-@inject IDeletableEntityRepository<TeamPlayer> teamPlayerRepository;
-@inject IDeletableEntityRepository<Team> teamRepository;
-@inject IDeletableEntityRepository<Player> playerRepository;
+@inject IDeletableEntityRepository<TeamPlayer> teamPlayerRepository
+@inject IDeletableEntityRepository<Team> teamRepository
+@inject IDeletableEntityRepository<Player> playerRepository
 
 @{
     var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -21,6 +20,7 @@
 
     var team = await this.teamRepository.All().FirstOrDefaultAsync(x => x.UserId == userId);
 }
+
 <div class="blog-card">
     <img src="/images/Team/TeamRegister.png" alt="">
     <div class="teamHeader">
@@ -90,9 +90,11 @@
         </div>
     }
 </div>
+
 @section CssFile {
     <link rel="stylesheet" href="/css/Team/teamRegister.css">
 }
+
 @section PageHeader{
     Register Team
 }

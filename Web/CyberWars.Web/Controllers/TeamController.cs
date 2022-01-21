@@ -1,5 +1,6 @@
 ﻿namespace CyberWars.Web.Controllers
 {
+    using System;
     using System.IO;
     using System.Security.Claims;
     using System.Threading.Tasks;
@@ -7,28 +8,44 @@
     using CyberWars.Common;
     using CyberWars.Services.Data.Teams;
     using CyberWars.Web.ViewModels.Team;
+
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Mvc;
 
+    /// <summary>
+    /// Controller that handles requests that come from the Team.
+    /// </summary>
     [Authorize(Roles = GlobalConstants.UserRoleName)]
     public class TeamController : Controller
     {
         private readonly ITeamService teamService;
         private readonly IWebHostEnvironment webHostEnvironment;
 
+        /// <summary>
+        /// Constructor that instantiates Team controller.
+        /// </summary>
         public TeamController(ITeamService teamService, IWebHostEnvironment webHostEnvironment)
         {
-            this.webHostEnvironment = webHostEnvironment;
-            this.teamService = teamService;
+            this.webHostEnvironment = webHostEnvironment ?? throw new ArgumentNullException(nameof(webHostEnvironment));
+            this.teamService = teamService ?? throw new ArgumentNullException(nameof(teamService));
         }
 
+        /// <summary>
+        /// Use this method to visualize index page of team.
+        /// </summary>
+        [HttpGet] // GET /Team/Index
         public async Task<IActionResult> Index()
         {
             var viewModel = await this.teamService.Get10StrongerTeam<TeamViewModel>();
             return this.View(viewModel);
         }
 
+        /// <summary>
+        /// Use this method to visualize ranking page.
+        /// </summary>
+        /// <param name="id">A integer representing the number of the page.</param>
+        [HttpGet] // GET /Team/Ranking
         public async Task<IActionResult> Ranking(int id = 1)
         {
             const int ItemsPerPage = 6;
@@ -43,12 +60,48 @@
             return this.View(viewModel);
         }
 
+        /// <summary>
+        /// Use this method to visualize create team page.
+        /// </summary>
+        [HttpGet] // GET /Team/Register
         public IActionResult Register()
         {
             return this.View();
         }
 
-        [HttpPost]
+        /// <summary>
+        /// Use this method to visualize team page information.
+        /// </summary>
+        /// <param name="teamId">A integer representing Id of the team that we want to see.</param>
+        [HttpGet] // GET /Team/TeamPage?teamId={teamId}
+        public async Task<IActionResult> TeamPage(int teamId)
+        {
+            var viewModel = await this.teamService.GetTeamPageById(teamId);
+            return this.View(viewModel);
+        }
+
+        /// <summary>
+        /// Use this method to find a team by name.
+        /// </summary>
+        /// <param name="teamId">A string representing the name of the team.</param>
+        [HttpGet] // GET /Team/SearchTeamByName?name={name}
+        public async Task<IActionResult> SearchTeamByName(string name)
+        {
+            var team = await this.teamService.SearchTeamByName(name);
+
+            if (team == null)
+            {
+                return this.Redirect($"/Team/Ranking");
+            }
+
+            return this.Redirect($"/Team/TeamPage?teamId={team.Id}");
+        }
+
+        /// <summary>
+        /// Use this method to make request for creating a team.
+        /// </summary>
+        /// <param name="input"><see cref="RegisterTeamInputModel"/></param>
+        [HttpPost] // POST /Team/Register?name={name}&motivationalMotto={motivationalMotto}&description={description}&image={image}
         public async Task<IActionResult> Register(RegisterTeamInputModel input)
         {
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -103,7 +156,11 @@
             return this.Redirect($"/Team/TeamPage?teamId={newTeamId}");
         }
 
-        [HttpPost]
+        /// <summary>
+        /// Use this method to make request for applying to team.
+        /// </summary>
+        /// <param name="teamId">A integer representing Id of the team that we want candidate.</param>
+        [HttpPost] // POST /Team/ApplyToTeam?teamId={teamId}
         public async Task<IActionResult> ApplyToTeam(int teamId)
         {
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -111,7 +168,12 @@
             return this.Redirect($"/Team/TeamPage?teamId={teamId}");
         }
 
-        [HttpPost]
+        /// <summary>
+        /// Use this method to make request for leaving a team.
+        /// </summary>
+        /// <param name="teamId">A integer representing Id of the team that we want leave.</param>
+        /// <returns></returns>
+        [HttpPost] // POST /Team/LeaveGroup?teamId={teamId}
         public async Task<IActionResult> LeaveGroup(int teamId)
         {
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -121,7 +183,11 @@
             return this.Redirect("/Team/Index");
         }
 
-        [HttpPost]
+        /// <summary>
+        /// Use this method to abandon your team. Only for players who create a team.
+        /// </summary>
+        /// <param name="teamId">A integer representing Id of the team that we want to abandon.</param>
+        [HttpPost] // POST /Team/Abandon?teamId={teamId}
         public async Task<IActionResult> Abandon(int teamId)
         {
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -131,24 +197,6 @@
             await this.teamService.Abandon(teamId, imagePath);
 
             return this.Redirect("/Team/Index");
-        }
-
-        public async Task<IActionResult> TeamPage(int teamId)
-        {
-            var viewModel = await this.teamService.GetTeamPageById(teamId);
-            return this.View(viewModel);
-        }
-
-        public async Task<IActionResult> SearchTeamByName(string name)
-        {
-            var team = await this.teamService.SearchTeamByName(name);
-
-            if (team == null)
-            {
-                return this.Redirect($"/Team/Ranking");
-            }
-
-            return this.Redirect($"/Team/TeamPage?teamId={team.Id}");
         }
     }
 }

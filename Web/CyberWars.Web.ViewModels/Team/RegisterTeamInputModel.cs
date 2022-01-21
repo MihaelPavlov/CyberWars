@@ -24,6 +24,5 @@
         [Required(ErrorMessage ="Group Image is required.")]
         [AllowedExtensionsAttribute]
         public IFormFile Image { get; set; }
-
     }
 }

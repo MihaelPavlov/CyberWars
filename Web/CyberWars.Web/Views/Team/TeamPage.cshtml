@@ -1,17 +1,17 @@
-@using CyberWars.Web.ViewModels.Team;
-@using CyberWars.Data.Common.Repositories;
-@using CyberWars.Data.Models.Teams;
-@using System.Security.Claims;
-@using CyberWars.Data.Models;
-@using Microsoft.EntityFrameworkCore;
-@using CyberWars.Data.Models.Player;
+@using System.Security.Claims
+@using CyberWars.Web.ViewModels.Team
+@using CyberWars.Data.Common.Repositories
+@using CyberWars.Data.Models.Teams
+@using CyberWars.Data.Models
+@using CyberWars.Data.Models.Player
+@using Microsoft.EntityFrameworkCore
 
 @model TeamPageViewModel
 
-@inject IDeletableEntityRepository<Team> teamRepository;
-@inject IDeletableEntityRepository<TeamPlayer> teamPlayerRepository;
-@inject IDeletableEntityRepository<ApplicationUser> userRepository;
-@inject IDeletableEntityRepository<Player> playerRepository;
+@inject IDeletableEntityRepository<Team> teamRepository
+@inject IDeletableEntityRepository<TeamPlayer> teamPlayerRepository
+@inject IDeletableEntityRepository<ApplicationUser> userRepository
+@inject IDeletableEntityRepository<Player> playerRepository
 
 @{
     var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -22,6 +22,7 @@
 
     var teamPlayer = await this.teamPlayerRepository.All().FirstOrDefaultAsync(x => x.PlayerId == player.Id);
 }
+
 <div class="tableTeam">
     <div>
         <img class="teamIcon" src="/TeamImages/@Model.Image" alt="teamImage">
@@ -48,23 +49,21 @@
                     <br>
                     @foreach (var playerInTeam in Model.TeamPlayers)
                     {
-                        <a href="/Home/PlayerView?playerName=@playerInTeam.PlayerName">@playerInTeam.PlayerName</a>
+                        <a asp-controller="Home" asp-action="PlayerView" asp-route-playerName="@playerInTeam.PlayerName">@playerInTeam.PlayerName</a>
                         <br>
                     }
                 </div>
             </td>
-
         </tr>
     </table>
 
-    @if (isUserHaveTeam != null && Model.UserId==userId)
+    @if (isUserHaveTeam != null && Model.UserId == userId)
     {
         <form method="post" asp-controller="Team" asp-action="Abandon">
             <div class="leaveFromGroupButton">
                 <button type="submit" class="btn dark-blue rounded" name="teamId" value="@Model.Id">Abandon</button>
             </div>
         </form>
-
     }
     else if (teamPlayer != null)
     {
@@ -84,16 +83,12 @@
 
         </form>
     }
-    else
-    {
-
-
-    }
 </div>
 
 @section CssFile {
     <link rel="stylesheet" href="/css/Team/teamPage.css">
 }
+
 @section PageHeader{
     Team
 }

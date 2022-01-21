@@ -1,9 +1,11 @@
 @using CyberWars.Web.ViewModels.Team
+
 @model IEnumerable<TeamViewModel>
 
 @{
     var counter = 1;
 }
+
 <div class="blog-card">
     <img src="/images/Team/TeamBacground2.png" alt="">
     <div class="teamHeader">
@@ -32,7 +34,7 @@
             {
                 <tr>
                     <th class="circleNumber">@(counter++)</th>
-                    <td><a href="/Team/TeamPage?teamId=@team.Id">@team.Name</a></td>
+                    <td><a asp-controller="Team" asp-action="TeamPage" asp-route-teamId="@team.Id">@team.Name</a></td>
                     <td>@team.MotivationalMotto</td>
                     <td>
                         <form method="post" asp-controller="Team" asp-action="ApplyToTeam">
@@ -44,10 +46,11 @@
         </tbody>
     </table>
 </div>
+
 @section CssFile {
     <link rel="stylesheet" href="/css/Team/team.css">
 }
+
 @section PageHeader{
     Team
 }
-

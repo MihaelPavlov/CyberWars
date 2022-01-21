@@ -27,7 +27,7 @@
         }
 
         /// <summary>
-        /// Use this method to get index page of the academy.
+        /// Use this method to visualize index page of the academy.
         /// </summary>
         [HttpGet] // GET /Academy/Index
         public IActionResult Index()
@@ -36,7 +36,7 @@
         }
 
         /// <summary>
-        /// Use this method to get basic page of the academy. The main page contains the two courses that you need to complete first.
+        /// Use this method to visualize basic page of the academy. The main page contains the two courses that you need to complete first.
         /// </summary>
         [HttpGet] // GET /Academy/Basic?courseName={courseName}
         public IActionResult Basic()
@@ -45,7 +45,7 @@
         }
 
         /// <summary>
-        /// Use this method to get all the paths of courses you can complete. Divided by languages.
+        /// Use this method to visualize all the paths of courses you can complete. Divided by languages.
         /// </summary>
         [HttpGet] // GET /Academy/Languages
         public IActionResult Languages()
@@ -54,7 +54,7 @@
         }
 
         /// <summary>
-        /// Use this method to get all lectures from the desired course.
+        /// Use this method to visualize all lectures from the desired course.
         /// </summary>
         /// <param name="courseName">A string that contains the name of the course we want.</param>
         /// <returns>View with all leactures from the desired course.</returns>
