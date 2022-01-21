@@ -1,9 +1,5 @@
 ﻿namespace CyberWars.Data.Models.Pet_Food
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
-
     using CyberWars.Data.Common.Models;
 
     public class RandomHangfireFood : BaseDeletableModel<int>

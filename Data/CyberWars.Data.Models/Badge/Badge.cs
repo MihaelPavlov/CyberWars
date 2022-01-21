@@ -4,7 +4,6 @@
     using System.ComponentModel.DataAnnotations;
 
     using CyberWars.Data.Common.Models;
-    using CyberWars.Data.Models.Ability;
 
     public class Badge : BaseDeletableModel<int>
     {

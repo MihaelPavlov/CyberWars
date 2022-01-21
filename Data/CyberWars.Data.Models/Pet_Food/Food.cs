@@ -1,7 +1,6 @@
 ﻿namespace CyberWars.Data.Models.Pet_Food
 {
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
 
     using CyberWars.Data.Common.Models;
 

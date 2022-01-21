@@ -1,7 +1,6 @@
 ﻿namespace CyberWars.Data.Models.Course
 {
     using System;
-    using System.Data.Common;
 
     using CyberWars.Data.Common.Models;
     using CyberWars.Data.Models.Player;

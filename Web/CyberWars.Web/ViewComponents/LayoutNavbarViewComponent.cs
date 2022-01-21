@@ -1,17 +1,13 @@
 ﻿namespace CyberWars.Web.ViewComponents
 {
     using System;
-    using System.Collections.Generic;
     using System.Linq;
-    using System.Security.Claims;
     using System.Threading.Tasks;
 
     using CyberWars.Data;
-    using CyberWars.Data.Models.Player;
-    using CyberWars.Services.Data.Home;
     using CyberWars.Web.ViewModels.HomeViews;
     using Hangfire;
-    using Microsoft.AspNetCore.Authorization;
+
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.EntityFrameworkCore;
 

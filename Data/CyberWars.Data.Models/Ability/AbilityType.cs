@@ -1,8 +1,6 @@
 ﻿namespace CyberWars.Data.Models.Ability
 {
-    using System;
     using System.Collections.Generic;
-    using System.Text;
 
     using CyberWars.Data.Common.Models;
 

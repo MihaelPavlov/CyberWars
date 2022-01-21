@@ -1,8 +1,5 @@
 ﻿namespace CyberWars.Web.ViewModels.WebViews.Job
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
     using CyberWars.Data.Models.Badge;
     using CyberWars.Data.Models.Job;
     using CyberWars.Services.Mapping;

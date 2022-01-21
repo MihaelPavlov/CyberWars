@@ -5,6 +5,7 @@ namespace CyberWars.Data.Models
     using System.Collections.Generic;
 
     using CyberWars.Data.Common.Models;
+
     using Microsoft.AspNetCore.Identity;
 
     public class ApplicationUser : IdentityUser, IAuditInfo, IDeletableEntity

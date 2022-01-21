@@ -1,21 +1,21 @@
 ﻿namespace CyberWars.Services.Data
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
     using System.Threading.Tasks;
-    using Microsoft.EntityFrameworkCore;
 
     using CyberWars.Data.Common.Repositories;
     using CyberWars.Data.Models;
+    using CyberWars.Data.Models.Ability;
+    using CyberWars.Data.Models.Battle;
+    using CyberWars.Data.Models.Pet_Food;
     using CyberWars.Data.Models.Player;
     using CyberWars.Data.Models.Skills;
-    using CyberWars.Data.Models.Ability;
-    using CyberWars.Data.Models.Pet_Food;
-    using CyberWars.Data.Models.Battle;
-    using System.Security.Claims;
 
+    using Microsoft.EntityFrameworkCore;
+
+    /// <summary>
+    /// A custom implementation of <see cref="IPlayerService"/>.
+    /// </summary>
     public class PlayerService : IPlayerService
     {
         private readonly IDeletableEntityRepository<ApplicationUser> userRepository;
@@ -27,6 +27,9 @@
         private readonly IDeletableEntityRepository<Food> foodRepository;
         private readonly IDeletableEntityRepository<BattleRecord> battleRecordRepository;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PlayerService"/> class.
+        /// </summary>
         public PlayerService(
              IDeletableEntityRepository<ApplicationUser> userRepository,
              IDeletableEntityRepository<Player> playerRepository,
@@ -37,19 +40,21 @@
              IDeletableEntityRepository<Food> foodRepository,
              IDeletableEntityRepository<BattleRecord> battleRecordRepository)
         {
-            this.playerRepository = playerRepository;
-            this.userRepository = userRepository;
-            this.skillsRepository = skillsRepository;
-            this.playerSkillRepository = playerSkillRepository;
-            this.abilityRepository = abilityRepository;
-            this.playerAbilityRepository = playerAbilityRepository;
-            this.foodRepository = foodRepository;
-            this.battleRecordRepository = battleRecordRepository;
+            this.playerRepository = playerRepository ?? throw new ArgumentNullException(nameof(playerRepository));
+            this.userRepository = userRepository ?? throw new ArgumentNullException(nameof(userRepository));
+            this.skillsRepository = skillsRepository ?? throw new ArgumentNullException(nameof(skillsRepository));
+            this.playerSkillRepository = playerSkillRepository ?? throw new ArgumentNullException(nameof(playerSkillRepository));
+            this.abilityRepository = abilityRepository ?? throw new ArgumentNullException(nameof(abilityRepository));
+            this.playerAbilityRepository = playerAbilityRepository ?? throw new ArgumentNullException(nameof(playerAbilityRepository));
+            this.foodRepository = foodRepository ?? throw new ArgumentNullException(nameof(foodRepository));
+            this.battleRecordRepository = battleRecordRepository ?? throw new ArgumentNullException(nameof(battleRecordRepository));
         }
 
+        /// <inheritdoc />
         public async Task CreatePlayer(string id, string typeClass, string imageName)
         {
             var user = await this.userRepository.All().FirstOrDefaultAsync(x => x.Id == id);
+
             var player = new Player()
             {
                 UserId = user.Id,
@@ -57,12 +62,15 @@
                 ImageName = imageName,
                 Name = user.UserName,
             };
+
             user.PlayerId = player.Id;
+
             await this.playerRepository.AddAsync(player);
             await this.userRepository.SaveChangesAsync();
             await this.playerRepository.SaveChangesAsync();
         }
 
+        /// <inheritdoc />
         public async Task CreateSkills(string id)
         {
             var user = await this.userRepository.All().FirstOrDefaultAsync(x => x.Id == id);
@@ -85,6 +93,7 @@
             await this.playerSkillRepository.SaveChangesAsync();
         }
 
+        /// <inheritdoc />
         public async Task CreatePlayerAbilities(string id)
         {
             var user = await this.userRepository.All().FirstOrDefaultAsync(x => x.Id == id);
@@ -105,6 +114,7 @@
             await this.playerAbilityRepository.SaveChangesAsync();
         }
 
+        /// <inheritdoc />
         public async Task CreateBattleRecord(string id)
         {
             var user = await this.userRepository.All().FirstOrDefaultAsync(x => x.Id == id);

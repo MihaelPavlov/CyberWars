@@ -1,7 +1,6 @@
 ﻿namespace CyberWars.Data.Models.Badge
 {
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
 
     using CyberWars.Data.Common.Models;
     using CyberWars.Data.Models.Ability;

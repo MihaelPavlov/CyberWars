@@ -1,9 +1,5 @@
 ﻿namespace CyberWars.Web.ViewModels.Battle
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
-
     using CyberWars.Data.Models.Battle;
     using CyberWars.Services.Mapping;
 

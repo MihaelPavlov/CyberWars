@@ -3,7 +3,6 @@
     using System;
     using System.Reflection;
     using System.Threading.Tasks;
-    using Newtonsoft.Json;
 
     using CyberWars.Data;
     using CyberWars.Data.Common;
@@ -15,6 +14,7 @@
     using CyberWars.Services.Data.Academy;
     using CyberWars.Services.Data.CompetitiveCoding;
     using CyberWars.Services.Data.DarkWeb;
+    using CyberWars.Services.Data.Hangfire;
     using CyberWars.Services.Data.Home;
     using CyberWars.Services.Data.Market;
     using CyberWars.Services.Data.Teams;
@@ -22,7 +22,8 @@
     using CyberWars.Services.Mapping;
     using CyberWars.Services.Messaging;
     using CyberWars.Web.ViewModels;
-    using CyberWars.Services.Data.Hangfire;
+    using Hangfire;
+    using Hangfire.SqlServer;
 
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
@@ -32,8 +33,7 @@
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
-    using Hangfire;
-    using Hangfire.SqlServer;
+    using Newtonsoft.Json;
 
     public class Startup
     {
@@ -83,8 +83,8 @@
             services.AddScoped<IDbQueryRunner, DbQueryRunner>();
 
             // Application services
-            services.AddTransient<IEmailSender, NullMessageSender>();
             services.AddTransient<ISettingsService, SettingsService>();
+            services.AddTransient<IEmailSender, NullMessageSender>();
             services.AddTransient<IPlayerService, PlayerService>();
             services.AddTransient<IHomeService, HomeService>();
             services.AddTransient<IMarketService, MarketService>();
@@ -93,7 +93,6 @@
             services.AddTransient<IContestService, ContestService>();
             services.AddTransient<IAcademyService, AcademyService>();
             services.AddTransient<ITeamService, TeamService>();
-
             services.AddTransient<IAddJobService, AddJobService>();
 
             services.AddHangfire(config =>
@@ -123,7 +122,6 @@
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IRecurringJobManager recurringJob)
         {
-
             AutoMapperConfig.RegisterMappings(typeof(ErrorViewModel).GetTypeInfo().Assembly);
 
             // Seed data on application startup
@@ -175,6 +173,5 @@
             recurringJob.AddOrUpdate<AddJobService>("AddJobService", x => x.UpdateRandomJobs(), Cron.Daily);
             recurringJob.AddOrUpdate<UpdateContests>("UpdateContests", x => x.UpdateRandomContests(), Cron.Daily);
         }
-
     }
 }

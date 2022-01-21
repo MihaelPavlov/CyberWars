@@ -1,9 +1,5 @@
 ﻿namespace CyberWars.Web.ViewModels.Academy
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
-
     using CyberWars.Data.Models.Course;
     using CyberWars.Services.Mapping;
 
