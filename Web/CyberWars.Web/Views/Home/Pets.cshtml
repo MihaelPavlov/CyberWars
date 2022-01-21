@@ -1,10 +1,12 @@
 ﻿@using CyberWars.Web.ViewModels.HomeViews.Pet
+
 @model IEnumerable<PetViewModel>
 
 <h2 class="headerPet">
     Here you will find al of your pets and if they are hungry you can feed
     them.
 </h2>
+
 <table class="tablePet">
     <thead>
         <tr>
@@ -21,7 +23,6 @@
                 <th scope="row">@pet.NameIt (@pet.PetName) <br> <img src="/images/Market/Pets/@(pet.PetImageName + ".png")" alt="" /></th>
                 <td>@pet.PetDescription</td>
                 <td>
-
                     <ul>
                         @foreach (var food in pet.Foods)
                         {
@@ -30,13 +31,13 @@
                     </ul>
                 </td>
                 <td>
-                    <a class="btn yellow rounded" href="/Home/PetCard?petId=@pet.PetId">Feed</a>
+                    <a class="btn yellow rounded" asp-controller="Home" asp-action="PetCard" asp-route-petId="@pet.PetId">Feed</a>
                 </td>
             </tr>
         }
-
     </tbody>
 </table>
+
 @section CssFile {
     <link rel="stylesheet" href="/css/Home/pet.css">
 }

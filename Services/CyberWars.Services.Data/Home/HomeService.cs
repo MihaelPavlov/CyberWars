@@ -18,8 +18,12 @@
     using CyberWars.Web.ViewModels.Battle;
     using CyberWars.Web.ViewModels.HomeViews;
     using CyberWars.Web.ViewModels.HomeViews.Pet;
+
     using Microsoft.EntityFrameworkCore;
 
+    /// <summary>
+    /// A custom implementation of <see cref="IHomeService"/>.
+    /// </summary>
     public class HomeService : IHomeService
     {
         private readonly IDeletableEntityRepository<ApplicationUser> userRepository;
@@ -39,6 +43,9 @@
         private readonly IDeletableEntityRepository<TeamPlayer> teamPlayerRepository;
         private readonly IDeletableEntityRepository<Team> teamRepository;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="HomeService"/> class.
+        /// </summary>
         public HomeService(
             IDeletableEntityRepository<Player> playerRepository,
             IDeletableEntityRepository<PlayerSkill> playerSkillRepository,
@@ -57,27 +64,27 @@
             IDeletableEntityRepository<TeamPlayer> teamPlayerRepository,
             IDeletableEntityRepository<Team> teamRepository)
         {
-            this.playerRepository = playerRepository;
-            this.playerSkillRepository = playerSkillRepository;
-            this.playerAbilityRepository = playerAbilityRepository;
-            this.userRepository = userRepository;
-            this.badgeRepository = badgeRepository;
-            this.badgeRequirementRepository = badgeRequirementRepository;
-            this.playerPetRepository = playerPetRepository;
-            this.foodRepository = foodRepository;
-            this.petRepository = petRepository;
-            this.playerFoodRepository = playerFoodRepository;
-            this.battleRecordRepository = battleRecordRepository;
-            this.skillRepository = skillRepository;
-            this.randomHangfireFoodRepository = randomHangfireFoodRepository;
-            this.playerBadgeRepository = playerBadgeRepository;
-            this.teamPlayerRepository = teamPlayerRepository;
-            this.teamRepository = teamRepository;
+            this.playerRepository = playerRepository ?? throw new ArgumentNullException(nameof(playerRepository));
+            this.playerSkillRepository = playerSkillRepository ?? throw new ArgumentNullException(nameof(playerSkillRepository));
+            this.playerAbilityRepository = playerAbilityRepository ?? throw new ArgumentNullException(nameof(playerAbilityRepository));
+            this.userRepository = userRepository ?? throw new ArgumentNullException(nameof(userRepository));
+            this.badgeRepository = badgeRepository ?? throw new ArgumentNullException(nameof(badgeRepository));
+            this.badgeRequirementRepository = badgeRequirementRepository ?? throw new ArgumentNullException(nameof(badgeRequirementRepository));
+            this.playerPetRepository = playerPetRepository ?? throw new ArgumentNullException(nameof(playerPetRepository));
+            this.foodRepository = foodRepository ?? throw new ArgumentNullException(nameof(foodRepository));
+            this.petRepository = petRepository ?? throw new ArgumentNullException(nameof(petRepository));
+            this.playerFoodRepository = playerFoodRepository ?? throw new ArgumentNullException(nameof(playerFoodRepository));
+            this.battleRecordRepository = battleRecordRepository ?? throw new ArgumentNullException(nameof(battleRecordRepository));
+            this.skillRepository = skillRepository ?? throw new ArgumentNullException(nameof(skillRepository));
+            this.randomHangfireFoodRepository = randomHangfireFoodRepository ?? throw new ArgumentNullException(nameof(randomHangfireFoodRepository));
+            this.playerBadgeRepository = playerBadgeRepository ?? throw new ArgumentNullException(nameof(playerBadgeRepository));
+            this.teamPlayerRepository = teamPlayerRepository ?? throw new ArgumentNullException(nameof(teamPlayerRepository));
+            this.teamRepository = teamRepository ?? throw new ArgumentNullException(nameof(teamRepository));
         }
 
+        /// <inheritdoc />
         public async Task<PlayerDataView> GetPlayerData(string userId)
         {
-            // Get The Player with userId
             var player = await this.playerRepository
                 .All()
                 .FirstOrDefaultAsync(x => x.UserId == userId);
@@ -99,24 +106,29 @@
                 Level = player.Level,
                 IsStatsResetStart = player.IsStatsResetStart,
             };
+
             return playerData;
         }
 
+        /// <inheritdoc />
         public async Task<ApplicationUser> GetUserById(string userId)
         {
             return await this.userRepository.All().FirstOrDefaultAsync(x => x.Id == userId);
         }
 
+        /// <inheritdoc />
         public async Task<PlayerSkill> GetPlayerSkillByName(string name, string userId)
         {
             return await this.playerSkillRepository.All().FirstOrDefaultAsync(x => x.Skill.Name == name && x.Player.UserId == userId);
         }
 
+        /// <inheritdoc />
         public async Task<IEnumerable<T>> GetPlayerSkills<T>(string userId)
         {
             return await this.playerSkillRepository.All().Where(x => x.Player.UserId == userId).To<T>().ToListAsync();
         }
 
+        /// <inheritdoc />
         public async Task TrainSkillByName(string userId, string skillName)
         {
             var player = await this.playerRepository.All().FirstOrDefaultAsync(x => x.UserId == userId);
@@ -183,41 +195,76 @@
             await this.teamRepository.SaveChangesAsync();
         }
 
+        /// <inheritdoc />
         public async Task<BattleRecord> GetPlayerBattleRecordByPlayerName(string name)
         {
             return await this.battleRecordRepository.All().FirstOrDefaultAsync(x => x.Player.Name == name);
         }
 
+        /// <inheritdoc />
         public async Task<IEnumerable<T>> GetPlayerAbilitiesByType<T>(string playerId, string type)
         {
             return await this.playerAbilityRepository.All().Where(x => x.PlayerId == playerId && x.Ability.AbilityType.Type == type).OrderByDescending(x => x.Points).To<T>().ToListAsync();
         }
 
+        /// <inheritdoc />
         public async Task<IEnumerable<T>> GetAllBadges<T>()
         {
             return await this.badgeRepository.All().To<T>().ToListAsync();
         }
 
+        /// <inheritdoc />
         public async Task<BadgesViewModel> GetAllRequirementForBadgeById(int badgeId)
         {
             return await this.badgeRepository.All().Where(x => x.Id == badgeId).To<BadgesViewModel>().FirstOrDefaultAsync();
         }
 
+        /// <inheritdoc />
+        public async Task CompleteBadge(int badgeId, string userId)
+        {
+            var badge = await this.badgeRepository.All().FirstOrDefaultAsync(x => x.Id == badgeId);
+
+            var player = await this.playerRepository.All().FirstOrDefaultAsync(x => x.UserId == userId);
+
+            var playerBadges = await this.playerBadgeRepository.All().Where(x => x.Player.UserId == userId).ToListAsync();
+
+            if (playerBadges.Any(x => x.BadgeId == badgeId))
+            {
+                return;
+            }
+            else
+            {
+                var playerBadge = new PlayerBadge
+                {
+                    PlayerId = player.Id,
+                    BadgeId = badge.Id,
+                    AchievementDate = DateTime.UtcNow,
+                };
+
+                await this.playerBadgeRepository.AddAsync(playerBadge);
+                await this.playerBadgeRepository.SaveChangesAsync();
+            }
+        }
+
+        /// <inheritdoc />
         public async Task<IEnumerable<T>> GetPlayerPets<T>(string userId)
         {
             return await this.playerPetRepository.All().Where(x => x.Player.UserId == userId).To<T>().ToListAsync();
         }
 
+        /// <inheritdoc />
         public async Task<IEnumerable<T>> GetPetRandomFood<T>(int petId)
         {
             return await this.randomHangfireFoodRepository.All().Where(x => x.PetId == petId).To<T>().ToListAsync();
         }
 
+        /// <inheritdoc />
         public async Task<PetViewModel> GetPetById(string userId, int petId)
         {
             return await this.playerPetRepository.All().Where(x => x.Player.UserId == userId && x.PetId == petId).To<PetViewModel>().FirstOrDefaultAsync();
         }
 
+        /// <inheritdoc />
         public async Task FeedPetById(int foodId, int petId, string userId)
         {
             var food = await this.foodRepository.All().FirstOrDefaultAsync(x => x.Id == foodId);
@@ -259,6 +306,7 @@
             await this.playerPetRepository.SaveChangesAsync();
         }
 
+        /// <inheritdoc />
         public async Task ChangePetName(string newName, int petId, string userId)
         {
             var playerPet = await this.playerPetRepository.All().FirstOrDefaultAsync(x => x.Player.UserId == userId && x.PetId == petId);
@@ -269,6 +317,7 @@
             await this.playerPetRepository.SaveChangesAsync();
         }
 
+        /// <inheritdoc />
         public async Task ScratchPetBelly(int petId, string userId)
         {
             var playerPet = await this.playerPetRepository.All().FirstOrDefaultAsync(x => x.Player.UserId == userId && x.PetId == petId);
@@ -284,6 +333,7 @@
             await this.playerPetRepository.SaveChangesAsync();
         }
 
+        /// <inheritdoc />
         public async Task SellPetById(int petId, string userId)
         {
             var playerPet = await this.playerPetRepository.All().FirstOrDefaultAsync(x => x.Player.UserId == userId && x.PetId == petId);
@@ -297,6 +347,7 @@
             await this.playerPetRepository.SaveChangesAsync();
         }
 
+        /// <inheritdoc />
         public async Task<PlayerDataView> GetPlayerViewData(string playerName)
         {
             var player = await this.playerRepository.All().FirstOrDefaultAsync(x => x.Name == playerName);
@@ -357,46 +408,36 @@
             return playerData;
         }
 
-        public async Task CompleteBadge(int badgeId, string userId)
-        {
-            var badge = await this.badgeRepository.All().FirstOrDefaultAsync(x => x.Id == badgeId);
+        // Helpful method for tests.
 
-            var player = await this.playerRepository.All().FirstOrDefaultAsync(x => x.UserId == userId);
-
-            var playerBadges = await this.playerBadgeRepository.All().Where(x => x.Player.UserId == userId).ToListAsync();
-
-            if (playerBadges.Any(x => x.BadgeId == badgeId))
-            {
-                return;
-            }
-            else
-            {
-                var playerBadge = new PlayerBadge
-                {
-                    PlayerId = player.Id,
-                    BadgeId = badge.Id,
-                    AchievementDate = DateTime.UtcNow,
-                };
-
-                await this.playerBadgeRepository.AddAsync(playerBadge);
-                await this.playerBadgeRepository.SaveChangesAsync();
-            }
-        }
-
+        /// <summary>
+        /// Use this method to get playerBadge model.
+        /// </summary>
+        /// <param name="badgeId">A integer representing the Id of the badge.</param>
+        /// <returns>A model <see cref="PlayerBadge"/>.</returns>
         public async Task<PlayerBadge> GetPlayerBadgeById(int badgeId)
         {
             return await this.playerBadgeRepository.All().FirstOrDefaultAsync(x => x.BadgeId == badgeId);
         }
 
+        /// <summary>
+        /// Use this method check is player already in group.
+        /// </summary>
+        /// <param name="playerId">A string representing the Id of the player.</param>
+        /// <returns>A bool.</returns>
         public async Task<bool> IsPlayerApplyInGroup(string playerId)
         {
             return await this.teamPlayerRepository.All().AnyAsync(x => x.PlayerId == playerId);
         }
 
+        /// <summary>
+        /// Use this method to check is user have already created a group.
+        /// </summary>
+        /// <param name="userId">A string representing the Id of the user.</param>
+        /// <returns>A bool.</returns>
         public async Task<bool> IsUserHaveGroup(string userId)
         {
             return await this.teamRepository.All().AnyAsync(x => x.UserId == userId);
-
         }
     }
 }

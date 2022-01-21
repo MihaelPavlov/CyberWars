@@ -1,4 +1,5 @@
 ﻿@using CyberWars.Web.ViewModels.HomeViews
+
 @model IEnumerable<PlayerSkillViewModel>
 
 <div class="description">
@@ -10,18 +11,17 @@
 
 @foreach (var skill in Model)
 {
-    <div class="container2">
+    <form class="container2" method="post" asp-controller="Home" asp-action="TrainSkill" asp-route-skillName="@skill.SkillName">
         <div class="item4">
             <img class="healthIcon" src="/images/@(skill.SkillId).Skill.png" alt="" />
             <span class="name">@skill.SkillName</span>
             <div class="bar">@skill.SkillDescription</div>
             <span class="circle">@skill.Points</span>
-                <a class="button" href="/Home/TrainSkill?skillName=@skill.SkillName">Train - </a>     
+            <button class="button" type="submit">Train - </button>
             <span class="money">@skill.Money</span>
             <img class="MoneyIcon" src="/images/MoneyIcon.png" alt="" />
         </div>
-    </div>
-
+    </form>
 }
 
 @section CssFile {

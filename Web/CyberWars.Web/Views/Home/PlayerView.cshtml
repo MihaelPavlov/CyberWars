@@ -1,7 +1,9 @@
 @using CyberWars.Web.ViewModels.HomeViews
+
 @model PlayerDataView
+
 <table class="playerView">
-    <a class="playerNameHeader yellow full-rounded" href="/Home/PlayerView?playerName=@Model.Name">@Model.Name</a>
+    <a class="playerNameHeader yellow full-rounded" asp-controller="Home" asp-action="PlayerView" asp-route-playerName="@Model.Name">@Model.Name</a>
     <tbody>
         <tr>
             <td class="playerSkills ">
@@ -39,6 +41,7 @@
 @section CssFile {
     <link rel="stylesheet" href="/css/Home/playerView.css">
 }
+
 @section PageHeader{
     @Model.Name
 }

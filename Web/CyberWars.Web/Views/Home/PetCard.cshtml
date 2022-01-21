@@ -1,16 +1,14 @@
-﻿@using CyberWars.Web.ViewModels.HomeViews.Pet
-@using System.Security.Claims;
-
-
-@model PetViewModel
+﻿@using System.Security.Claims
+@using CyberWars.Web.ViewModels.HomeViews.Pet
 
 @{
-
-
     var healthWidth = (decimal)Model.Health / (decimal)Model.MaxHealth * 100;
 
     var moodWidth = (decimal)Model.Mood / (decimal)Model.MaxMood * 100;
 }
+
+@model PetViewModel
+
 <div class="petTable">
     <h3 class="petHeader">@Model.NameIt</h3>
     <img src="/images/Market/Pets/@(Model.PetImageName + ".png")" alt="">
@@ -36,18 +34,6 @@
                 <button class="btn-small small yellow rounded" type="submit" name="petId" value="@Model.PetId">Change Name</button>
             </div>
         </form>
-        @*<form method="post" class="petForm" asp-controller="Home" asp-action="ScratchPetBelly">
-                <a class="btn yellow rounded" href="#popup1"  name="petId" value="@Model.PetId">Scratch Belly</a>
-                <div id="popup1" class="overlay">
-                    <div class="popup">
-                        <h2>Successfully scratch your pet belly</h2>
-                        <a class="close" href="#">&times;</a>
-                        <div class="content">
-                            +40 to my Mood
-                        </div>
-                    </div>
-                </div>
-            </form>*@
         <form method="post" class="petForm" asp-controller="Home" asp-action="ScratchPetBelly">
             <div id="popUpOverlay"></div>
             <div id="popUpBox">
@@ -70,11 +56,9 @@
         <button onclick="document.getElementById('deleteModal').style.display='block'" class="btn yellow rounded " data-toggle="modal" data-target="#deleteModal">Sell Pet</button>
     </div>
     <h2>Food</h2>
-    @*Here need to make it with viewComponent and get ALL FOOD that player buy it *@
+    @*Get ALL FOOD that player buy it *@
     <div class="petFoodTable">
-
         <vc:pet-card-food user-id="@(this.User.FindFirstValue(ClaimTypes.NameIdentifier))"></vc:pet-card-food>
-
     </div>
 </div>
 
@@ -84,7 +68,6 @@
         <div class="containerModal">
             <h1>Sell Pet</h1>
             <p class="modalText">Are you sure you want to sell your pet?</p>
-
             <div class="clearfix">
                 <button type="button" class="deletebtn buttonModal" onclick="deleteForm.submit()">Sell</button>
                 <button type="button" class="cancelbtn buttonModal" data-dismiss="modal">Cancel</button>
@@ -96,11 +79,13 @@
 @section CssFile {
     <link rel="stylesheet" href="/css/Home/petCard.css">
 }
+
 @section MyScript{
     <script src="/js/ChangeName.js" asp-append-version="true"></script>
     <script src="~/js/Modal.js" asp-append-version="true"></script>
     <script src="/js/ScratchBelly.js" asp-append-version="true"></script>
 }
+
 @section PageHeader{
     Pet Name
 }

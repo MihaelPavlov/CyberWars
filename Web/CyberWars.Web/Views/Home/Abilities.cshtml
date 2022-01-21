@@ -1,13 +1,14 @@
 ﻿@using CyberWars.Web.ViewModels.HomeViews
+
 @model IEnumerable<PlayerAbilitiesViewModel>
 
 <div class="containerAbilities">
-    <a class="btn yellow rounded" href="/Home/Abilities?type=Languages">Languages</a>
-    <a class="btn yellow rounded" href="/Home/Abilities?type=Database">Database</a>
-    <a class="btn yellow rounded" href="/Home/Abilities?type=Frameworks">Frameworks</a>
+    <a class="btn yellow rounded" asp-controller="Home" asp-action="Abilities" asp-route-type="Languages">Languages</a>
+    <a class="btn yellow rounded" asp-controller="Home" asp-action="Abilities" asp-route-type="Database">Database</a>
+    <a class="btn yellow rounded" asp-controller="Home" asp-action="Abilities" asp-route-type="Frameworks">Frameworks</a>
 </div>
-<table class="tableAbilities">
 
+<table class="tableAbilities">
     <thead>
         <tr>
             <th scope="col">Language</th>
@@ -18,14 +19,12 @@
     <tbody>
         @foreach (var ability in Model)
         {
-
             <tr>
                 <th scope="row">@ability.AbilityName</th>
                 <td>@ability.Points</td>
                 <td>@ability.AbilityDescription</td>
             </tr>
         }
-
     </tbody>
 </table>
 

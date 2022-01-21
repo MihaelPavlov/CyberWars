@@ -1,12 +1,13 @@
-﻿@model CyberWars.Web.ViewModels.HomeViews.PlayerDataView
-
-@{
+﻿@{
     ViewData["Title"] = "Player";
 }
+
+@model CyberWars.Web.ViewModels.HomeViews.PlayerDataView
 
 <div class="Profile">
     <img src="/images/Base/@Model.ImageName" alt="PlayerIcon">
 </div>
+
 <table class="homeTable">
     <tr>
         <td>Class:</td>
@@ -18,7 +19,7 @@
     </tr>
     <tr>
         <td>Player Name:</td>
-        <td><a href="/Home/PlayerView?playerName=@Model.Name">@Model.Name</a></td>
+        <td><a asp-controller="Home" asp-action="PlayerView" asp-route-playerName="@Model.Name">@Model.Name</a></td>
     </tr>
     @if (Model.IsStatsResetStart)
     {
@@ -26,9 +27,9 @@
             <td>Reset Stats -></td>
             <td><p id="demo"></p></td>
         </tr>
-
     }
 </table>
+
 <div class="options">
     <div class="optionsItem">
         <form asp-area="Identity" asp-page="/Account/Manage/ChangePassword">

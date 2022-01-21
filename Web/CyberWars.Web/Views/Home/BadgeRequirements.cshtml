@@ -1,18 +1,18 @@
-﻿@using CyberWars.Web.ViewModels.HomeViews
+﻿@using System.Security.Claims;
+@using CyberWars.Web.ViewModels.HomeViews
 @using CyberWars.Data.Common.Repositories;
 @using CyberWars.Data.Models.Ability;
-@using System.Security.Claims;
 @using CyberWars.Services.Mapping;
 
-@inject IDeletableEntityRepository<PlayerAbility> playerAbilityRepository;
-
 @model BadgesViewModel
+
+@inject IDeletableEntityRepository<PlayerAbility> playerAbilityRepository
 
 @{
     var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
     var playerAbilities = this.playerAbilityRepository.All().Where(x => x.Player.UserId == userId).To<PlayerAbilitiesViewModel>().ToList();
-
 }
+
 <div class="containerBadgeRequirements">
     <div class="cardBadge">
         <h2>Requirements for @Model.Name</h2>
@@ -47,6 +47,7 @@
         </table>
     </div>
 </div>
+
 @section CssFile {
     <link rel="stylesheet" href="/css/Home/badgeRequirements.css">
 }

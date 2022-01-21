@@ -1,18 +1,14 @@
 ﻿namespace CyberWars.Web.ViewComponents
 {
-    using System;
-    using System.Collections.Generic;
     using System.Linq;
-    using System.Threading.Tasks;
 
-    using CyberWars.Data;
     using CyberWars.Data.Common.Repositories;
     using CyberWars.Data.Models.Pet_Food;
     using CyberWars.Data.Models.Player;
     using CyberWars.Web.ViewModels.HomeViews;
     using CyberWars.Web.ViewModels.HomeViews.Pet;
+
     using Microsoft.AspNetCore.Mvc;
-    using Microsoft.EntityFrameworkCore;
 
     public class PetCardFoodViewComponent : ViewComponent
     {
@@ -20,7 +16,9 @@
         private readonly IDeletableEntityRepository<Player> playerRepository;
         private readonly IDeletableEntityRepository<PlayerFood> playerFoodRepository;
 
-        public PetCardFoodViewComponent(IDeletableEntityRepository<Food> foodRepository, IDeletableEntityRepository<Player> playerRepository,
+        public PetCardFoodViewComponent(
+            IDeletableEntityRepository<Food> foodRepository,
+            IDeletableEntityRepository<Player> playerRepository,
             IDeletableEntityRepository<PlayerFood> playerFoodRepository)
         {
             this.foodRepository = foodRepository;

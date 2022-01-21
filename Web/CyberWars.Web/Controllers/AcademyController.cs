@@ -57,7 +57,7 @@
         /// Use this method to get all lectures from the desired course.
         /// </summary>
         /// <param name="courseName">A string that contains the name of the course we want.</param>
-        /// <returns>View with all leactures from the desired course</returns>
+        /// <returns>View with all leactures from the desired course.</returns>
         [HttpGet] // GET /Academy/Lectures?courseName={courseName}
         public async Task<IActionResult> Lectures(string courseName)
         {

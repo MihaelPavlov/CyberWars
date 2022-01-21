@@ -1,15 +1,14 @@
-﻿@using CyberWars.Web.ViewModels.HomeViews
+﻿@using System.Security.Claims;
+@using CyberWars.Web.ViewModels.HomeViews
 @using CyberWars.Data.Common.Repositories;
 @using CyberWars.Data.Models.Ability;
-@using System.Security.Claims;
 @using CyberWars.Services.Mapping;
 @using CyberWars.Services.Data.Home;
 
 @model IEnumerable<BadgesViewModel>
 
-@inject IDeletableEntityRepository<PlayerAbility> playerAbilityRepository;
-
-@inject IHomeService homeService;
+@inject IDeletableEntityRepository<PlayerAbility> playerAbilityRepository
+@inject IHomeService homeService
 
 @{
     var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -28,7 +27,8 @@
             isCompleteBadge = false;
         }
     }
-    //If all badge.badgeRequiremnt is complete should Achivied or the other
+
+    //If all badge.badgeRequiremnt is complete should Achivied
     if (isCompleteBadge)
     {
         // Save in the Database the completed badge
@@ -41,10 +41,6 @@
             <ul>
                 <li>Description</li>
                 <li>@badge.Description</li>
-                @*<li>
-                        <a class="btn yellow rounded btn-disable " href="/Home/BadgeRequirements?badgeId=@badge.Id">Requirements</a>
-                    </li>*@
-
             </ul>
         </div>
     }
@@ -58,11 +54,10 @@
                 <li>Description</li>
                 <li>@badge.Description</li>
                 <li>
-                    <a class="btn yellow rounded btn-disable " href="/Home/BadgeRequirements?badgeId=@badge.Id">Requirements</a>
+                    <a class="btn yellow rounded btn-disable" asp-controller="Home" asp-action="BadgeRequirements" asp-route-badgeId="@badge.Id">Requirements</a>
                 </li>
             </ul>
         </div>
-
     }
 }
 
